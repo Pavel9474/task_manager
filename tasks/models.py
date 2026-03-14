@@ -2,6 +2,78 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+class Employee(models.Model):
+    DEPARTMENT_CHOICES = [
+        ('development', 'Разработка'),
+        ('design', 'Дизайн'),
+        ('marketing', 'Маркетинг'),
+        ('sales', 'Продажи'),
+        ('hr', 'HR'),
+        ('administration', 'Администрация'),
+        ('research', 'Исследования'),
+        ('other', 'Другое'),
+    ]
+    
+    LABORATORY_CHOICES = [
+        ('lab1', 'Лаборатория №1'),
+        ('lab2', 'Лаборатория №2'),
+        ('lab3', 'Лаборатория №3'),
+        ('research_lab', 'Исследовательская лаборатория'),
+        ('test_lab', 'Тестовая лаборатория'),
+        ('other', 'Другая'),
+    ]
+    
+    # Основная информация
+    last_name = models.CharField('Фамилия', max_length=100)
+    first_name = models.CharField('Имя', max_length=100)
+    patronymic = models.CharField('Отчество', max_length=100, blank=True, null=True)
+    position = models.CharField('Должность', max_length=200)
+    
+    # Контактная информация
+    email = models.EmailField('Email', unique=True)
+    phone = models.CharField('Телефон', max_length=20, blank=True, null=True)
+    
+    # Организационная информация
+    department = models.CharField('Отдел', max_length=50, choices=DEPARTMENT_CHOICES, default='other')
+    laboratory = models.CharField('Лаборатория', max_length=50, choices=LABORATORY_CHOICES, blank=True, null=True)
+    
+    # Дополнительная информация
+    hire_date = models.DateField('Дата найма', null=True, blank=True)
+    is_active = models.BooleanField('Активный сотрудник', default=True)
+    notes = models.TextField('Заметки', blank=True, null=True)
+    
+    # Системная информация
+    created_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    updated_date = models.DateTimeField('Дата обновления', auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_employees')
+    
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
+        ordering = ['last_name', 'first_name']
+    
+    def __str__(self):
+        return self.full_name
+    
+    @property
+    def full_name(self):
+        """Полное имя сотрудника"""
+        parts = [self.last_name, self.first_name]
+        if self.patronymic:
+            parts.append(self.patronymic)
+        return ' '.join(parts)
+    
+    @property
+    def short_name(self):
+        """Краткое имя (Фамилия И.О.)"""
+        name_parts = [self.last_name]
+        if self.first_name:
+            name_parts.append(f"{self.first_name[0]}.")
+        if self.patronymic:
+            name_parts.append(f"{self.patronymic[0]}.")
+        return ' '.join(name_parts)
+
+
 class Task(models.Model):
     PRIORITY_CHOICES = [
         ('low', 'Низкий'),
@@ -27,6 +99,14 @@ class Task(models.Model):
     priority = models.CharField('Приоритет', max_length=10, choices=PRIORITY_CHOICES, default='medium')
     status = models.CharField('Статус', max_length=20, choices=STATUS_CHOICES, default='todo')
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь', related_name='tasks')
+    
+    # Связь с сотрудниками
+    assigned_to = models.ManyToManyField(
+        Employee, 
+        verbose_name='Исполнители', 
+        blank=True,
+        related_name='tasks'
+    )
     
     class Meta:
         ordering = ['-created_date']

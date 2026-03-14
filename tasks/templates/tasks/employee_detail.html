@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ employee.full_name }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>{{ employee.full_name }}</h3>
+                <span class="badge {% if employee.is_active %}bg-success{% else %}bg-secondary{% endif %}">
+                    {{ employee.is_active|yesno:"Активен,Неактивен" }}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Основная информация</h5>
+                        <table class="table table-sm">
+                            <tr><th>Должность:</th><td>{{ employee.position }}</td></tr>
+                            <tr><th>Отдел:</th><td>{{ employee.get_department_display }}</td></tr>
+                            {% if employee.laboratory %}
+                                <tr><th>Лаборатория:</th><td>{{ employee.get_laboratory_display }}</td></tr>
+                            {% endif %}
+                            {% if employee.hire_date %}
+                                <tr><th>Дата найма:</th><td>{{ employee.hire_date|date:"d.m.Y" }}</td></tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Контакты</h5>
+                        <table class="table table-sm">
+                            <tr><th>Email:</th><td><a href="mailto:{{ employee.email }}">{{ employee.email }}</a></td></tr>
+                            {% if employee.phone %}
+                                <tr><th>Телефон:</th><td><a href="tel:{{ employee.phone }}">{{ employee.phone }}</a></td></tr>
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+                
+                {% if employee.notes %}
+                    <div class="mt-3">
+                        <h5>Заметки</h5>
+                        <p>{{ employee.notes|linebreaks }}</p>
+                    </div>
+                {% endif %}
+                
+                <!-- Задачи сотрудника -->
+                <div class="mt-4">
+                    <h5>Задачи сотрудника</h5>
+                    {% if assigned_tasks %}
+                        <div class="list-group">
+                            {% for task in assigned_tasks %}
+                                <a href="{% url 'task_detail' task.id %}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>{{ task.title }}</h6>
+                                        <small class="text-muted">{{ task.created_date|date:"d.m.Y" }}</small>
+                                    </div>
+                                    <small>
+                                        <span class="badge {% if task.status == 'done' %}bg-success{% elif task.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
+                                            {{ task.get_status_display }}
+                                        </span>
+                                    </small>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted">У сотрудника нет задач</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Кнопки действий -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'employee_list' %}" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Назад
+                    </a>
+                    <div>
+                        <a href="{% url 'employee_update' employee.id %}" class="btn btn-primary">
+                            <i class="bi bi-pencil"></i> Редактировать
+                        </a>
+                        <a href="{% url 'employee_toggle_active' employee.id %}" class="btn btn-warning">
+                            <i class="bi bi-power"></i> 
+                            {{ employee.is_active|yesno:"Деактивировать,Активировать" }}
+                        </a>
+                        <a href="{% url 'employee_delete' employee.id %}" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Удалить
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
