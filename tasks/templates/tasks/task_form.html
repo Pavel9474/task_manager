@@ -261,4 +261,48 @@
         }
     });
 </script>
+<script>
+$(document).ready(function() {
+    // Динамический поиск сотрудников
+    $('#employeeSearch').on('input', function() {
+        const search = $(this).val();
+        const taskId = '{{ task.id }}';
+        
+        $.ajax({
+            url: `/task/${taskId}/assign-ajax/`,
+            method: 'GET',
+            data: {search: search},
+            success: function(response) {
+                $('#employeeList').html(response.html);
+                $('#employeeCount').text(`Найдено: ${response.count}`);
+            }
+        });
+    });
+    
+    // Быстрое назначение исполнителей
+    $('#assignEmployeesBtn').on('click', function() {
+        const taskId = '{{ task.id }}';
+        const employees = [];
+        
+        $('input[name="employees"]:checked').each(function() {
+            employees.push($(this).val());
+        });
+        
+        $.ajax({
+            url: `/task/${taskId}/assign-ajax/`,
+            method: 'POST',
+            data: {
+                'employees[]': employees,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if (response.success) {
+                    $('#assignmentsCount').text(response.message);
+                    updateTaskDetail(taskId);
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Массовое создание этапов{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>Массовое создание этапов для задачи: {{ task.title }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <h5>Формат ввода:</h5>
+                    <p>Каждая строка должна содержать данные, разделенные точкой с запятой (;):</p>
+                    <code>Номер;Название;Описание;Исполнители (через запятую)</code>
+                    <hr>
+                    <h6>Пример:</h6>
+                    <pre>1;Анализ требований;Собрать требования;Иванов И.И.,Петров П.П.
+2;Проектирование;Создать архитектуру;Сидоров С.С.
+3;Разработка;Написать код;Иванов И.И.</pre>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.stages_data.id_for_label }}" class="form-label">
+                            Данные этапов
+                        </label>
+                        {{ form.stages_data }}
+                        {% if form.stages_data.errors %}
+                            <div class="text-danger">{{ form.stages_data.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'subtask_list' task.id %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Отмена
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-files"></i> Создать этапы
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

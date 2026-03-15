@@ -11,6 +11,7 @@ from .models import Task, Employee
 from .forms import TaskForm
 from .forms_employee import EmployeeForm, EmployeeImportForm
 import pandas as pd
+from django.template.loader import render_to_string
 from datetime import datetime
 
 # ============= АУТЕНТИФИКАЦИЯ =============
@@ -665,3 +666,261 @@ def employee_search_api(request):
     } for emp in employees]
     
     return JsonResponse({'results': data})
+
+@login_required
+def task_assign_employees_ajax(request, task_id):
+    """AJAX версия назначения исполнителей"""
+    if request.method == 'POST':
+        task = get_object_or_404(Task, id=task_id, user=request.user)
+        employee_ids = request.POST.getlist('employees[]')
+        task.assigned_to.set(employee_ids)
+        
+        return JsonResponse({
+            'success': True,
+            'message': f'Назначено {len(employee_ids)} исполнителей',
+            'assigned': list(employee_ids)
+        })
+    
+    elif request.method == 'GET':
+        task = get_object_or_404(Task, id=task_id, user=request.user)
+        employees = Employee.objects.filter(is_active=True)
+        
+        # Фильтрация
+        search = request.GET.get('search', '')
+        if search:
+            employees = employees.filter(
+                Q(last_name__icontains=search) |
+                Q(first_name__icontains=search) |
+                Q(email__icontains=search)
+            )
+        
+        html = render_to_string('tasks/partials/employee_list_ajax.html', {
+            'employees': employees,
+            'assigned_ids': task.assigned_to.values_list('id', flat=True)
+        })
+        
+        return JsonResponse({
+            'success': True,
+            'html': html,
+            'count': employees.count()
+        })
+@login_required
+def task_update_status_ajax(request, task_id):
+    """AJAX обновление статуса задачи"""
+    if request.method == 'POST':
+        task = get_object_or_404(Task, id=task_id, user=request.user)
+        new_status = request.POST.get('status')
+        
+        if new_status in dict(Task.STATUS_CHOICES):
+            task.status = new_status
+            if new_status == 'in_progress' and not task.start_time:
+                task.start_time = timezone.now()
+            elif new_status == 'done' and not task.end_time:
+                task.end_time = timezone.now()
+            
+            task.save()
+            
+            return JsonResponse({
+                'success': True,
+                'status': task.status,
+                'status_display': task.get_status_display(),
+                'start_time': task.start_time.strftime('%H:%M %d.%m.%Y') if task.start_time else None,
+                'end_time': task.end_time.strftime('%H:%M %d.%m.%Y') if task.end_time else None,
+            })
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
+from .models import Subtask
+from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
+
+@login_required
+def subtask_list(request, task_id):
+    """Список подзадач для задачи"""
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    subtasks = task.subtasks.all().order_by('stage_number')
+    
+    # Статистика по подзадачам
+    total = subtasks.count()
+    completed = subtasks.filter(status='completed').count()
+    in_progress = subtasks.filter(status='in_progress').count()
+    pending = subtasks.filter(status='pending').count()
+    progress = int((completed / total) * 100) if total > 0 else 0
+    
+    context = {
+        'task': task,
+        'subtasks': subtasks,
+        'total': total,
+        'completed': completed,
+        'in_progress': in_progress,
+        'pending': pending,
+        'progress': progress,
+    }
+    return render(request, 'tasks/subtask_list.html', context)
+
+
+@login_required
+def subtask_create(request, task_id):
+    """Создание подзадачи"""
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    
+    if request.method == 'POST':
+        form = SubtaskForm(request.POST, task=task)
+        if form.is_valid():
+            subtask = form.save(commit=False)
+            subtask.task = task
+            subtask.save()
+            form.save_m2m()  # Сохраняем many-to-many связи
+            
+            # Автоматическое назначение ответственного, если один исполнитель
+            if subtask.performers.count() == 1 and not subtask.responsible:
+                subtask.responsible = subtask.performers.first()
+                subtask.save()
+            
+            messages.success(request, f'Этап {subtask.stage_number} успешно создан')
+            return redirect('subtask_list', task_id=task.id)
+    else:
+        form = SubtaskForm(task=task)
+    
+    return render(request, 'tasks/subtask_form.html', {
+        'form': form,
+        'task': task,
+        'title': f'Добавление этапа к задаче: {task.title}'
+    })
+
+
+@login_required
+def subtask_update(request, subtask_id):
+    """Редактирование подзадачи"""
+    subtask = get_object_or_404(Subtask, id=subtask_id, task__user=request.user)
+    
+    if request.method == 'POST':
+        form = SubtaskForm(request.POST, instance=subtask, task=subtask.task)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Этап {subtask.stage_number} обновлен')
+            return redirect('subtask_list', task_id=subtask.task.id)
+    else:
+        form = SubtaskForm(instance=subtask, task=subtask.task)
+    
+    return render(request, 'tasks/subtask_form.html', {
+        'form': form,
+        'task': subtask.task,
+        'subtask': subtask,
+        'title': f'Редактирование этапа {subtask.stage_number}'
+    })
+
+
+@login_required
+def subtask_delete(request, subtask_id):
+    """Удаление подзадачи"""
+    subtask = get_object_or_404(Subtask, id=subtask_id, task__user=request.user)
+    task_id = subtask.task.id
+    
+    if request.method == 'POST':
+        subtask.delete()
+        messages.success(request, 'Этап удален')
+        return redirect('subtask_list', task_id=task_id)
+    
+    return render(request, 'tasks/subtask_confirm_delete.html', {'subtask': subtask})
+
+
+@login_required
+def subtask_bulk_create(request, task_id):
+    """Массовое создание подзадач"""
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    
+    if request.method == 'POST':
+        form = SubtaskBulkCreateForm(request.POST)
+        if form.is_valid():
+            stages = form.cleaned_data['stages_data']
+            created = 0
+            errors = []
+            
+            for stage_data in stages:
+                try:
+                    # Поиск или создание исполнителей по именам
+                    performers = []
+                    if stage_data['performers']:
+                        names = [name.strip() for name in stage_data['performers'].split(',')]
+                        for name in names:
+                            # Простой поиск по имени (можно улучшить)
+                            parts = name.split()
+                            if len(parts) >= 2:
+                                employee = Employee.objects.filter(
+                                    last_name__icontains=parts[0],
+                                    first_name__icontains=parts[1]
+                                ).first()
+                                if employee:
+                                    performers.append(employee)
+                    
+                    subtask = Subtask.objects.create(
+                        task=task,
+                        stage_number=stage_data['stage_number'],
+                        title=stage_data['title'],
+                        description=stage_data['description']
+                    )
+                    
+                    if performers:
+                        subtask.performers.set(performers)
+                        if len(performers) == 1:
+                            subtask.responsible = performers[0]
+                            subtask.save()
+                    
+                    created += 1
+                    
+                except Exception as e:
+                    errors.append(f"Ошибка при создании этапа {stage_data.get('stage_number')}: {str(e)}")
+            
+            if created > 0:
+                messages.success(request, f'Создано {created} этапов')
+            if errors:
+                messages.warning(request, '\n'.join(errors))
+            
+            return redirect('subtask_list', task_id=task.id)
+    else:
+        form = SubtaskBulkCreateForm()
+    
+    return render(request, 'tasks/subtask_bulk_create.html', {
+        'form': form,
+        'task': task
+    })
+
+
+@login_required
+def subtask_update_status(request, subtask_id):
+    """Быстрое обновление статуса подзадачи"""
+    if request.method == 'POST':
+        subtask = get_object_or_404(Subtask, id=subtask_id, task__user=request.user)
+        new_status = request.POST.get('status')
+        
+        if new_status in dict(Subtask.STATUS_CHOICES):
+            subtask.status = new_status
+            
+            # Автоматически фиксируем время
+            if new_status == 'in_progress' and not subtask.actual_start:
+                subtask.actual_start = timezone.now()
+            elif new_status == 'completed' and not subtask.actual_end:
+                subtask.actual_end = timezone.now()
+            
+            subtask.save()
+            
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({
+                    'success': True,
+                    'status': subtask.status,
+                    'status_display': subtask.get_status_display()
+                })
+        
+        return redirect('subtask_list', task_id=subtask.task.id)
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
+@login_required
+def task_detail(request, task_id):
+    """Детальная информация о задаче"""
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    
+    # Отладка в консоль
+    print(f"=== Отладка task_detail ===")
+    print(f"Задача ID: {task.id}")
+    print(f"Количество подзадач: {task.subtasks.count()}")
+    print(f"Подзадачи: {[s.title for s in task.subtasks.all()]}")
+    
+    return render(request, 'tasks/task_detail.html', {'task': task})

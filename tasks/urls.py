@@ -59,4 +59,13 @@ urlpatterns = [
     # ===== API (если нужно) =====
     # API для поиска сотрудников
     path('api/employee-search/', views.employee_search_api, name='employee_search_api'),
+
+    path('task/<int:task_id>/status/', views.task_update_status_ajax, name='task_update_status_ajax'),
+    # Подзадачи (этапы)
+    path('task/<int:task_id>/subtasks/', views.subtask_list, name='subtask_list'),
+    path('task/<int:task_id>/subtask/create/', views.subtask_create, name='subtask_create'),
+    path('subtask/<int:subtask_id>/update/', views.subtask_update, name='subtask_update'),
+    path('subtask/<int:subtask_id>/delete/', views.subtask_delete, name='subtask_delete'),
+    path('task/<int:task_id>/subtasks/bulk-create/', views.subtask_bulk_create, name='subtask_bulk_create'),
+    path('subtask/<int:subtask_id>/update-status/', views.subtask_update_status, name='subtask_update_status'),
 ]
