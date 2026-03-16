@@ -123,11 +123,17 @@
                             <div class="list-group">
                                 {% for subtask in subtasks|slice:":3" %}
                                     <div class="list-group-item">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">
-                                                <span class="badge bg-secondary me-2">Этап {{ subtask.stage_number }}</span>
-                                                {{ subtask.title }}
-                                            </h6>
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">
+                                                    <span class="badge bg-secondary me-2">Этап {{ subtask.stage_number }}</span>
+                                                    <!-- НОВЫЙ БЕЙДЖ ПРИОРИТЕТА -->
+                                                    <span class="badge bg-{{ subtask.priority_color }} me-2">
+                                                        {{ subtask.get_priority_display }}
+                                                    </span>
+                                                    {{ subtask.title }}
+                                                </h6>
+                                            </div>
                                             <span class="badge {% if subtask.status == 'completed' %}bg-success{% elif subtask.status == 'in_progress' %}bg-primary{% else %}bg-warning text-dark{% endif %}">
                                                 {{ subtask.get_status_display }}
                                             </span>

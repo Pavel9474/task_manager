@@ -282,12 +282,97 @@ def employee_detail(request, employee_id):
     """Детальная информация о сотруднике"""
     employee = get_object_or_404(Employee, id=employee_id)
     
-    # Получаем задачи сотрудника
-    assigned_tasks = employee.tasks.all().order_by('-created_date')[:10]
+    # Получаем тип отображения (все, только задачи, только этапы)
+    item_type = request.GET.get('type', 'all')
+    
+    # Собираем все задачи и подзадачи сотрудника
+    items = []
+    
+    # Добавляем задачи, где сотрудник является исполнителем
+    tasks = employee.tasks.all()
+    for task in tasks:
+        # Определяем дату для сортировки (дедлайн задачи)
+        sort_date = task.due_date if task.due_date else task.created_date
+        items.append({
+            'type': 'task',
+            'id': task.id,
+            'title': task.title,
+            'description': task.description,
+            'status': task.status,
+            'priority': task.priority,
+            'due_date': task.due_date,
+            'sort_date': sort_date,
+            'is_overdue': task.is_overdue() if task.due_date else False,
+            'assigned_to': task.assigned_to,
+            'task': task,  # оригинальный объект для ссылок
+            'get_priority_display': task.get_priority_display,
+            'get_status_display': task.get_status_display,
+            'priority_color': {
+                'critical': 'danger',
+                'high': 'warning',
+                'medium': 'info',
+                'low': 'success'
+            }.get(task.priority, 'secondary')
+        })
+    
+    # Добавляем подзадачи, где сотрудник является исполнителем или ответственным
+    subtasks_as_performer = employee.subtasks.all()
+    subtasks_as_responsible = employee.responsible_subtasks.all()
+    all_subtasks = (subtasks_as_performer | subtasks_as_responsible).distinct()
+    
+    for subtask in all_subtasks:
+        # Определяем дату для сортировки (планируемое окончание этапа)
+        sort_date = subtask.planned_end if subtask.planned_end else subtask.created_date
+        items.append({
+            'type': 'subtask',
+            'id': subtask.id,
+            'title': subtask.title,
+            'description': subtask.description,
+            'status': subtask.status,
+            'priority': subtask.priority,
+            'due_date': subtask.planned_end,
+            'sort_date': sort_date,
+            'is_overdue': subtask.is_overdue() if subtask.planned_end else False,
+            'stage_number': subtask.stage_number,
+            'task': subtask.task,  # родительская задача
+            'responsible': subtask.responsible,
+            'performers': subtask.performers,
+            'progress': subtask.progress,
+            'get_priority_display': subtask.get_priority_display,
+            'get_status_display': subtask.get_status_display,
+            'priority_color': subtask.priority_color
+        })
+    
+    # Фильтрация по типу
+    if item_type == 'tasks':
+        items = [item for item in items if item['type'] == 'task']
+    elif item_type == 'subtasks':
+        items = [item for item in items if item['type'] == 'subtask']
+    
+    # Сортировка: сначала по дате (чем ближе к сегодня, тем выше),
+    # затем просроченные в начало, затем без даты в конец
+    from datetime import date, datetime
+    today = timezone.now().date()
+    
+    def sort_key(item):
+        date_val = item['sort_date']
+        if date_val:
+            # Преобразуем datetime в date для сравнения
+            if isinstance(date_val, datetime):
+                date_val = date_val.date()
+            # Считаем разницу в днях от сегодня
+            days_diff = (date_val - today).days if date_val else 9999
+            # Отрицательные значения (просроченные) должны быть в начале
+            return (days_diff if days_diff >= 0 else -9999 + days_diff, 0)
+        else:
+            return (9999, 1)  # без даты в самый конец
+    
+    items.sort(key=sort_key)
     
     context = {
         'employee': employee,
-        'assigned_tasks': assigned_tasks,
+        'items': items,
+        'current_type': item_type,
     }
     return render(request, 'tasks/employee_detail.html', context)
 
@@ -736,14 +821,56 @@ from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
 def subtask_list(request, task_id):
     """Список подзадач для задачи"""
     task = get_object_or_404(Task, id=task_id, user=request.user)
-    subtasks = task.subtasks.all().order_by('stage_number')
+    
+    # Получаем все подзадачи
+    subtasks = task.subtasks.all()
+    
+    # Сортировка
+    sort_by = request.GET.get('sort', 'stage_number')
+    
+    if sort_by == 'priority':
+        # Сортируем по приоритету (критический → высокий → средний → низкий)
+        # и затем по номеру этапа
+        priority_order = {
+            'critical': 1,
+            'high': 2,
+            'medium': 3,
+            'low': 4
+        }
+        # Сортируем в Python, так как в БД нет числового значения
+        subtasks = sorted(
+            subtasks, 
+            key=lambda x: (priority_order.get(x.priority, 5), x.stage_number)
+        )
+    elif sort_by == 'status':
+        # Сортируем по статусу и затем по номеру этапа
+        status_order = {
+            'pending': 1,
+            'in_progress': 2,
+            'delayed': 3,
+            'completed': 4
+        }
+        subtasks = sorted(
+            subtasks,
+            key=lambda x: (status_order.get(x.status, 5), x.stage_number)
+        )
+    elif sort_by == 'stage_number_desc':
+        subtasks = subtasks.order_by('-stage_number')
+    else:  # stage_number (по умолчанию)
+        subtasks = subtasks.order_by('stage_number')
     
     # Статистика по подзадачам
-    total = subtasks.count()
-    completed = subtasks.filter(status='completed').count()
-    in_progress = subtasks.filter(status='in_progress').count()
-    pending = subtasks.filter(status='pending').count()
+    total = task.subtasks.count()
+    completed = task.subtasks.filter(status='completed').count()
+    in_progress = task.subtasks.filter(status='in_progress').count()
+    pending = task.subtasks.filter(status='pending').count()
     progress = int((completed / total) * 100) if total > 0 else 0
+    
+    # Статистика по приоритетам
+    critical_count = task.subtasks.filter(priority='critical').count()
+    high_count = task.subtasks.filter(priority='high').count()
+    medium_count = task.subtasks.filter(priority='medium').count()
+    low_count = task.subtasks.filter(priority='low').count()
     
     context = {
         'task': task,
@@ -753,9 +880,13 @@ def subtask_list(request, task_id):
         'in_progress': in_progress,
         'pending': pending,
         'progress': progress,
+        'critical_count': critical_count,
+        'high_count': high_count,
+        'medium_count': medium_count,
+        'low_count': low_count,
+        'sort_by': sort_by,
     }
     return render(request, 'tasks/subtask_list.html', context)
-
 
 @login_required
 def subtask_create(request, task_id):

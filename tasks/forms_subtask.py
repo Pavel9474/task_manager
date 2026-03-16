@@ -4,7 +4,7 @@ from .models import Subtask, Employee
 class SubtaskForm(forms.ModelForm):
     class Meta:
         model = Subtask
-        fields = ['stage_number', 'title', 'description', 'output', 
+        fields = ['stage_number', 'title', 'description', 'output', 'priority',
                  'performers', 'responsible', 'planned_start', 'planned_end', 
                  'status', 'notes']
         widgets = {
@@ -12,6 +12,7 @@ class SubtaskForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
             'output': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
+            'priority': forms.Select(attrs={'class': 'form-control'}),
             'performers': forms.SelectMultiple(attrs={
                 'class': 'form-control select2',
                 'data-placeholder': 'Выберите исполнителей...'
@@ -19,8 +20,6 @@ class SubtaskForm(forms.ModelForm):
             'responsible': forms.Select(attrs={'class': 'form-control select2'}),
             'planned_start': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
             'planned_end': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
-            'actual_start': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
-            'actual_end': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
             'status': forms.Select(attrs={'class': 'form-control'}),
             'notes': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
         }
@@ -65,7 +64,7 @@ class SubtaskBulkCreateForm(forms.Form):
         widget=forms.Textarea(attrs={
             'rows': 10,
             'class': 'form-control',
-            'placeholder': 'Введите данные в формате: Номер;Название;Описание;Исполнители(через запятую)\nПример:\n1;Анализ требований;Собрать требования;Иванов И.И.,Петров П.П.\n2;Проектирование;Создать архитектуру;Сидоров С.С.'
+            'placeholder': 'Введите данные в формате: Номер;Название;Приоритет;Описание;Исполнители(через запятую)\nПриоритет: low, medium, high, critical\nПример:\n1;Анализ требований;high;Собрать требования;Иванов И.И.,Петров П.П.\n2;Проектирование;critical;Создать архитектуру;Сидоров С.С.'
         }),
         label='Данные этапов'
     )
@@ -90,9 +89,16 @@ class SubtaskBulkCreateForm(forms.Form):
                 stage = {
                     'stage_number': stage_num,
                     'title': parts[1],
-                    'description': parts[2] if len(parts) > 2 else '',
-                    'performers': parts[3] if len(parts) > 3 else ''
+                    'priority': parts[2] if len(parts) > 2 else 'medium',
+                    'description': parts[3] if len(parts) > 3 else '',
+                    'performers': parts[4] if len(parts) > 4 else ''
                 }
+                
+                # Проверка валидности приоритета
+                if stage['priority'] not in dict(Subtask.PRIORITY_CHOICES):
+                    errors.append(f"Строка {i}: недопустимый приоритет '{stage['priority']}'. Допустимые: low, medium, high, critical")
+                    continue
+                    
                 stages.append(stage)
             except ValueError:
                 errors.append(f"Строка {i}: номер этапа должен быть числом")

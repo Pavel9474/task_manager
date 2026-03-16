@@ -29,6 +29,26 @@
     </div>
 </div>
 
+<!-- Кнопки сортировки -->
+<div class="row mb-3">
+    <div class="col">
+        <div class="btn-group" role="group">
+            <a href="?sort=stage_number" class="btn btn-sm {% if sort_by == 'stage_number' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                <i class="bi bi-sort-numeric-down"></i> По номеру
+            </a>
+            <a href="?sort=stage_number_desc" class="btn btn-sm {% if sort_by == 'stage_number_desc' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                <i class="bi bi-sort-numeric-up"></i> По номеру (обр.)
+            </a>
+            <a href="?sort=priority" class="btn btn-sm {% if sort_by == 'priority' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                <i class="bi bi-sort-down"></i> По приоритету
+            </a>
+            <a href="?sort=status" class="btn btn-sm {% if sort_by == 'status' %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                <i class="bi bi-sort-up"></i> По статусу
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- Прогресс-бар -->
 <div class="card mb-4">
     <div class="card-body">
@@ -56,6 +76,42 @@
     </div>
 </div>
 
+<!-- Статистика по приоритетам -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body py-2">
+                <h6 class="card-title">Критических</h6>
+                <h3>{{ critical_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark">
+            <div class="card-body py-2">
+                <h6 class="card-title">Высоких</h6>
+                <h3>{{ high_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-dark">
+            <div class="card-body py-2">
+                <h6 class="card-title">Средних</h6>
+                <h3>{{ medium_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body py-2">
+                <h6 class="card-title">Низких</h6>
+                <h3>{{ low_count }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Список этапов -->
 <div class="accordion" id="subtasksAccordion">
     {% for subtask in subtasks %}
@@ -66,6 +122,10 @@
                     <div class="d-flex w-100 justify-content-between align-items-center">
                         <div>
                             <span class="badge bg-secondary me-2">Этап {{ subtask.stage_number }}</span>
+                            <!-- Приоритет с иконкой и цветом -->
+                            <span class="badge bg-{{ subtask.priority_color }} me-2">
+                                {{ subtask.get_priority_display }}
+                            </span>
                             <strong>{{ subtask.title }}</strong>
                         </div>
                         <div class="me-3">
@@ -236,7 +296,7 @@
             .then(data => {
                 if (data.success) {
                     // Обновляем отображение статуса
-                    const badge = this.closest('.accordion-item').querySelector('.badge:not(.bg-secondary):not(.bg-info)');
+                    const badge = this.closest('.accordion-item').querySelector('.badge:not(.bg-secondary):not(.bg-info):not(.bg-danger):not(.bg-warning):not(.bg-success):not(.bg-primary)');
                     if (badge) {
                         badge.textContent = data.status_display;
                         // Обновляем классы

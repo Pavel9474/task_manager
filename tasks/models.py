@@ -143,6 +143,15 @@ class Task(models.Model):
 
 class Subtask(models.Model):
     """Подзадача (этап) основной задачи"""
+    
+    # Добавьте это поле после существующих полей
+    PRIORITY_CHOICES = [
+        ('critical', '🔴 Критический'),
+        ('high', '🟠 Высокий'),
+        ('medium', '🟡 Средний'),
+        ('low', '🟢 Низкий'),
+    ]
+    
     task = models.ForeignKey(
         Task, 
         on_delete=models.CASCADE, 
@@ -155,6 +164,14 @@ class Subtask(models.Model):
     title = models.CharField('Название этапа', max_length=200)
     description = models.TextField('Описание', blank=True, null=True)
     output = models.TextField('Выход/Результат', blank=True, null=True)
+    
+    # НОВОЕ ПОЛЕ - приоритет этапа
+    priority = models.CharField(
+        'Приоритет', 
+        max_length=20, 
+        choices=PRIORITY_CHOICES, 
+        default='medium'
+    )
     
     # Исполнители (множественный выбор)
     performers = models.ManyToManyField(
@@ -198,10 +215,16 @@ class Subtask(models.Model):
         verbose_name = 'Подзадача'
         verbose_name_plural = 'Подзадачи'
         ordering = ['stage_number']
-        unique_together = ['task', 'stage_number']  # Уникальный номер этапа в рамках задачи
+        unique_together = ['task', 'stage_number']
     
     def __str__(self):
-        return f"{self.task.title} - Этап {self.stage_number}: {self.title}"
+        priority_icon = {
+            'critical': '🔴',
+            'high': '🟠',
+            'medium': '🟡',
+            'low': '🟢'
+        }.get(self.priority, '')
+        return f"{priority_icon} {self.task.title} - Этап {self.stage_number}: {self.title}"
     
     def save(self, *args, **kwargs):
         # Автоматическое назначение ответственного, если исполнитель один
@@ -228,3 +251,47 @@ class Subtask(models.Model):
                     return min(int((elapsed / total) * 100), 99)
             return 50
         return 0
+    
+    @property
+    def priority_color(self):
+        """Цвет для отображения приоритета"""
+        colors = {
+            'critical': 'danger',
+            'high': 'warning',
+            'medium': 'info',
+            'low': 'success'
+        }
+        return colors.get(self.priority, 'secondary')
+    
+    @property
+    def priority_icon(self):
+        """Иконка для отображения приоритета"""
+        icons = {
+            'critical': '🔴',
+            'high': '🟠',
+            'medium': '🟡',
+            'low': '🟢'
+        }
+        return icons.get(self.priority, '⚪')
+    
+    @property
+    def priority_order(self):
+        """Числовое значение для сортировки (чем меньше число, тем выше приоритет)"""
+        order = {
+            'critical': 1,
+            'high': 2,
+            'medium': 3,
+            'low': 4,
+        }
+        return order.get(self.priority, 5)
+    
+    @property
+    def priority_color(self):
+        """Цвет для отображения приоритета"""
+        colors = {
+            'critical': 'danger',
+            'high': 'warning',
+            'medium': 'info',
+            'low': 'success'
+        }
+        return colors.get(self.priority, 'secondary')
