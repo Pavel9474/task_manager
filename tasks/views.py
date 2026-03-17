@@ -7,13 +7,17 @@ from django.db.models import Q, Count
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import Task, Employee
-from .forms import TaskForm
+from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct
+from .forms import TaskForm, TaskWithImportForm
+from .forms import ResearchTaskForm, ResearchStageForm, ResearchSubstageForm, ResearchProductForm
+from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
 from .forms_employee import EmployeeForm, EmployeeImportForm
+from .utils.docx_importer import ResearchDocxImporter
 import pandas as pd
 from django.template.loader import render_to_string
 from datetime import datetime
-
+import tempfile
+import os
 # ============= АУТЕНТИФИКАЦИЯ =============
 
 def register(request):
@@ -91,24 +95,100 @@ def task_detail(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
     return render(request, 'tasks/task_detail.html', {'task': task})
 
-
 @login_required
 def task_create(request):
-    """Создание новой задачи"""
+    """Создание новой задачи с возможностью импорта из ТЗ"""
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = TaskWithImportForm(request.POST, request.FILES)
+        
+        # Проверяем, загружен ли файл ТЗ
+        tz_file = request.FILES.get('tz_file')
+        
         if form.is_valid():
             task = form.save(commit=False)
             task.user = request.user
-            task.save()
-            # Сохраняем связи many-to-many
-            form.save_m2m()
-            messages.success(request, 'Задача успешно создана!')
+            
+            # Если есть файл ТЗ - импортируем из него
+            if tz_file:
+                try:
+                    # Сохраняем файл временно
+                    with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp_file:
+                        for chunk in tz_file.chunks():
+                            tmp_file.write(chunk)
+                        tmp_path = tmp_file.name
+                    
+                    print(f"\n=== НАЧАЛО ИМПОРТА ===")
+                    print(f"Файл сохранен: {tmp_path}")
+                    
+                    # Импортируем структуру из ТЗ
+                    importer = ResearchDocxImporter(tmp_path)
+                    
+                    # Получаем данные из ТЗ
+                    tz_data = importer.parse_research_task()
+                    
+                    print(f"\nДанные из ТЗ:")
+                    print(f"Название: {tz_data.get('title')}")
+                    print(f"Количество этапов: {len(tz_data.get('stages', []))}")
+                    
+                    # Устанавливаем название задачи из ТЗ, если не указано вручную
+                    if not task.title and tz_data.get('title'):
+                        task.title = tz_data['title']
+                    
+                    # Сохраняем задачу
+                    task.save()
+                    form.save_m2m()  # Сохраняем связи many-to-many
+                    
+                    print(f"\nСоздана задача ID: {task.id}")
+                    
+                    # ВАЖНО: Удаляем существующие подзадачи, если они есть
+                    existing_count = task.subtasks.count()
+                    if existing_count > 0:
+                        print(f"Удаляем {existing_count} существующих подзадач")
+                        task.subtasks.all().delete()
+                    
+                    # Создаем этапы и подэтапы
+                    if tz_data.get('stages'):
+                        importer.create_task_structure(task, tz_data['stages'])
+                        
+                        # Назначаем исполнителей по умолчанию, если они выбраны в форме
+                        if form.cleaned_data.get('assigned_to'):
+                            default_performers = form.cleaned_data['assigned_to']
+                            importer.assign_default_performers(task, default_performers)
+                        
+                        messages.success(request, f'Задача успешно создана с импортом из ТЗ. Создано этапов: {len(tz_data.get("stages", []))}')
+                    else:
+                        messages.warning(request, 'Задача создана, но этапы не найдены в ТЗ')
+                    
+                    # Удаляем временный файл
+                    os.unlink(tmp_path)
+                    print(f"Временный файл удален")
+                    print(f"=== КОНЕЦ ИМПОРТА ===\n")
+                    
+                except Exception as e:
+                    print(f"\n❌ ОШИБКА ИМПОРТА: {str(e)}")
+                    import traceback
+                    traceback.print_exc()
+                    messages.error(request, f'Ошибка при импорте из ТЗ: {str(e)}')
+                    
+                    # Если импорт не удался, но задача создана без названия - показываем форму с ошибкой
+                    if not task.title:
+                        return render(request, 'tasks/task_form.html', {
+                            'form': form, 
+                            'title': 'Создать задачу',
+                            'employees': Employee.objects.filter(is_active=True),
+                            'is_create': True,
+                            'error': str(e)
+                        })
+            else:
+                # Обычное создание задачи без импорта
+                task.save()
+                form.save_m2m()
+                messages.success(request, 'Задача успешно создана!')
+            
             return redirect('task_list')
     else:
-        form = TaskForm()
+        form = TaskWithImportForm()
     
-    # Получаем всех активных сотрудников для отображения в шаблоне
     employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
     
     return render(request, 'tasks/task_form.html', {
@@ -117,8 +197,6 @@ def task_create(request):
         'employees': employees,
         'is_create': True
     })
-
-
 @login_required
 def task_update(request, task_id):
     """Редактирование задачи"""
@@ -822,55 +900,44 @@ def subtask_list(request, task_id):
     """Список подзадач для задачи"""
     task = get_object_or_404(Task, id=task_id, user=request.user)
     
-    # Получаем все подзадачи
-    subtasks = task.subtasks.all()
+    # Получаем все подзадачи и сортируем по stage_number
+    subtasks = task.subtasks.all().order_by('stage_number')
+    
+    # Статистика по подзадачам
+    total = subtasks.count()
+    completed = subtasks.filter(status='completed').count()
+    in_progress = subtasks.filter(status='in_progress').count()
+    pending = subtasks.filter(status='pending').count()
+    progress = int((completed / total) * 100) if total > 0 else 0
+    
+    # Статистика по приоритетам
+    critical_count = subtasks.filter(priority='critical').count()
+    high_count = subtasks.filter(priority='high').count()
+    medium_count = subtasks.filter(priority='medium').count()
+    low_count = subtasks.filter(priority='low').count()
     
     # Сортировка
     sort_by = request.GET.get('sort', 'stage_number')
-    
     if sort_by == 'priority':
-        # Сортируем по приоритету (критический → высокий → средний → низкий)
-        # и затем по номеру этапа
+        # Сортируем по приоритету
         priority_order = {
             'critical': 1,
             'high': 2,
             'medium': 3,
             'low': 4
         }
-        # Сортируем в Python, так как в БД нет числового значения
-        subtasks = sorted(
-            subtasks, 
-            key=lambda x: (priority_order.get(x.priority, 5), x.stage_number)
-        )
+        subtasks = sorted(subtasks, key=lambda x: (priority_order.get(x.priority, 5), x.stage_number))
     elif sort_by == 'status':
-        # Сортируем по статусу и затем по номеру этапа
+        # Сортируем по статусу
         status_order = {
             'pending': 1,
             'in_progress': 2,
             'delayed': 3,
             'completed': 4
         }
-        subtasks = sorted(
-            subtasks,
-            key=lambda x: (status_order.get(x.status, 5), x.stage_number)
-        )
-    elif sort_by == 'stage_number_desc':
-        subtasks = subtasks.order_by('-stage_number')
-    else:  # stage_number (по умолчанию)
+        subtasks = sorted(subtasks, key=lambda x: (status_order.get(x.status, 5), x.stage_number))
+    else:
         subtasks = subtasks.order_by('stage_number')
-    
-    # Статистика по подзадачам
-    total = task.subtasks.count()
-    completed = task.subtasks.filter(status='completed').count()
-    in_progress = task.subtasks.filter(status='in_progress').count()
-    pending = task.subtasks.filter(status='pending').count()
-    progress = int((completed / total) * 100) if total > 0 else 0
-    
-    # Статистика по приоритетам
-    critical_count = task.subtasks.filter(priority='critical').count()
-    high_count = task.subtasks.filter(priority='high').count()
-    medium_count = task.subtasks.filter(priority='medium').count()
-    low_count = task.subtasks.filter(priority='low').count()
     
     context = {
         'task': task,
@@ -1055,3 +1122,266 @@ def task_detail(request, task_id):
     print(f"Подзадачи: {[s.title for s in task.subtasks.all()]}")
     
     return render(request, 'tasks/task_detail.html', {'task': task})
+
+from .utils.docx_importer import ResearchDocxImporter
+from .forms import ResearchImportForm
+
+@login_required
+def import_research_from_docx(request):
+    """Импорт НИР из DOCX файла"""
+    if request.method == 'POST':
+        form = ResearchImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                # Сохраняем загруженный файл
+                docx_file = request.FILES['docx_file']
+                file_path = f'/tmp/{docx_file.name}'
+                
+                with open(file_path, 'wb+') as destination:
+                    for chunk in docx_file.chunks():
+                        destination.write(chunk)
+                
+                # Импортируем
+                importer = ResearchDocxImporter(file_path)
+                
+                # Получаем выбранных исполнителей по умолчанию
+                default_performers = form.cleaned_data['default_performers']
+                
+                task = importer.import_research(default_performers)
+                
+                messages.success(request, f'Успешно импортирована НИР: {task.title}')
+                return redirect('research_task_detail', task_id=task.id)
+                
+            except Exception as e:
+                messages.error(request, f'Ошибка при импорте: {str(e)}')
+    else:
+        form = ResearchImportForm()
+    
+    return render(request, 'tasks/import_research.html', {'form': form})
+# ============= УПРАВЛЕНИЕ НИР (НАУЧНО-ИССЛЕДОВАТЕЛЬСКИМИ РАБОТАМИ) =============
+
+@login_required
+def research_task_detail(request, task_id):
+    """Детальная информация о НИР"""
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+    
+    # Получаем все этапы с подэтапами и продукцией
+    stages = research_task.stages.all().prefetch_related('substages__products')
+    
+    # Статистика
+    total_stages = stages.count()
+    total_substages = sum(stage.substages.count() for stage in stages)
+    total_products = sum(
+        sum(substage.products.count() for substage in stage.substages.all()) 
+        for stage in stages
+    )
+    
+    # Прогресс выполнения
+    completed_products = 0
+    for stage in stages:
+        for substage in stage.substages.all():
+            completed_products += substage.products.filter(status='completed').count()
+    
+    progress = int((completed_products / total_products) * 100) if total_products > 0 else 0
+    
+    context = {
+        'research_task': research_task,
+        'stages': stages,
+        'total_stages': total_stages,
+        'total_substages': total_substages,
+        'total_products': total_products,
+        'completed_products': completed_products,
+        'progress': progress,
+    }
+    return render(request, 'tasks/research_task_detail.html', context)
+
+
+@login_required
+def research_stage_detail(request, stage_id):
+    """Детальная информация об этапе НИР"""
+    stage = get_object_or_404(ResearchStage, id=stage_id)
+    substages = stage.substages.all().prefetch_related('products')
+    
+    context = {
+        'stage': stage,
+        'substages': substages,
+    }
+    return render(request, 'tasks/research_stage_detail.html', context)
+
+
+@login_required
+def research_substage_detail(request, substage_id):
+    """Детальная информация о подэтапе НИР"""
+    substage = get_object_or_404(ResearchSubstage, id=substage_id)
+    products = substage.products.all()
+    
+    # Доступные исполнители для назначения
+    employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    
+    context = {
+        'substage': substage,
+        'products': products,
+        'employees': employees,
+    }
+    return render(request, 'tasks/research_substage_detail.html', context)
+
+
+@login_required
+def research_product_detail(request, product_id):
+    """Детальная информация о продукции"""
+    product = get_object_or_404(ResearchProduct, id=product_id)
+    
+    context = {
+        'product': product,
+    }
+    return render(request, 'tasks/research_product_detail.html', context)
+
+
+@login_required
+def assign_research_performers(request, item_type, item_id):
+    """Назначение исполнителей для элементов НИР"""
+    model_map = {
+        'stage': ResearchStage,
+        'substage': ResearchSubstage,
+        'product': ResearchProduct,
+    }
+    
+    if item_type not in model_map:
+        return HttpResponseNotFound("Неверный тип элемента")
+    
+    item = get_object_or_404(model_map[item_type], id=item_id)
+    
+    if request.method == 'POST':
+        performer_ids = request.POST.getlist('performers')
+        responsible_id = request.POST.get('responsible')
+        
+        # Назначаем исполнителей
+        if performer_ids:
+            item.performers.set(performer_ids)
+        
+        # Назначаем ответственного
+        if responsible_id:
+            item.responsible_id = responsible_id
+            item.save()
+        
+        messages.success(request, 'Исполнители успешно назначены')
+        
+        # Перенаправляем в зависимости от типа
+        if item_type == 'stage':
+            return redirect('research_stage_detail', stage_id=item.id)
+        elif item_type == 'substage':
+            return redirect('research_substage_detail', substage_id=item.id)
+        else:
+            return redirect('research_product_detail', product_id=item.id)
+    
+    # GET запрос - показываем форму назначения
+    employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    current_performers = item.performers.values_list('id', flat=True)
+    
+    context = {
+        'item': item,
+        'item_type': item_type,
+        'employees': employees,
+        'current_performers': list(current_performers),
+        'current_responsible': item.responsible_id if item.responsible else None,
+    }
+    return render(request, 'tasks/assign_research_performers.html', context)
+
+
+@login_required
+def update_product_status(request, product_id):
+    """Обновление статуса продукции"""
+    if request.method == 'POST':
+        product = get_object_or_404(ResearchProduct, id=product_id)
+        new_status = request.POST.get('status')
+        
+        if new_status in dict(ResearchProduct.STATUS_CHOICES):
+            product.status = new_status
+            product.save()
+            
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({
+                    'success': True,
+                    'status': product.status,
+                    'status_display': product.get_status_display()
+                })
+        
+        return redirect('research_substage_detail', substage_id=product.substage.id)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+
+@login_required
+def research_task_list(request):
+    """Список всех НИР"""
+    research_tasks = ResearchTask.objects.all().order_by('-created_date')
+    
+    context = {
+        'research_tasks': research_tasks,
+    }
+    return render(request, 'tasks/research_task_list.html', context)
+
+
+@login_required
+def research_task_create(request):
+    """Создание новой НИР вручную"""
+    if request.method == 'POST':
+        form = ResearchTaskForm(request.POST)
+        if form.is_valid():
+            research_task = form.save()
+            messages.success(request, f'НИР "{research_task.title}" успешно создана')
+            return redirect('research_task_detail', task_id=research_task.id)
+    else:
+        form = ResearchTaskForm()
+    
+    return render(request, 'tasks/research_task_form.html', {'form': form, 'title': 'Создание НИР'})
+
+
+@login_required
+def research_task_edit(request, task_id):
+    """Редактирование НИР"""
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+    
+    if request.method == 'POST':
+        form = ResearchTaskForm(request.POST, instance=research_task)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'НИР успешно обновлена')
+            return redirect('research_task_detail', task_id=research_task.id)
+    else:
+        form = ResearchTaskForm(instance=research_task)
+    
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form, 
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+
+@login_required
+def preview_import(request):
+    """Предпросмотр данных из ТЗ перед импортом"""
+    if request.method == 'POST' and request.FILES.get('tz_file'):
+        tz_file = request.FILES['tz_file']
+        
+        try:
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp_file:
+                for chunk in tz_file.chunks():
+                    tmp_file.write(chunk)
+                tmp_path = tmp_file.name
+            
+            importer = ResearchDocxImporter(tmp_path)
+            tz_data = importer.parse_research_task()
+            
+            os.unlink(tmp_path)
+            
+            return JsonResponse({
+                'success': True,
+                'title': tz_data.get('title'),
+                'stages_count': len(tz_data.get('stages', [])),
+                'stages': tz_data.get('stages', [])
+            })
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
