@@ -895,63 +895,70 @@ def task_update_status_ajax(request, task_id):
 from .models import Subtask
 from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
 
+
 @login_required
 def subtask_list(request, task_id):
-    """Список подзадач для задачи"""
+    """Список подзадач для задачи с группировкой по этапам"""
     task = get_object_or_404(Task, id=task_id, user=request.user)
     
-    # Получаем все подзадачи и сортируем по stage_number
-    subtasks = task.subtasks.all().order_by('stage_number')
+    # Получаем все подзадачи
+    all_subtasks = task.subtasks.all()
     
-    # Статистика по подзадачам
-    total = subtasks.count()
-    completed = subtasks.filter(status='completed').count()
-    in_progress = subtasks.filter(status='in_progress').count()
-    pending = subtasks.filter(status='pending').count()
-    progress = int((completed / total) * 100) if total > 0 else 0
+    # Разделяем на этапы (целые числа) и подэтапы (с точкой)
+    stages = []
+    substages_by_stage = {}
     
-    # Статистика по приоритетам
-    critical_count = subtasks.filter(priority='critical').count()
-    high_count = subtasks.filter(priority='high').count()
-    medium_count = subtasks.filter(priority='medium').count()
-    low_count = subtasks.filter(priority='low').count()
+    for subtask in all_subtasks:
+        stage_num = subtask.stage_number
+        # Проверяем, является ли номер этапа целым числом (нет точки)
+        if '.' not in stage_num:
+            stages.append(subtask)
+            substages_by_stage[stage_num] = []
     
-    # Сортировка
-    sort_by = request.GET.get('sort', 'stage_number')
-    if sort_by == 'priority':
-        # Сортируем по приоритету
-        priority_order = {
-            'critical': 1,
-            'high': 2,
-            'medium': 3,
-            'low': 4
-        }
-        subtasks = sorted(subtasks, key=lambda x: (priority_order.get(x.priority, 5), x.stage_number))
-    elif sort_by == 'status':
-        # Сортируем по статусу
-        status_order = {
-            'pending': 1,
-            'in_progress': 2,
-            'delayed': 3,
-            'completed': 4
-        }
-        subtasks = sorted(subtasks, key=lambda x: (status_order.get(x.status, 5), x.stage_number))
-    else:
-        subtasks = subtasks.order_by('stage_number')
+    # Сортируем этапы по номеру
+    stages.sort(key=lambda x: float(x.stage_number))
+    
+    # Группируем подэтапы по этапам
+    for subtask in all_subtasks:
+        if '.' in subtask.stage_number:
+            # Получаем номер основного этапа (до точки)
+            main_stage = subtask.stage_number.split('.')[0]
+            if main_stage in substages_by_stage:
+                substages_by_stage[main_stage].append(subtask)
+    
+    # Сортируем подэтапы в каждом этапе
+    for stage_num in substages_by_stage:
+        substages_by_stage[stage_num].sort(key=lambda x: float(x.stage_number))
+    
+    # Добавляем количество подэтапов в каждый этап
+    for stage in stages:
+        stage.substages_count = len(substages_by_stage.get(stage.stage_number, []))
+    
+    # Парсим продукцию из поля output для каждого подэтапа
+    for subtask in all_subtasks:
+        if subtask.output and 'Ожидаемая продукция:' in subtask.output:
+            # Извлекаем список продукции
+            products_text = subtask.output.replace('Ожидаемая продукция:', '').strip()
+            products = []
+            for line in products_text.split('\n'):
+                line = line.strip()
+                if line.startswith('•'):
+                    products.append(line[1:].strip())
+            subtask.products_list = products
+        else:
+            subtask.products_list = []
+    
+    # Вычисляем общий прогресс
+    total_subtasks = all_subtasks.count()
+    completed_subtasks = all_subtasks.filter(status='completed').count()
+    progress = int((completed_subtasks / total_subtasks) * 100) if total_subtasks > 0 else 0
     
     context = {
         'task': task,
-        'subtasks': subtasks,
-        'total': total,
-        'completed': completed,
-        'in_progress': in_progress,
-        'pending': pending,
+        'stages': stages,
+        'substages_by_stage': substages_by_stage,
+        'employees': Employee.objects.filter(is_active=True),
         'progress': progress,
-        'critical_count': critical_count,
-        'high_count': high_count,
-        'medium_count': medium_count,
-        'low_count': low_count,
-        'sort_by': sort_by,
     }
     return render(request, 'tasks/subtask_list.html', context)
 
@@ -984,11 +991,16 @@ def subtask_create(request, task_id):
         'title': f'Добавление этапа к задаче: {task.title}'
     })
 
-
 @login_required
 def subtask_update(request, subtask_id):
     """Редактирование подзадачи"""
     subtask = get_object_or_404(Subtask, id=subtask_id, task__user=request.user)
+    
+    # Отладка
+    print(f"\n=== Редактирование подэтапа {subtask_id} ===")
+    print(f"planned_start: {subtask.planned_start}")
+    print(f"planned_end: {subtask.planned_end}")
+    print(f"Тип planned_start: {type(subtask.planned_start)}")
     
     if request.method == 'POST':
         form = SubtaskForm(request.POST, instance=subtask, task=subtask.task)
@@ -1005,7 +1017,6 @@ def subtask_update(request, subtask_id):
         'subtask': subtask,
         'title': f'Редактирование этапа {subtask.stage_number}'
     })
-
 
 @login_required
 def subtask_delete(request, subtask_id):

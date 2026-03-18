@@ -144,7 +144,6 @@ class Task(models.Model):
 class Subtask(models.Model):
     """Подзадача (этап) основной задачи"""
     
-    # Добавьте это поле после существующих полей
     PRIORITY_CHOICES = [
         ('low', 'Низкий'),
         ('medium', 'Средний'),
@@ -160,12 +159,11 @@ class Subtask(models.Model):
     )
     
     # Основные поля
-    stage_number = models.PositiveIntegerField('Номер этапа')
+    stage_number = models.CharField('Номер этапа', max_length=10)  # Изменено на CharField
     title = models.CharField('Название этапа', max_length=200)
     description = models.TextField('Описание', blank=True, null=True)
     output = models.TextField('Выход/Результат', blank=True, null=True)
     
-    # НОВОЕ ПОЛЕ - приоритет этапа
     priority = models.CharField(
         'Приоритет', 
         max_length=20, 
@@ -215,7 +213,7 @@ class Subtask(models.Model):
         verbose_name = 'Подзадача'
         verbose_name_plural = 'Подзадачи'
         ordering = ['stage_number']
-        unique_together = ['task', 'stage_number']
+        unique_together = ['task', 'stage_number']  # Это теперь работает со строками
     
     def __str__(self):
         priority_icon = {
@@ -227,17 +225,16 @@ class Subtask(models.Model):
         return f"{priority_icon} {self.task.title} - Этап {self.stage_number}: {self.title}"
     
     def save(self, *args, **kwargs):
-        # Сначала сохраняем объект, чтобы получить ID
+        # Сначала сохраняем объект
         super().save(*args, **kwargs)
         
         # Автоматическое назначение ответственного, если исполнитель один
-        # Эту логику выполняем ПОСЛЕ сохранения
         try:
             if not self.responsible and self.performers.count() == 1:
                 self.responsible = self.performers.first()
-                self.save(update_fields=['responsible'])
+                if self.responsible:
+                    self.save(update_fields=['responsible'])
         except:
-            # Если ошибка при доступе к performers - игнорируем
             pass
     
     def is_overdue(self):

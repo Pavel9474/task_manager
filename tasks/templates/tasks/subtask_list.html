@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load task_extras %}
 
 {% block title %}Этапы задачи: {{ task.title }}{% endblock %}
 
@@ -9,212 +10,189 @@
             <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            Этапы задачи: {{ task.title }}
+            {{ task.title }}
         </h1>
+        <p class="text-muted">Структура этапов и подэтапов</p>
     </div>
     <div>
-        <div class="btn-group" role="group">
-            <a href="{% url 'subtask_create' task.id %}" class="btn btn-primary">
-                <i class="bi bi-plus-lg"></i> Добавить этап
-            </a>
-            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
-                <i class="bi bi-files"></i> Массовое
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'subtask_bulk_create' task.id %}">
-                    <i class="bi bi-file-earmark-text"></i> Импорт этапов
-                </a></li>
-            </ul>
+        <a href="{% url 'subtask_create' task.id %}" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Добавить этап
+        </a>
+    </div>
+</div>
+
+<!-- Прогресс выполнения -->
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="d-flex justify-content-between mb-2">
+            <span>Общий прогресс выполнения</span>
+            <span class="fw-bold">{{ progress }}%</span>
+        </div>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-success" style="width: {{ progress }}%"></div>
         </div>
     </div>
 </div>
 
-<!-- Сортировка -->
-<div class="row mb-3">
-    <div class="col-md-12">
-        <form method="get" class="row g-3">
-            <div class="col-auto">
-                <label class="form-label">Сортировать:</label>
-            </div>
-            <div class="col-auto">
-                <select name="sort" class="form-select" onchange="this.form.submit()">
-                    <option value="stage_number" {% if sort_by == 'stage_number' %}selected{% endif %}>По номеру этапа</option>
-                    <option value="priority" {% if sort_by == 'priority' %}selected{% endif %}>По приоритету</option>
-                    <option value="status" {% if sort_by == 'status' %}selected{% endif %}>По статусу</option>
-                </select>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Статистика -->
-<div class="row mb-4">
-    <div class="col-md-12">
-        <div class="card bg-light">
-            <div class="card-body">
-                <div class="row text-center">
-                    <div class="col">
-                        <h6>Всего этапов</h6>
-                        <span class="badge bg-secondary" style="font-size: 1.2rem;">{{ total }}</span>
-                    </div>
-                    <div class="col">
-                        <h6>Ожидание</h6>
-                        <span class="badge bg-warning text-dark" style="font-size: 1.2rem;">{{ pending }}</span>
-                    </div>
-                    <div class="col">
-                        <h6>В процессе</h6>
-                        <span class="badge bg-primary" style="font-size: 1.2rem;">{{ in_progress }}</span>
-                    </div>
-                    <div class="col">
-                        <h6>Завершено</h6>
-                        <span class="badge bg-success" style="font-size: 1.2rem;">{{ completed }}</span>
-                    </div>
-                    <div class="col">
-                        <h6>Прогресс</h6>
-                        <span class="badge bg-info" style="font-size: 1.2rem;">{{ progress }}%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Список этапов -->
-<div class="accordion" id="subtasksAccordion">
-    {% for subtask in subtasks %}
-        <div class="accordion-item mb-2 border {% if subtask.status == 'completed' %}border-success{% elif subtask.status == 'in_progress' %}border-primary{% elif subtask.is_overdue %}border-danger{% endif %}">
-            <h2 class="accordion-header" id="heading{{ subtask.id }}">
+<!-- Иерархическая структура этапов -->
+<div class="accordion" id="stagesAccordion">
+    {% for stage in stages %}
+        <div class="accordion-item mb-3 border">
+            <h2 class="accordion-header" id="heading{{ stage.id }}">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                        data-bs-target="#collapse{{ subtask.id }}">
+                        data-bs-target="#collapse{{ stage.id }}">
                     <div class="d-flex w-100 justify-content-between align-items-center">
                         <div>
-                            <span class="badge bg-secondary me-2">Этап {{ subtask.stage_number }}</span>
-                            <span class="badge bg-{{ subtask.priority_color }} me-2">
-                                {{ subtask.get_priority_display }}
-                            </span>
-                            <strong>{{ subtask.title }}</strong>
+                            <span class="badge bg-primary me-2">Этап {{ stage.stage_number }}</span>
+                            <strong>{{ stage.title }}</strong>
                         </div>
                         <div class="me-3">
-                            <span class="badge {% if subtask.status == 'completed' %}bg-success{% elif subtask.status == 'in_progress' %}bg-primary{% elif subtask.status == 'delayed' %}bg-danger{% else %}bg-warning text-dark{% endif %} me-2">
-                                {{ subtask.get_status_display }}
+                            <span class="badge bg-info me-2">
+                                Подэтапов: {{ substages_by_stage|get_item:stage.stage_number|length }}
                             </span>
-                            {% if subtask.responsible %}
-                                <span class="badge bg-info">
-                                    <i class="bi bi-person-check"></i> {{ subtask.responsible.short_name }}
-                                </span>
-                            {% endif %}
+                            <span class="badge {% if stage.status == 'completed' %}bg-success{% elif stage.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
+                                {{ stage.get_status_display }}
+                            </span>
                         </div>
                     </div>
                 </button>
             </h2>
-            <div id="collapse{{ subtask.id }}" class="accordion-collapse collapse" 
-                 data-bs-parent="#subtasksAccordion">
+            <div id="collapse{{ stage.id }}" class="accordion-collapse collapse" 
+                 data-bs-parent="#stagesAccordion">
                 <div class="accordion-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            {% if subtask.description %}
-                                <h6>Описание:</h6>
-                                <p>{{ subtask.description|linebreaks }}</p>
-                            {% endif %}
-                            
-                            {% if subtask.output %}
-                                <h6>Результат/Продукция:</h6>
-                                <div class="alert alert-light">
-                                    {{ subtask.output|linebreaks }}
-                                </div>
-                            {% endif %}
-                            
-                            {% if subtask.notes %}
-                                <h6>Заметки:</h6>
-                                <p class="text-muted">{{ subtask.notes }}</p>
-                            {% endif %}
+                    <!-- Информация об этапе -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>Описание:</strong> {{ stage.description|default:"Нет описания" }}</p>
                         </div>
-                        
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h6 class="mb-0">Исполнители</h6>
-                                </div>
-                                <div class="card-body">
-                                    {% if subtask.performers.exists %}
-                                        <ul class="list-unstyled">
-                                            {% for performer in subtask.performers.all %}
-                                                <li class="mb-2">
-                                                    <i class="bi bi-person"></i> {{ performer.short_name }}
-                                                    {% if performer == subtask.responsible %}
-                                                        <span class="badge bg-success">Ответственный</span>
-                                                    {% endif %}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    {% else %}
-                                        <p class="text-muted">Не назначены</p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            
-                            <div class="card mt-2">
-                                <div class="card-header">
-                                    <h6 class="mb-0">Сроки</h6>
-                                </div>
-                                <div class="card-body">
-                                    {% if subtask.planned_start %}
-                                        <p class="mb-1">
-                                            <small>План начало:</small><br>
-                                            <strong>{{ subtask.planned_start|date:"d.m.Y H:i" }}</strong>
-                                        </p>
-                                    {% endif %}
-                                    {% if subtask.planned_end %}
-                                        <p class="mb-1">
-                                            <small>План окончание:</small><br>
-                                            <strong class="{% if subtask.is_overdue %}text-danger{% endif %}">
-                                                {{ subtask.planned_end|date:"d.m.Y H:i" }}
-                                            </strong>
-                                        </p>
-                                    {% endif %}
-                                    {% if subtask.actual_start %}
-                                        <p class="mb-1">
-                                            <small>Факт начало:</small><br>
-                                            <strong>{{ subtask.actual_start|date:"d.m.Y H:i" }}</strong>
-                                        </p>
-                                    {% endif %}
-                                    {% if subtask.actual_end %}
-                                        <p class="mb-1">
-                                            <small>Факт окончание:</small><br>
-                                            <strong>{{ subtask.actual_end|date:"d.m.Y H:i" }}</strong>
-                                        </p>
-                                    {% endif %}
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <p><strong>Сроки:</strong> 
+                                {% if stage.planned_start and stage.planned_end %}
+                                    {{ stage.planned_start|date:"d.m.Y" }} - {{ stage.planned_end|date:"d.m.Y" }}
+                                {% else %}
+                                    не указаны
+                                {% endif %}
+                            </p>
+                            <p>
+                                <strong>Ответственный:</strong>
+                                {% if stage.responsible %}
+                                    <span class="badge bg-success">{{ stage.responsible.short_name }}</span>
+                                {% else %}
+                                    <span class="text-muted">не назначен</span>
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
-                    
-                    <!-- Кнопки действий -->
-                    <div class="mt-3 d-flex justify-content-between align-items-center">
-                        <div>
-                            <form method="post" action="{% url 'subtask_update_status' subtask.id %}" 
-                                  style="display: inline;" class="status-form">
-                                {% csrf_token %}
-                                <div class="input-group input-group-sm">
-                                    <select name="status" class="form-select form-select-sm" style="width: auto;" 
-                                            onchange="this.form.submit()">
-                                        {% for value, label in subtask.STATUS_CHOICES %}
-                                            <option value="{{ value }}" {% if subtask.status == value %}selected{% endif %}>
-                                                {{ label }}
-                                            </option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div>
-                            <a href="{% url 'subtask_update' subtask.id %}" class="btn btn-sm btn-outline-primary" title="Редактировать">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                            <a href="{% url 'subtask_delete' subtask.id %}" class="btn btn-sm btn-outline-danger" title="Удалить">
-                                <i class="bi bi-trash"></i>
-                            </a>
-                        </div>
+                    <!-- Подэтапы -->
+                    <h5 class="mb-3">Подэтапы:</h5>
+
+                    {% with substages=substages_by_stage|get_item:stage.stage_number %}
+                        {% if substages %}
+                            <div class="list-group">
+                                {% for substage in substages %}
+                                    <div class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between align-items-center mb-2">
+                                            <h6 class="mb-0">
+                                                <span class="badge bg-secondary me-2">Подэтап {{ substage.stage_number }}</span>
+                                                <strong>{{ substage.title }}</strong>
+                                            </h6>
+                                            <div>
+                                                <span class="badge {% if substage.status == 'completed' %}bg-success{% elif substage.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %} me-2">
+                                                    {{ substage.get_status_display }}
+                                                </span>
+                                                <button class="btn btn-sm btn-outline-primary" 
+                                                        type="button" 
+                                                        data-bs-toggle="collapse" 
+                                                        data-bs-target="#products{{ substage.id }}">
+                                                    <i class="bi bi-list-check"></i> Продукция
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Информация о датах подэтапа -->
+                                        <div class="row mb-2">
+                                            <div class="col-md-6">
+                                                <small class="text-muted">
+                                                    <i class="bi bi-calendar"></i> 
+                                                    {% if substage.planned_start and substage.planned_end %}
+                                                        {{ substage.planned_start|date:"d.m.Y" }} - {{ substage.planned_end|date:"d.m.Y" }}
+                                                    {% else %}
+                                                        Сроки не указаны
+                                                    {% endif %}
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Информация об исполнителях подэтапа -->
+                                        <div class="mb-2">
+                                            <small class="text-muted">
+                                                <i class="bi bi-people"></i> Исполнители:
+                                                {% if substage.performers.exists %}
+                                                    {% for performer in substage.performers.all %}
+                                                        <span class="badge bg-info">{{ performer.short_name }}</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span class="text-muted">не назначены</span>
+                                                {% endif %}
+                                                
+                                                {% if substage.responsible %}
+                                                    <span class="badge bg-success ms-2">
+                                                        <i class="bi bi-person-check"></i> {{ substage.responsible.short_name }}
+                                                    </span>
+                                                {% endif %}
+                                            </small>
+                                        </div>
+                                        
+                                        <!-- Продукция подэтапа (сворачиваемый блок) -->
+                                        <div class="collapse mt-2" id="products{{ substage.id }}">
+                                            <div class="card card-body bg-light">
+                                                <h6 class="mb-3">Научно-техническая продукция:</h6>
+                                                
+                                                {% if substage.products_list %}
+                                                    <div class="list-group">
+                                                        {% for product in substage.products_list %}
+                                                            <div class="list-group-item">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <span>{{ product }}</span>
+                                                                    <button class="btn btn-sm btn-outline-success" 
+                                                                            onclick="assignProductPerformers('{{ substage.id }}', '{{ forloop.counter }}')">
+                                                                        <i class="bi bi-person-plus"></i> Назначить исполнителей
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                {% else %}
+                                                    <p class="text-muted">Нет продукции</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Кнопки управления подэтапом -->
+                                        <div class="mt-2 text-end">
+                                            <a href="{% url 'subtask_update' substage.id %}" class="btn btn-sm btn-outline-primary">
+                                                <i class="bi bi-pencil"></i> Редактировать
+                                            </a>
+                                            <a href="{% url 'subtask_delete' substage.id %}" class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i> Удалить
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <p class="text-muted">Нет подэтапов</p>
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Кнопки управления этапом -->
+                    <div class="mt-3">
+                        <a href="{% url 'subtask_update' stage.id %}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil"></i> Редактировать этап
+                        </a>
+                        <a href="{% url 'subtask_create' task.id %}?stage={{ stage.stage_number }}" class="btn btn-sm btn-outline-success">
+                            <i class="bi bi-plus-lg"></i> Добавить подэтап
+                        </a>
                     </div>
                 </div>
             </div>
@@ -231,65 +209,78 @@
     {% endfor %}
 </div>
 
-<!-- Навигация -->
-<div class="mt-4 d-flex justify-content-between">
-    <a href="{% url 'task_detail' task.id %}" class="btn btn-secondary">
-        <i class="bi bi-arrow-left"></i> Назад к задаче
-    </a>
-    
-    {% if subtasks %}
-    <a href="{% url 'subtask_bulk_create' task.id %}" class="btn btn-outline-success">
-        <i class="bi bi-file-earmark-plus"></i> Добавить несколько этапов
-    </a>
-    {% endif %}
+<!-- Модальное окно для назначения исполнителей на продукцию -->
+<div class="modal fade" id="assignPerformersModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Назначение исполнителей на продукцию</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="productInfo"></div>
+                <form id="assignPerformersForm">
+                    <div class="mb-3">
+                        <label class="form-label">Выберите исполнителей:</label>
+                        <select class="form-control select2" id="productPerformers" multiple>
+                            {% for employee in employees %}
+                                <option value="{{ employee.id }}">{{ employee.short_name }} - {{ employee.position }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ответственный:</label>
+                        <select class="form-control select2" id="productResponsible">
+                            <option value="">Не выбран</option>
+                            {% for employee in employees %}
+                                <option value="{{ employee.id }}">{{ employee.short_name }} - {{ employee.position }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="saveProductPerformers()">Сохранить</button>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    // Автоматическое обновление статуса через AJAX
-    document.querySelectorAll('.status-form select').forEach(select => {
-        select.addEventListener('change', function() {
-            const form = this.closest('form');
-            const formData = new FormData(form);
-            
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Обновляем отображение статуса
-                    const badge = this.closest('.accordion-item').querySelector('.badge:not(.bg-secondary):not(.bg-info)');
-                    if (badge) {
-                        badge.textContent = data.status_display;
-                        badge.className = 'badge me-2';
-                        if (data.status === 'completed') {
-                            badge.classList.add('bg-success');
-                        } else if (data.status === 'in_progress') {
-                            badge.classList.add('bg-primary');
-                        } else if (data.status === 'delayed') {
-                            badge.classList.add('bg-danger');
-                        } else {
-                            badge.classList.add('bg-warning', 'text-dark');
-                        }
-                    }
-                    
-                    // Обновляем границу аккордеона
-                    const accordionItem = this.closest('.accordion-item');
-                    accordionItem.className = 'accordion-item mb-2 border';
-                    if (data.status === 'completed') {
-                        accordionItem.classList.add('border-success');
-                    } else if (data.status === 'in_progress') {
-                        accordionItem.classList.add('border-primary');
-                    }
-                }
-            })
-            .catch(error => console.error('Error:', error));
+    let currentSubtaskId = null;
+    let currentProductIndex = null;
+    
+    function assignProductPerformers(subtaskId, productIndex) {
+        currentSubtaskId = subtaskId;
+        currentProductIndex = productIndex;
+        
+        // Здесь можно загрузить текущих исполнителей для этой продукции
+        // Пока просто открываем модальное окно
+        var myModal = new bootstrap.Modal(document.getElementById('assignPerformersModal'));
+        myModal.show();
+    }
+    
+    function saveProductPerformers() {
+        // Здесь будет AJAX запрос для сохранения исполнителей
+        alert('Функция сохранения исполнителей будет реализована позже');
+        bootstrap.Modal.getInstance(document.getElementById('assignPerformersModal')).hide();
+    }
+    
+    // Инициализация Select2
+    $(document).ready(function() {
+        $('#productPerformers').select2({
+            theme: 'bootstrap-5',
+            width: '100%',
+            placeholder: 'Выберите исполнителей...'
+        });
+        
+        $('#productResponsible').select2({
+            theme: 'bootstrap-5',
+            width: '100%',
+            placeholder: 'Выберите ответственного...'
         });
     });
 </script>

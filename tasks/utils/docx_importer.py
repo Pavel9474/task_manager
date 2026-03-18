@@ -68,12 +68,16 @@ class ResearchDocxImporter:
             stage_num = cells[0].strip()
             stage_title = cells[1].strip()
             stage_products = cells[2].strip() if len(cells) > 2 else ''
+            stage_dates = cells[3].strip() if len(cells) > 3 else ''
             
             # Пропускаем пустые строки
             if not stage_num and not stage_title:
                 continue
             
-            print(f"\n  Строка {row_idx + 1}: номер='{stage_num}', название='{stage_title[:50]}...'")
+            print(f"\n  Строка {row_idx + 1}: номер='{stage_num}', даты='{stage_dates}'")
+            
+            # Парсим даты
+            start_date, end_date = self._parse_dates(stage_dates)
             
             # Проверяем, является ли строка этапом (целое число)
             if stage_num.isdigit():
@@ -88,54 +92,96 @@ class ResearchDocxImporter:
                     'number': stage_number,
                     'title': stage_title,
                     'products': self._parse_products(stage_products),
+                    'start_date': start_date,
+                    'end_date': end_date,
                     'substages': []
                 }
                 stages.append(current_stage)
                 print(f"    ✅ Этап {stage_number}: {stage_title[:50]}...")
+                if start_date and end_date:
+                    print(f"       Даты: {start_date} - {end_date}")
                 
             # Проверяем, является ли строка подэтапом (число с точкой)
             elif '.' in stage_num and stage_num.replace('.', '').isdigit():
                 if current_stage:
-                    # Проверяем, что номер подэтапа соответствует текущему этапу
                     stage_main_num = int(stage_num.split('.')[0])
                     if stage_main_num == current_stage['number']:
                         substage = {
                             'number': stage_num,
                             'title': stage_title,
-                            'products': self._parse_products(stage_products)
+                            'products': self._parse_products(stage_products),
+                            'start_date': start_date,
+                            'end_date': end_date
                         }
                         current_stage['substages'].append(substage)
                         print(f"    🔹 Подэтап {stage_num} добавлен к этапу {current_stage['number']}")
+                        if start_date and end_date:
+                            print(f"       Даты: {start_date} - {end_date}")
                     else:
                         print(f"    ⚠️ Подэтап {stage_num} не соответствует текущему этапу {current_stage['number']}, ищем подходящий этап")
-                        # Ищем подходящий этап
                         found = False
                         for stage in stages:
                             if stage['number'] == stage_main_num:
                                 substage = {
                                     'number': stage_num,
                                     'title': stage_title,
-                                    'products': self._parse_products(stage_products)
+                                    'products': self._parse_products(stage_products),
+                                    'start_date': start_date,
+                                    'end_date': end_date
                                 }
                                 stage['substages'].append(substage)
                                 print(f"    🔹 Подэтап {stage_num} добавлен к этапу {stage['number']}")
+                                if start_date and end_date:
+                                    print(f"       Даты: {start_date} - {end_date}")
                                 found = True
                                 break
                         if not found:
                             print(f"    ❌ Не найден этап {stage_main_num} для подэтапа {stage_num}")
-                else:
-                    print(f"    ⚠️ Нет текущего этапа для подэтапа {stage_num}")
         
         # Выводим итоговую структуру
         print("\n=== ИТОГОВАЯ СТРУКТУРА ===")
         for stage in stages:
             print(f"Этап {stage['number']}: {stage['title'][:50]}...")
+            if stage.get('start_date') and stage.get('end_date'):
+                print(f"  Даты: {stage['start_date']} - {stage['end_date']}")
             print(f"  Подэтапов: {len(stage['substages'])}")
             for substage in stage['substages']:
                 print(f"    - {substage['number']}: {substage['title'][:50]}...")
+                if substage.get('start_date') and substage.get('end_date'):
+                    print(f"      Даты: {substage['start_date']} - {substage['end_date']}")
                 print(f"      Продукции: {len(substage.get('products', []))}")
         
         return stages
+
+    def _parse_dates(self, date_str):
+        """Парсинг строки с датами вида '01.04.2025 - 30.06.2025'"""
+        if not date_str or date_str == '-':
+            return None, None
+        
+        try:
+            # Ищем паттерн с датами
+            import re
+            from django.utils import timezone
+            from datetime import datetime
+            
+            date_pattern = r'(\d{2}\.\d{2}\.\d{4})\s*[-—]\s*(\d{2}\.\d{2}\.\d{4})'
+            match = re.search(date_pattern, date_str)
+            
+            if match:
+                start_str, end_str = match.groups()
+                # Создаем datetime с временем 00:00:00 и делаем его "aware"
+                start_date = datetime.strptime(start_str, '%d.%m.%Y').replace(hour=0, minute=0, second=0)
+                end_date = datetime.strptime(end_str, '%d.%m.%Y').replace(hour=23, minute=59, second=59)
+                
+                # Добавляем временную зону
+                start_date = timezone.make_aware(start_date)
+                end_date = timezone.make_aware(end_date)
+                
+                return start_date, end_date
+        except Exception as e:
+            print(f"    Ошибка парсинга дат '{date_str}': {e}")
+        
+        return None, None
     
     def _parse_products(self, products_str):
         """Парсинг научно-технической продукции"""
@@ -159,49 +205,65 @@ class ResearchDocxImporter:
         print(f"\nСоздание структуры для задачи: {task.title}")
         print(f"Получено этапов: {len(stages_data)}")
         
-        # ПРИНУДИТЕЛЬНО удаляем все существующие подэтапы для этой задачи
-        print(f"Удаляем все существующие подэтапы для задачи {task.id}")
+        # Удаляем все существующие подэтапы
         deleted = Subtask.objects.filter(task=task).delete()
-        print(f"Удалено: {deleted}")
+        print(f"Удалено старых подэтапов: {deleted}")
         
         created_count = 0
         
-        # Сначала создаем все основные этапы (целые числа)
+        # Создаем все этапы и подэтапы
         for stage_idx, stage_data in enumerate(stages_data):
-            stage_number = stage_data['number']
+            # Создаем основной этап
+            stage_number = str(stage_data['number'])
+            
+            # Получаем даты
+            planned_start = stage_data.get('start_date')
+            planned_end = stage_data.get('end_date')
+            
             stage = Subtask.objects.create(
                 task=task,
                 stage_number=stage_number,
                 title=stage_data['title'][:200],
                 description=f"Этап {stage_data['number']} из ТЗ",
+                planned_start=planned_start,
+                planned_end=planned_end,
                 status='pending',
                 priority='medium'
             )
-            print(f"  ✅ Создан этап {stage_number} ID: {stage.id}")
+            date_info = f", даты: {planned_start} - {planned_end}" if planned_start and planned_end else ""
+            print(f"  ✅ Создан этап {stage_number} ID: {stage.id}{date_info}")
             created_count += 1
             
-            # Сразу создаем подэтапы для этого этапа
-            substages = stage_data.get('substages', [])
-            for substage_data in substages:
+            # Создаем подэтапы
+            for substage_data in stage_data.get('substages', []):
                 try:
-                    stage_num = float(substage_data['number'])
+                    substage_number = str(substage_data['number'])
+                    
+                    # Получаем даты для подэтапа
+                    substage_start = substage_data.get('start_date')
+                    substage_end = substage_data.get('end_date')
+                    
+                    # Формируем текст продукции
+                    products_text = ""
+                    if substage_data.get('products'):
+                        products_list = substage_data['products']
+                        products_text = "Ожидаемая продукция:\n" + "\n".join([f"• {p}" for p in products_list])
                     
                     substage = Subtask.objects.create(
                         task=task,
-                        stage_number=stage_num,
+                        stage_number=substage_number,
                         title=substage_data['title'][:200],
                         description=f"Подэтап {substage_data['number']} из ТЗ",
+                        output=products_text,
+                        planned_start=substage_start,
+                        planned_end=substage_end,
                         status='pending',
                         priority='medium'
                     )
-                    print(f"    🔹 Создан подэтап {substage_data['number']} ID: {substage.id}")
+                    date_info = f", даты: {substage_start} - {substage_end}" if substage_start and substage_end else ""
+                    print(f"    🔹 Создан подэтап {substage_number} ID: {substage.id}{date_info}")
+                    print(f"        Продукция: {len(substage_data.get('products', []))} позиций")
                     created_count += 1
-                    
-                    # Сохраняем продукцию
-                    if substage_data.get('products'):
-                        products_text = "\n".join([f"• {p}" for p in substage_data['products']])
-                        substage.output = f"Ожидаемая продукция:\n{products_text}"
-                        substage.save()
                         
                 except Exception as e:
                     print(f"    ❌ Ошибка создания подэтапа {substage_data.get('number')}: {e}")
@@ -210,7 +272,4 @@ class ResearchDocxImporter:
         final_count = Subtask.objects.filter(task=task).count()
         print(f"\n✅ Всего создано подэтапов: {final_count}")
         
-        # Выводим список для проверки
-        print("\nСписок всех созданных подэтапов:")
-        for s in task.subtasks.all().order_by('stage_number'):
-            print(f"  {s.stage_number}: {s.title[:50]}...")
+        return created_count

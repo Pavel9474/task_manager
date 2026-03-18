@@ -8,7 +8,7 @@ class SubtaskForm(forms.ModelForm):
                  'performers', 'responsible', 'planned_start', 'planned_end', 
                  'status', 'notes']
         widgets = {
-            'stage_number': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
+            'stage_number': forms.TextInput(attrs={'class': 'form-control', 'min': 1}),
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
             'output': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
@@ -18,8 +18,14 @@ class SubtaskForm(forms.ModelForm):
                 'data-placeholder': 'Выберите исполнителей...'
             }),
             'responsible': forms.Select(attrs={'class': 'form-control select2'}),
-            'planned_start': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
-            'planned_end': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
+            'planned_start': forms.DateInput(attrs={  # Изменено с DateTimeInput на DateInput
+                'type': 'date', 
+                'class': 'form-control',
+            }),
+            'planned_end': forms.DateInput(attrs={  # Изменено с DateTimeInput на DateInput
+                'type': 'date', 
+                'class': 'form-control',
+            }),
             'status': forms.Select(attrs={'class': 'form-control'}),
             'notes': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
         }
@@ -36,9 +42,23 @@ class SubtaskForm(forms.ModelForm):
         if self.task and not self.instance.pk:
             last_stage = self.task.subtasks.order_by('-stage_number').first()
             if last_stage:
-                self.fields['stage_number'].initial = last_stage.stage_number + 1
+                try:
+                    last_num = float(last_stage.stage_number)
+                    if last_num.is_integer():
+                        self.fields['stage_number'].initial = int(last_num) + 1
+                    else:
+                        self.fields['stage_number'].initial = last_stage.stage_number
+                except:
+                    self.fields['stage_number'].initial = last_stage.stage_number
             else:
                 self.fields['stage_number'].initial = 1
+        
+        # Форматирование дат для отображения в поле date (только дата, без времени)
+        if self.instance and self.instance.planned_start:
+            # Для DateInput нужен формат YYYY-MM-DD
+            self.initial['planned_start'] = self.instance.planned_start.strftime('%Y-%m-%d')
+        if self.instance and self.instance.planned_end:
+            self.initial['planned_end'] = self.instance.planned_end.strftime('%Y-%m-%d')
     
     def clean(self):
         cleaned_data = super().clean()
