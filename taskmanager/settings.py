@@ -117,14 +117,14 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Папка для статических файлов
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Папка для собранных статических файлов
-
-# Media files (загруженные пользователем файлы)
-MEDIA_URL = 'media/'
+# Media files
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
@@ -144,3 +144,45 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
+# Для отладки запросов (только для разработки!)
+if DEBUG:
+    import logging
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s - %(message)s',
+        datefmt='%H:%M:%S'
+    )
+    
+    # Логирование всех SQL запросов
+    l = logging.getLogger('django.db.backends')
+    l.setLevel(logging.DEBUG)
+    l.addHandler(logging.StreamHandler())
+
+import logging
+if DEBUG:
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format='%(asctime)s - %(message)s',
+        datefmt='%H:%M:%S'
+    )
+    
+    # Логирование всех SQL запросов
+    l = logging.getLogger('django.db.backends')
+    l.setLevel(logging.DEBUG)
+    l.addHandler(logging.StreamHandler())
+    
+    # Показывать количество запросов в конце
+    from django.db import connection
+    import traceback
+    
+    def show_queries(sender, **kwargs):
+        if len(connection.queries) > 0:
+            print(f"\n{'='*60}")
+            print(f"🔍 ВЫПОЛНЕНО ЗАПРОСОВ: {len(connection.queries)}")
+            print(f"{'='*60}")
+            for i, query in enumerate(connection.queries[-5:], 1):  # покажем последние 5 запросов
+                print(f"{i}. {query['time']} сек - {query['sql'][:100]}...")
+            print(f"{'='*60}\n")
+    
+    from django.core.signals import request_finished
+    request_finished.connect(show_queries)

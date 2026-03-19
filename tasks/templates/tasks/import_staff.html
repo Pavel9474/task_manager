@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Импорт штатного расписания{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>Импорт штатного расписания</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <h5>Инструкция по импорту:</h5>
+                    <ol>
+                        <li>Загрузите файл штатного расписания в формате Excel (.xlsx или .xls)</li>
+                        <li>Файл должен содержать колонки:
+                            <ul>
+                                <li><strong>Структурное подразделение</strong> - иерархия подразделений</li>
+                                <li><strong>ПКГ</strong> - профессиональная квалификационная группа</li>
+                                <li><strong>Должность</strong> - название должности</li>
+                                <li><strong>ФИО</strong> - фамилия, имя, отчество сотрудника</li>
+                                <li><strong>Ставка</strong> - размер ставки (1, 0.5, 0.25)</li>
+                                <li><strong>Тип занятости</strong> - основное, совмещение и т.д.</li>
+                            </ul>
+                        </li>
+                        <li>Будет создана иерархическая структура подразделений</li>
+                        <li>Для каждого сотрудника будет создана запись или обновлена существующая</li>
+                    </ol>
+                </div>
+                
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.excel_file.id_for_label }}" class="form-label">
+                            {{ form.excel_file.label }}
+                        </label>
+                        {{ form.excel_file }}
+                        {% if form.excel_file.errors %}
+                            <div class="text-danger">{{ form.excel_file.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">{{ form.excel_file.help_text }}</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.create_employees }}
+                        <label class="form-check-label" for="{{ form.create_employees.id_for_label }}">
+                            {{ form.create_employees.label }}
+                        </label>
+                        <div class="form-text">{{ form.create_employees.help_text }}</div>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        {{ form.update_existing }}
+                        <label class="form-check-label" for="{{ form.update_existing.id_for_label }}">
+                            {{ form.update_existing.label }}
+                        </label>
+                        <div class="form-text">{{ form.update_existing.help_text }}</div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'employee_list' %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Назад к списку
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-upload"></i> Импортировать
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Предпросмотр структуры -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5>Пример структуры</h5>
+            </div>
+            <div class="card-body">
+                <pre>
+📁 Руководство (Уровень 1)
+  ├─ 👤 Аклеев Александр Васильевич - Генеральный директор
+  ├─ 👤 Никифоров Владислав Сергеевич - Первый заместитель
+  └─ 📁 Секретариат (Уровень 2)
+      ├─ 👤 Береговая Ольга Александровна - Документовед
+      └─ 👤 Марченко Наталья Александровна - Документовед
+
+📁 Научно-исследовательский институт (Уровень 1)
+  ├─ 📁 Лаборатория молекулярной генетики (Уровень 2)
+  │   ├─ 👤 Кореченкова Анастасия Витальевна - Научный сотрудник
+  │   └─ 👤 Куприянов Артём Андреевич - Старший лаборант
+  └─ 📁 Лаборатория постгеномных исследований (Уровень 2)
+      └─ 👤 Янишевская Мария Александровна - Младший научный сотрудник
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,11 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
-from django.db.models import Q, Count
+from django.db.models import Q, Count, Prefetch
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct
+from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct, Department, Position, StaffPosition
 from .forms import TaskForm, TaskWithImportForm
 from .forms import ResearchTaskForm, ResearchStageForm, ResearchSubstageForm, ResearchProductForm
 from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
@@ -17,6 +17,9 @@ import pandas as pd
 from django.template.loader import render_to_string
 from datetime import datetime
 import tempfile
+from django.db.models import Prefetch, Count
+from django.db.models import Q
+from .services.org_service import OrganizationService
 import os
 # ============= АУТЕНТИФИКАЦИЯ =============
 
@@ -360,6 +363,12 @@ def employee_detail(request, employee_id):
     """Детальная информация о сотруднике"""
     employee = get_object_or_404(Employee, id=employee_id)
     
+    # 👇 НОВЫЙ КОД: Получаем штатные позиции сотрудника
+    staff_positions = employee.staff_positions.filter(is_active=True)
+    
+    # 👇 НОВЫЙ КОД: Получаем организационную структуру
+    org_structure = employee.get_organization_structure()
+    
     # Получаем тип отображения (все, только задачи, только этапы)
     item_type = request.GET.get('type', 'all')
     
@@ -451,8 +460,12 @@ def employee_detail(request, employee_id):
         'employee': employee,
         'items': items,
         'current_type': item_type,
+        # 👇 НОВЫЙ КОД: Добавляем новые переменные в контекст
+        'staff_positions': staff_positions,
+        'org_structure': org_structure,
     }
     return render(request, 'tasks/employee_detail.html', context)
+
 
 
 @login_required
@@ -1396,3 +1409,108 @@ def preview_import(request):
             return JsonResponse({'success': False, 'error': str(e)})
     
     return JsonResponse({'success': False, 'error': 'Invalid request'})
+
+@login_required
+def import_staff_from_excel(request):
+    """Импорт штатного расписания из Excel"""
+    if request.method == 'POST':
+        form = StaffImportForm(request.POST, request.FILES)
+        if form.is_valid():
+            try:
+                excel_file = request.FILES['excel_file']
+                
+                # Сохраняем файл временно
+                import tempfile
+                with tempfile.NamedTemporaryFile(delete=False, suffix='.xlsx') as tmp_file:
+                    for chunk in excel_file.chunks():
+                        tmp_file.write(chunk)
+                    tmp_path = tmp_file.name
+                
+                # Импортируем
+                importer = StaffImporter(tmp_path)
+                imported_count = importer.import_staff()
+                
+                # Удаляем временный файл
+                import os
+                os.unlink(tmp_path)
+                
+                messages.success(request, f'Успешно импортировано {imported_count} штатных единиц')
+                return redirect('employee_list')
+                
+            except Exception as e:
+                messages.error(request, f'Ошибка при импорте: {str(e)}')
+    else:
+        form = StaffImportForm()
+    
+    return render(request, 'tasks/import_staff.html', {'form': form})
+
+@login_required
+def organization_chart(request):
+    """
+    Оптимизированное представление с использованием сервисного слоя
+    """
+    # Получаем все данные через сервис
+    departments = OrganizationService.get_full_structure()
+    
+    # Получаем НИИ радиационной биологии
+    radiobiology_institute = None
+    for dept in departments:
+        if 'радиационной биологии' in dept.name.lower() or '9.' in dept.full_path:
+            radiobiology_institute = dept
+            break
+    
+    # Получаем отделы института
+    institute_departments = []
+    if radiobiology_institute:
+        institute_departments = radiobiology_institute.children.all()
+    
+    stats = OrganizationService.get_statistics()
+    
+    context = {
+        'root_departments': OrganizationService.get_root_departments(departments),
+        'departments_by_type': OrganizationService.group_by_type(departments),
+        'radiobiology_institute': radiobiology_institute,
+        'institute_departments': institute_departments,
+        'total_departments': stats['total_departments'],
+        'total_employees': stats['total_employees'],
+        'total_staff_positions': stats['total_staff_positions'],
+    }
+    
+    return render(request, 'tasks/organization_chart.html', context)
+
+@login_required
+def department_detail_ajax(request, dept_id):
+    """AJAX запрос для получения дочерних подразделений и сотрудников"""
+    department = get_object_or_404(
+        Department.objects.prefetch_related(
+            'children',
+            Prefetch('staff_positions', 
+                    queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position'))
+        ), 
+        id=dept_id
+    )
+    
+    # Получаем дочерние подразделения с их сотрудниками
+    children = department.children.all().prefetch_related(
+        Prefetch('staff_positions', 
+                queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position'))
+    )
+    
+    for child in children:
+        child.staff_count = child.staff_positions.count()
+    
+    # Получаем сотрудников этого подразделения
+    staff_positions = department.staff_positions.all()
+    
+    html = render_to_string('tasks/partials/department_children.html', {
+        'department': department,
+        'children': children,
+        'staff_positions': staff_positions,
+    })
+    
+    return JsonResponse({
+        'success': True,
+        'html': html,
+        'children_count': children.count(),
+        'staff_count': staff_positions.count(),
+    })

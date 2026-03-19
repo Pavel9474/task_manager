@@ -187,3 +187,27 @@ class TaskWithImportForm(forms.ModelForm):
         self.fields['assigned_to'].queryset = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
         self.fields['title'].required = False  # Делаем необязательным, т.к. может быть из файла
         self.fields['title'].help_text = 'Если не указано, будет взято из ТЗ'
+
+class StaffImportForm(forms.Form):
+    """Форма для импорта штатного расписания"""
+    excel_file = forms.FileField(
+        label='Файл штатного расписания (Excel)',
+        help_text='Загрузите файл в формате .xlsx или .xls',
+        widget=forms.FileInput(attrs={'class': 'form-control', 'accept': '.xlsx,.xls'})
+    )
+    
+    create_employees = forms.BooleanField(
+        label='Создавать новых сотрудников',
+        help_text='Если отмечено, будут созданы новые сотрудники для всех записей',
+        initial=True,
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+    )
+    
+    update_existing = forms.BooleanField(
+        label='Обновлять существующих сотрудников',
+        help_text='Обновлять данные существующих сотрудников (должность, подразделение)',
+        initial=True,
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+    )

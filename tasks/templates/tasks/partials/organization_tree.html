@@ -1,0 +1,55 @@
+<div class="tree-level level-2">
+    <div class="nodes-container">
+        {% for dept in departments_by_type.department %}
+            {% if dept.parent is None and 'институт' not in dept.name|lower %}
+                <div class="tree-node" data-id="{{ dept.id }}">
+                    <div class="node-card level-2" onclick="OrgTree.toggleNode('{{ dept.id }}', this)">
+                        <div class="node-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <div class="node-name">{{ dept.name|truncatechars:40 }}</div>
+                        <div class="node-type">{{ dept.get_type_display }}</div>
+                        <div class="node-staff">
+                            <i class="bi bi-people"></i> {{ dept.staff_positions.count }}
+                        </div>
+                        <div class="node-toggle">
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div id="children-{{ dept.id }}" class="children-container">
+                        {% for child in dept.children.all %}
+                            <div class="tree-node" data-id="{{ child.id }}">
+                                <div class="node-card level-3">
+                                    <div class="node-icon">
+                                        <i class="bi bi-diagram-3"></i>
+                                    </div>
+                                    <div class="node-name">{{ child.name|truncatechars:35 }}</div>
+                                    <div class="node-type">{{ child.get_type_display }}</div>
+                                    <div class="node-staff">
+                                        <i class="bi bi-people"></i> {{ child.staff_positions.count }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                        <!-- Сотрудники отдела -->
+                        {% if dept.staff_positions.count > 0 %}
+                            <div class="staff-list" style="margin-top: 20px;">
+                                {% for sp in dept.staff_positions.all %}
+                                    <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-item">
+                                        <i class="bi bi-person-circle"></i>
+                                        <div class="staff-info">
+                                            <span class="staff-name">{{ sp.employee.short_name }}</span>
+                                            <span class="staff-position">{{ sp.position.name }}</span>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

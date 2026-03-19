@@ -4,51 +4,162 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-8 offset-md-2">
-        <div class="card mb-4">
+    <div class="col-md-10 offset-md-1">
+        <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3>{{ employee.full_name }}</h3>
-                <span class="badge {% if employee.is_active %}bg-success{% else %}bg-secondary{% endif %}">
-                    {{ employee.is_active|yesno:"Активен,Неактивен" }}
-                </span>
+                <div>
+                    <span class="badge {% if employee.is_active %}bg-success{% else %}bg-secondary{% endif %}">
+                        {{ employee.is_active|yesno:"Активен,Неактивен" }}
+                    </span>
+                </div>
             </div>
             <div class="card-body">
-                <div class="row">
+                <!-- Основная информация -->
+                <div class="row mb-4">
                     <div class="col-md-6">
                         <h5>Основная информация</h5>
                         <table class="table table-sm">
-                            <tr><th>Должность:</th><td>{{ employee.position }}</td></tr>
-                            <tr><th>Отдел:</th><td>{{ employee.get_department_display }}</td></tr>
-                            {% if employee.laboratory %}
-                                <tr><th>Лаборатория:</th><td>{{ employee.get_laboratory_display }}</td></tr>
+                            <tr>
+                                <th style="width: 40%;">Должность:</th>
+                                <td><strong>{{ employee.position }}</strong></td>
+                            </tr>
+                            {% if org_structure %}
+                                {% if org_structure.institute %}
+                                <tr>
+                                    <th>Институт/Подразделение:</th>
+                                    <td>{{ org_structure.institute }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if org_structure.department %}
+                                <tr>
+                                    <th>Отдел:</th>
+                                    <td>{{ org_structure.department }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if org_structure.laboratory %}
+                                <tr>
+                                    <th>Лаборатория:</th>
+                                    <td>{{ org_structure.laboratory }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if org_structure.group %}
+                                <tr>
+                                    <th>Группа:</th>
+                                    <td>{{ org_structure.group }}</td>
+                                </tr>
+                                {% endif %}
+                                <tr>
+                                    <th>Полный путь:</th>
+                                    <td><small class="text-muted">{{ org_structure.full_path }}</small></td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <th>Отдел:</th>
+                                    <td>{{ employee.get_department_display|default:"Не указан" }}</td>
+                                </tr>
+                                {% if employee.laboratory %}
+                                <tr>
+                                    <th>Лаборатория:</th>
+                                    <td>{{ employee.get_laboratory_display }}</td>
+                                </tr>
+                                {% endif %}
                             {% endif %}
                             {% if employee.hire_date %}
-                                <tr><th>Дата найма:</th><td>{{ employee.hire_date|date:"d.m.Y" }}</td></tr>
+                            <tr>
+                                <th>Дата найма:</th>
+                                <td>{{ employee.hire_date|date:"d.m.Y" }}</td>
+                            </tr>
                             {% endif %}
                         </table>
                     </div>
                     <div class="col-md-6">
                         <h5>Контакты</h5>
                         <table class="table table-sm">
-                            <tr><th>Email:</th><td><a href="mailto:{{ employee.email }}">{{ employee.email }}</a></td></tr>
+                            <tr>
+                                <th style="width: 40%;">Email:</th>
+                                <td><a href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
+                            </tr>
                             {% if employee.phone %}
-                                <tr><th>Телефон:</th><td><a href="tel:{{ employee.phone }}">{{ employee.phone }}</a></td></tr>
+                            <tr>
+                                <th>Телефон:</th>
+                                <td><a href="tel:{{ employee.phone }}">{{ employee.phone }}</a></td>
+                            </tr>
                             {% endif %}
+                        </table>
+                        
+                        <h5 class="mt-3">Штатные позиции</h5>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Должность</th>
+                                    <th>Подразделение</th>
+                                    <th>Ставка</th>
+                                    <th>Тип</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for sp in staff_positions %}
+                                <tr>
+                                    <td>{{ sp.position.name }}</td>
+                                    <td><small>{{ sp.department.name }}</small></td>
+                                    <td>{{ sp.workload }}</td>
+                                    <td><small>{{ sp.get_employment_type_display }}</small></td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-muted">Нет активных штатных позиций</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
                         </table>
                     </div>
                 </div>
                 
                 {% if employee.notes %}
-                    <div class="mt-3">
-                        <h5>Заметки</h5>
-                        <p>{{ employee.notes|linebreaks }}</p>
-                    </div>
+                <div class="mb-4">
+                    <h5>Заметки</h5>
+                    <p class="card-text">{{ employee.notes|linebreaks }}</p>
+                </div>
                 {% endif %}
                 
+                <!-- Задачи сотрудника -->
+                <div class="mb-4">
+                    <h5>Последние задачи</h5>
+                    {% if assigned_tasks %}
+                        <div class="list-group">
+                            {% for task in assigned_tasks %}
+                                <a href="{% url 'task_detail' task.id %}" class="list-group-item list-group-item-action">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">{{ task.title }}</h6>
+                                        <small class="text-muted">{{ task.created_date|date:"d.m.Y" }}</small>
+                                    </div>
+                                    <p class="mb-1 small">{{ task.description|truncatechars:100 }}</p>
+                                    <small>
+                                        <span class="badge {% if task.status == 'done' %}bg-success{% elif task.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
+                                            {{ task.get_status_display }}
+                                        </span>
+                                        <span class="badge {% if task.priority == 'high' %}bg-danger{% elif task.priority == 'medium' %}bg-warning{% else %}bg-info{% endif %}">
+                                            {{ task.get_priority_display }}
+                                        </span>
+                                    </small>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        <div class="mt-2">
+                            <a href="{% url 'employee_tasks' employee.id %}" class="btn btn-sm btn-outline-primary">
+                                Все задачи сотрудника
+                            </a>
+                        </div>
+                    {% else %}
+                        <p class="text-muted">У сотрудника пока нет задач</p>
+                    {% endif %}
+                </div>
+                
                 <!-- Кнопки действий -->
-                <div class="d-flex justify-content-between mt-4">
+                <div class="d-flex justify-content-between">
                     <a href="{% url 'employee_list' %}" class="btn btn-secondary">
-                        <i class="bi bi-arrow-left"></i> Назад
+                        <i class="bi bi-arrow-left"></i> К списку
                     </a>
                     <div>
                         <a href="{% url 'employee_update' employee.id %}" class="btn btn-primary">
@@ -64,214 +175,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- ============= БЛОК С ЗАДАЧАМИ И ПОДЗАДАЧАМИ ============= -->
-        <div class="card">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">
-                    <i class="bi bi-list-task"></i> 
-                    Задачи и этапы сотрудника
-                </h4>
-                <small class="text-white-50">Отсортировано по ближайшим срокам</small>
-            </div>
-            <div class="card-body">
-                <!-- Фильтр по типу -->
-                <div class="btn-group mb-3" role="group">
-                    <a href="?type=all" class="btn btn-sm {% if current_type == 'all' %}btn-primary{% else %}btn-outline-primary{% endif %}">
-                        Все
-                    </a>
-                    <a href="?type=tasks" class="btn btn-sm {% if current_type == 'tasks' %}btn-primary{% else %}btn-outline-primary{% endif %}">
-                        Только задачи
-                    </a>
-                    <a href="?type=subtasks" class="btn btn-sm {% if current_type == 'subtasks' %}btn-primary{% else %}btn-outline-primary{% endif %}">
-                        Только этапы
-                    </a>
+            
+            <!-- Информация о создании/обновлении -->
+            <div class="card-footer text-muted small">
+                <div class="d-flex justify-content-between">
+                    <span>Создано: {{ employee.created_date|date:"d.m.Y H:i" }}</span>
+                    <span>Обновлено: {{ employee.updated_date|date:"d.m.Y H:i" }}</span>
                 </div>
-
-                <!-- ===== НОВЫЙ БЛОК ПОИСКА ===== -->
-                <div class="mb-3">
-                    <div class="input-group">
-                        <span class="input-group-text bg-white">
-                            <i class="bi bi-search"></i>
-                        </span>
-                        <input type="text" id="taskSearch" class="form-control" 
-                               placeholder="Поиск по названию задачи или этапа...">
-                        <button class="btn btn-outline-secondary" type="button" id="clearSearch">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                    </div>
-                    <div class="form-text text-muted">
-                        <small>Начните вводить название для фильтрации списка</small>
-                    </div>
-                </div>
-                <!-- ===== КОНЕЦ БЛОКА ПОИСКА ===== -->
-
-                {% if items %}
-                    <div class="list-group" id="tasksList">
-                        {% for item in items %}
-                            <div class="list-group-item {% if item.is_overdue %}list-group-item-danger{% endif %} task-item">
-                                <div class="d-flex w-100 justify-content-between align-items-start">
-                                    <div>
-                                        {% if item.type == 'task' %}
-                                            <span class="badge bg-primary mb-2">Задача</span>
-                                        {% else %}
-                                            <span class="badge bg-success mb-2">
-                                                Этап {{ item.stage_number }}
-                                            </span>
-                                        {% endif %}
-                                        
-                                        <h5 class="mb-1 task-title">
-                                            <a href="{% if item.type == 'task' %}{% url 'task_detail' item.id %}{% else %}{% url 'subtask_list' item.task.id %}{% endif %}" 
-                                               class="text-decoration-none">
-                                                {{ item.title }}
-                                            </a>
-                                        </h5>
-                                        
-                                        {% if item.type == 'subtask' %}
-                                            <p class="mb-1 text-muted small">
-                                                <i class="bi bi-diagram-2"></i> 
-                                                Основная задача: <a href="{% url 'task_detail' item.task.id %}">{{ item.task.title }}</a>
-                                            </p>
-                                        {% endif %}
-                                        
-                                        {% if item.description %}
-                                            <p class="mb-2 task-description">{{ item.description|truncatechars:150 }}</p>
-                                        {% endif %}
-                                        
-                                        <!-- Теги -->
-                                        <div class="mb-2">
-                                            <!-- Приоритет -->
-                                            <span class="badge bg-{{ item.priority_color }} me-1">
-                                                <i class="bi bi-flag-fill"></i> 
-                                                {% if item.type == 'task' %}
-                                                    {{ item.get_priority_display }}
-                                                {% else %}
-                                                    {{ item.get_priority_display }}
-                                                {% endif %}
-                                            </span>
-                                            
-                                            <!-- Статус -->
-                                            <span class="badge 
-                                                {% if item.status == 'completed' or item.status == 'done' %}bg-success
-                                                {% elif item.status == 'in_progress' %}bg-primary
-                                                {% elif item.status == 'delayed' %}bg-danger
-                                                {% else %}bg-secondary{% endif %} me-1">
-                                                <i class="bi bi-check-circle"></i>
-                                                {% if item.type == 'task' %}
-                                                    {{ item.get_status_display }}
-                                                {% else %}
-                                                    {{ item.get_status_display }}
-                                                {% endif %}
-                                            </span>
-                                            
-                                            <!-- Роль (для подзадач) -->
-                                            {% if item.type == 'subtask' and item.responsible == employee %}
-                                                <span class="badge bg-warning text-dark me-1">
-                                                    <i class="bi bi-star-fill"></i> Ответственный
-                                                </span>
-                                            {% endif %}
-                                        </div>
-                                        
-                                        <!-- Дополнительная информация -->
-                                        <div class="small text-muted">
-                                            {% if item.type == 'task' %}
-                                                <i class="bi bi-people"></i> 
-                                                Исполнителей: {{ item.assigned_to.count }}
-                                            {% else %}
-                                                <i class="bi bi-people"></i> 
-                                                Исполнителей: {{ item.performers.count }}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Дедлайн -->
-                                    <div class="text-end">
-                                        <div class="{% if item.is_overdue %}text-danger fw-bold{% endif %}">
-                                            <small>Срок:</small><br>
-                                            <strong>
-                                                {% if item.type == 'task' %}
-                                                    {% if item.due_date %}
-                                                        {{ item.due_date|date:"d.m.Y H:i" }}
-                                                    {% else %}
-                                                        не указан
-                                                    {% endif %}
-                                                {% else %}
-                                                    {% if item.planned_end %}
-                                                        {{ item.planned_end|date:"d.m.Y H:i" }}
-                                                    {% else %}
-                                                        не указан
-                                                    {% endif %}
-                                                {% endif %}
-                                            </strong>
-                                        </div>
-                                        {% if item.is_overdue %}
-                                            <span class="badge bg-danger mt-2">Просрочено</span>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                
-                                <!-- Прогресс-бар для подзадач -->
-                                {% if item.type == 'subtask' and item.status == 'in_progress' %}
-                                    <div class="progress mt-2" style="height: 5px;">
-                                        <div class="progress-bar bg-success" style="width: {{ item.progress }}%"></div>
-                                    </div>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <div class="text-center py-5">
-                        <i class="bi bi-inbox" style="font-size: 4rem; color: #ccc;"></i>
-                        <h4 class="text-muted mt-3">Нет задач и этапов</h4>
-                        <p class="text-muted">У сотрудника пока нет назначенных задач</p>
-                    </div>
+                {% if employee.created_by %}
+                    <div>Создал: {{ employee.created_by.username }}</div>
                 {% endif %}
             </div>
         </div>
-        <!-- ============= КОНЕЦ БЛОКА ============= -->
     </div>
 </div>
-
-<!-- ===== СКРИПТ ДЛЯ ПОИСКА ===== -->
-{% block extra_js %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('taskSearch');
-        const clearButton = document.getElementById('clearSearch');
-        const taskItems = document.querySelectorAll('.task-item');
-        
-        if (searchInput) {
-            // Функция поиска
-            function filterTasks() {
-                const searchText = searchInput.value.toLowerCase().trim();
-                
-                taskItems.forEach(item => {
-                    const title = item.querySelector('.task-title').textContent.toLowerCase();
-                    const description = item.querySelector('.task-description') ? 
-                        item.querySelector('.task-description').textContent.toLowerCase() : '';
-                    
-                    if (title.includes(searchText) || description.includes(searchText)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
-            
-            // Поиск при вводе
-            searchInput.addEventListener('keyup', filterTasks);
-            
-            // Очистка поиска
-            if (clearButton) {
-                clearButton.addEventListener('click', function() {
-                    searchInput.value = '';
-                    filterTasks();
-                    searchInput.focus();
-                });
-            }
-        }
-    });
-</script>
-{% endblock %}
 {% endblock %}

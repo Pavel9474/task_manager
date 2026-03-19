@@ -1,0 +1,103 @@
+# # Python
+# __pycache__/
+# *.py[cod]
+# *.pyo
+# *.pyd
+# *.db
+# *.sqlite3
+# .DS_Store
+
+# # Virtual Environment
+# venv/
+# env/
+# ENV/
+# .venv/
+
+# # IDE
+# .vscode/
+# .idea/
+# *.swp
+# *.swo
+# *.sublime-*
+
+# # Django
+# staticfiles/
+# media/
+# *.log
+# local_settings.py
+# *.pot
+# *.pyc
+
+# # Environment variables
+# .env
+# *.env
+# .env.local
+# .env.production
+
+# # Uploads
+# uploads/
+# media/
+# mediafiles/
+
+# # Database
+# *.db
+# *.sqlite3
+# db.sqlite3
+
+# # Coverage
+# .coverage
+# htmlcov/
+# .coverage.*
+# *.cover
+
+# # Sphinx docs
+# docs/_build/
+
+# # Celery
+# celerybeat-schedule
+# celerybeat.pid
+
+# # Flask
+# instance/
+# .webassets-cache
+
+# # Scrapy
+# .scrapy
+
+# # Jupyter Notebook
+# .ipynb_checkpoints/
+# *.ipynb
+
+# # Python distribution
+# dist/
+# build/
+# *.egg-info/
+
+# # PyInstaller
+# *.manifest
+# *.spec
+
+# # PyCharm
+# .idea/
+# *.iml
+
+# # VS Code
+# .vscode/
+# *.code-workspace
+
+# # OS generated files
+# .DS_Store
+# .DS_Store?
+# ._*
+# .Spotlight-V100
+# .Trashes
+# ehthumbs.db
+# Thumbs.db
+# *.bak
+
+# # Project specific
+# staticfiles/
+# media/
+# uploads/
+# *.db
+# db.sqlite3

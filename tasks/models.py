@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
+class Meta:
+    indexes = [
+        models.Index(fields=['parent']),
+        models.Index(fields=['type']),
+        models.Index(fields=['name']),
+    ]
+
 class Employee(models.Model):
     DEPARTMENT_CHOICES = [
         ('development', 'Разработка'),
@@ -72,6 +80,80 @@ class Employee(models.Model):
         if self.patronymic:
             name_parts.append(f"{self.patronymic[0]}.")
         return ' '.join(name_parts)
+    
+    def get_department_path(self):
+        """Получить полный путь подразделения сотрудника"""
+        staff_pos = self.staff_positions.filter(is_active=True).first()
+        if staff_pos and staff_pos.department:
+            return staff_pos.department.full_path
+        return None
+    
+    def get_main_department(self):
+        """Получить основное подразделение (уровень 1)"""
+        staff_pos = self.staff_positions.filter(is_active=True).first()
+        if staff_pos and staff_pos.department:
+            # Поднимаемся до корня
+            dept = staff_pos.department
+            while dept.parent:
+                dept = dept.parent
+            return dept.name
+        return None
+    
+    def get_division(self):
+        """Получить отдел (уровень 2)"""
+        staff_pos = self.staff_positions.filter(is_active=True).first()
+        if staff_pos and staff_pos.department:
+            # Ищем подразделение 2-го уровня
+            dept = staff_pos.department
+            # Если текущее подразделение уже 2-го уровня (одна точка)
+            if dept.level == 1:  # Уровень 1 - это основное подразделение, уровень 2 - отдел
+                return dept.name
+            # Иначе ищем родителя 2-го уровня
+            while dept.parent:
+                if dept.parent.level == 1:
+                    return dept.name
+                dept = dept.parent
+        return None
+    
+    def get_laboratory(self):
+        """Получить лабораторию (уровень 3 и ниже)"""
+        staff_pos = self.staff_positions.filter(is_active=True).first()
+        if staff_pos and staff_pos.department:
+            # Если текущее подразделение - лаборатория (уровень 3+)
+            if staff_pos.department.type in ['laboratory', 'group']:
+                return staff_pos.department.name
+            # Ищем среди дочерних? Но сотрудник привязан к конкретному подразделению
+        return None
+    
+    def get_organization_structure(self):
+        """Получить полную структуру организации для сотрудника"""
+        staff_pos = self.staff_positions.filter(is_active=True).first()
+        if not staff_pos or not staff_pos.department:
+            return None
+        
+        dept = staff_pos.department
+        structure = {
+            'institute': None,      # Институт (уровень 1)
+            'department': None,     # Отдел (уровень 2)
+            'laboratory': None,     # Лаборатория (уровень 3)
+            'group': None,          # Группа (уровень 4)
+            'full_path': dept.full_path
+        }
+        
+        # Собираем все уровни
+        current = dept
+        while current:
+            if current.level == 0:  # Институт/основное подразделение
+                structure['institute'] = current.name
+            elif current.level == 1:  # Отдел
+                structure['department'] = current.name
+            elif current.level == 2:  # Лаборатория
+                structure['laboratory'] = current.name
+            elif current.level >= 3:  # Группа и ниже
+                structure['group'] = current.name
+            current = current.parent
+        
+        return structure
 
 
 class Task(models.Model):
@@ -442,3 +524,142 @@ class ResearchProduct(models.Model):
             self.performers.set(self.substage.performers.all())
         if not self.responsible and self.substage.responsible:
             self.responsible = self.substage.responsible
+
+class Department(models.Model):
+    """Структурное подразделение (отдел, лаборатория, группа)"""
+    name = models.CharField('Название', max_length=255)
+    code = models.CharField('Код', max_length=50, blank=True, null=True)
+    parent = models.ForeignKey(
+        'self', 
+        on_delete=models.CASCADE, 
+        verbose_name='Вышестоящее подразделение',
+        related_name='children',
+        null=True, 
+        blank=True
+    )
+    level = models.IntegerField('Уровень вложенности', default=0)
+    full_path = models.CharField('Полный путь', max_length=500, blank=True)
+    
+    # Тип подразделения
+    TYPE_CHOICES = [
+        ('directorate', 'Дирекция'),
+        ('department', 'Отдел'),
+        ('laboratory', 'Лаборатория'),
+        ('group', 'Группа'),
+        ('service', 'Служба'),
+        ('division', 'Отделение'),
+    ]
+    type = models.CharField('Тип', max_length=20, choices=TYPE_CHOICES, default='department')
+    
+    created_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    updated_date = models.DateTimeField('Дата обновления', auto_now=True)
+    
+    class Meta:
+        verbose_name = 'Подразделение'
+        verbose_name_plural = 'Подразделения'
+        ordering = ['full_path']
+        indexes = [
+            models.Index(fields=['parent']),  # Для быстрого поиска дочерних элементов
+            models.Index(fields=['type']),     # Для фильтрации по типу
+            models.Index(fields=['name']),     # Для поиска по названию
+            models.Index(fields=['full_path']), # Для иерархических запросов
+        ]
+    
+    def __str__(self):
+        return self.full_path or self.name
+    
+    def save(self, *args, **kwargs):
+        # Автоматически определяем уровень вложенности
+        if self.parent:
+            self.level = self.parent.level + 1
+            self.full_path = f"{self.parent.full_path} / {self.name}"
+        else:
+            self.level = 0
+            self.full_path = self.name
+        super().save(*args, **kwargs)
+
+
+class Position(models.Model):
+    """Должность"""
+    name = models.CharField('Название должности', max_length=255)
+    code = models.CharField('Код', max_length=50, blank=True, null=True)
+    category = models.CharField('Категория (ПКГ)', max_length=50, blank=True, null=True)
+    
+    created_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    updated_date = models.DateTimeField('Дата обновления', auto_now=True)
+    
+    class Meta:
+        verbose_name = 'Должность'
+        verbose_name_plural = 'Должности'
+    
+    def __str__(self):
+        return self.name
+
+
+class StaffPosition(models.Model):
+    """Штатная единица (связь сотрудника с должностью и подразделением)"""
+    employee = models.ForeignKey(
+        Employee, 
+        on_delete=models.CASCADE,
+        verbose_name='Сотрудник',
+        related_name='staff_positions'
+    )
+    department = models.ForeignKey(
+        Department,
+        on_delete=models.CASCADE,
+        verbose_name='Подразделение',
+        related_name='staff_positions'
+    )
+    position = models.ForeignKey(
+        Position,
+        on_delete=models.CASCADE,
+        verbose_name='Должность',
+        related_name='staff_positions'
+    )
+    
+    # Рабочая нагрузка
+    workload = models.DecimalField(
+        'Ставка', 
+        max_digits=3, 
+        decimal_places=2, 
+        default=1.0,
+        help_text='Например: 1.0, 0.5, 0.25'
+    )
+    
+    # Тип занятости
+    EMPLOYMENT_TYPE_CHOICES = [
+        ('main', 'Основное'),
+        ('internal_combination', 'Внутреннее совместительство'),
+        ('external_combination', 'Внешнее совместительство'),
+        ('combination', 'Совмещение'),
+        ('part_time', 'Частичная занятость'),
+        ('vacant', 'Вакансия'),
+        ('decree', 'Декретный отпуск'),
+        ('allowance', 'Надбавка'),
+    ]
+    employment_type = models.CharField(
+        'Тип занятости', 
+        max_length=30, 
+        choices=EMPLOYMENT_TYPE_CHOICES,
+        default='main'
+    )
+    
+    # Примечание (для особых случаев)
+    notes = models.TextField('Примечание', blank=True, null=True)
+    
+    # Период действия
+    start_date = models.DateField('Дата начала', null=True, blank=True)
+    end_date = models.DateField('Дата окончания', null=True, blank=True)
+    
+    is_active = models.BooleanField('Активная', default=True)
+    
+    created_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    updated_date = models.DateTimeField('Дата обновления', auto_now=True)
+    
+    class Meta:
+        verbose_name = 'Штатная единица'
+        verbose_name_plural = 'Штатные единицы'
+        unique_together = ['employee', 'department', 'position', 'start_date']
+    
+    def __str__(self):
+        return f"{self.employee.full_name} - {self.position.name} ({self.department.name})"

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Сотрудники{% endblock %}
 
@@ -15,14 +16,17 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{% url 'employee_import' %}">
-                    <i class="bi bi-file-earmark-arrow-up"></i> Импорт
+                    <i class="bi bi-file-earmark-arrow-up"></i> Импорт сотрудников
                 </a></li>
-                <li><a class="dropdown-item" href="{% url 'employee_export' %}">
-                    <i class="bi bi-file-earmark-arrow-down"></i> Экспорт
+                <li><a class="dropdown-item" href="{% url 'import_staff' %}">
+                    <i class="bi bi-building"></i> Импорт штатного расписания
                 </a></li>
                 <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'employee_export' %}">
+                    <i class="bi bi-file-earmark-arrow-down"></i> Экспорт в Excel
+                </a></li>
                 <li><a class="dropdown-item" href="{% url 'employee_export_template' %}">
-                    <i class="bi bi-file-earmark"></i> Шаблон
+                    <i class="bi bi-file-earmark"></i> Скачать шаблон
                 </a></li>
             </ul>
         </div>
@@ -90,7 +94,11 @@
                     {% endif %}
                     
                     <div class="mt-2">
-                        <span class="badge bg-info">{{ employee.get_department_display }}</span>
+                        {% if employee.staff_positions.first %}
+                            <span class="badge bg-info">{{ employee.staff_positions.first.department.name|truncatechars:30 }}</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ employee.get_department_display }}</span>
+                        {% endif %}
                         <span class="small text-muted ms-2">
                             <i class="bi bi-briefcase"></i> Задач: {{ employee.tasks.count }}
                         </span>

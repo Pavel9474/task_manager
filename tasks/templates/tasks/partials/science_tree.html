@@ -1,0 +1,72 @@
+<div class="tree-level level-2">
+    <div class="nodes-container">
+        {% for institute in departments_by_type.institute %}
+            <div class="tree-node" data-id="{{ institute.id }}">
+                <div class="node-card level-2" onclick="OrgTree.toggleNode('{{ institute.id }}', this)">
+                    <div class="node-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <div class="node-name">{{ institute.name|truncatechars:40 }}</div>
+                    <div class="node-type">{{ institute.get_type_display }}</div>
+                    <div class="node-staff">
+                        <i class="bi bi-people"></i> {{ institute.staff_positions.count }}
+                    </div>
+                    <div class="node-toggle">
+                        <i class="bi bi-chevron-down"></i>
+                    </div>
+                </div>
+                
+                <div id="children-{{ institute.id }}" class="children-container">
+                    {% for dept in institute.children.all %}
+                        <div class="tree-node" data-id="{{ dept.id }}">
+                            <div class="node-card level-3" onclick="OrgTree.toggleNode('{{ dept.id }}', this)">
+                                <div class="node-icon">
+                                    <i class="bi bi-diagram-3"></i>
+                                </div>
+                                <div class="node-name">{{ dept.name|truncatechars:35 }}</div>
+                                <div class="node-type">{{ dept.get_type_display }}</div>
+                                <div class="node-staff">
+                                    <i class="bi bi-people"></i> {{ dept.staff_positions.count }}
+                                </div>
+                                <div class="node-toggle">
+                                    <i class="bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div id="children-{{ dept.id }}" class="children-container">
+                                {% for lab in dept.children.all %}
+                                    <div class="tree-node" data-id="{{ lab.id }}">
+                                        <div class="node-card level-4" onclick="Staff.showLabStaff('{{ lab.id }}')">
+                                            <div class="node-icon">
+                                                <i class="bi bi-flask"></i>
+                                            </div>
+                                            <div class="node-name">{{ lab.name|truncatechars:30 }}</div>
+                                            <div class="node-type">{{ lab.get_type_display }}</div>
+                                            <div class="node-staff">
+                                                <i class="bi bi-people"></i> {{ lab.staff_positions.count }}
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="lab-{{ lab.id }}-staff" class="staff-list" style="display: none;">
+                                            {% for sp in lab.staff_positions.all %}
+                                                <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-item">
+                                                    <i class="bi bi-person-circle"></i>
+                                                    <div class="staff-info">
+                                                        <span class="staff-name">{{ sp.employee.short_name }}</span>
+                                                        <span class="staff-position">{{ sp.position.name }}</span>
+                                                    </div>
+                                                </a>
+                                            {% empty %}
+                                                <div class="staff-item">Нет сотрудников</div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

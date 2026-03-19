@@ -82,4 +82,9 @@ urlpatterns = [
     path('research/assign/<str:item_type>/<int:item_id>/', views.assign_research_performers, name='assign_research_performers'),
     path('research/product/<int:product_id>/status/', views.update_product_status, name='update_product_status'),
     path('task/preview-import/', views.preview_import, name='preview_import'),
+    
+    path('staff/import/', views.import_staff_from_excel, name='import_staff'),
+    
+    path('org-chart/', views.organization_chart, name='organization_chart'),
+    path('department/<int:dept_id>/ajax/', views.department_detail_ajax, name='department_detail_ajax'),
 ]
