@@ -10,7 +10,7 @@
                         <div class="node-name">{{ dept.name|truncatechars:40 }}</div>
                         <div class="node-type">{{ dept.get_type_display }}</div>
                         <div class="node-staff">
-                            <i class="bi bi-people"></i> {{ dept.staff_positions.count }}
+                            <i class="bi bi-people"></i> {{ dept.staff_count }}
                         </div>
                         <div class="node-toggle">
                             <i class="bi bi-chevron-down"></i>
@@ -18,7 +18,7 @@
                     </div>
                     
                     <div id="children-{{ dept.id }}" class="children-container">
-                        {% for child in dept.children.all %}
+                        {% for child in dept.children_list %}
                             <div class="tree-node" data-id="{{ child.id }}">
                                 <div class="node-card level-3">
                                     <div class="node-icon">
@@ -27,14 +27,14 @@
                                     <div class="node-name">{{ child.name|truncatechars:35 }}</div>
                                     <div class="node-type">{{ child.get_type_display }}</div>
                                     <div class="node-staff">
-                                        <i class="bi bi-people"></i> {{ child.staff_positions.count }}
+                                        <i class="bi bi-people"></i> {{ child.staff_count }}
                                     </div>
                                 </div>
                             </div>
                         {% endfor %}
                         
-                        <!-- Сотрудники отдела -->
-                        {% if dept.staff_positions.count > 0 %}
+                        <!-- Сотрудники отдела (ИСПРАВЛЕНО) -->
+                        {% if dept.staff_count > 0 %}
                             <div class="staff-list" style="margin-top: 20px;">
                                 {% for sp in dept.staff_positions.all %}
                                     <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-item">

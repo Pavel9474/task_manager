@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+# Загружаем переменные из .env
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6_hrc3+y1htnz4n@j))^7&_+=gslae&_vhu*!=1(tbk+in%(gm'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-6_hrc3+y1htnz4n@j))^7&_+=gslae&_vhu*!=1(tbk+in%(gm')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
@@ -38,18 +42,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks',  # наше приложение
+    'compressor',
+    'tasks',  # приложение
 ]
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'tasks.middleware.NoCacheMiddleware',  # Добавляем middleware для отключения кэша
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    'tasks.middleware.RequestLogMiddleware',
 ]
 
 ROOT_URLCONF = 'taskmanager.urls'
@@ -74,14 +82,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'taskmanager.wsgi.application'
 
 
+# ========== КЭШИРОВАНИЕ ==========
+CACHES = {
+    'default': {
+        'BACKEND': os.getenv('CACHE_BACKEND', 'django.core.cache.backends.locmem.LocMemCache'),
+        'LOCATION': os.getenv('CACHE_LOCATION', 'unique-snowflake'),
+    }
+}
+
+# Время кэширования для страниц (в секундах)
+CACHE_MIDDLEWARE_SECONDS = 600
+
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', f'sqlite:///{BASE_DIR}/db.sqlite3')
+    )
 }
 
 
@@ -117,6 +138,8 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -138,51 +161,124 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'task_list'
 LOGOUT_REDIRECT_URL = 'login'
 
-# Отключаем кэширование в Django для разработки
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
-}
-# Для отладки запросов (только для разработки!)
-if DEBUG:
-    import logging
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format='%(asctime)s - %(message)s',
-        datefmt='%H:%M:%S'
-    )
-    
-    # Логирование всех SQL запросов
-    l = logging.getLogger('django.db.backends')
-    l.setLevel(logging.DEBUG)
-    l.addHandler(logging.StreamHandler())
 
-import logging
-if DEBUG:
-    logging.basicConfig(
-        level=logging.DEBUG,
-        format='%(asctime)s - %(message)s',
-        datefmt='%H:%M:%S'
-    )
-    
-    # Логирование всех SQL запросов
-    l = logging.getLogger('django.db.backends')
-    l.setLevel(logging.DEBUG)
-    l.addHandler(logging.StreamHandler())
-    
-    # Показывать количество запросов в конце
-    from django.db import connection
-    import traceback
-    
-    def show_queries(sender, **kwargs):
-        if len(connection.queries) > 0:
-            print(f"\n{'='*60}")
-            print(f"🔍 ВЫПОЛНЕНО ЗАПРОСОВ: {len(connection.queries)}")
-            print(f"{'='*60}")
-            for i, query in enumerate(connection.queries[-5:], 1):  # покажем последние 5 запросов
-                print(f"{i}. {query['time']} сек - {query['sql'][:100]}...")
-            print(f"{'='*60}\n")
-    
-    from django.core.signals import request_finished
-    request_finished.connect(show_queries)
+# ========== ЛОГИРОВАНИЕ ==========
+import os
+from pathlib import Path
+
+# Создаём папку для логов с абсолютным путём
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOG_DIR, exist_ok=True)
+
+# Для отладки — выводим путь при запуске
+print(f"📁 Логи будут сохраняться в: {LOG_DIR}")
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {asctime} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'DEBUG',
+            'formatter': 'simple',
+        },
+        'file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'filename': os.path.join(LOG_DIR, 'django.log'),
+            'maxBytes': 10 * 1024 * 1024,  # 10 MB
+            'backupCount': 5,
+            'encoding': 'utf-8',
+        },
+        'error_file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'ERROR',
+            'formatter': 'verbose',
+            'filename': os.path.join(LOG_DIR, 'errors.log'),
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 5,
+            'encoding': 'utf-8',
+        },
+        'tasks_file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'DEBUG',
+            'formatter': 'verbose',
+            'filename': os.path.join(LOG_DIR, 'tasks.log'),
+            'maxBytes': 10 * 1024 * 1024,
+            'backupCount': 5,
+            'encoding': 'utf-8',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'tasks': {
+            'handlers': ['console', 'tasks_file', 'error_file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.db.backends': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
+
+
+# ========== ДЛЯ ТЕСТОВ ОТКЛЮЧАЕМ КЭШ ==========
+import sys
+if 'test' in sys.argv:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
+    # Убираем вывод пути к логам в тестах
+    LOGGING['handlers']['console']['level'] = 'ERROR'
+    LOGGING['handlers']['file']['level'] = 'ERROR'
+    LOGGING['handlers']['tasks_file']['level'] = 'ERROR'
+    LOGGING['loggers']['tasks']['level'] = 'ERROR'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True  # Для продакшена
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.rCSSMinFilter',
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
+
+# Если используете Sass
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
+
+# Уровень сжатия
+COMPRESS_CSS_HASHING_METHOD = 'hash'
+COMPRESS_VERBOSE = DEBUG

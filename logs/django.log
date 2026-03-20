@@ -1,0 +1,3 @@
+INFO 2026-03-20 16:41:23,692 autoreload 22556 20632 Watching for file changes with StatReloader
+INFO 2026-03-20 16:41:55,426 basehttp 22556 23808 "GET / HTTP/1.1" 200 4262
+INFO 2026-03-20 16:42:12,861 basehttp 22556 23808 "GET /employee/277/ HTTP/1.1" 200 2983

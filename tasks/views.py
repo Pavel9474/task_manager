@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct, Department, Position, StaffPosition
-from .forms import TaskForm, TaskWithImportForm
+from .forms import TaskForm, TaskWithImportForm, StaffImportForm
 from .forms import ResearchTaskForm, ResearchStageForm, ResearchSubstageForm, ResearchProductForm
 from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
 from .forms_employee import EmployeeForm, EmployeeImportForm
@@ -21,8 +21,10 @@ from django.db.models import Prefetch, Count
 from django.db.models import Q
 from .services.org_service import OrganizationService
 import os
+from .decorators import log_view
+from django.core.cache import cache
 # ============= АУТЕНТИФИКАЦИЯ =============
-
+@login_required
 def register(request):
     """Регистрация нового пользователя"""
     if request.method == 'POST':
@@ -42,6 +44,7 @@ def register(request):
 
 @login_required
 def task_list(request):
+
     """Список задач пользователя"""
     tasks = Task.objects.filter(user=request.user)
     
@@ -1434,6 +1437,10 @@ def import_staff_from_excel(request):
                 import os
                 os.unlink(tmp_path)
                 
+                # Очищаем кэш оргструктуры после импорта
+                cache.delete('org_chart_data_v3')
+                print(f"🗑️ Кэш оргструктуры очищен после импорта штатного расписания")
+                
                 messages.success(request, f'Успешно импортировано {imported_count} штатных единиц')
                 return redirect('employee_list')
                 
@@ -1446,61 +1453,124 @@ def import_staff_from_excel(request):
 
 @login_required
 def organization_chart(request):
-    """
-    Оптимизированное представление с использованием сервисного слоя
-    """
-    # Получаем все данные через сервис
-    departments = OrganizationService.get_full_structure()
+    # Пытаемся получить данные из кэша
+    cache_key = 'org_chart_data_v3'
+    cached_data = cache.get(cache_key)
     
-    # Получаем НИИ радиационной биологии
+    if cached_data:
+        print("📦 Данные загружены из кэша")
+        return render(request, 'tasks/organization_chart.html', cached_data)
+    
+    print("🔄 Загружаем данные из базы...")
+    
+    # 1. Загружаем все подразделения с аннотированным количеством сотрудников
+    #    и предварительной загрузкой сотрудников на всех уровнях
+    departments = Department.objects.annotate(
+        staff_count=Count('staff_positions', filter=Q(staff_positions__is_active=True))
+    ).prefetch_related(
+        # Загружаем сотрудников для всех отделов
+        Prefetch('staff_positions', 
+                queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position')),
+        # Загружаем дочерние подразделения с их сотрудниками
+        Prefetch('children', 
+                queryset=Department.objects.annotate(
+                    child_staff_count=Count('staff_positions', filter=Q(staff_positions__is_active=True))
+                ).prefetch_related(
+                    Prefetch('staff_positions', 
+                            queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position')),
+                    Prefetch('children',
+                            queryset=Department.objects.annotate(
+                                grandchild_staff_count=Count('staff_positions', filter=Q(staff_positions__is_active=True))
+                            ).prefetch_related(
+                                Prefetch('staff_positions', 
+                                        queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position'))
+                            ))
+                ))
+    ).order_by('name')
+    
+    # Преобразуем в список
+    dept_list = list(departments)
+    
+    # 2. Создаём словарь для быстрого доступа по ID
+    dept_dict = {d.id: d for d in dept_list}
+    
+    # 3. Инициализируем children_list для всех подразделений
+    for dept in dept_list:
+        dept.children_list = []
+    
+    # 4. Строим дерево
+    root_departments = []
+    for dept in dept_list:
+        if dept.parent_id:
+            parent = dept_dict.get(dept.parent_id)
+            if parent:
+                parent.children_list.append(dept)
+        else:
+            root_departments.append(dept)
+    
+    # 5. Группируем по типам
+    departments_by_type = {
+        'institute': [],
+        'department': [],
+        'laboratory': [],
+        'group': [],
+        'service': [],
+    }
+    for dept in dept_list:
+        dept_type = dept.type
+        if dept_type in ['institute', 'directorate']:
+            departments_by_type['institute'].append(dept)
+        elif dept_type in departments_by_type:
+            departments_by_type[dept_type].append(dept)
+    
+    # 6. Ищем НИИ радиационной биологии
     radiobiology_institute = None
-    for dept in departments:
-        if 'радиационной биологии' in dept.name.lower() or '9.' in dept.full_path:
+    for dept in dept_list:
+        if 'радиационной биологии' in dept.name.lower():
             radiobiology_institute = dept
             break
     
-    # Получаем отделы института
-    institute_departments = []
-    if radiobiology_institute:
-        institute_departments = radiobiology_institute.children.all()
-    
-    stats = OrganizationService.get_statistics()
+    # 7. Статистика
+    total_departments = len(dept_list)
+    total_staff_positions = StaffPosition.objects.filter(is_active=True).count()
+    total_employees = StaffPosition.objects.filter(is_active=True).values('employee').distinct().count()
     
     context = {
-        'root_departments': OrganizationService.get_root_departments(departments),
-        'departments_by_type': OrganizationService.group_by_type(departments),
+        'root_departments': root_departments,
+        'departments_by_type': departments_by_type,
         'radiobiology_institute': radiobiology_institute,
-        'institute_departments': institute_departments,
-        'total_departments': stats['total_departments'],
-        'total_employees': stats['total_employees'],
-        'total_staff_positions': stats['total_staff_positions'],
+        'total_departments': total_departments,
+        'total_employees': total_employees,
+        'total_staff_positions': total_staff_positions,
     }
+    
+    # Сохраняем в кэш на 10 минут
+    cache.set(cache_key, context, 60 * 10)
     
     return render(request, 'tasks/organization_chart.html', context)
 
 @login_required
 def department_detail_ajax(request, dept_id):
-    """AJAX запрос для получения дочерних подразделений и сотрудников"""
-    department = get_object_or_404(
-        Department.objects.prefetch_related(
-            'children',
-            Prefetch('staff_positions', 
-                    queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position'))
-        ), 
-        id=dept_id
-    )
+    """Оптимизированный AJAX запрос - 2 запроса вместо N"""
     
-    # Получаем дочерние подразделения с их сотрудниками
-    children = department.children.all().prefetch_related(
+    # 1. Загружаем отдел с его сотрудниками и детьми
+    department = Department.objects.prefetch_related(
         Prefetch('staff_positions', 
-                queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position'))
-    )
+                queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position')),
+        Prefetch('children',
+                queryset=Department.objects.all().prefetch_related(
+                    Prefetch('staff_positions',
+                            queryset=StaffPosition.objects.filter(is_active=True).select_related('employee', 'position'))
+                ))
+    ).get(id=dept_id)
     
+    # 2. Дети уже загружены, просто считаем сотрудников
+    children = list(department.children.all())
     for child in children:
-        child.staff_count = child.staff_positions.count()
+        child.staff_count = len(list(child.staff_positions.all()))
     
-    # Получаем сотрудников этого подразделения
-    staff_positions = department.staff_positions.all()
+    # 3. Сотрудники уже загружены
+    staff_positions = list(department.staff_positions.all())
     
     html = render_to_string('tasks/partials/department_children.html', {
         'department': department,
@@ -1511,6 +1581,6 @@ def department_detail_ajax(request, dept_id):
     return JsonResponse({
         'success': True,
         'html': html,
-        'children_count': children.count(),
-        'staff_count': staff_positions.count(),
+        'children_count': len(children),
+        'staff_count': len(staff_positions),
     })

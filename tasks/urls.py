@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-
+from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 urlpatterns = [
     # ===== Задачи =====
     path('', views.task_list, name='task_list'),
@@ -87,4 +88,6 @@ urlpatterns = [
     
     path('org-chart/', views.organization_chart, name='organization_chart'),
     path('department/<int:dept_id>/ajax/', views.department_detail_ajax, name='department_detail_ajax'),
+
+    path('org-chart/', cache_page(60 * 10)(views.organization_chart), name='organization_chart'),
 ]

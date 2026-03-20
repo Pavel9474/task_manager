@@ -59,6 +59,12 @@ class Employee(models.Model):
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'
         ordering = ['last_name', 'first_name']
+        indexes = [
+            models.Index(fields=['last_name', 'first_name'], name='emp_name_idx'),
+            models.Index(fields=['email'], name='emp_email_idx'),
+            models.Index(fields=['is_active'], name='emp_active_idx'),
+            models.Index(fields=['department'], name='emp_dept_idx'),
+        ]
     
     def __str__(self):
         return self.full_name
@@ -74,12 +80,12 @@ class Employee(models.Model):
     @property
     def short_name(self):
         """Краткое имя (Фамилия И.О.)"""
-        name_parts = [self.last_name]
+        result = self.last_name
         if self.first_name:
-            name_parts.append(f"{self.first_name[0]}.")
+            result += f" {self.first_name[0]}."
         if self.patronymic:
-            name_parts.append(f"{self.patronymic[0]}.")
-        return ' '.join(name_parts)
+            result += f"{self.patronymic[0]}."  # Убираем пробел перед отчеством
+        return result
     
     def get_department_path(self):
         """Получить полный путь подразделения сотрудника"""
@@ -194,6 +200,13 @@ class Task(models.Model):
         ordering = ['-created_date']
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+        indexes = [
+            models.Index(fields=['user'], name='task_user_idx'),
+            models.Index(fields=['status'], name='task_status_idx'),
+            models.Index(fields=['priority'], name='task_priority_idx'),
+            models.Index(fields=['due_date'], name='task_due_date_idx'),
+            models.Index(fields=['created_date'], name='task_created_idx'),
+        ]
     
     def __str__(self):
         return self.title
@@ -295,7 +308,13 @@ class Subtask(models.Model):
         verbose_name = 'Подзадача'
         verbose_name_plural = 'Подзадачи'
         ordering = ['stage_number']
-        unique_together = ['task', 'stage_number']  # Это теперь работает со строками
+        unique_together = ['task', 'stage_number']
+        indexes = [
+            models.Index(fields=['task'], name='subtask_task_idx'),
+            models.Index(fields=['status'], name='subtask_status_idx'),
+            models.Index(fields=['priority'], name='subtask_priority_idx'),
+            models.Index(fields=['planned_end'], name='subtask_planned_end_idx'),
+        ]  # Это теперь работает со строками
     
     def __str__(self):
         priority_icon = {
@@ -559,10 +578,11 @@ class Department(models.Model):
         verbose_name_plural = 'Подразделения'
         ordering = ['full_path']
         indexes = [
-            models.Index(fields=['parent']),  # Для быстрого поиска дочерних элементов
-            models.Index(fields=['type']),     # Для фильтрации по типу
-            models.Index(fields=['name']),     # Для поиска по названию
-            models.Index(fields=['full_path']), # Для иерархических запросов
+            models.Index(fields=['parent'], name='dept_parent_idx'),
+            models.Index(fields=['type'], name='dept_type_idx'),
+            models.Index(fields=['name'], name='dept_name_idx'),
+            models.Index(fields=['full_path'], name='dept_full_path_idx'),
+            models.Index(fields=['level'], name='dept_level_idx'),
         ]
     
     def __str__(self):
@@ -660,6 +680,13 @@ class StaffPosition(models.Model):
         verbose_name = 'Штатная единица'
         verbose_name_plural = 'Штатные единицы'
         unique_together = ['employee', 'department', 'position', 'start_date']
+        indexes = [
+            models.Index(fields=['department'], name='staff_dept_idx'),
+            models.Index(fields=['employee'], name='staff_employee_idx'),
+            models.Index(fields=['position'], name='staff_position_idx'),
+            models.Index(fields=['is_active'], name='staff_active_idx'),
+            models.Index(fields=['employment_type'], name='staff_empl_type_idx'),
+        ]
     
     def __str__(self):
         return f"{self.employee.full_name} - {self.position.name} ({self.department.name})"

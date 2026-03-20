@@ -1,3 +1,15 @@
+<!-- Отладка структуры -->
+<div style="background: #e7f1ff; padding: 10px; margin: 10px; border: 1px solid #0d6efd;">
+    <h5>🏢 Структура подразделений:</h5>
+    <p>Всего корневых: {{ root_departments|length }}</p>
+    {% for root in root_departments %}
+        <p><strong>{{ root.name }}</strong> (ID: {{ root.id }}) - детей: {{ root.children_list|length }}</p>
+        {% for child in root.children_list|slice:":5" %}
+            <p style="margin-left: 20px;">  ├─ {{ child.name }} (ID: {{ child.id }})</p>
+        {% endfor %}
+    {% endfor %}
+</div>
+
 <div class="tree-level level-2">
     <div class="nodes-container">
         {% for institute in departments_by_type.institute %}
@@ -9,7 +21,7 @@
                     <div class="node-name">{{ institute.name|truncatechars:40 }}</div>
                     <div class="node-type">{{ institute.get_type_display }}</div>
                     <div class="node-staff">
-                        <i class="bi bi-people"></i> {{ institute.staff_positions.count }}
+                        <i class="bi bi-people"></i> {{ institute.staff_count }}
                     </div>
                     <div class="node-toggle">
                         <i class="bi bi-chevron-down"></i>
@@ -17,7 +29,7 @@
                 </div>
                 
                 <div id="children-{{ institute.id }}" class="children-container">
-                    {% for dept in institute.children.all %}
+                    {% for dept in institute.children_list %}
                         <div class="tree-node" data-id="{{ dept.id }}">
                             <div class="node-card level-3" onclick="OrgTree.toggleNode('{{ dept.id }}', this)">
                                 <div class="node-icon">
@@ -26,47 +38,104 @@
                                 <div class="node-name">{{ dept.name|truncatechars:35 }}</div>
                                 <div class="node-type">{{ dept.get_type_display }}</div>
                                 <div class="node-staff">
-                                    <i class="bi bi-people"></i> {{ dept.staff_positions.count }}
+                                    <i class="bi bi-people"></i> {{ dept.staff_count }}
                                 </div>
                                 <div class="node-toggle">
                                     <i class="bi bi-chevron-down"></i>
                                 </div>
                             </div>
                             
-                            <div id="children-{{ dept.id }}" class="children-container">
-                                {% for lab in dept.children.all %}
-                                    <div class="tree-node" data-id="{{ lab.id }}">
-                                        <div class="node-card level-4" onclick="Staff.showLabStaff('{{ lab.id }}')">
-                                            <div class="node-icon">
-                                                <i class="bi bi-flask"></i>
+                            {% if dept.children_list %}
+                                <div id="children-{{ dept.id }}" class="children-container">
+                                    {% for lab in dept.children_list %}
+                                        <div class="tree-node" data-id="{{ lab.id }}">
+                                            <div class="node-card level-4" onclick="Staff.showLabStaff('{{ lab.id }}')">
+                                                <div class="node-icon">
+                                                    <i class="bi bi-flask"></i>
+                                                </div>
+                                                <div class="node-name">{{ lab.name|truncatechars:30 }}</div>
+                                                <div class="node-type">{{ lab.get_type_display }}</div>
+                                                <div class="node-staff">
+                                                    <i class="bi bi-people"></i> {{ lab.staff_count }}
+                                                </div>
                                             </div>
-                                            <div class="node-name">{{ lab.name|truncatechars:30 }}</div>
-                                            <div class="node-type">{{ lab.get_type_display }}</div>
-                                            <div class="node-staff">
-                                                <i class="bi bi-people"></i> {{ lab.staff_positions.count }}
+                                            
+                                            <div id="lab-{{ lab.id }}-staff" class="staff-list" style="display: none;">
+                                                {% for sp in lab.staff_positions.all %}
+                                                    <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-item">
+                                                        <i class="bi bi-person-circle"></i>
+                                                        <div class="staff-info">
+                                                            <span class="staff-name">{{ sp.employee.short_name }}</span>
+                                                            <span class="staff-position">{{ sp.position.name }}</span>
+                                                        </div>
+                                                    </a>
+                                                {% empty %}
+                                                    <div class="staff-item">Нет сотрудников</div>
+                                                {% endfor %}
                                             </div>
                                         </div>
-                                        
-                                        <div id="lab-{{ lab.id }}-staff" class="staff-list" style="display: none;">
-                                            {% for sp in lab.staff_positions.all %}
-                                                <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-item">
-                                                    <i class="bi bi-person-circle"></i>
-                                                    <div class="staff-info">
-                                                        <span class="staff-name">{{ sp.employee.short_name }}</span>
-                                                        <span class="staff-position">{{ sp.position.name }}</span>
-                                                    </div>
-                                                </a>
-                                            {% empty %}
-                                                <div class="staff-item">Нет сотрудников</div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
             </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="tree-level level-2">
+    <div class="nodes-container">
+        {% for dept in departments_by_type.department %}
+            {% if dept.parent is None and 'институт' not in dept.name|lower %}
+                <div class="tree-node" data-id="{{ dept.id }}">
+                    <div class="node-card level-2" onclick="OrgTree.toggleNode('{{ dept.id }}', this)">
+                        <div class="node-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        <div class="node-name">{{ dept.name|truncatechars:40 }}</div>
+                        <div class="node-type">{{ dept.get_type_display }}</div>
+                        <div class="node-staff">
+                            <i class="bi bi-people"></i> {{ dept.staff_count }}
+                        </div>
+                        <div class="node-toggle">
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div id="children-{{ dept.id }}" class="children-container">
+                        {% for child in dept.children_list %}
+                            <div class="tree-node" data-id="{{ child.id }}">
+                                <div class="node-card level-3">
+                                    <div class="node-icon">
+                                        <i class="bi bi-diagram-3"></i>
+                                    </div>
+                                    <div class="node-name">{{ child.name|truncatechars:35 }}</div>
+                                    <div class="node-type">{{ child.get_type_display }}</div>
+                                    <div class="node-staff">
+                                        <i class="bi bi-people"></i> {{ child.staff_count }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                        {% if dept.staff_count > 0 %}
+                            <div class="staff-list" style="margin-top: 20px;">
+                                {% for sp in dept.staff_positions.all %}
+                                    <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-item">
+                                        <i class="bi bi-person-circle"></i>
+                                        <div class="staff-info">
+                                            <span class="staff-name">{{ sp.employee.short_name }}</span>
+                                            <span class="staff-position">{{ sp.position.name }}</span>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
