@@ -690,3 +690,55 @@ class StaffPosition(models.Model):
     
     def __str__(self):
         return f"{self.employee.full_name} - {self.position.name} ({self.department.name})"
+
+class ResearchProduct(models.Model):
+    """Научно-техническая продукция"""
+    subtask = models.ForeignKey(
+        'Subtask',
+        on_delete=models.CASCADE,
+        related_name='products',
+        verbose_name='Подэтап',
+        null=True,
+        blank=True
+    )
+    name = models.CharField('Наименование продукции', max_length=500)
+    description = models.TextField('Описание', blank=True)
+    due_date = models.DateField('Срок выполнения', null=True, blank=True)
+    
+    performers = models.ManyToManyField(
+        'Employee',
+        verbose_name='Исполнители',
+        related_name='assigned_products',
+        blank=True
+    )
+    responsible = models.ForeignKey(
+        'Employee',
+        on_delete=models.SET_NULL,
+        verbose_name='Ответственный',
+        related_name='responsible_products',
+        null=True,
+        blank=True
+    )
+    
+    STATUS_CHOICES = [
+        ('pending', 'Ожидает'),
+        ('in_progress', 'В работе'),
+        ('completed', 'Выполнено'),
+        ('delayed', 'Задержка'),
+    ]
+    status = models.CharField(
+        'Статус',
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='pending'
+    )
+    
+    created_date = models.DateTimeField('Дата создания', auto_now_add=True)
+    updated_date = models.DateTimeField('Дата обновления', auto_now=True)
+    
+    class Meta:
+        verbose_name = 'Продукция'
+        verbose_name_plural = 'Продукция'
+    
+    def __str__(self):
+        return self.name

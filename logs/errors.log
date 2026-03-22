@@ -1,1 +1,867 @@
 ERROR 2026-03-20 16:41:55,379 views 22556 23808 Тестовая ошибка ERROR
+<<<<<<< HEAD
+=======
+ERROR 2026-03-21 01:21:06,755 middleware 17036 6476 💥 Исключение в GET /task/25/subtasks/: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 71, in render_offline
+    original_content = self.get_original_content(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 146, in get_original_content
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
+    raise OfflineGenerationError(
+    ...<4 lines>...
+    )
+compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+ERROR 2026-03-21 01:21:06,819 middleware 17036 6476 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:22:37,303 middleware 16860 13960 💥 Исключение в GET /task/25/subtasks/: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 71, in render_offline
+    original_content = self.get_original_content(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 146, in get_original_content
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
+    raise OfflineGenerationError(
+    ...<4 lines>...
+    )
+compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+ERROR 2026-03-21 01:22:37,357 middleware 16860 13960 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:24:17,233 middleware 11772 3248 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:24:17,295 middleware 11772 3248 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:20,952 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:25:20,996 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:22,264 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:25:22,307 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:24,757 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:25:24,800 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:58,702 middleware 14360 17688 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:25:58,748 middleware 14360 17688 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:29:06,591 middleware 15572 17356 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:29:06,636 middleware 15572 17356 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:33:51,978 middleware 17628 18076 💥 Исключение в GET /task/25/subtasks/: 'https://code.jquery.com/jquery-3.6.0.min.js' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\js.py", line 16, in split_contents
+    basename = self.get_basename(attribs["src"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://code.jquery.com/jquery-3.6.0.min.js' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+ERROR 2026-03-21 01:33:52,023 middleware 17628 18076 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:44:20,726 middleware 16864 2872 💥 Исключение в GET /task/25/assign/: Template: E:\taskmanager\tasks\templates\tasks\task_assign_employees.html, default requires 2 arguments, 1 provided
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 720, in task_assign_employees
+    return render(request, 'tasks/task_assign_employees.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 772, in __init__
+    self.args_check(filter_name, filter_func, args)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 835, in args_check
+    raise TemplateSyntaxError(
+        "%s requires %d arguments, %d provided" % (name, alen - dlen, plen)
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\task_assign_employees.html, default requires 2 arguments, 1 provided
+ERROR 2026-03-21 01:44:20,766 middleware 16864 2872 ❌ Ошибка 500: GET /task/25/assign/ - Пользователь: pavel2
+ERROR 2026-03-22 15:59:18,787 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+ERROR 2026-03-22 15:59:21,605 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+ERROR 2026-03-22 15:59:22,679 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+ERROR 2026-03-22 15:59:27,192 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+ERROR 2026-03-22 16:01:14,610 middleware 2092 13492 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:10:15,028 middleware 1992 15608 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:20:29,084 middleware 6712 5540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:25:31,956 middleware 6712 5192 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-22 16:27:48,874 middleware 14536 17280 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:28:19,901 middleware 14536 8064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-22 16:31:44,121 middleware 17280 2352 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:32:03,581 middleware 17280 10368 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-22 16:32:06,984 middleware 17280 10368 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-22 16:32:40,917 middleware 17280 10368 ❌ Ошибка 404: GET /test/ - Пользователь: Аноним
+ERROR 2026-03-22 16:35:21,573 middleware 6740 5732 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-22 16:36:40,816 middleware 6740 5732 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-22 16:36:42,980 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-22 16:36:49,138 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
+ERROR 2026-03-22 16:37:16,095 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
+ERROR 2026-03-22 16:40:34,973 middleware 14972 12888 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-22 16:40:50,516 middleware 14972 13816 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:45:44,368 middleware 15932 16644 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 16:46:06,667 middleware 15932 16644 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 22:50:22,093 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-22 22:50:32,462 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 22:50:43,402 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-22 22:50:51,238 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-23 00:02:23,647 middleware 8688 19428 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-23 01:50:58,694 middleware 11508 1928 ❌ Ошибка 404: GET /task/1 - Пользователь: pavel
+ERROR 2026-03-23 01:51:11,049 middleware 11508 1928 ❌ Ошибка 404: GET /task/1/subtasks - Пользователь: pavel
+ERROR 2026-03-23 01:54:16,097 middleware 11508 11964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+ERROR 2026-03-23 02:02:21,042 middleware 6856 19332 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-23 02:02:28,611 middleware 6856 5440 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+>>>>>>> 3124d7e (22032026 production employers need to add)

@@ -7,9 +7,9 @@ from django.db.models import Q, Count, Prefetch
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct, Department, Position, StaffPosition
+from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, Department, Position, StaffPosition
 from .forms import TaskForm, TaskWithImportForm, StaffImportForm
-from .forms import ResearchTaskForm, ResearchStageForm, ResearchSubstageForm, ResearchProductForm
+from .forms import ResearchTaskForm, ResearchStageForm, ResearchSubstageForm
 from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
 from .forms_employee import EmployeeForm, EmployeeImportForm
 from .utils.docx_importer import ResearchDocxImporter
@@ -912,6 +912,8 @@ from .models import Subtask
 from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
 
 
+# ============= УПРАВЛЕНИЕ ПОДЗАДАЧАМИ (ЭТАПАМИ) =============
+
 @login_required
 def subtask_list(request, task_id):
     """Список подзадач для задачи с группировкой по этапам"""
@@ -978,6 +980,7 @@ def subtask_list(request, task_id):
     }
     return render(request, 'tasks/subtask_list.html', context)
 
+
 @login_required
 def subtask_create(request, task_id):
     """Создание подзадачи"""
@@ -989,9 +992,8 @@ def subtask_create(request, task_id):
             subtask = form.save(commit=False)
             subtask.task = task
             subtask.save()
-            form.save_m2m()  # Сохраняем many-to-many связи
+            form.save_m2m()
             
-            # Автоматическое назначение ответственного, если один исполнитель
             if subtask.performers.count() == 1 and not subtask.responsible:
                 subtask.responsible = subtask.performers.first()
                 subtask.save()
@@ -1007,16 +1009,11 @@ def subtask_create(request, task_id):
         'title': f'Добавление этапа к задаче: {task.title}'
     })
 
+
 @login_required
 def subtask_update(request, subtask_id):
     """Редактирование подзадачи"""
     subtask = get_object_or_404(Subtask, id=subtask_id, task__user=request.user)
-    
-    # Отладка
-    print(f"\n=== Редактирование подэтапа {subtask_id} ===")
-    print(f"planned_start: {subtask.planned_start}")
-    print(f"planned_end: {subtask.planned_end}")
-    print(f"Тип planned_start: {type(subtask.planned_start)}")
     
     if request.method == 'POST':
         form = SubtaskForm(request.POST, instance=subtask, task=subtask.task)
@@ -1033,6 +1030,7 @@ def subtask_update(request, subtask_id):
         'subtask': subtask,
         'title': f'Редактирование этапа {subtask.stage_number}'
     })
+
 
 @login_required
 def subtask_delete(request, subtask_id):
@@ -1062,13 +1060,10 @@ def subtask_bulk_create(request, task_id):
             
             for stage_data in stages:
                 try:
-                    # Поиск или создание исполнителей по именам
                     performers = []
-                    if stage_data['performers']:
-                        names = [name.strip() for name in stage_data['performers'].split(',')]
-                        for name in names:
-                            # Простой поиск по имени (можно улучшить)
-                            parts = name.split()
+                    if stage_data.get('performers'):
+                        for name in stage_data['performers'].split(','):
+                            parts = name.strip().split()
                             if len(parts) >= 2:
                                 employee = Employee.objects.filter(
                                     last_name__icontains=parts[0],
@@ -1081,7 +1076,7 @@ def subtask_bulk_create(request, task_id):
                         task=task,
                         stage_number=stage_data['stage_number'],
                         title=stage_data['title'],
-                        description=stage_data['description']
+                        description=stage_data.get('description', '')
                     )
                     
                     if performers:
@@ -1120,7 +1115,6 @@ def subtask_update_status(request, subtask_id):
         if new_status in dict(Subtask.STATUS_CHOICES):
             subtask.status = new_status
             
-            # Автоматически фиксируем время
             if new_status == 'in_progress' and not subtask.actual_start:
                 subtask.actual_start = timezone.now()
             elif new_status == 'completed' and not subtask.actual_end:
@@ -1584,3 +1578,50 @@ def department_detail_ajax(request, dept_id):
         'children_count': len(children),
         'staff_count': len(staff_positions),
     })
+
+# @login_required
+# def product_assign_performers(request, product_id):
+#     """Назначение исполнителей на продукцию"""
+#     product = get_object_or_404(ResearchProduct, id=product_id)
+    
+#     if request.method == 'POST':
+#         performer_ids = request.POST.getlist('performers')
+#         responsible_id = request.POST.get('responsible')
+        
+#         product.performers.set(performer_ids)
+#         if responsible_id:
+#             product.responsible_id = responsible_id
+#         product.save()
+        
+#         messages.success(request, 'Исполнители назначены')
+        
+#         # Возвращаемся к подэтапу
+#         return redirect('subtask_list', task_id=product.subtask.task.id)
+    
+#     employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+#     current_performers = product.performers.values_list('id', flat=True)
+    
+#     context = {
+#         'product': product,
+#         'employees': employees,
+#         'current_performers': list(current_performers),
+#         'current_responsible': product.responsible_id
+#     }
+#     return render(request, 'tasks/product_assign_performers.html', context)
+
+
+# @login_required
+# def update_product_status(request, product_id):
+#     """Обновление статуса продукции"""
+#     if request.method == 'POST':
+#         product = get_object_or_404(ResearchProduct, id=product_id)
+#         new_status = request.POST.get('status')
+        
+#         if new_status in dict(ResearchProduct.STATUS_CHOICES):
+#             product.status = new_status
+#             product.save()
+#             messages.success(request, f'Статус продукции обновлён на "{product.get_status_display()}"')
+        
+#         return redirect('subtask_list', task_id=product.subtask.task.id)
+    
+#     return redirect('subtask_list', task_id=product.subtask.task.id)

@@ -3,8 +3,6 @@
 {% block title %}{{ task.title }}{% endblock %}
 
 {% block content %}
-
-<!-- КОНЕЦ ПРОВЕРКИ -->
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <div class="card">
@@ -103,23 +101,33 @@
                     <p class="text-muted">Исполнители не назначены</p>
                 </div>
                 {% endif %}
-                
-                <!-- ============= БЛОК С ПОДЗАДАЧАМИ ============= -->
+                <!-- ============= БЛОК С ПОДЗАДАЧАМИ (ЭТАПАМИ) ============= -->
                 <div class="mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4><i class="bi bi-diagram-3"></i> Этапы выполнения</h4>
-                        <div>
-                            <a href="{% url 'subtask_create' task.id %}" class="btn btn-sm btn-success me-2">
-                                <i class="bi bi-plus-lg"></i> Добавить этап
-                            </a>
-                            <a href="{% url 'subtask_list' task.id %}" class="btn btn-sm btn-outline-primary">
-                                <i class="bi bi-list-task"></i> Управление этапами
-                            </a>
-                        </div>
+                        <a href="{% url 'subtask_list' task.id %}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye"></i> Управление этапами
+                        </a>
                     </div>
                     
                     {% with subtasks=task.subtasks.all %}
                         {% if subtasks %}
+                            <!-- Прогресс-бар -->
+                            {% with total=subtasks.count %}
+                                {% with completed=subtasks.filter.status.completed.count %}
+                                    {% if total > 0 %}
+                                    <div class="progress mb-3" style="height: 10px;">
+                                        <div class="progress-bar bg-success" style="width: {% widthratio completed total 100 %}%">
+                                            <span class="visually-hidden">{{ completed }}/{{ total }} завершено</span>
+                                        </div>
+                                    </div>
+                                    <div class="small text-muted text-end mb-2">
+                                        Выполнено: {{ completed }} из {{ total }} ({% widthratio completed total 100 %}%)
+                                    </div>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endwith %}
+                            <!-- Список последних 3 этапов -->
                             <div class="list-group">
                                 {% for subtask in subtasks|slice:":3" %}
                                     <div class="list-group-item">
@@ -127,14 +135,15 @@
                                             <div>
                                                 <h6 class="mb-1">
                                                     <span class="badge bg-secondary me-2">Этап {{ subtask.stage_number }}</span>
-                                                    <!-- НОВЫЙ БЕЙДЖ ПРИОРИТЕТА -->
-                                                    <span class="badge bg-{{ subtask.priority_color }} me-2">
-                                                        {{ subtask.get_priority_display }}
-                                                    </span>
                                                     {{ subtask.title }}
                                                 </h6>
+                                                <small class="text-muted">
+                                                    {% if subtask.responsible %}
+                                                        <i class="bi bi-person-check"></i> {{ subtask.responsible.short_name }}
+                                                    {% endif %}
+                                                </small>
                                             </div>
-                                            <span class="badge {% if subtask.status == 'completed' %}bg-success{% elif subtask.status == 'in_progress' %}bg-primary{% else %}bg-warning text-dark{% endif %}">
+                                            <span class="badge {% if subtask.status == 'completed' %}bg-success{% elif subtask.status == 'in_progress' %}bg-primary{% elif subtask.status == 'delayed' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
                                                 {{ subtask.get_status_display }}
                                             </span>
                                         </div>
@@ -144,17 +153,22 @@
                             {% if subtasks.count > 3 %}
                                 <div class="text-center mt-2">
                                     <a href="{% url 'subtask_list' task.id %}" class="btn btn-sm btn-link">
-                                        Все этапы ({{ subtasks.count }})
+                                        Показать все {{ subtasks.count }} этапов...
                                     </a>
                                 </div>
                             {% endif %}
                         {% else %}
-                            <p class="text-muted">Нет этапов</p>
+                            <div class="text-center py-4 bg-light rounded">
+                                <i class="bi bi-diagram-3" style="font-size: 3rem; color: #ccc;"></i>
+                                <p class="text-muted mt-2">Для этой задачи еще нет этапов</p>
+                                <a href="{% url 'subtask_create' task.id %}" class="btn btn-sm btn-success">
+                                    <i class="bi bi-plus-lg"></i> Добавить первый этап
+                                </a>
+                            </div>
                         {% endif %}
                     {% endwith %}
                 </div>
-                <!-- ============= КОНЕЦ БЛОКА ПОДЗАДАЧ ============= -->
-                
+                <!-- ============= КОНЕЦ БЛОКА С ПОДЗАДАЧАМИ ============= -->  
                 <!-- Кнопки управления задачей -->
                 <div class="d-flex justify-content-between mt-4">
                     <a href="{% url 'task_list' %}" class="btn btn-secondary">
@@ -176,12 +190,6 @@
                         <a href="{% url 'task_update' task.id %}" class="btn btn-outline-primary">
                             <i class="bi bi-pencil"></i> Редактировать
                         </a>
-                        
-                        {% if task.start_time or task.end_time %}
-                            <a href="{% url 'task_reset_time' task.id %}" class="btn btn-warning">
-                                <i class="bi bi-arrow-repeat"></i> Сброс времени
-                            </a>
-                        {% endif %}
                         
                         <a href="{% url 'task_delete' task.id %}" class="btn btn-outline-danger">
                             <i class="bi bi-trash"></i> Удалить

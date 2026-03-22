@@ -1,5 +1,6 @@
 from django import forms
-from .models import Task, Employee, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct
+from .models import Task, Employee, ResearchTask, ResearchStage, ResearchSubstage 
+# ResearchProduct
 
 class TaskForm(forms.ModelForm):
     class Meta:
@@ -128,27 +129,27 @@ class ResearchSubstageForm(forms.ModelForm):
         self.fields['responsible'].queryset = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
 
 
-class ResearchProductForm(forms.ModelForm):
-    class Meta:
-        model = ResearchProduct
-        fields = ['name', 'description', 'due_date', 'performers', 'responsible', 'status']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
-            'due_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'performers': forms.SelectMultiple(attrs={
-                'class': 'form-control select2',
-                'data-placeholder': 'Выберите исполнителей...'
-            }),
-            'responsible': forms.Select(attrs={'class': 'form-control select2'}),
-            'status': forms.Select(attrs={'class': 'form-control'}),
-        }
+# class ResearchProductForm(forms.ModelForm):
+#     class Meta:
+#         model = ResearchProduct
+#         fields = ['name', 'description', 'due_date', 'performers', 'responsible', 'status']
+#         widgets = {
+#             'name': forms.TextInput(attrs={'class': 'form-control'}),
+#             'description': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
+#             'due_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+#             'performers': forms.SelectMultiple(attrs={
+#                 'class': 'form-control select2',
+#                 'data-placeholder': 'Выберите исполнителей...'
+#             }),
+#             'responsible': forms.Select(attrs={'class': 'form-control select2'}),
+#             'status': forms.Select(attrs={'class': 'form-control'}),
+#         }
     
-    def __init__(self, *args, **kwargs):
-        self.substage = kwargs.pop('substage', None)
-        super().__init__(*args, **kwargs)
-        self.fields['performers'].queryset = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
-        self.fields['responsible'].queryset = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    # def __init__(self, *args, **kwargs):
+    #     self.substage = kwargs.pop('substage', None)
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['performers'].queryset = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    #     self.fields['responsible'].queryset = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
 
 class TaskWithImportForm(forms.ModelForm):
     """Форма для создания задачи с возможностью импорта из ТЗ"""

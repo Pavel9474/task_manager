@@ -5,3 +5,1223 @@ ERROR 2026-03-20 16:41:55,379 views 22556 23808 Тестовая ошибка ER
 INFO 2026-03-20 16:41:55,423 middleware 22556 23808 📤 GET / - 200 - Время: 0.051 сек
 DEBUG 2026-03-20 16:42:12,839 middleware 22556 23808 📨 GET /employee/277/ - Пользователь: pavel2
 INFO 2026-03-20 16:42:12,859 middleware 22556 23808 📤 GET /employee/277/ - 200 - Время: 0.022 сек
+<<<<<<< HEAD
+=======
+DEBUG 2026-03-21 01:20:32,629 middleware 17036 6476 📨 GET / - Пользователь: Аноним
+INFO 2026-03-21 01:20:32,643 middleware 17036 6476 📤 GET / - 302 - Время: 0.016 сек
+DEBUG 2026-03-21 01:20:32,746 middleware 17036 6476 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-21 01:20:32,754 middleware 17036 6476 📤 GET /login/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-21 01:20:48,202 middleware 17036 6476 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-21 01:20:48,910 middleware 17036 6476 📤 POST /login/ - 302 - Время: 0.708 сек
+DEBUG 2026-03-21 01:20:48,924 middleware 17036 6476 📨 GET / - Пользователь: pavel2
+INFO 2026-03-21 01:20:48,938 middleware 17036 6476 📤 GET / - 200 - Время: 0.016 сек
+DEBUG 2026-03-21 01:20:55,372 middleware 17036 6476 📨 GET /task/25/ - Пользователь: pavel2
+INFO 2026-03-21 01:20:55,380 middleware 17036 6476 📤 GET /task/25/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-21 01:21:06,751 middleware 17036 6476 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:21:06,755 middleware 17036 6476 💥 Исключение в GET /task/25/subtasks/: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 71, in render_offline
+    original_content = self.get_original_content(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 146, in get_original_content
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
+    raise OfflineGenerationError(
+    ...<4 lines>...
+    )
+compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+INFO 2026-03-21 01:21:06,819 middleware 17036 6476 📤 GET /task/25/subtasks/ - 500 - Время: 0.070 сек
+ERROR 2026-03-21 01:21:06,819 middleware 17036 6476 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:22:34,385 middleware 16860 13960 📨 GET /task/25/ - Пользователь: pavel2
+INFO 2026-03-21 01:22:34,404 middleware 16860 13960 📤 GET /task/25/ - 200 - Время: 0.021 сек
+DEBUG 2026-03-21 01:22:37,299 middleware 16860 13960 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:22:37,303 middleware 16860 13960 💥 Исключение в GET /task/25/subtasks/: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 71, in render_offline
+    original_content = self.get_original_content(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 146, in get_original_content
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
+    raise OfflineGenerationError(
+    ...<4 lines>...
+    )
+compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <style>
+            .status-select {
+                width: auto;
+                min-width: 120px;
+            }
+            .accordion-item .badge {
+                font-size: 0.85rem;
+            }
+            .list-group-item {
+                transition: all 0.2s;
+            }
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+        </style>
+    
+INFO 2026-03-21 01:22:37,357 middleware 16860 13960 📤 GET /task/25/subtasks/ - 500 - Время: 0.060 сек
+ERROR 2026-03-21 01:22:37,357 middleware 16860 13960 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:24:17,201 middleware 11772 3248 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:24:17,233 middleware 11772 3248 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:24:17,294 middleware 11772 3248 📤 GET /task/25/subtasks/ - 500 - Время: 0.095 сек
+ERROR 2026-03-21 01:24:17,295 middleware 11772 3248 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:25:20,932 middleware 6336 2184 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:20,952 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:25:20,996 middleware 6336 2184 📤 GET /task/25/subtasks/ - 500 - Время: 0.067 сек
+ERROR 2026-03-21 01:25:20,996 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:25:22,261 middleware 6336 2184 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:22,264 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:25:22,307 middleware 6336 2184 📤 GET /task/25/subtasks/ - 500 - Время: 0.047 сек
+ERROR 2026-03-21 01:25:22,307 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:25:24,754 middleware 6336 2184 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:24,757 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:25:24,800 middleware 6336 2184 📤 GET /task/25/subtasks/ - 500 - Время: 0.047 сек
+ERROR 2026-03-21 01:25:24,800 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:25:58,682 middleware 14360 17688 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:25:58,702 middleware 14360 17688 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:25:58,748 middleware 14360 17688 📤 GET /task/25/subtasks/ - 500 - Время: 0.067 сек
+ERROR 2026-03-21 01:25:58,748 middleware 14360 17688 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:27:32,517 middleware 14360 17688 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 01:27:32,579 middleware 14360 17688 📤 GET /employees/ - 200 - Время: 0.064 сек
+DEBUG 2026-03-21 01:27:38,942 middleware 14360 17688 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-03-21 01:27:38,984 middleware 14360 17688 📤 GET /org-chart/ - 200 - Время: 0.044 сек
+DEBUG 2026-03-21 01:29:06,570 middleware 15572 17356 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:29:06,591 middleware 15572 17356 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
+    basename = self.get_basename(elem_attribs["href"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:29:06,636 middleware 15572 17356 📤 GET /task/25/subtasks/ - 500 - Время: 0.068 сек
+ERROR 2026-03-21 01:29:06,636 middleware 15572 17356 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:33:47,171 middleware 17628 18076 📨 GET / - Пользователь: pavel2
+INFO 2026-03-21 01:33:47,220 middleware 17628 18076 📤 GET / - 200 - Время: 0.052 сек
+DEBUG 2026-03-21 01:33:50,497 middleware 17628 18076 📨 GET /task/25/ - Пользователь: pavel2
+INFO 2026-03-21 01:33:50,505 middleware 17628 18076 📤 GET /task/25/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-21 01:33:51,955 middleware 17628 18076 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+ERROR 2026-03-21 01:33:51,978 middleware 17628 18076 💥 Исключение в GET /task/25/subtasks/: 'https://code.jquery.com/jquery-3.6.0.min.js' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
+    cache_key, cache_content = self.render_cached(compressor, kind, mode)
+                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
+    cache_key = get_templatetag_cachekey(compressor, mode, kind)
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
+    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
+                                                  ^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
+    "".join([self.content] + self.mtimes).encode(self.charset), 12
+                             ^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
+    for kind, value, basename, elem in self.split_contents()
+                                       ~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\js.py", line 16, in split_contents
+    basename = self.get_basename(attribs["src"])
+  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
+    raise UncompressableFileError(
+    ...<3 lines>...
+    )
+compressor.exceptions.UncompressableFileError: 'https://code.jquery.com/jquery-3.6.0.min.js' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
+INFO 2026-03-21 01:33:52,023 middleware 17628 18076 📤 GET /task/25/subtasks/ - 500 - Время: 0.070 сек
+ERROR 2026-03-21 01:33:52,023 middleware 17628 18076 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:34:48,046 middleware 18364 16672 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+INFO 2026-03-21 01:34:48,054 middleware 18364 16672 📤 GET /task/25/subtasks/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-21 01:38:38,221 middleware 776 16960 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+INFO 2026-03-21 01:38:38,273 middleware 776 16960 📤 GET /task/25/subtasks/ - 200 - Время: 0.055 сек
+DEBUG 2026-03-21 01:38:57,824 middleware 776 16960 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 01:38:57,870 middleware 776 16960 📤 GET /employees/ - 200 - Время: 0.048 сек
+DEBUG 2026-03-21 01:38:58,980 middleware 776 16960 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-03-21 01:38:59,015 middleware 776 16960 📤 GET /org-chart/ - 200 - Время: 0.037 сек
+DEBUG 2026-03-21 01:39:20,723 middleware 776 16960 📨 GET /employee/277/ - Пользователь: pavel2
+INFO 2026-03-21 01:39:20,733 middleware 776 16960 📤 GET /employee/277/ - 200 - Время: 0.012 сек
+DEBUG 2026-03-21 01:41:33,346 middleware 12540 16944 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-03-21 01:41:33,411 middleware 12540 16944 📤 GET /org-chart/ - 200 - Время: 0.067 сек
+DEBUG 2026-03-21 01:42:44,908 middleware 12540 16944 📨 GET /task/25/assign/ - Пользователь: pavel2
+INFO 2026-03-21 01:42:44,910 middleware 12540 16944 📤 GET /task/25/assign/ - 200 - Время: 0.004 сек
+DEBUG 2026-03-21 01:42:55,765 middleware 12540 16944 📨 GET /task/25/subtask/create/ - Пользователь: pavel2
+INFO 2026-03-21 01:42:55,784 middleware 12540 16944 📤 GET /task/25/subtask/create/ - 200 - Время: 0.021 сек
+DEBUG 2026-03-21 01:44:20,721 middleware 16864 2872 📨 GET /task/25/assign/ - Пользователь: pavel2
+ERROR 2026-03-21 01:44:20,726 middleware 16864 2872 💥 Исключение в GET /task/25/assign/: Template: E:\taskmanager\tasks\templates\tasks\task_assign_employees.html, default requires 2 arguments, 1 provided
+Traceback (most recent call last):
+  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views.py", line 720, in task_assign_employees
+    return render(request, 'tasks/task_assign_employees.html', context)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 772, in __init__
+    self.args_check(filter_name, filter_func, args)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 835, in args_check
+    raise TemplateSyntaxError(
+        "%s requires %d arguments, %d provided" % (name, alen - dlen, plen)
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\task_assign_employees.html, default requires 2 arguments, 1 provided
+INFO 2026-03-21 01:44:20,766 middleware 16864 2872 📤 GET /task/25/assign/ - 500 - Время: 0.047 сек
+ERROR 2026-03-21 01:44:20,766 middleware 16864 2872 ❌ Ошибка 500: GET /task/25/assign/ - Пользователь: pavel2
+DEBUG 2026-03-21 01:45:39,753 middleware 16864 8708 📨 GET /task/25/subtasks/ - Пользователь: Аноним
+INFO 2026-03-21 01:45:39,759 middleware 16864 8708 📤 GET /task/25/subtasks/ - 302 - Время: 0.007 сек
+DEBUG 2026-03-21 01:45:41,024 middleware 16864 2872 📨 GET /task/25/assign/ - Пользователь: pavel2
+INFO 2026-03-21 01:45:41,058 middleware 16864 2872 📤 GET /task/25/assign/ - 200 - Время: 0.036 сек
+DEBUG 2026-03-21 01:45:46,837 middleware 16864 2872 📨 GET / - Пользователь: pavel2
+INFO 2026-03-21 01:45:46,850 middleware 16864 2872 📤 GET / - 200 - Время: 0.015 сек
+DEBUG 2026-03-21 14:36:46,729 middleware 7676 15472 📨 GET / - Пользователь: pavel2
+INFO 2026-03-21 14:36:46,785 middleware 7676 15472 📤 GET / - 200 - Время: 0.059 сек
+DEBUG 2026-03-21 14:36:55,437 middleware 7676 15472 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 14:36:55,446 middleware 7676 15472 📤 GET /employees/ - 200 - Время: 0.011 сек
+DEBUG 2026-03-21 14:37:00,005 middleware 7676 15472 📨 GET /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:37:00,016 middleware 7676 15472 📤 GET /staff/import/ - 200 - Время: 0.013 сек
+DEBUG 2026-03-21 14:37:14,330 middleware 7676 15472 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:37:14,333 middleware 7676 15472 📤 POST /staff/import/ - 200 - Время: 0.005 сек
+DEBUG 2026-03-21 14:37:39,020 middleware 7676 15472 📨 GET /employees/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:37:39,027 middleware 7676 15472 📤 GET /employees/import/ - 200 - Время: 0.009 сек
+DEBUG 2026-03-21 14:37:46,400 middleware 7676 15472 📨 POST /employees/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:37:46,527 middleware 7676 15472 📤 POST /employees/import/ - 302 - Время: 0.128 сек
+DEBUG 2026-03-21 14:37:46,558 middleware 7676 15472 📨 GET /employees/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:37:46,560 middleware 7676 15472 📤 GET /employees/import/ - 200 - Время: 0.004 сек
+DEBUG 2026-03-21 14:38:08,550 middleware 7676 15472 📨 POST /employees/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:38:08,568 middleware 7676 15472 📤 POST /employees/import/ - 302 - Время: 0.020 сек
+DEBUG 2026-03-21 14:38:08,575 middleware 7676 15472 📨 GET /employees/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:38:08,577 middleware 7676 15472 📤 GET /employees/import/ - 200 - Время: 0.004 сек
+DEBUG 2026-03-21 14:38:26,749 middleware 7676 15472 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:38:26,752 middleware 7676 15472 📤 POST /staff/import/ - 200 - Время: 0.005 сек
+DEBUG 2026-03-21 14:39:30,611 middleware 7676 15472 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:39:30,614 middleware 7676 15472 📤 POST /staff/import/ - 200 - Время: 0.005 сек
+DEBUG 2026-03-21 14:47:49,283 middleware 1572 3384 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:47:49,324 middleware 1572 3384 📤 POST /staff/import/ - 200 - Время: 0.044 сек
+DEBUG 2026-03-21 14:47:58,082 middleware 1572 3384 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:47:58,086 middleware 1572 3384 📤 POST /staff/import/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-21 14:49:57,042 middleware 3844 17364 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 14:49:58,611 middleware 3844 17364 📤 POST /staff/import/ - 302 - Время: 1.570 сек
+DEBUG 2026-03-21 14:49:58,619 middleware 3844 17364 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 14:49:58,693 middleware 3844 17364 📤 GET /employees/ - 200 - Время: 0.075 сек
+DEBUG 2026-03-21 15:13:10,462 middleware 13532 348 📨 GET / - Пользователь: pavel2
+INFO 2026-03-21 15:13:10,505 middleware 13532 348 📤 GET / - 200 - Время: 0.046 сек
+DEBUG 2026-03-21 15:13:15,155 middleware 13532 348 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 15:13:15,159 middleware 13532 348 📤 GET /employees/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-21 15:13:18,133 middleware 13532 348 📨 GET /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 15:13:18,138 middleware 13532 348 📤 GET /staff/import/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-21 15:13:21,690 middleware 13532 348 📨 POST /staff/import/ - Пользователь: pavel2
+INFO 2026-03-21 15:13:23,738 middleware 13532 348 📤 POST /staff/import/ - 302 - Время: 2.049 сек
+DEBUG 2026-03-21 15:13:44,093 middleware 13532 348 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 15:13:44,097 middleware 13532 348 📤 GET /employees/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-21 15:13:45,817 middleware 13532 348 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-21 15:13:45,857 middleware 13532 348 📤 GET /employees/ - 200 - Время: 0.042 сек
+DEBUG 2026-03-21 15:14:57,261 middleware 14944 7420 📨 GET /task/25/ - Пользователь: pavel2
+INFO 2026-03-21 15:14:57,306 middleware 14944 7420 📤 GET /task/25/ - 200 - Время: 0.047 сек
+DEBUG 2026-03-21 15:14:59,476 middleware 14944 7420 📨 GET /task/25/assign/ - Пользователь: pavel2
+INFO 2026-03-21 15:14:59,494 middleware 14944 7420 📤 GET /task/25/assign/ - 200 - Время: 0.019 сек
+DEBUG 2026-03-21 15:15:22,301 middleware 14944 7420 📨 POST /task/25/assign/ - Пользователь: pavel2
+INFO 2026-03-21 15:15:22,318 middleware 14944 7420 📤 POST /task/25/assign/ - 302 - Время: 0.019 сек
+DEBUG 2026-03-21 15:15:34,391 middleware 14944 7420 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+INFO 2026-03-21 15:15:34,416 middleware 14944 7420 📤 GET /task/25/subtasks/ - 200 - Время: 0.027 сек
+DEBUG 2026-03-21 15:16:39,978 middleware 14944 7420 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-03-21 15:16:40,031 middleware 14944 7420 📤 GET /org-chart/ - 200 - Время: 0.055 сек
+DEBUG 2026-03-21 15:17:29,266 middleware 14944 7420 📨 POST /task/25/assign/ - Пользователь: pavel2
+INFO 2026-03-21 15:17:29,284 middleware 14944 7420 📤 POST /task/25/assign/ - 302 - Время: 0.020 сек
+DEBUG 2026-03-22 15:58:55,890 middleware 2092 15392 📨 GET / - Пользователь: Аноним
+INFO 2026-03-22 15:58:55,900 middleware 2092 15392 📤 GET / - 302 - Время: 0.011 сек
+DEBUG 2026-03-22 15:58:55,992 middleware 2092 15392 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-22 15:58:56,035 middleware 2092 15392 📤 GET /login/ - 200 - Время: 0.042 сек
+DEBUG 2026-03-22 15:58:56,245 middleware 2092 15620 📨 GET /task/25/subtasks/ - Пользователь: Аноним
+INFO 2026-03-22 15:58:56,245 middleware 2092 15620 📤 GET /task/25/subtasks/ - 302 - Время: 0.001 сек
+DEBUG 2026-03-22 15:59:07,725 middleware 2092 15392 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 15:59:08,169 middleware 2092 15392 📤 POST /login/ - 302 - Время: 0.444 сек
+DEBUG 2026-03-22 15:59:08,180 middleware 2092 15392 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 15:59:08,189 middleware 2092 15392 📤 GET / - 200 - Время: 0.011 сек
+DEBUG 2026-03-22 15:59:18,786 middleware 2092 15392 📨 GET /logout/ - Пользователь: pavel
+INFO 2026-03-22 15:59:18,787 middleware 2092 15392 📤 GET /logout/ - 405 - Время: 0.002 сек
+ERROR 2026-03-22 15:59:18,787 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+DEBUG 2026-03-22 15:59:21,604 middleware 2092 15392 📨 GET /logout/ - Пользователь: pavel
+INFO 2026-03-22 15:59:21,604 middleware 2092 15392 📤 GET /logout/ - 405 - Время: 0.002 сек
+ERROR 2026-03-22 15:59:21,605 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+DEBUG 2026-03-22 15:59:22,678 middleware 2092 15392 📨 GET /logout/ - Пользователь: pavel
+INFO 2026-03-22 15:59:22,679 middleware 2092 15392 📤 GET /logout/ - 405 - Время: 0.002 сек
+ERROR 2026-03-22 15:59:22,679 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+DEBUG 2026-03-22 15:59:27,191 middleware 2092 15392 📨 GET /logout/ - Пользователь: pavel
+INFO 2026-03-22 15:59:27,192 middleware 2092 15392 📤 GET /logout/ - 405 - Время: 0.002 сек
+ERROR 2026-03-22 15:59:27,192 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
+DEBUG 2026-03-22 15:59:46,506 middleware 2092 15392 📨 GET /task/create/ - Пользователь: pavel
+INFO 2026-03-22 15:59:46,519 middleware 2092 15392 📤 GET /task/create/ - 200 - Время: 0.014 сек
+DEBUG 2026-03-22 16:00:11,185 middleware 2092 15392 📨 POST /task/create/ - Пользователь: pavel
+INFO 2026-03-22 16:00:11,412 middleware 2092 15392 📤 POST /task/create/ - 302 - Время: 0.228 сек
+DEBUG 2026-03-22 16:00:24,545 middleware 2092 15392 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:00:24,551 middleware 2092 15392 📤 GET / - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 16:00:25,954 middleware 2092 15392 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:00:25,959 middleware 2092 15392 📤 GET / - 200 - Время: 0.007 сек
+DEBUG 2026-03-22 16:00:29,351 middleware 2092 15392 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:00:29,355 middleware 2092 15392 📤 GET /task/1/ - 200 - Время: 0.005 сек
+DEBUG 2026-03-22 16:00:39,840 middleware 2092 15392 📨 GET /employees/ - Пользователь: pavel
+INFO 2026-03-22 16:00:39,844 middleware 2092 15392 📤 GET /employees/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-22 16:00:43,793 middleware 2092 15392 📨 GET /staff/import/ - Пользователь: pavel
+INFO 2026-03-22 16:00:43,801 middleware 2092 15392 📤 GET /staff/import/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-22 16:00:47,978 middleware 2092 15392 📨 POST /staff/import/ - Пользователь: pavel
+INFO 2026-03-22 16:00:50,067 middleware 2092 15392 📤 POST /staff/import/ - 302 - Время: 2.091 сек
+DEBUG 2026-03-22 16:01:02,838 middleware 2092 15392 📨 GET /employee/create/ - Пользователь: pavel
+INFO 2026-03-22 16:01:02,848 middleware 2092 15392 📤 GET /employee/create/ - 200 - Время: 0.012 сек
+DEBUG 2026-03-22 16:01:08,126 middleware 2092 15392 📨 GET /employee/create/ - Пользователь: pavel
+INFO 2026-03-22 16:01:08,131 middleware 2092 15392 📤 GET /employee/create/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-22 16:01:14,599 middleware 2092 13492 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:01:14,609 middleware 2092 13492 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-22 16:01:14,610 middleware 2092 13492 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:01:37,261 middleware 2092 15524 📨 GET /task/1/assign/ - Пользователь: pavel
+INFO 2026-03-22 16:01:37,282 middleware 2092 15524 📤 GET /task/1/assign/ - 200 - Время: 0.023 сек
+DEBUG 2026-03-22 16:01:49,222 middleware 2092 15524 📨 GET /statistics/ - Пользователь: pavel
+INFO 2026-03-22 16:01:49,235 middleware 2092 15524 📤 GET /statistics/ - 200 - Время: 0.015 сек
+DEBUG 2026-03-22 16:02:04,485 middleware 2092 15524 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:02:04,491 middleware 2092 15524 📤 GET / - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 16:03:03,714 middleware 9120 7932 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:03:03,727 middleware 9120 7932 📤 GET /task/1/ - 200 - Время: 0.015 сек
+DEBUG 2026-03-22 16:10:14,960 middleware 1992 15608 📨 POST /task/1/assign/ - Пользователь: pavel
+INFO 2026-03-22 16:10:14,991 middleware 1992 15608 📤 POST /task/1/assign/ - 302 - Время: 0.034 сек
+DEBUG 2026-03-22 16:10:14,999 middleware 1992 15608 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:10:15,006 middleware 1992 15608 📤 GET /task/1/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 16:10:15,024 middleware 1992 15608 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:10:15,028 middleware 1992 15608 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-22 16:10:15,028 middleware 1992 15608 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:17:38,377 middleware 13784 2012 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:17:38,391 middleware 13784 2012 📤 GET /task/1/ - 200 - Время: 0.015 сек
+DEBUG 2026-03-22 16:20:28,837 middleware 6712 5912 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:20:28,860 middleware 6712 5912 📤 GET / - 200 - Время: 0.026 сек
+DEBUG 2026-03-22 16:20:29,080 middleware 6712 5540 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:20:29,084 middleware 6712 5540 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-22 16:20:29,084 middleware 6712 5540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:23:47,764 middleware 6712 1036 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:23:47,769 middleware 6712 1036 📤 GET /task/1/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-22 16:25:31,951 middleware 6712 5192 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-22 16:25:31,956 middleware 6712 5192 📤 GET /favicon.ico - 404 - Время: 0.005 сек
+ERROR 2026-03-22 16:25:31,956 middleware 6712 5192 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-22 16:27:37,939 middleware 14536 14560 📨 GET /task/1/ - Пользователь: Аноним
+INFO 2026-03-22 16:27:37,945 middleware 14536 14560 📤 GET /task/1/ - 302 - Время: 0.006 сек
+DEBUG 2026-03-22 16:27:37,953 middleware 14536 14560 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:27:37,961 middleware 14536 14560 📤 GET /login/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 16:27:48,362 middleware 14536 17280 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:27:48,808 middleware 14536 17280 📤 POST /login/ - 302 - Время: 0.446 сек
+DEBUG 2026-03-22 16:27:48,821 middleware 14536 17280 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:27:48,827 middleware 14536 17280 📤 GET /task/1/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 16:27:48,867 middleware 14536 17280 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:27:48,874 middleware 14536 17280 📤 GET /favicon.ico - 404 - Время: 0.008 сек
+ERROR 2026-03-22 16:27:48,874 middleware 14536 17280 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:28:19,896 middleware 14536 8064 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-22 16:28:19,901 middleware 14536 8064 📤 GET /favicon.ico - 404 - Время: 0.005 сек
+ERROR 2026-03-22 16:28:19,901 middleware 14536 8064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-22 16:31:33,809 middleware 17280 13272 📨 GET /task/1/ - Пользователь: Аноним
+INFO 2026-03-22 16:31:33,815 middleware 17280 13272 📤 GET /task/1/ - 302 - Время: 0.006 сек
+DEBUG 2026-03-22 16:31:33,821 middleware 17280 13272 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:31:33,831 middleware 17280 13272 📤 GET /login/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-22 16:31:43,611 middleware 17280 2352 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:31:44,055 middleware 17280 2352 📤 POST /login/ - 302 - Время: 0.445 сек
+DEBUG 2026-03-22 16:31:44,066 middleware 17280 2352 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:31:44,072 middleware 17280 2352 📤 GET /task/1/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-22 16:31:44,117 middleware 17280 2352 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:31:44,121 middleware 17280 2352 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-22 16:31:44,121 middleware 17280 2352 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:32:03,577 middleware 17280 10368 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-22 16:32:03,581 middleware 17280 10368 📤 GET /favicon.ico - 404 - Время: 0.005 сек
+ERROR 2026-03-22 16:32:03,581 middleware 17280 10368 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-22 16:32:06,977 middleware 17280 10368 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+INFO 2026-03-22 16:32:06,984 middleware 17280 10368 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.007 сек
+ERROR 2026-03-22 16:32:06,984 middleware 17280 10368 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+DEBUG 2026-03-22 16:32:40,912 middleware 17280 10368 📨 GET /test/ - Пользователь: Аноним
+INFO 2026-03-22 16:32:40,917 middleware 17280 10368 📤 GET /test/ - 404 - Время: 0.004 сек
+ERROR 2026-03-22 16:32:40,917 middleware 17280 10368 ❌ Ошибка 404: GET /test/ - Пользователь: Аноним
+DEBUG 2026-03-22 16:35:14,205 middleware 6740 5732 📨 GET /test/ - Пользователь: Аноним
+INFO 2026-03-22 16:35:14,207 middleware 6740 5732 📤 GET /test/ - 200 - Время: 0.002 сек
+DEBUG 2026-03-22 16:35:21,566 middleware 6740 5732 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+INFO 2026-03-22 16:35:21,572 middleware 6740 5732 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.007 сек
+ERROR 2026-03-22 16:35:21,573 middleware 6740 5732 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+DEBUG 2026-03-22 16:36:40,780 middleware 6740 5732 📨 GET /task/1/ - Пользователь: Аноним
+INFO 2026-03-22 16:36:40,785 middleware 6740 5732 📤 GET /task/1/ - 302 - Время: 0.005 сек
+DEBUG 2026-03-22 16:36:40,788 middleware 6740 5732 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:36:40,794 middleware 6740 5732 📤 GET /login/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-22 16:36:40,811 middleware 6740 5732 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+INFO 2026-03-22 16:36:40,815 middleware 6740 5732 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.004 сек
+ERROR 2026-03-22 16:36:40,816 middleware 6740 5732 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+DEBUG 2026-03-22 16:36:42,542 middleware 6740 5824 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:36:42,959 middleware 6740 5824 📤 POST /login/ - 200 - Время: 0.417 сек
+DEBUG 2026-03-22 16:36:42,975 middleware 6740 5824 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+INFO 2026-03-22 16:36:42,980 middleware 6740 5824 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.005 сек
+ERROR 2026-03-22 16:36:42,980 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+DEBUG 2026-03-22 16:36:48,642 middleware 6740 5824 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:36:49,098 middleware 6740 5824 📤 POST /login/ - 302 - Время: 0.456 сек
+DEBUG 2026-03-22 16:36:49,110 middleware 6740 5824 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:36:49,116 middleware 6740 5824 📤 GET /task/1/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-22 16:36:49,132 middleware 6740 5824 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
+INFO 2026-03-22 16:36:49,138 middleware 6740 5824 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.008 сек
+ERROR 2026-03-22 16:36:49,138 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
+DEBUG 2026-03-22 16:37:16,089 middleware 6740 5824 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
+INFO 2026-03-22 16:37:16,094 middleware 6740 5824 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.008 сек
+ERROR 2026-03-22 16:37:16,095 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
+DEBUG 2026-03-22 16:40:34,571 middleware 14972 4472 📨 GET /task/1/ - Пользователь: Аноним
+INFO 2026-03-22 16:40:34,577 middleware 14972 4472 📤 GET /task/1/ - 302 - Время: 0.006 сек
+DEBUG 2026-03-22 16:40:34,581 middleware 14972 4472 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:40:34,589 middleware 14972 4472 📤 GET /login/ - 200 - Время: 0.009 сек
+DEBUG 2026-03-22 16:40:34,969 middleware 14972 12888 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-22 16:40:34,973 middleware 14972 12888 📤 GET /favicon.ico - 404 - Время: 0.004 сек
+ERROR 2026-03-22 16:40:34,973 middleware 14972 12888 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-22 16:40:50,023 middleware 14972 13816 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 16:40:50,454 middleware 14972 13816 📤 POST /login/ - 302 - Время: 0.431 сек
+DEBUG 2026-03-22 16:40:50,467 middleware 14972 13816 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:40:50,473 middleware 14972 13816 📤 GET /task/1/ - 200 - Время: 0.009 сек
+DEBUG 2026-03-22 16:40:50,511 middleware 14972 13816 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:40:50,515 middleware 14972 13816 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-22 16:40:50,516 middleware 14972 13816 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:44:46,331 middleware 15932 8428 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 16:44:46,350 middleware 15932 8428 📤 GET /task/1/ - 200 - Время: 0.021 сек
+DEBUG 2026-03-22 16:45:05,531 middleware 15932 16644 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:45:05,544 middleware 15932 16644 📤 GET / - 200 - Время: 0.015 сек
+DEBUG 2026-03-22 16:45:16,527 middleware 15932 16644 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:45:16,535 middleware 15932 16644 📤 GET / - 200 - Время: 0.010 сек
+DEBUG 2026-03-22 16:45:22,081 middleware 15932 16644 📨 GET /task/1/update/ - Пользователь: pavel
+INFO 2026-03-22 16:45:22,098 middleware 15932 16644 📤 GET /task/1/update/ - 200 - Время: 0.019 сек
+DEBUG 2026-03-22 16:45:33,802 middleware 15932 16644 📨 GET /task/create/ - Пользователь: pavel
+INFO 2026-03-22 16:45:33,813 middleware 15932 16644 📤 GET /task/create/ - 200 - Время: 0.012 сек
+DEBUG 2026-03-22 16:45:44,109 middleware 15932 16644 📨 POST /task/create/ - Пользователь: pavel
+INFO 2026-03-22 16:45:44,331 middleware 15932 16644 📤 POST /task/create/ - 302 - Время: 0.224 сек
+DEBUG 2026-03-22 16:45:44,362 middleware 15932 16644 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:45:44,367 middleware 15932 16644 📤 GET /favicon.ico - 404 - Время: 0.007 сек
+ERROR 2026-03-22 16:45:44,368 middleware 15932 16644 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:46:06,629 middleware 15932 16644 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:46:06,636 middleware 15932 16644 📤 GET / - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 16:46:06,662 middleware 15932 16644 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 16:46:06,667 middleware 15932 16644 📤 GET /favicon.ico - 404 - Время: 0.007 сек
+ERROR 2026-03-22 16:46:06,667 middleware 15932 16644 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 16:46:09,793 middleware 15932 16644 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 16:46:09,803 middleware 15932 16644 📤 GET / - 200 - Время: 0.011 сек
+DEBUG 2026-03-22 16:46:14,220 middleware 15932 16644 📨 GET /task/2/ - Пользователь: pavel
+INFO 2026-03-22 16:46:14,225 middleware 15932 16644 📤 GET /task/2/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-22 22:50:21,906 middleware 9312 5124 📨 GET / - Пользователь: Аноним
+INFO 2026-03-22 22:50:21,912 middleware 9312 5124 📤 GET / - 302 - Время: 0.008 сек
+DEBUG 2026-03-22 22:50:21,980 middleware 9312 5124 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-22 22:50:21,993 middleware 9312 5124 📤 GET /login/ - 200 - Время: 0.013 сек
+DEBUG 2026-03-22 22:50:22,085 middleware 9312 15776 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-22 22:50:22,093 middleware 9312 15776 📤 GET /favicon.ico - 404 - Время: 0.008 сек
+ERROR 2026-03-22 22:50:22,093 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-22 22:50:22,249 middleware 9312 5796 📨 GET /task/25/subtasks/ - Пользователь: Аноним
+INFO 2026-03-22 22:50:22,250 middleware 9312 5796 📤 GET /task/25/subtasks/ - 302 - Время: 0.001 сек
+DEBUG 2026-03-22 22:50:31,957 middleware 9312 15776 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-22 22:50:32,405 middleware 9312 15776 📤 POST /login/ - 302 - Время: 0.447 сек
+DEBUG 2026-03-22 22:50:32,418 middleware 9312 15776 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 22:50:32,427 middleware 9312 15776 📤 GET / - 200 - Время: 0.011 сек
+DEBUG 2026-03-22 22:50:32,458 middleware 9312 15776 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 22:50:32,462 middleware 9312 15776 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-22 22:50:32,462 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 22:50:36,669 middleware 9312 15776 📨 GET /task/create/ - Пользователь: pavel
+INFO 2026-03-22 22:50:36,709 middleware 9312 15776 📤 GET /task/create/ - 200 - Время: 0.041 сек
+DEBUG 2026-03-22 22:50:43,127 middleware 9312 15776 📨 POST /task/create/ - Пользователь: pavel
+INFO 2026-03-22 22:50:43,366 middleware 9312 15776 📤 POST /task/create/ - 302 - Время: 0.240 сек
+DEBUG 2026-03-22 22:50:43,396 middleware 9312 15776 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 22:50:43,402 middleware 9312 15776 📤 GET /favicon.ico - 404 - Время: 0.007 сек
+ERROR 2026-03-22 22:50:43,402 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 22:50:51,198 middleware 9312 15776 📨 GET /employees/ - Пользователь: pavel
+INFO 2026-03-22 22:50:51,207 middleware 9312 15776 📤 GET /employees/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-22 22:50:51,233 middleware 9312 15776 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-22 22:50:51,238 middleware 9312 15776 📤 GET /favicon.ico - 404 - Время: 0.007 сек
+ERROR 2026-03-22 22:50:51,238 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-22 22:50:54,609 middleware 9312 15776 📨 GET /employee/create/ - Пользователь: pavel
+INFO 2026-03-22 22:50:54,620 middleware 9312 15776 📤 GET /employee/create/ - 200 - Время: 0.012 сек
+DEBUG 2026-03-22 22:50:58,732 middleware 9312 15776 📨 GET /staff/import/ - Пользователь: pavel
+INFO 2026-03-22 22:50:58,742 middleware 9312 15776 📤 GET /staff/import/ - 200 - Время: 0.012 сек
+DEBUG 2026-03-22 22:51:18,877 middleware 9312 15776 📨 POST /staff/import/ - Пользователь: pavel
+INFO 2026-03-22 22:51:20,977 middleware 9312 15776 📤 POST /staff/import/ - 302 - Время: 2.102 сек
+DEBUG 2026-03-22 22:51:31,353 middleware 9312 15776 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 22:51:31,361 middleware 9312 15776 📤 GET / - 200 - Время: 0.010 сек
+DEBUG 2026-03-22 22:51:32,814 middleware 9312 15776 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-22 22:51:32,826 middleware 9312 15776 📤 GET /task/1/ - 200 - Время: 0.013 сек
+DEBUG 2026-03-22 22:51:38,058 middleware 9312 15776 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 22:51:38,064 middleware 9312 15776 📤 GET / - 200 - Время: 0.008 сек
+DEBUG 2026-03-22 22:51:43,868 middleware 9312 15776 📨 GET /employees/ - Пользователь: pavel
+INFO 2026-03-22 22:51:43,870 middleware 9312 15776 📤 GET /employees/ - 200 - Время: 0.004 сек
+DEBUG 2026-03-22 22:51:45,397 middleware 9312 15776 📨 GET /employees/ - Пользователь: pavel
+INFO 2026-03-22 22:51:45,440 middleware 9312 15776 📤 GET /employees/ - 200 - Время: 0.044 сек
+DEBUG 2026-03-22 22:51:53,975 middleware 9312 15776 📨 GET / - Пользователь: pavel
+INFO 2026-03-22 22:51:53,981 middleware 9312 15776 📤 GET / - 200 - Время: 0.007 сек
+DEBUG 2026-03-23 00:02:23,534 middleware 8688 7012 📨 GET / - Пользователь: Аноним
+INFO 2026-03-23 00:02:23,543 middleware 8688 7012 📤 GET / - 302 - Время: 0.011 сек
+DEBUG 2026-03-23 00:02:23,546 middleware 8688 7012 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-23 00:02:23,557 middleware 8688 7012 📤 GET /login/ - 200 - Время: 0.011 сек
+DEBUG 2026-03-23 00:02:23,641 middleware 8688 19428 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-23 00:02:23,647 middleware 8688 19428 📤 GET /favicon.ico - 404 - Время: 0.005 сек
+ERROR 2026-03-23 00:02:23,647 middleware 8688 19428 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-23 00:02:24,872 middleware 8688 19428 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-23 00:02:25,341 middleware 8688 19428 📤 POST /login/ - 200 - Время: 0.469 сек
+DEBUG 2026-03-23 00:02:31,662 middleware 8688 19428 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-23 00:02:32,118 middleware 8688 19428 📤 POST /login/ - 302 - Время: 0.457 сек
+DEBUG 2026-03-23 00:02:32,130 middleware 8688 19428 📨 GET / - Пользователь: pavel
+INFO 2026-03-23 00:02:32,145 middleware 8688 19428 📤 GET / - 200 - Время: 0.017 сек
+DEBUG 2026-03-23 00:02:36,165 middleware 8688 19428 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-23 00:02:36,172 middleware 8688 19428 📤 GET /task/1/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-23 00:02:37,979 middleware 8688 19428 📨 GET /task/1/update/ - Пользователь: pavel
+INFO 2026-03-23 00:02:38,011 middleware 8688 19428 📤 GET /task/1/update/ - 200 - Время: 0.034 сек
+DEBUG 2026-03-23 00:02:44,850 middleware 8688 19428 📨 GET / - Пользователь: pavel
+INFO 2026-03-23 00:02:44,858 middleware 8688 19428 📤 GET / - 200 - Время: 0.010 сек
+DEBUG 2026-03-23 00:40:43,685 middleware 8688 18840 📨 GET /task/1/subtasks/ - Пользователь: pavel
+INFO 2026-03-23 00:40:43,710 middleware 8688 18840 📤 GET /task/1/subtasks/ - 200 - Время: 0.028 сек
+DEBUG 2026-03-23 01:50:58,687 middleware 11508 1928 📨 GET /task/1 - Пользователь: pavel
+INFO 2026-03-23 01:50:58,694 middleware 11508 1928 📤 GET /task/1 - 404 - Время: 0.009 сек
+ERROR 2026-03-23 01:50:58,694 middleware 11508 1928 ❌ Ошибка 404: GET /task/1 - Пользователь: pavel
+DEBUG 2026-03-23 01:50:58,699 middleware 11508 1928 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-23 01:50:58,716 middleware 11508 1928 📤 GET /task/1/ - 200 - Время: 0.019 сек
+DEBUG 2026-03-23 01:51:11,045 middleware 11508 1928 📨 GET /task/1/subtasks - Пользователь: pavel
+INFO 2026-03-23 01:51:11,049 middleware 11508 1928 📤 GET /task/1/subtasks - 404 - Время: 0.006 сек
+ERROR 2026-03-23 01:51:11,049 middleware 11508 1928 ❌ Ошибка 404: GET /task/1/subtasks - Пользователь: pavel
+DEBUG 2026-03-23 01:51:11,054 middleware 11508 1928 📨 GET /task/1/subtasks/ - Пользователь: pavel
+INFO 2026-03-23 01:51:11,070 middleware 11508 1928 📤 GET /task/1/subtasks/ - 200 - Время: 0.017 сек
+DEBUG 2026-03-23 01:54:16,092 middleware 11508 11964 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-23 01:54:16,097 middleware 11508 11964 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-23 01:54:16,097 middleware 11508 11964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-23 01:55:46,688 middleware 19212 9648 📨 GET /task/1/ - Пользователь: pavel
+INFO 2026-03-23 01:55:46,707 middleware 19212 9648 📤 GET /task/1/ - 200 - Время: 0.021 сек
+DEBUG 2026-03-23 02:02:20,834 middleware 6856 19332 📨 GET / - Пользователь: Аноним
+INFO 2026-03-23 02:02:20,840 middleware 6856 19332 📤 GET / - 302 - Время: 0.008 сек
+DEBUG 2026-03-23 02:02:20,883 middleware 6856 19332 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-23 02:02:20,893 middleware 6856 19332 📤 GET /login/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-23 02:02:21,034 middleware 6856 19332 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-23 02:02:21,041 middleware 6856 19332 📤 GET /favicon.ico - 404 - Время: 0.007 сек
+ERROR 2026-03-23 02:02:21,042 middleware 6856 19332 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-23 02:02:28,107 middleware 6856 19332 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-23 02:02:28,555 middleware 6856 19332 📤 POST /login/ - 302 - Время: 0.449 сек
+DEBUG 2026-03-23 02:02:28,566 middleware 6856 19332 📨 GET / - Пользователь: pavel
+INFO 2026-03-23 02:02:28,574 middleware 6856 19332 📤 GET / - 200 - Время: 0.011 сек
+DEBUG 2026-03-23 02:02:28,607 middleware 6856 5440 📨 GET /favicon.ico - Пользователь: pavel
+INFO 2026-03-23 02:02:28,610 middleware 6856 5440 📤 GET /favicon.ico - 404 - Время: 0.006 сек
+ERROR 2026-03-23 02:02:28,611 middleware 6856 5440 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
+DEBUG 2026-03-23 02:02:30,998 middleware 6856 19332 📨 GET /employees/ - Пользователь: pavel
+INFO 2026-03-23 02:02:31,002 middleware 6856 19332 📤 GET /employees/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-23 02:02:34,173 middleware 6856 19332 📨 GET /task/create/ - Пользователь: pavel
+INFO 2026-03-23 02:02:34,197 middleware 6856 19332 📤 GET /task/create/ - 200 - Время: 0.026 сек
+>>>>>>> 3124d7e (22032026 production employers need to add)
