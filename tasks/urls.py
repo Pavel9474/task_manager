@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from . import views_product
 
 urlpatterns = [
     # ===== Задачи =====
@@ -69,8 +70,16 @@ urlpatterns = [
     # ===== ОРГАНИЗАЦИОННАЯ СТРУКТУРА =====
     path('org-chart/', views.organization_chart, name='organization_chart'),
     path('department/<int:dept_id>/ajax/', views.department_detail_ajax, name='department_detail_ajax'),
-    
-    # ===== ПРОДУКЦИЯ (ВРЕМЕННО ОТКЛЮЧЕНО) =====
-    # path('product/<int:product_id>/assign/', views.product_assign_performers, name='product_assign_performers'),
-    # path('product/<int:product_id>/status/', views.update_product_status, name='update_product_status'),
+    # ПРОДУКЦИЯ
+    path('research/products/', views_product.research_product_list, name='research_product_list'),
+    path('research/products/create/', views_product.research_product_create, name='research_product_create'),
+    path('research/products/<int:pk>/', views_product.research_product_detail, name='research_product_detail'),
+    path('research/products/<int:pk>/edit/', views_product.research_product_edit, name='research_product_edit'),
+    path('research/products/<int:pk>/status/', views_product.update_product_status, name='update_product_status'),
+    path('research/products/<int:pk>/assign/', views_product.assign_product_performer, name='assign_product_performer'),
+    path('research/products/<int:product_pk>/remove/<int:performer_pk>/', 
+         views_product.remove_product_performer, name='remove_product_performer'),
+    path('research/products/<int:product_pk>/bulk-assign/', 
+         views_product.bulk_assign_performers, name='bulk_assign_performers'),
+    path('research/my-products/', views_product.my_research_products, name='my_research_products'),
 ]

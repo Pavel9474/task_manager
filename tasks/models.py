@@ -691,54 +691,180 @@ class StaffPosition(models.Model):
     def __str__(self):
         return f"{self.employee.full_name} - {self.position.name} ({self.department.name})"
 
+# tasks/models.py - проверка и дополнение модели ResearchProduct
+
 class ResearchProduct(models.Model):
-    """Научно-техническая продукция"""
-    subtask = models.ForeignKey(
-        'Subtask',
-        on_delete=models.CASCADE,
-        related_name='products',
-        verbose_name='Подэтап',
-        null=True,
-        blank=True
-    )
+    """Научная продукция"""
+    subtask = models.ForeignKey(Subtask, on_delete=models.CASCADE, related_name='products',
+                                verbose_name='Подэтап', null=True, blank=True)
     name = models.CharField('Наименование продукции', max_length=500)
     description = models.TextField('Описание', blank=True)
     due_date = models.DateField('Срок выполнения', null=True, blank=True)
     
-    performers = models.ManyToManyField(
-        'Employee',
-        verbose_name='Исполнители',
-        related_name='assigned_products',
-        blank=True
-    )
+    # Удаляем это поле:
+    # performers = models.ManyToManyField(Employee, ...)  # КОММЕНТИРУЕМ ИЛИ УДАЛЯЕМ
+    
+    # Оставляем ответственного (можно будет назначать через ProductPerformer)
     responsible = models.ForeignKey(
-        'Employee',
-        on_delete=models.SET_NULL,
+        Employee, 
+        on_delete=models.SET_NULL, 
         verbose_name='Ответственный',
-        related_name='responsible_products',
-        null=True,
+        related_name='responsible_products', 
+        null=True, 
         blank=True
     )
+    
+    # Связи с этапами НИР
+    research_task = models.ForeignKey(
+        'ResearchTask',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='products',
+        verbose_name='НИР'
+    )
+    research_stage = models.ForeignKey(
+        'ResearchStage',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='products',
+        verbose_name='Этап НИР'
+    )
+    research_substage = models.ForeignKey(
+        'ResearchSubstage',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='products',
+        verbose_name='Подэтап НИР'
+    )
+    
+    # Тип продукции
+    product_type = models.CharField(
+        'Тип продукции',
+        max_length=50,
+        choices=[
+            ('report', 'Отчет'),
+            ('article', 'Статья'),
+            ('patent', 'Патент'),
+            ('methodology', 'Методика'),
+            ('software', 'Программное обеспечение'),
+            ('other', 'Другое'),
+        ],
+        default='report'
+    )
+    
+    # Плановые и фактические даты
+    planned_start = models.DateField('Планируемая дата начала', null=True, blank=True)
+    planned_end = models.DateField('Планируемая дата окончания', null=True, blank=True)
+    actual_start = models.DateField('Фактическая дата начала', null=True, blank=True)
+    actual_end = models.DateField('Фактическая дата окончания', null=True, blank=True)
     
     STATUS_CHOICES = [
         ('pending', 'Ожидает'),
         ('in_progress', 'В работе'),
         ('completed', 'Выполнено'),
         ('delayed', 'Задержка'),
+        ('cancelled', 'Отменена'),
     ]
-    status = models.CharField(
-        'Статус',
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='pending'
-    )
+    status = models.CharField('Статус', max_length=20, choices=STATUS_CHOICES, default='pending')
+    
+    completion_percent = models.IntegerField('Процент выполнения', default=0)
+    notes = models.TextField('Примечания', blank=True)
     
     created_date = models.DateTimeField('Дата создания', auto_now_add=True)
     updated_date = models.DateTimeField('Дата обновления', auto_now=True)
+    created_by = models.ForeignKey(
+        'auth.User',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='created_products'
+    )
     
     class Meta:
-        verbose_name = 'Продукция'
-        verbose_name_plural = 'Продукция'
+        verbose_name = 'Научная продукция'
+        verbose_name_plural = 'Научная продукция'
+        ordering = ['-created_date']
     
     def __str__(self):
         return self.name
+    
+    @property
+    def is_overdue(self):
+        from django.utils import timezone
+        if self.status not in ['completed', 'cancelled'] and self.planned_end:
+            return timezone.now().date() > self.planned_end
+        return False
+    
+    @property
+    def performers_list(self):
+        return ', '.join([p.employee.full_name for p in self.product_performers.all()])
+
+
+class ProductPerformer(models.Model):
+    """Связь продукции с исполнителем (с указанием роли)"""
+    
+    ROLE_CHOICES = [
+        ('responsible', 'Ответственный исполнитель'),
+        ('executor', 'Исполнитель'),
+        ('consultant', 'Консультант'),
+        ('reviewer', 'Рецензент'),
+        ('approver', 'Утверждающий'),
+    ]
+    
+    product = models.ForeignKey(
+        ResearchProduct,
+        on_delete=models.CASCADE,
+        related_name='product_performers',
+        verbose_name='Продукция'
+    )
+    employee = models.ForeignKey(
+        Employee,
+        on_delete=models.CASCADE,
+        related_name='product_performers',
+        verbose_name='Сотрудник'
+    )
+    role = models.CharField('Роль', max_length=20, choices=ROLE_CHOICES, default='executor')
+    contribution_percent = models.DecimalField(
+        'Доля участия (%)',
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        help_text='Сумма долей всех исполнителей может быть больше 100%'
+    )
+    start_date = models.DateField('Дата начала работы', null=True, blank=True)
+    end_date = models.DateField('Дата окончания работы', null=True, blank=True)
+    notes = models.TextField('Примечания', blank=True)
+    assigned_date = models.DateTimeField('Дата назначения', auto_now_add=True)
+    assigned_by = models.ForeignKey(
+        'auth.User',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='assigned_performers'
+    )
+    
+    class Meta:
+        verbose_name = 'Исполнитель продукции'
+        verbose_name_plural = 'Исполнители продукции'
+        unique_together = ['product', 'employee']  # Один сотрудник на продукцию - одна запись
+        ordering = ['-role', 'employee__last_name']
+    
+    def __str__(self):
+        return f"{self.employee.full_name} - {self.product.name} ({self.get_role_display()})"
+    
+    def save(self, *args, **kwargs):
+        # Если это ответственный исполнитель, обновляем поле responsible в продукции
+        super().save(*args, **kwargs)
+        if self.role == 'responsible':
+            self.product.responsible = self.employee
+            self.product.save(update_fields=['responsible'])
+        elif self.product.responsible == self.employee and self.role != 'responsible':
+            # Если был ответственным, а теперь роль изменилась
+            other_responsible = ProductPerformer.objects.filter(
+                product=self.product,
+                role='responsible'
+            ).exclude(id=self.id).first()
+            self.product.responsible = other_responsible.employee if other_responsible else None
+            self.product.save(update_fields=['responsible'])
