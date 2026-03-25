@@ -7,7 +7,7 @@ from django.db.models import Q, Count, Prefetch
 from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, Department, Position, StaffPosition
+from .models import Task, Employee, Subtask, ResearchTask, ResearchStage, ResearchSubstage, Department, Position, StaffPosition, ResearchProduct
 from .forms import TaskForm, TaskWithImportForm, StaffImportForm
 from .forms import ResearchTaskForm, ResearchStageForm, ResearchSubstageForm
 from .forms_subtask import SubtaskForm, SubtaskBulkCreateForm
@@ -952,19 +952,10 @@ def subtask_list(request, task_id):
     for stage in stages:
         stage.substages_count = len(substages_by_stage.get(stage.stage_number, []))
     
-    # Парсим продукцию из поля output для каждого подэтапа
+    # Загружаем продукцию из базы данных для каждого подэтапа
     for subtask in all_subtasks:
-        if subtask.output and 'Ожидаемая продукция:' in subtask.output:
-            # Извлекаем список продукции
-            products_text = subtask.output.replace('Ожидаемая продукция:', '').strip()
-            products = []
-            for line in products_text.split('\n'):
-                line = line.strip()
-                if line.startswith('•'):
-                    products.append(line[1:].strip())
-            subtask.products_list = products
-        else:
-            subtask.products_list = []
+        # Получаем объекты ResearchProduct, связанные с этим подэтапом
+        subtask.products_list = ResearchProduct.objects.filter(subtask=subtask)
     
     # Вычисляем общий прогресс
     total_subtasks = all_subtasks.count()
@@ -1579,35 +1570,52 @@ def department_detail_ajax(request, dept_id):
         'staff_count': len(staff_positions),
     })
 
-# @login_required
-# def product_assign_performers(request, product_id):
-#     """Назначение исполнителей на продукцию"""
-#     product = get_object_or_404(ResearchProduct, id=product_id)
+@login_required
+def product_assign_performers(request, product_id):
+    """Назначение исполнителей на продукцию"""
+    from .models import ResearchProduct, Employee, ProductPerformer
     
-#     if request.method == 'POST':
-#         performer_ids = request.POST.getlist('performers')
-#         responsible_id = request.POST.get('responsible')
-        
-#         product.performers.set(performer_ids)
-#         if responsible_id:
-#             product.responsible_id = responsible_id
-#         product.save()
-        
-#         messages.success(request, 'Исполнители назначены')
-        
-#         # Возвращаемся к подэтапу
-#         return redirect('subtask_list', task_id=product.subtask.task.id)
+    product = get_object_or_404(ResearchProduct, id=product_id)
     
-#     employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
-#     current_performers = product.performers.values_list('id', flat=True)
+    if request.method == 'POST':
+        performer_ids = request.POST.getlist('performers')
+        responsible_id = request.POST.get('responsible')
+        
+        # Очищаем существующих исполнителей
+        product.product_performers.all().delete()
+        
+        # Создаем новых исполнителей
+        for performer_id in performer_ids:
+            ProductPerformer.objects.create(
+                product=product,
+                employee_id=performer_id,
+                role='executor'
+            )
+        
+        # Обновляем ответственного
+        if responsible_id:
+            product.responsible_id = responsible_id
+        else:
+            product.responsible = None
+        product.save()
+        
+        messages.success(request, 'Исполнители назначены')
+        
+        # Возвращаемся к подэтапу
+        if product.substage and product.substage.task:
+            return redirect('subtask_list', task_id=product.substage.task.id)
+        return redirect('task_list')
     
-#     context = {
-#         'product': product,
-#         'employees': employees,
-#         'current_performers': list(current_performers),
-#         'current_responsible': product.responsible_id
-#     }
-#     return render(request, 'tasks/product_assign_performers.html', context)
+    employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    current_performers = product.product_performers.values_list('employee_id', flat=True)
+    
+    context = {
+        'product': product,
+        'employees': employees,
+        'current_performers': list(current_performers),
+        'current_responsible': product.responsible_id
+    }
+    return render(request, 'tasks/product_assign_performers.html', context)
 
 
 # @login_required

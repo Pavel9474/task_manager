@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compressor',
+    # 'compressor',
     'tasks',  # приложение
 ]
 
@@ -264,8 +264,8 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 ]
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True  # Для продакшена
+COMPRESS_ENABLED = False
+COMPRESS_OFFLINE = False  # Для продакшена
 COMPRESS_CSS_FILTERS = [
     'compressor.filters.css_default.CssAbsoluteFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
@@ -276,7 +276,7 @@ COMPRESS_JS_FILTERS = [
 
 # Если используете Sass
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
+    # ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
 # Уровень сжатия

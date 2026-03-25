@@ -3,8 +3,6 @@
 
 {% block title %}Этапы задачи: {{ task.title }}{% endblock %}
 
-<<<<<<< HEAD
-=======
 {% block extra_css_top %}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
@@ -41,7 +39,6 @@
     </style>
 {% endblock %}
 
->>>>>>> 3124d7e (22032026 production employers need to add)
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
@@ -181,7 +178,6 @@
                                                 {% endif %}
                                             </small>
                                         </div>
-                                        
                                         <!-- Продукция подэтапа (сворачиваемый блок) -->
                                         <div class="collapse mt-2" id="products{{ substage.id }}">
                                             <div class="card card-body bg-light">
@@ -197,8 +193,8 @@
                                                                         <!-- Временно убираем отображение исполнителей -->
                                                                     </div>
                                                                     <div>
-                                                                        <a href="#" class="btn btn-sm btn-outline-success" onclick="alert('Функция будет добавлена позже')">
-                                                                            <i class="bi bi-person-plus"></i> Назначить исполнителей
+                                                                        <a href="{% url 'product_assign_performers' product.id %}" class="btn btn-primary">
+                                                                            <i class="bi bi-people"></i> Назначить исполнителей
                                                                         </a>
                                                                         <select class="form-select form-select-sm product-status-select d-inline-block w-auto ms-2" 
                                                                                 onchange="alert('Функция будет добавлена позже')">
@@ -298,16 +294,6 @@
 </div>
 {% endblock %}
 
-<<<<<<< HEAD
-{% block extra_js %}
-<script>
-    let currentSubtaskId = null;
-    let currentProductIndex = null;
-    
-    function assignProductPerformers(subtaskId, productIndex) {
-        currentSubtaskId = subtaskId;
-        currentProductIndex = productIndex;
-=======
 {% block extra_js_top %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -316,63 +302,64 @@
 
 {% block extra_js_compressed %}
     <script>
-        let currentSubtaskId = null;
-        let currentProductIndex = null;
->>>>>>> 3124d7e (22032026 production employers need to add)
+        let currentProductId = null;
         
-        // Здесь можно загрузить текущих исполнителей для этой продукции
-        // Пока просто открываем модальное окно
-        var myModal = new bootstrap.Modal(document.getElementById('assignPerformersModal'));
-        myModal.show();
-    }
-    
-    function saveProductPerformers() {
-        // Здесь будет AJAX запрос для сохранения исполнителей
-        alert('Функция сохранения исполнителей будет реализована позже');
-        bootstrap.Modal.getInstance(document.getElementById('assignPerformersModal')).hide();
-    }
-    
-    // Инициализация Select2
-    $(document).ready(function() {
-        $('#productPerformers').select2({
-            theme: 'bootstrap-5',
-            width: '100%',
-            placeholder: 'Выберите исполнителей...'
-        });
+        function openAssignPerformersModal(productId, productName) {
+            currentProductId = productId;
+            $('#productInfo').html(`<strong>${productName}</strong>`);
+            var myModal = new bootstrap.Modal(document.getElementById('assignPerformersModal'));
+            myModal.show();
+        }
         
-<<<<<<< HEAD
-        $('#productResponsible').select2({
-            theme: 'bootstrap-5',
-            width: '100%',
-            placeholder: 'Выберите ответственного...'
-        });
-    });
-</script>
-=======
-        // Функция для обновления статуса продукции
-        function updateProductStatus(select) {
-            const productId = select.getAttribute('data-product-id');
-            const status = select.value;
-            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || getCookie('csrftoken');
+        function saveProductPerformers() {
+            const performers = $('#productPerformers').val();
+            const responsible = $('#productResponsible').val();
             
-            fetch(`/product/${productId}/status/`, {
+            if (!performers || performers.length === 0) {
+                alert('Пожалуйста, выберите хотя бы одного исполнителя');
+                return;
+            }
+            
+            // Отправка AJAX запроса
+            fetch(`/product/${currentProductId}/assign-performers/`, {
                 method: 'POST',
                 headers: {
-                    'X-CSRFToken': csrftoken,
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json',
                 },
-                body: `status=${status}`
+                body: JSON.stringify({
+                    performers: performers,
+                    responsible: responsible
+                })
             })
             .then(response => {
                 if (response.ok) {
-                    // Обновляем страницу после изменения статуса
                     location.reload();
                 } else {
-                    console.error('Ошибка при обновлении статуса');
+                    alert('Ошибка при сохранении исполнителей');
                 }
             })
             .catch(error => console.error('Error:', error));
+            
+            bootstrap.Modal.getInstance(document.getElementById('assignPerformersModal')).hide();
         }
+        
+        $(document).ready(function() {
+            $('#productPerformers').select2({
+                theme: 'bootstrap-5',
+                width: '100%',
+                placeholder: 'Выберите исполнителей...',
+                language: 'ru'
+            });
+            
+            $('#productResponsible').select2({
+                theme: 'bootstrap-5',
+                width: '100%',
+                placeholder: 'Выберите ответственного...',
+                language: 'ru',
+                allowClear: true
+            });
+        });
         
         function getCookie(name) {
             let cookieValue = null;
@@ -389,5 +376,4 @@
             return cookieValue;
         }
     </script>
->>>>>>> 3124d7e (22032026 production employers need to add)
 {% endblock %}

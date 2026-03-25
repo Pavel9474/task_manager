@@ -1206,3 +1206,1139 @@ INFO 2026-03-23 02:02:34,198 log 6856 19332 "GET /task/create/ HTTP/1.1" 200 269
 INFO 2026-03-23 02:02:34,213 log 6856 5440 "GET /static/CACHE/css/output.403ea3ff49b1.css HTTP/1.1" 304 0
 INFO 2026-03-23 02:02:34,214 log 6856 19332 "GET /static/CACHE/js/output.ede7bcf2b55d.js HTTP/1.1" 304 0
 >>>>>>> 3124d7e (22032026 production employers need to add)
+INFO 2026-03-25 09:33:07,278 autoreload 16272 13472 Watching for file changes with StatReloader
+INFO 2026-03-25 09:33:10,334 log 16272 17048 "GET / HTTP/1.1" 302 0
+ERROR 2026-03-25 09:33:10,465 log 16272 17048 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 577, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'compress'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 579, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 644, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, Invalid block tag on line 14: 'compress'. Did you forget to register or load this tag?
+ERROR 2026-03-25 09:33:10,477 log 16272 17048 "GET /login/?next=/ HTTP/1.1" 500 22407
+WARNING 2026-03-25 09:33:10,757 log 16272 17048 Not Found: /favicon.ico
+WARNING 2026-03-25 09:33:10,758 log 16272 17048 "GET /favicon.ico HTTP/1.1" 404 1892
+INFO 2026-03-25 09:35:59,799 autoreload 9760 10980 Watching for file changes with StatReloader
+ERROR 2026-03-25 09:36:10,157 log 9760 13632 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 229, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, 'block' tag with name 'extra_css' appears more than once
+ERROR 2026-03-25 09:36:10,167 log 9760 13632 "GET /login/?next=/ HTTP/1.1" 500 21579
+ERROR 2026-03-25 09:36:11,027 log 9760 13632 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 229, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, 'block' tag with name 'extra_css' appears more than once
+ERROR 2026-03-25 09:36:11,039 log 9760 13632 "GET /login/?next=/ HTTP/1.1" 500 21585
+INFO 2026-03-25 09:39:12,572 autoreload 16768 1592 Watching for file changes with StatReloader
+INFO 2026-03-25 09:39:14,442 log 16768 12584 "GET / HTTP/1.1" 302 0
+ERROR 2026-03-25 09:39:14,524 log 16768 12584 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 229, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, 'block' tag with name 'extra_css' appears more than once
+ERROR 2026-03-25 09:39:14,535 log 16768 12584 "GET /login/?next=/ HTTP/1.1" 500 21476
+ERROR 2026-03-25 09:40:14,989 log 16768 12584 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
+    return self.render_compressed(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
+    return self.render_offline(context)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
+    raise OfflineGenerationError(
+    ...<4 lines>...
+    )
+compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "256b8429f8f71725cca2123b0372bf462cb0bbb43cfd00aeb2555576bd016325" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
+
+
+        <!-- Локальный CSS -->
+        <link href="/static/css/style.css" rel="stylesheet">
+        
+    
+ERROR 2026-03-25 09:40:14,998 log 16768 12584 "GET /login/?next=/ HTTP/1.1" 500 18060
+INFO 2026-03-25 09:43:07,158 autoreload 11984 4404 Watching for file changes with StatReloader
+ERROR 2026-03-25 09:43:13,278 log 11984 11108 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'compress'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, 'compress' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-03-25 09:43:13,291 log 11984 11108 "GET /login/?next=/ HTTP/1.1" 500 22356
+INFO 2026-03-25 09:44:45,854 autoreload 15808 15752 Watching for file changes with StatReloader
+ERROR 2026-03-25 09:44:52,161 log 15808 16544 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 577, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'compress'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 579, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 644, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, Invalid block tag on line 15: 'compress'. Did you forget to register or load this tag?
+ERROR 2026-03-25 09:44:52,172 log 15808 16544 "GET /login/?next=/ HTTP/1.1" 500 22077
+ERROR 2026-03-25 09:48:31,711 log 15808 16544 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 577, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endcompress'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 579, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 644, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, Invalid block tag on line 19: 'endcompress'. Did you forget to register or load this tag?
+ERROR 2026-03-25 09:48:31,722 log 15808 16544 "GET /login/?next=/ HTTP/1.1" 500 22248
+ERROR 2026-03-25 09:48:52,342 log 15808 16544 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 135, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 132, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 110, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 229, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, 'block' tag with name 'extra_css' appears more than once
+ERROR 2026-03-25 09:48:52,355 log 15808 16544 "GET /login/?next=/ HTTP/1.1" 500 21378
+INFO 2026-03-25 09:50:06,495 log 15808 16544 "GET /login/?next=/ HTTP/1.1" 200 1751
+INFO 2026-03-25 09:50:06,587 log 15808 13832 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-25 09:50:06,592 log 15808 16544 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-25 09:50:10,769 basehttp 15808 16544 - Broken pipe from ('127.0.0.1', 57787)
+INFO 2026-03-25 09:50:12,124 log 15808 13832 "POST /login/?next=/ HTTP/1.1" 302 0
+INFO 2026-03-25 09:50:12,224 log 15808 13832 "GET / HTTP/1.1" 200 3684
+INFO 2026-03-25 09:50:16,652 log 15808 13832 "GET /task/25/ HTTP/1.1" 200 2914
+ERROR 2026-03-25 09:50:19,447 log 15808 13832 Internal Server Error: /task/25/subtasks/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 981, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 590, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 657, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\subtask_list.html, Unclosed tag on line 302: 'block'. Looking for one of: endblock.
+ERROR 2026-03-25 09:50:19,459 log 15808 13832 "GET /task/25/subtasks/ HTTP/1.1" 500 24721
+ERROR 2026-03-25 09:52:39,607 log 15808 13832 Internal Server Error: /task/25/subtasks/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 981, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 590, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 657, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\subtask_list.html, Unclosed tag on line 299: 'block'. Looking for one of: endblock.
+ERROR 2026-03-25 09:52:39,618 log 15808 13832 "GET /task/25/subtasks/ HTTP/1.1" 500 24646
+INFO 2026-03-25 09:53:14,377 log 15808 13832 "GET /task/25/subtasks/ HTTP/1.1" 200 14783
+INFO 2026-03-25 10:02:40,790 autoreload 13404 4248 Watching for file changes with StatReloader
+INFO 2026-03-25 10:18:10,086 autoreload 13404 4248 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-25 10:18:10,940 autoreload 2040 11048 Watching for file changes with StatReloader
+INFO 2026-03-25 10:18:55,126 autoreload 2040 11048 E:\code\task_manager\taskmanager\tasks\urls.py changed, reloading.
+INFO 2026-03-25 10:18:55,931 autoreload 15384 2268 Watching for file changes with StatReloader
+INFO 2026-03-25 14:43:12,369 log 15384 31464 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-25 14:43:12,367 log 15384 30224 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-25 14:44:28,665 log 15384 31464 "GET /subtask/134/update/ HTTP/1.1" 200 4798
+INFO 2026-03-25 14:54:34,210 autoreload 15384 2268 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-25 14:54:35,610 autoreload 22800 19692 Watching for file changes with StatReloader
+INFO 2026-03-25 14:55:45,386 autoreload 30952 19792 Watching for file changes with StatReloader
+ERROR 2026-03-25 14:55:52,741 log 30952 21948 Internal Server Error: /task/25/subtasks/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 577, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'else'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 981, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1685, in do_with
+    nodelist = parser.parse(("endwith",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 994, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 579, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 634, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\subtask_list.html, Invalid block tag on line 216: 'else', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR 2026-03-25 14:55:52,760 log 30952 21948 "GET /task/25/subtasks/ HTTP/1.1" 500 29560
+ERROR 2026-03-25 15:01:02,052 log 30952 23760 Internal Server Error: /task/25/subtasks/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 981, in subtask_list
+    return render(request, 'tasks/subtask_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 581, in render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'product_assign_performers' with arguments '('',)' not found. 1 pattern(s) tried: ['product/(?P<product_id>[0-9]+)/assign\\-performers/\\Z']
+ERROR 2026-03-25 15:01:02,068 log 30952 23760 "GET /task/25/subtasks/ HTTP/1.1" 500 34494
+INFO 2026-03-25 15:09:00,520 autoreload 30952 19792 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-25 15:09:01,343 autoreload 13604 17040 Watching for file changes with StatReloader
+INFO 2026-03-25 15:09:02,221 log 13604 28272 "GET /task/25/subtasks/ HTTP/1.1" 200 7278
+INFO 2026-03-25 15:10:21,941 autoreload 13604 17040 E:\code\task_manager\taskmanager\tasks\templates\tasks\managment\commands\migrate_products.py changed, reloading.
+INFO 2026-03-25 15:10:22,701 autoreload 14484 19836 Watching for file changes with StatReloader
+INFO 2026-03-25 15:10:51,146 autoreload 29380 20348 Watching for file changes with StatReloader
+INFO 2026-03-25 15:10:53,955 log 29380 10920 "GET /task/25/subtasks/ HTTP/1.1" 200 7284
+INFO 2026-03-25 15:11:02,496 log 29380 10920 "GET /task/25/ HTTP/1.1" 200 2882
+INFO 2026-03-25 15:11:17,794 log 29380 10920 "GET /subtask/134/update/ HTTP/1.1" 200 4709
+INFO 2026-03-25 15:14:56,649 autoreload 25424 30156 Watching for file changes with StatReloader
+INFO 2026-03-25 15:15:00,499 log 25424 12664 "GET /task/25/subtasks/ HTTP/1.1" 200 14650
+ERROR 2026-03-25 15:15:04,766 log 25424 12664 Internal Server Error: /product/5/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1593, in product_assign_performers
+    current_performers = product.performers.values_list('id', flat=True)
+                         ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'performers'
+ERROR 2026-03-25 15:15:04,772 log 25424 12664 "GET /product/5/assign-performers/ HTTP/1.1" 500 13186
+ERROR 2026-03-25 15:15:19,007 log 25424 12664 Internal Server Error: /product/5/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1593, in product_assign_performers
+    current_performers = product.performers.values_list('id', flat=True)
+                         ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'performers'
+ERROR 2026-03-25 15:15:19,011 log 25424 12664 "GET /product/5/assign-performers/ HTTP/1.1" 500 13202
+INFO 2026-03-25 15:18:53,505 autoreload 31364 20452 Watching for file changes with StatReloader
+ERROR 2026-03-25 15:18:55,771 log 31364 9728 Internal Server Error: /product/5/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1593, in product_assign_performers
+    current_performers = product.performers.values_list('id', flat=True)
+                         ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'performers'
+ERROR 2026-03-25 15:18:55,775 log 31364 9728 "GET /product/5/assign-performers/ HTTP/1.1" 500 13182
+INFO 2026-03-25 15:28:20,885 autoreload 26412 21460 Watching for file changes with StatReloader
+ERROR 2026-03-25 15:28:24,367 log 26412 17692 Internal Server Error: /product/5/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1593, in product_assign_performers
+    current_performers = product.performers.values_list('id', flat=True)
+                         ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'performers'
+ERROR 2026-03-25 15:28:24,372 log 26412 17692 "GET /product/5/assign-performers/ HTTP/1.1" 500 13370
+INFO 2026-03-25 15:30:06,575 autoreload 26412 21460 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-25 15:30:07,338 autoreload 22016 24316 Watching for file changes with StatReloader
+INFO 2026-03-25 15:30:23,262 autoreload 22016 24316 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-25 15:30:23,943 autoreload 13084 28836 Watching for file changes with StatReloader
+INFO 2026-03-25 16:08:31,632 autoreload 26148 23460 Watching for file changes with StatReloader
+INFO 2026-03-25 16:08:49,650 log 26148 30316 "GET / HTTP/1.1" 200 3670
+INFO 2026-03-25 16:08:58,015 log 26148 30316 "GET /task/25/ HTTP/1.1" 200 2860
+INFO 2026-03-25 16:09:13,599 log 26148 30316 "GET /task/25/subtasks/ HTTP/1.1" 200 14595
+INFO 2026-03-25 16:09:41,471 log 26148 30316 "GET /org-chart/ HTTP/1.1" 200 4224
+INFO 2026-03-25 16:09:41,572 log 26148 30316 "GET /static/css/organization.css HTTP/1.1" 200 12144
+INFO 2026-03-25 16:09:41,573 log 26148 28204 "GET /static/js/organization.js HTTP/1.1" 200 6080
+INFO 2026-03-25 16:21:16,079 autoreload 31644 29092 Watching for file changes with StatReloader
+INFO 2026-03-25 16:21:18,356 log 31644 16892 "GET / HTTP/1.1" 200 3696
+WARNING 2026-03-25 16:21:18,548 log 31644 16892 Not Found: /favicon.ico
+WARNING 2026-03-25 16:21:18,549 log 31644 16892 "GET /favicon.ico HTTP/1.1" 404 1890
+INFO 2026-03-25 16:21:20,069 log 31644 16892 "GET /task/25/ HTTP/1.1" 200 2915
+INFO 2026-03-25 16:21:22,972 log 31644 16892 "GET /task/25/subtasks/ HTTP/1.1" 200 14672
+ERROR 2026-03-25 16:21:26,675 log 31644 16892 Internal Server Error: /product/5/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'compress'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1618, in product_assign_performers
+    return render(request, 'tasks/product_assign_performers.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\product_assign_performers.html, 'compress' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-03-25 16:21:26,688 log 31644 16892 "GET /product/5/assign-performers/ HTTP/1.1" 500 23312
+INFO 2026-03-25 16:23:44,801 log 31644 16892 "GET /task/25/subtasks/ HTTP/1.1" 200 14615
+INFO 2026-03-25 16:23:50,272 log 31644 16892 "GET /product/5/assign-performers/ HTTP/1.1" 200 6128
+INFO 2026-03-25 16:27:51,971 log 31644 16892 "GET /employees/ HTTP/1.1" 200 4026
+INFO 2026-03-25 16:27:55,913 log 31644 16892 "GET /employee/284/ HTTP/1.1" 200 2332
