@@ -1601,12 +1601,23 @@ def product_assign_performers(request, product_id):
         
         messages.success(request, 'Исполнители назначены')
         
-        # Возвращаемся к подэтапу
         if product.substage and product.substage.task:
             return redirect('subtask_list', task_id=product.substage.task.id)
         return redirect('task_list')
     
+    # Загружаем сотрудников и добавляем информацию о подразделении
     employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    
+    # Добавляем информацию о подразделении к каждому сотруднику
+    for emp in employees:
+        staff_pos = emp.staff_positions.filter(is_active=True).first()
+        if staff_pos:
+            emp.dept_full_path = staff_pos.department.full_path
+            emp.position_name = staff_pos.position.name
+        else:
+            emp.dept_full_path = None
+            emp.position_name = None
+    
     current_performers = product.product_performers.values_list('employee_id', flat=True)
     
     context = {
@@ -1617,6 +1628,50 @@ def product_assign_performers(request, product_id):
     }
     return render(request, 'tasks/product_assign_performers.html', context)
 
+from django.http import JsonResponse
+import json
+
+@login_required
+def create_external_employee(request):
+    """Создание внешнего сотрудника (которого нет в штате)"""
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            full_name = data.get('full_name', '').strip()
+            position = data.get('position', '').strip()
+            organization = data.get('organization', '').strip()
+            notes = data.get('notes', '').strip()
+            
+            if not full_name:
+                return JsonResponse({'success': False, 'error': 'ФИО обязательно'})
+            
+            # Разбираем ФИО
+            name_parts = full_name.split()
+            last_name = name_parts[0] if len(name_parts) > 0 else ''
+            first_name = name_parts[1] if len(name_parts) > 1 else ''
+            patronymic = name_parts[2] if len(name_parts) > 2 else ''
+            
+            # Создаем сотрудника
+            employee = Employee.objects.create(
+                last_name=last_name,
+                first_name=first_name,
+                patronymic=patronymic,
+                position=position or 'Внешний сотрудник',
+                email=f"external_{hash(full_name)}@temp.local",  # Временный email
+                department='other',
+                is_active=True,
+                notes=f"Внешний сотрудник. Организация: {organization}\n{notes}".strip()
+            )
+            
+            return JsonResponse({
+                'success': True,
+                'employee_id': employee.id,
+                'full_name': employee.full_name
+            })
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Метод не поддерживается'})
 
 # @login_required
 # def update_product_status(request, product_id):

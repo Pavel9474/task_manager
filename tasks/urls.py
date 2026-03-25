@@ -82,5 +82,6 @@ urlpatterns = [
     path('research/products/<int:product_pk>/bulk-assign/', 
          views_product.bulk_assign_performers, name='bulk_assign_performers'),
     path('research/my-products/', views_product.my_research_products, name='my_research_products'),
-     path('product/<int:product_id>/assign-performers/', views.product_assign_performers, name='product_assign_performers'),
+    path('product/<int:product_id>/assign-performers/', views.product_assign_performers, name='product_assign_performers'),
+    path('create-external-employee/', views.create_external_employee, name='create_external_employee'),
 ]
