@@ -2935,3 +2935,1729 @@ INFO 2026-03-25 17:34:24,010 middleware 21408 9764 📤 GET /product/3/assign-pe
 ERROR 2026-03-25 17:34:24,010 middleware 21408 9764 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
 DEBUG 2026-03-25 17:39:19,762 middleware 27800 30408 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
 INFO 2026-03-25 17:39:19,931 middleware 27800 30408 📤 GET /product/3/assign-performers/ - 200 - Время: 0.172 сек
+DEBUG 2026-03-26 09:56:13,160 middleware 18732 15712 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 09:56:13,237 middleware 18732 15712 📤 GET / - 200 - Время: 0.082 сек
+DEBUG 2026-03-26 09:56:14,986 middleware 18732 15712 📨 GET /task/25/ - Пользователь: pavel2
+INFO 2026-03-26 09:56:15,024 middleware 18732 15712 📤 GET /task/25/ - 200 - Время: 0.041 сек
+DEBUG 2026-03-26 09:56:20,849 middleware 18732 15712 📨 GET /task/25/subtasks/ - Пользователь: pavel2
+INFO 2026-03-26 09:56:20,944 middleware 18732 15712 📤 GET /task/25/subtasks/ - 200 - Время: 0.098 сек
+DEBUG 2026-03-26 09:56:24,762 middleware 18732 15712 📨 GET /product/5/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 09:56:24,889 middleware 18732 15712 📤 GET /product/5/assign-performers/ - 200 - Время: 0.130 сек
+DEBUG 2026-03-26 09:57:16,679 middleware 18732 15712 📨 GET /product/5/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 09:57:16,699 middleware 18732 15712 📤 GET /product/5/assign-performers/ - 200 - Время: 0.024 сек
+DEBUG 2026-03-26 10:20:42,976 middleware 18732 24652 📨 GET /product/5/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 10:20:43,015 middleware 18732 24652 📤 GET /product/5/assign-performers/ - 200 - Время: 0.043 сек
+DEBUG 2026-03-26 10:39:20,818 middleware 21964 29148 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 10:39:21,012 middleware 21964 29148 📤 GET /product/3/assign-performers/ - 200 - Время: 0.196 сек
+DEBUG 2026-03-26 14:02:22,603 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:02:22,896 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.297 сек
+DEBUG 2026-03-26 14:06:11,088 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:06:11,152 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.067 сек
+DEBUG 2026-03-26 14:06:14,705 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:06:14,749 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.047 сек
+DEBUG 2026-03-26 14:06:23,236 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:06:23,284 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.051 сек
+DEBUG 2026-03-26 14:06:29,305 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:06:29,353 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.051 сек
+DEBUG 2026-03-26 14:06:37,254 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:06:37,301 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.051 сек
+DEBUG 2026-03-26 14:06:43,727 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:06:43,913 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 200 - Время: 0.190 сек
+DEBUG 2026-03-26 14:06:50,843 middleware 17320 13784 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-26 14:06:50,846 middleware 17320 13784 💥 Исключение в GET /product/3/assign-performers/: Field 'id' expected a number but got 'None'.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+INFO 2026-03-26 14:06:50,957 middleware 17320 13784 📤 GET /product/3/assign-performers/ - 500 - Время: 0.118 сек
+ERROR 2026-03-26 14:06:50,957 middleware 17320 13784 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:07:01,808 middleware 17320 11356 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-26 14:07:01,810 middleware 17320 11356 💥 Исключение в GET /product/3/assign-performers/: Field 'id' expected a number but got 'None'.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+INFO 2026-03-26 14:07:01,889 middleware 17320 11356 📤 GET /product/3/assign-performers/ - 500 - Время: 0.085 сек
+ERROR 2026-03-26 14:07:01,889 middleware 17320 11356 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:07:31,454 middleware 17320 11356 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-26 14:07:31,455 middleware 17320 11356 💥 Исключение в GET /product/3/assign-performers/: Field 'id' expected a number but got 'None'.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+INFO 2026-03-26 14:07:31,547 middleware 17320 11356 📤 GET /product/3/assign-performers/ - 500 - Время: 0.096 сек
+ERROR 2026-03-26 14:07:31,547 middleware 17320 11356 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:07:34,304 middleware 17320 11356 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-26 14:07:34,306 middleware 17320 11356 💥 Исключение в GET /product/3/assign-performers/: Field 'id' expected a number but got 'None'.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+INFO 2026-03-26 14:07:34,393 middleware 17320 11356 📤 GET /product/3/assign-performers/ - 500 - Время: 0.093 сек
+ERROR 2026-03-26 14:07:34,394 middleware 17320 11356 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:08:38,912 middleware 17320 11356 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:08:38,930 middleware 17320 11356 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:08:38,930 middleware 17320 11356 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:10:08,989 middleware 13752 1952 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:10:09,217 middleware 13752 1952 📤 GET /product/3/assign-performers/ - 200 - Время: 0.232 сек
+DEBUG 2026-03-26 14:10:09,271 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:10:09,291 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-03-26 14:10:09,292 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:10:11,132 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:10:11,153 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.025 сек
+ERROR 2026-03-26 14:10:11,153 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:10:14,227 middleware 13752 1952 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-26 14:10:14,230 middleware 13752 1952 💥 Исключение в GET /product/3/assign-performers/: Field 'id' expected a number but got 'None'.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+INFO 2026-03-26 14:10:14,320 middleware 13752 1952 📤 GET /product/3/assign-performers/ - 500 - Время: 0.096 сек
+ERROR 2026-03-26 14:10:14,320 middleware 13752 1952 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:10:14,366 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:10:14,382 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.020 сек
+ERROR 2026-03-26 14:10:14,383 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:10:18,320 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:10:18,337 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:10:18,338 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:10:18,400 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:10:18,420 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-03-26 14:10:18,421 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:11:21,559 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:11:21,573 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-03-26 14:11:21,575 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:11:31,177 middleware 13752 1952 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-26 14:11:31,180 middleware 13752 1952 💥 Исключение в GET /product/3/assign-performers/: Field 'id' expected a number but got 'None'.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+INFO 2026-03-26 14:11:31,267 middleware 13752 1952 📤 GET /product/3/assign-performers/ - 500 - Время: 0.094 сек
+ERROR 2026-03-26 14:11:31,268 middleware 13752 1952 ❌ Ошибка 500: GET /product/3/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:11:31,312 middleware 13752 1952 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:11:31,329 middleware 13752 1952 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:11:31,329 middleware 13752 1952 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:11,220 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:11,255 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.040 сек
+ERROR 2026-03-26 14:12:11,255 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:11,329 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:11,347 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-03-26 14:12:11,347 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:13,719 middleware 13604 9468 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:12:13,922 middleware 13604 9468 📤 GET /product/3/assign-performers/ - 200 - Время: 0.206 сек
+DEBUG 2026-03-26 14:12:13,971 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:13,988 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:12:13,988 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:38,338 middleware 13604 9468 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:12:38,390 middleware 13604 9468 📤 GET /product/3/assign-performers/ - 200 - Время: 0.056 сек
+DEBUG 2026-03-26 14:12:38,438 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:38,455 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:12:38,455 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:43,576 middleware 13604 9468 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:12:43,744 middleware 13604 9468 📤 GET /product/3/assign-performers/ - 200 - Время: 0.173 сек
+DEBUG 2026-03-26 14:12:43,786 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:43,808 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.027 сек
+ERROR 2026-03-26 14:12:43,810 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:46,423 middleware 13604 9468 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:12:46,463 middleware 13604 9468 📤 GET /product/3/assign-performers/ - 200 - Время: 0.044 сек
+DEBUG 2026-03-26 14:12:46,503 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:46,519 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:12:46,520 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:12:51,061 middleware 13604 9468 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:12:51,097 middleware 13604 9468 📤 GET /product/3/assign-performers/ - 200 - Время: 0.039 сек
+DEBUG 2026-03-26 14:12:51,139 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:12:51,157 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-03-26 14:12:51,158 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:13:38,772 middleware 13604 9468 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:13:38,788 middleware 13604 9468 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.020 сек
+ERROR 2026-03-26 14:13:38,788 middleware 13604 9468 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:20,649 middleware 6428 29628 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:17:20,712 middleware 6428 29628 📤 GET /product/3/assign-performers/ - 200 - Время: 0.067 сек
+DEBUG 2026-03-26 14:17:20,755 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:20,803 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.053 сек
+ERROR 2026-03-26 14:17:20,803 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:26,365 middleware 6428 29628 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:17:26,401 middleware 6428 29628 📤 GET /product/3/assign-performers/ - 200 - Время: 0.039 сек
+DEBUG 2026-03-26 14:17:26,444 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:26,462 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-03-26 14:17:26,463 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:27,748 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:27,765 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:17:27,766 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:36,224 middleware 6428 29628 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:17:36,258 middleware 6428 29628 📤 GET /product/3/assign-performers/ - 200 - Время: 0.038 сек
+DEBUG 2026-03-26 14:17:36,304 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:36,323 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-03-26 14:17:36,323 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:42,383 middleware 6428 29628 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:17:42,415 middleware 6428 29628 📤 GET /product/3/assign-performers/ - 200 - Время: 0.037 сек
+DEBUG 2026-03-26 14:17:42,465 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:42,484 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-03-26 14:17:42,484 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:53,698 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:53,717 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.026 сек
+ERROR 2026-03-26 14:17:53,718 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:17:57,149 middleware 6428 29628 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:17:57,179 middleware 6428 29628 📤 GET /product/3/assign-performers/ - 200 - Время: 0.034 сек
+DEBUG 2026-03-26 14:17:57,223 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:17:57,239 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:17:57,240 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:18:02,989 middleware 6428 29628 📨 GET /product/3/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 14:18:03,020 middleware 6428 29628 📤 GET /product/3/assign-performers/ - 200 - Время: 0.034 сек
+DEBUG 2026-03-26 14:18:03,068 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:18:03,086 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:18:03,086 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:21:11,834 middleware 6428 29628 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:21:11,878 middleware 6428 29628 📤 GET / - 200 - Время: 0.047 сек
+DEBUG 2026-03-26 14:21:11,922 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:21:11,943 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.026 сек
+ERROR 2026-03-26 14:21:11,945 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:21:14,684 middleware 6428 29628 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:21:14,715 middleware 6428 29628 📤 GET /task/25/delete/ - 200 - Время: 0.034 сек
+DEBUG 2026-03-26 14:21:14,756 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:21:14,773 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:21:14,773 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:21:15,993 middleware 6428 29628 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:21:16,016 middleware 6428 29628 💥 Исключение в POST /task/25/delete/: Cannot query "Заключительный отчёт о НИР": Must be "ResearchProduct" instance.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 238, in task_delete
+    task.delete()
+    ~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 1299, in delete
+    collector.collect([self], keep_parents=keep_parents)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 349, in collect
+    on_delete(self, field, sub_objs, self.using)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 23, in CASCADE
+    collector.collect(
+    ~~~~~~~~~~~~~~~~~^
+        sub_objs,
+        ^^^^^^^^^
+    ...<3 lines>...
+        fail_on_restricted=False,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 349, in collect
+    on_delete(self, field, sub_objs, self.using)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 23, in CASCADE
+    collector.collect(
+    ~~~~~~~~~~~~~~~~~^
+        sub_objs,
+        ^^^^^^^^^
+    ...<3 lines>...
+        fail_on_restricted=False,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Заключительный отчёт о НИР": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:21:16,223 middleware 6428 29628 📤 POST /task/25/delete/ - 500 - Время: 0.234 сек
+ERROR 2026-03-26 14:21:16,224 middleware 6428 29628 ❌ Ошибка 500: POST /task/25/delete/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:21:16,269 middleware 6428 29628 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:21:16,287 middleware 6428 29628 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:21:16,287 middleware 6428 29628 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:22:50,533 middleware 28916 16740 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:22:50,541 middleware 28916 16740 💥 Исключение в POST /task/25/delete/: name 'logger' is not defined
+Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 245, in task_delete
+    ResearchProduct.objects.filter(subtask=subtask).delete()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 257, in task_delete
+    logger.error(f'Ошибка удаления задачи {task_id}: {e}')
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2026-03-26 14:22:50,656 middleware 28916 16740 📤 POST /task/25/delete/ - 500 - Время: 0.128 сек
+ERROR 2026-03-26 14:22:50,656 middleware 28916 16740 ❌ Ошибка 500: POST /task/25/delete/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:22:50,707 middleware 28916 16740 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:22:50,729 middleware 28916 16740 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.027 сек
+ERROR 2026-03-26 14:22:50,730 middleware 28916 16740 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:22:51,678 middleware 28916 16740 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:22:51,684 middleware 28916 16740 💥 Исключение в POST /task/25/delete/: name 'logger' is not defined
+Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 245, in task_delete
+    ResearchProduct.objects.filter(subtask=subtask).delete()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 257, in task_delete
+    logger.error(f'Ошибка удаления задачи {task_id}: {e}')
+    ^^^^^^
+NameError: name 'logger' is not defined
+INFO 2026-03-26 14:22:51,803 middleware 28916 16740 📤 POST /task/25/delete/ - 500 - Время: 0.127 сек
+ERROR 2026-03-26 14:22:51,804 middleware 28916 16740 ❌ Ошибка 500: POST /task/25/delete/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:22:51,855 middleware 28916 16740 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:22:51,872 middleware 28916 16740 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:22:51,872 middleware 28916 16740 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:24:48,774 middleware 8668 26236 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:24:48,784 views 8668 26236 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:24:48,800 middleware 8668 26236 📤 POST /task/25/delete/ - 302 - Время: 0.029 сек
+DEBUG 2026-03-26 14:24:48,821 middleware 8668 26236 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:24:48,858 middleware 8668 26236 📤 GET / - 200 - Время: 0.040 сек
+DEBUG 2026-03-26 14:24:48,912 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:24:48,929 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.026 сек
+ERROR 2026-03-26 14:24:48,930 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:24:52,552 middleware 8668 26236 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:24:52,557 middleware 8668 26236 📤 GET /task/25/delete/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-26 14:24:52,601 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:24:52,617 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.020 сек
+ERROR 2026-03-26 14:24:52,617 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:24:53,979 middleware 8668 26236 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:24:53,985 views 8668 26236 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:24:53,986 middleware 8668 26236 📤 POST /task/25/delete/ - 302 - Время: 0.012 сек
+DEBUG 2026-03-26 14:24:54,096 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:24:54,114 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:24:54,114 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:24:56,862 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:24:56,879 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:24:56,879 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:25:00,016 middleware 8668 26236 📨 GET /task/25/ - Пользователь: pavel2
+INFO 2026-03-26 14:25:00,040 middleware 8668 26236 📤 GET /task/25/ - 200 - Время: 0.028 сек
+DEBUG 2026-03-26 14:25:00,088 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:25:00,105 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:25:00,105 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:25:05,620 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:25:05,635 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-03-26 14:25:05,635 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:25:07,412 middleware 8668 26236 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:25:07,418 views 8668 26236 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:25:07,419 middleware 8668 26236 📤 POST /task/25/delete/ - 302 - Время: 0.012 сек
+DEBUG 2026-03-26 14:25:07,478 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:25:07,495 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-03-26 14:25:07,496 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:26:17,149 middleware 8668 26236 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-03-26 14:26:17,164 middleware 8668 26236 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.018 сек
+ERROR 2026-03-26 14:26:17,164 middleware 8668 26236 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-03-26 14:26:21,289 middleware 8668 26236 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:26:21,299 views 8668 26236 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:26:21,300 middleware 8668 26236 📤 POST /task/25/delete/ - 302 - Время: 0.014 сек
+DEBUG 2026-03-26 14:32:49,191 middleware 28444 25700 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:32:49,270 middleware 28444 25700 📤 GET / - 200 - Время: 0.083 сек
+DEBUG 2026-03-26 14:32:50,910 middleware 28444 25700 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:32:50,915 middleware 28444 25700 📤 GET /task/25/delete/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-26 14:32:53,238 middleware 28444 25700 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:32:53,249 views 28444 25700 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:32:53,250 middleware 28444 25700 📤 POST /task/25/delete/ - 302 - Время: 0.014 сек
+DEBUG 2026-03-26 14:32:55,254 middleware 28444 25700 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:32:55,272 middleware 28444 25700 📤 GET /task/25/delete/ - 200 - Время: 0.023 сек
+DEBUG 2026-03-26 14:33:05,622 middleware 28444 25700 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:33:05,630 views 28444 25700 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:33:05,631 middleware 28444 25700 📤 POST /task/25/delete/ - 302 - Время: 0.013 сек
+DEBUG 2026-03-26 14:34:54,328 middleware 15160 22360 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:34:54,407 middleware 15160 22360 📤 GET / - 200 - Время: 0.085 сек
+DEBUG 2026-03-26 14:34:55,781 middleware 15160 22360 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:34:55,785 middleware 15160 22360 📤 GET /task/25/delete/ - 200 - Время: 0.010 сек
+DEBUG 2026-03-26 14:34:56,905 middleware 15160 22360 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:34:56,914 views 15160 22360 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+INFO 2026-03-26 14:34:56,915 middleware 15160 22360 📤 POST /task/25/delete/ - 302 - Время: 0.013 сек
+DEBUG 2026-03-26 14:37:53,940 middleware 23008 20628 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:37:54,008 middleware 23008 20628 📤 GET / - 200 - Время: 0.072 сек
+DEBUG 2026-03-26 14:37:55,265 middleware 23008 20628 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:37:55,269 middleware 23008 20628 📤 GET /task/25/delete/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-26 14:37:56,173 middleware 23008 20628 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:37:56,176 views 23008 20628 Удаление задачи 25, подэтапов: [133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151]
+ERROR 2026-03-26 14:37:56,185 views 23008 20628 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:37:56,195 views 23008 20628 Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 254, in task_delete
+    deleted_products = ResearchProduct.objects.filter(subtask_id__in=subtask_ids).delete()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+INFO 2026-03-26 14:37:56,201 middleware 23008 20628 📤 POST /task/25/delete/ - 302 - Время: 0.031 сек
+DEBUG 2026-03-26 14:38:49,045 middleware 27380 32932 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:38:49,097 middleware 27380 32932 📤 GET / - 200 - Время: 0.059 сек
+DEBUG 2026-03-26 14:38:50,418 middleware 27380 32932 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:38:50,422 middleware 27380 32932 📤 GET /task/25/delete/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-26 14:38:51,606 middleware 27380 32932 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:38:51,619 views 27380 32932 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:38:51,625 views 27380 32932 Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 259, in task_delete
+    products.delete()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+INFO 2026-03-26 14:38:51,634 middleware 27380 32932 📤 POST /task/25/delete/ - 302 - Время: 0.032 сек
+DEBUG 2026-03-26 14:41:38,066 middleware 26268 21096 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:41:38,117 middleware 26268 21096 📤 GET / - 200 - Время: 0.055 сек
+DEBUG 2026-03-26 14:41:39,459 middleware 26268 21096 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:41:39,468 middleware 26268 21096 📤 GET /task/25/delete/ - 200 - Время: 0.014 сек
+DEBUG 2026-03-26 14:41:40,656 middleware 26268 21096 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:41:40,665 views 26268 21096 Удалены связи ProductPerformer для продуктов [81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+ERROR 2026-03-26 14:41:40,670 views 26268 21096 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:41:40,676 views 26268 21096 Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 263, in task_delete
+    ResearchProduct.objects.filter(id__in=product_ids).delete()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+INFO 2026-03-26 14:41:40,685 middleware 26268 21096 📤 POST /task/25/delete/ - 302 - Время: 0.032 сек
+DEBUG 2026-03-26 14:41:46,245 middleware 26268 13976 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:41:46,256 middleware 26268 13976 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-26 14:41:46,256 middleware 26268 13976 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:42:03,170 middleware 26268 13976 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:42:03,173 middleware 26268 13976 📤 GET /task/25/delete/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-26 14:42:05,705 middleware 26268 13976 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:42:05,711 views 26268 13976 Удалены связи ProductPerformer для продуктов [81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+ERROR 2026-03-26 14:42:05,717 views 26268 13976 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:42:05,722 views 26268 13976 Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 263, in task_delete
+    ResearchProduct.objects.filter(id__in=product_ids).delete()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+INFO 2026-03-26 14:42:05,730 middleware 26268 13976 📤 POST /task/25/delete/ - 302 - Время: 0.028 сек
+DEBUG 2026-03-26 14:42:29,105 middleware 25196 17116 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:42:29,139 middleware 25196 17116 📤 GET /task/25/delete/ - 200 - Время: 0.037 сек
+DEBUG 2026-03-26 14:42:30,089 middleware 25196 17116 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:42:30,102 views 25196 17116 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:42:30,108 views 25196 17116 Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 263, in task_delete
+    products.delete()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+INFO 2026-03-26 14:42:30,116 middleware 25196 17116 📤 POST /task/25/delete/ - 302 - Время: 0.029 сек
+DEBUG 2026-03-26 14:42:30,124 middleware 25196 17116 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:42:30,180 middleware 25196 17116 📤 GET / - 200 - Время: 0.059 сек
+DEBUG 2026-03-26 14:42:34,217 middleware 25196 17116 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:42:34,220 middleware 25196 17116 📤 GET /task/25/delete/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-26 14:42:35,356 middleware 25196 17116 📨 POST /task/25/delete/ - Пользователь: pavel2
+ERROR 2026-03-26 14:42:35,365 views 25196 17116 Ошибка удаления задачи 25: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:42:35,368 views 25196 17116 Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 263, in task_delete
+    products.delete()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+INFO 2026-03-26 14:42:35,374 middleware 25196 17116 📤 POST /task/25/delete/ - 302 - Время: 0.021 сек
+DEBUG 2026-03-26 14:43:53,888 middleware 30812 13668 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:43:53,981 middleware 30812 13668 📤 GET / - 200 - Время: 0.096 сек
+DEBUG 2026-03-26 14:43:55,351 middleware 30812 13668 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:43:55,355 middleware 30812 13668 📤 GET /task/25/delete/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-26 14:43:56,556 middleware 30812 13668 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:43:56,589 middleware 30812 13668 📤 POST /task/25/delete/ - 302 - Время: 0.036 сек
+DEBUG 2026-03-26 14:44:00,757 middleware 30812 13668 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:44:00,762 middleware 30812 13668 📤 GET /task/25/delete/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-26 14:44:01,573 middleware 30812 13668 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:44:01,599 middleware 30812 13668 📤 POST /task/25/delete/ - 302 - Время: 0.029 сек
+DEBUG 2026-03-26 14:44:39,538 middleware 15468 16588 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:44:39,571 middleware 15468 16588 📤 GET /task/25/delete/ - 200 - Время: 0.037 сек
+DEBUG 2026-03-26 14:44:41,574 middleware 15468 16588 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:44:41,696 middleware 15468 16588 📤 POST /task/25/delete/ - 302 - Время: 0.125 сек
+DEBUG 2026-03-26 14:44:41,706 middleware 15468 16588 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:44:41,735 middleware 15468 16588 📤 GET / - 200 - Время: 0.034 сек
+DEBUG 2026-03-26 14:44:48,122 middleware 15468 16588 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:44:48,135 middleware 15468 16588 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-26 14:44:48,135 middleware 15468 16588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:44:49,043 middleware 15468 16588 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:44:49,062 middleware 15468 16588 📤 GET /favicon.ico - 404 - Время: 0.024 сек
+ERROR 2026-03-26 14:44:49,063 middleware 15468 16588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:44:50,113 middleware 15468 23472 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:44:50,130 middleware 15468 23472 📤 GET /favicon.ico - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:44:50,131 middleware 15468 23472 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:44:50,442 middleware 15468 16588 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:44:50,453 middleware 15468 16588 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 14:44:50,453 middleware 15468 16588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:44:50,866 middleware 15468 23472 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:44:50,878 middleware 15468 23472 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-03-26 14:44:50,880 middleware 15468 23472 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:44:52,214 middleware 15468 23472 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:44:52,217 middleware 15468 23472 📤 GET /task/25/delete/ - 200 - Время: 0.005 сек
+DEBUG 2026-03-26 14:44:53,860 middleware 15468 23472 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:44:53,875 middleware 15468 23472 📤 POST /task/25/delete/ - 302 - Время: 0.018 сек
+DEBUG 2026-03-26 14:45:02,085 middleware 15468 23472 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:45:02,102 middleware 15468 23472 📤 GET / - 200 - Время: 0.020 сек
+DEBUG 2026-03-26 14:45:03,691 middleware 15468 23472 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:45:03,706 middleware 15468 23472 📤 GET / - 200 - Время: 0.019 сек
+DEBUG 2026-03-26 14:45:05,044 middleware 15468 23472 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:45:05,056 middleware 15468 23472 📤 GET / - 200 - Время: 0.016 сек
+DEBUG 2026-03-26 14:45:11,892 middleware 15468 23472 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:45:11,912 middleware 15468 23472 📤 GET / - 200 - Время: 0.024 сек
+DEBUG 2026-03-26 14:45:19,255 middleware 15468 23472 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:45:19,270 middleware 15468 23472 📤 POST /task/25/delete/ - 302 - Время: 0.018 сек
+DEBUG 2026-03-26 14:46:35,294 middleware 17352 18508 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:46:35,330 middleware 17352 18508 📤 GET /task/25/delete/ - 200 - Время: 0.040 сек
+DEBUG 2026-03-26 14:46:36,982 middleware 17352 18508 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:46:37,002 middleware 17352 18508 📤 POST /task/25/delete/ - 302 - Время: 0.023 сек
+DEBUG 2026-03-26 14:46:37,013 middleware 17352 18508 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:46:37,037 middleware 17352 18508 📤 GET / - 200 - Время: 0.029 сек
+DEBUG 2026-03-26 14:47:15,714 middleware 13924 14004 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:47:15,785 middleware 13924 14004 📤 GET / - 200 - Время: 0.075 сек
+DEBUG 2026-03-26 14:47:17,229 middleware 13924 14004 📨 GET /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:47:17,233 middleware 13924 14004 📤 GET /task/25/delete/ - 200 - Время: 0.009 сек
+DEBUG 2026-03-26 14:47:19,973 middleware 13924 14004 📨 POST /task/25/delete/ - Пользователь: pavel2
+INFO 2026-03-26 14:47:21,755 middleware 13924 14004 📤 POST /task/25/delete/ - 302 - Время: 1.785 сек
+DEBUG 2026-03-26 14:47:31,155 middleware 13924 14004 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:47:31,171 middleware 13924 14004 📤 GET / - 200 - Время: 0.020 сек
+DEBUG 2026-03-26 14:47:45,748 middleware 13924 14004 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:47:45,764 middleware 13924 14004 📤 GET / - 200 - Время: 0.020 сек
+DEBUG 2026-03-26 14:47:46,222 middleware 13924 14004 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:47:46,233 middleware 13924 14004 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 14:47:46,234 middleware 13924 14004 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:47:49,340 middleware 13924 14004 📨 GET /task/create/ - Пользователь: pavel2
+INFO 2026-03-26 14:47:49,384 middleware 13924 14004 📤 GET /task/create/ - 200 - Время: 0.047 сек
+DEBUG 2026-03-26 14:48:22,666 middleware 13924 14004 📨 POST /task/create/ - Пользователь: pavel2
+INFO 2026-03-26 14:48:24,501 middleware 13924 14004 📤 POST /task/create/ - 302 - Время: 1.840 сек
+DEBUG 2026-03-26 14:48:27,374 middleware 13924 14004 📨 GET /task/25/ - Пользователь: pavel2
+ERROR 2026-03-26 14:48:27,376 middleware 13924 14004 💥 Исключение в GET /task/25/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 14:48:27,390 middleware 13924 14004 📤 GET /task/25/ - 404 - Время: 0.020 сек
+ERROR 2026-03-26 14:48:27,391 middleware 13924 14004 ❌ Ошибка 404: GET /task/25/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:48:55,222 middleware 13924 14004 📨 GET /task/25/ - Пользователь: pavel2
+ERROR 2026-03-26 14:48:55,224 middleware 13924 14004 💥 Исключение в GET /task/25/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 14:48:55,241 middleware 13924 14004 📤 GET /task/25/ - 404 - Время: 0.022 сек
+ERROR 2026-03-26 14:48:55,241 middleware 13924 14004 ❌ Ошибка 404: GET /task/25/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:54:39,037 middleware 30404 14532 📨 GET /task/25/ - Пользователь: pavel2
+ERROR 2026-03-26 14:54:39,039 middleware 30404 14532 💥 Исключение в GET /task/25/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 14:54:39,058 middleware 30404 14532 📤 GET /task/25/ - 404 - Время: 0.025 сек
+ERROR 2026-03-26 14:54:39,059 middleware 30404 14532 ❌ Ошибка 404: GET /task/25/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:54:39,171 middleware 30404 14532 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:54:39,186 middleware 30404 14532 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-03-26 14:54:39,186 middleware 30404 14532 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:54:44,997 middleware 30404 14532 📨 GET /task - Пользователь: pavel2
+INFO 2026-03-26 14:54:45,012 middleware 30404 14532 📤 GET /task - 404 - Время: 0.018 сек
+ERROR 2026-03-26 14:54:45,013 middleware 30404 14532 ❌ Ошибка 404: GET /task - Пользователь: pavel2
+DEBUG 2026-03-26 14:54:52,676 middleware 30404 14532 📨 GET /task/25/ - Пользователь: pavel2
+ERROR 2026-03-26 14:54:52,678 middleware 30404 14532 💥 Исключение в GET /task/25/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 14:54:52,692 middleware 30404 14532 📤 GET /task/25/ - 404 - Время: 0.020 сек
+ERROR 2026-03-26 14:54:52,692 middleware 30404 14532 ❌ Ошибка 404: GET /task/25/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:54:59,181 middleware 30404 14532 📨 GET /task/25/ - Пользователь: pavel2
+ERROR 2026-03-26 14:54:59,183 middleware 30404 14532 💥 Исключение в GET /task/25/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 14:54:59,198 middleware 30404 14532 📤 GET /task/25/ - 404 - Время: 0.021 сек
+ERROR 2026-03-26 14:54:59,198 middleware 30404 14532 ❌ Ошибка 404: GET /task/25/ - Пользователь: pavel2
+DEBUG 2026-03-26 14:55:02,497 middleware 30404 14532 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 14:55:02,568 middleware 30404 14532 📤 GET / - 200 - Время: 0.076 сек
+DEBUG 2026-03-26 14:55:02,902 middleware 30404 30648 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:55:02,913 middleware 30404 30648 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 14:55:02,914 middleware 30404 30648 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:55:05,330 middleware 30404 30648 📨 GET /task/26/ - Пользователь: pavel2
+INFO 2026-03-26 14:55:05,353 middleware 30404 30648 📤 GET /task/26/ - 200 - Время: 0.027 сек
+DEBUG 2026-03-26 14:55:07,649 middleware 30404 30648 📨 GET /task/26/subtasks/ - Пользователь: pavel2
+INFO 2026-03-26 14:55:07,716 middleware 30404 30648 📤 GET /task/26/subtasks/ - 200 - Время: 0.070 сек
+DEBUG 2026-03-26 14:55:23,824 middleware 30404 14532 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 14:55:23,839 middleware 30404 14532 📤 GET /favicon.ico - 404 - Время: 0.019 сек
+ERROR 2026-03-26 14:55:23,840 middleware 30404 14532 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 14:55:27,513 middleware 30404 14532 📨 GET /subtask/153/update/ - Пользователь: pavel2
+INFO 2026-03-26 14:55:27,580 middleware 30404 14532 📤 GET /subtask/153/update/ - 200 - Время: 0.071 сек
+DEBUG 2026-03-26 14:55:43,305 middleware 30404 14532 📨 GET /subtask/157/update/ - Пользователь: pavel2
+INFO 2026-03-26 14:55:43,334 middleware 30404 14532 📤 GET /subtask/157/update/ - 200 - Время: 0.032 сек
+DEBUG 2026-03-26 15:03:03,276 middleware 17832 33064 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 15:03:03,350 middleware 17832 33064 📤 GET / - 200 - Время: 0.077 сек
+DEBUG 2026-03-26 15:03:05,079 middleware 17832 33064 📨 GET /task/26/delete/ - Пользователь: pavel2
+INFO 2026-03-26 15:03:05,083 middleware 17832 33064 📤 GET /task/26/delete/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-26 15:03:06,578 middleware 17832 33064 📨 POST /task/26/delete/ - Пользователь: pavel2
+INFO 2026-03-26 15:03:06,781 middleware 17832 33064 📤 POST /task/26/delete/ - 302 - Время: 0.207 сек
+DEBUG 2026-03-26 15:03:10,875 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:10,887 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-26 15:03:10,888 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:13,103 middleware 17832 33064 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:13,114 middleware 17832 33064 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:03:13,115 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:17,412 middleware 17832 33064 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 15:03:17,428 middleware 17832 33064 📤 GET / - 200 - Время: 0.020 сек
+DEBUG 2026-03-26 15:03:19,149 middleware 17832 33064 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 15:03:19,166 middleware 17832 33064 📤 GET / - 200 - Время: 0.022 сек
+DEBUG 2026-03-26 15:03:20,655 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:20,665 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:03:20,665 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:21,537 middleware 17832 33064 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:21,548 middleware 17832 33064 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-26 15:03:21,549 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:22,359 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:22,371 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-26 15:03:22,371 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:24,134 middleware 17832 32116 📨 GET /task/create/ - Пользователь: pavel2
+INFO 2026-03-26 15:03:24,159 middleware 17832 32116 📤 GET /task/create/ - 200 - Время: 0.028 сек
+DEBUG 2026-03-26 15:03:29,232 middleware 17832 32116 📨 POST /task/create/ - Пользователь: pavel2
+INFO 2026-03-26 15:03:37,626 middleware 17832 32116 📤 POST /task/create/ - 302 - Время: 8.399 сек
+DEBUG 2026-03-26 15:03:39,870 middleware 17832 32116 📨 GET /task/26/ - Пользователь: pavel2
+ERROR 2026-03-26 15:03:39,872 middleware 17832 32116 💥 Исключение в GET /task/26/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 15:03:39,888 middleware 17832 32116 📤 GET /task/26/ - 404 - Время: 0.020 сек
+ERROR 2026-03-26 15:03:39,888 middleware 17832 32116 ❌ Ошибка 404: GET /task/26/ - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:45,795 middleware 17832 32116 📨 GET /task/26/ - Пользователь: pavel2
+ERROR 2026-03-26 15:03:45,797 middleware 17832 32116 💥 Исключение в GET /task/26/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 15:03:45,810 middleware 17832 32116 📤 GET /task/26/ - 404 - Время: 0.018 сек
+ERROR 2026-03-26 15:03:45,810 middleware 17832 32116 ❌ Ошибка 404: GET /task/26/ - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:45,858 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:45,869 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:03:45,869 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:47,100 middleware 17832 32116 📨 GET /task/26/ - Пользователь: pavel2
+ERROR 2026-03-26 15:03:47,102 middleware 17832 32116 💥 Исключение в GET /task/26/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 15:03:47,114 middleware 17832 32116 📤 GET /task/26/ - 404 - Время: 0.016 сек
+ERROR 2026-03-26 15:03:47,114 middleware 17832 32116 ❌ Ошибка 404: GET /task/26/ - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:47,156 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:47,170 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-03-26 15:03:47,170 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:48,058 middleware 17832 32116 📨 GET /task/26/ - Пользователь: pavel2
+ERROR 2026-03-26 15:03:48,060 middleware 17832 32116 💥 Исключение в GET /task/26/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 15:03:48,071 middleware 17832 32116 📤 GET /task/26/ - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:03:48,072 middleware 17832 32116 ❌ Ошибка 404: GET /task/26/ - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:48,119 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:48,131 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-26 15:03:48,132 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:50,624 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:50,640 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.020 сек
+ERROR 2026-03-26 15:03:50,640 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:52,499 middleware 17832 33064 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:52,509 middleware 17832 33064 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:03:52,509 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:53,193 middleware 17832 33064 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:03:53,203 middleware 17832 33064 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:03:53,204 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:03:54,260 middleware 17832 33064 📨 GET /task/26/ - Пользователь: pavel2
+ERROR 2026-03-26 15:03:54,263 middleware 17832 33064 💥 Исключение в GET /task/26/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1153, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+INFO 2026-03-26 15:03:54,277 middleware 17832 33064 📤 GET /task/26/ - 404 - Время: 0.020 сек
+ERROR 2026-03-26 15:03:54,278 middleware 17832 33064 ❌ Ошибка 404: GET /task/26/ - Пользователь: pavel2
+DEBUG 2026-03-26 15:04:07,519 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:04:07,532 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-03-26 15:04:07,532 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:04:08,168 middleware 17832 33064 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:04:08,178 middleware 17832 33064 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:04:08,178 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:04:14,186 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:04:14,199 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-03-26 15:04:14,200 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:04:15,069 middleware 17832 33064 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:04:15,081 middleware 17832 33064 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:04:15,081 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:04:15,872 middleware 17832 32116 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-26 15:04:15,883 middleware 17832 32116 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-26 15:04:15,883 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-26 15:04:45,275 middleware 24160 10708 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 15:04:45,353 middleware 24160 10708 📤 GET / - 200 - Время: 0.082 сек
+DEBUG 2026-03-26 15:04:47,092 middleware 24160 10708 📨 GET /task/27/ - Пользователь: pavel2
+INFO 2026-03-26 15:04:47,115 middleware 24160 10708 📤 GET /task/27/ - 200 - Время: 0.027 сек
+DEBUG 2026-03-26 15:04:49,565 middleware 24160 10708 📨 GET /task/27/subtasks/ - Пользователь: pavel2
+INFO 2026-03-26 15:04:49,642 middleware 24160 10708 📤 GET /task/27/subtasks/ - 200 - Время: 0.082 сек
+DEBUG 2026-03-26 15:04:54,159 middleware 24160 10708 📨 GET /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 15:04:54,336 middleware 24160 10708 📤 GET /product/87/assign-performers/ - 200 - Время: 0.179 сек
+DEBUG 2026-03-26 15:04:58,481 middleware 24160 10708 📨 GET /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 15:04:58,519 middleware 24160 10708 📤 GET /product/87/assign-performers/ - 200 - Время: 0.041 сек
+DEBUG 2026-03-26 15:05:02,929 middleware 24160 10708 📨 GET /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-26 15:05:03,093 middleware 24160 10708 📤 GET /product/87/assign-performers/ - 200 - Время: 0.168 сек
+DEBUG 2026-03-26 15:06:00,806 middleware 24160 10708 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-26 15:06:00,914 middleware 24160 10708 📤 GET /employees/ - 200 - Время: 0.111 сек
+DEBUG 2026-03-26 15:06:09,564 middleware 24160 10708 📨 GET /employee/261/update/ - Пользователь: pavel2
+INFO 2026-03-26 15:06:09,614 middleware 24160 10708 📤 GET /employee/261/update/ - 200 - Время: 0.054 сек
+DEBUG 2026-03-26 15:12:26,989 middleware 24160 30372 📨 GET / - Пользователь: pavel2
+INFO 2026-03-26 15:12:27,005 middleware 24160 30372 📤 GET / - 200 - Время: 0.019 сек

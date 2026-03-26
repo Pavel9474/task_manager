@@ -1,7 +1,7 @@
 import re
 from docx import Document
 from datetime import datetime
-from ..models import Subtask, Employee
+from ..models import Subtask, Employee, ResearchProduct
 
 class ResearchDocxImporter:
     def __init__(self, file_path):
@@ -200,23 +200,27 @@ class ResearchDocxImporter:
     
     def create_task_structure(self, task, stages_data):
         """Создание структуры этапов и подэтапов для задачи"""
-        from ..models import Subtask
+        from ..models import Subtask, ResearchProduct
         
         print(f"\nСоздание структуры для задачи: {task.title}")
         print(f"Получено этапов: {len(stages_data)}")
         
-        # Удаляем все существующие подэтапы
-        deleted = Subtask.objects.filter(task=task).delete()
-        print(f"Удалено старых подэтапов: {deleted}")
+        # Удаляем все существующие подэтапы и продукцию
+        subtasks_to_delete = Subtask.objects.filter(task=task)
+        for subtask in subtasks_to_delete:
+            # Удаляем продукцию этого подэтапа
+            ResearchProduct.objects.filter(subtask=subtask).delete()
+        subtasks_to_delete.delete()
+        print(f"Удалено старых подэтапов и продукции")
         
         created_count = 0
+        created_products_count = 0
         
         # Создаем все этапы и подэтапы
         for stage_idx, stage_data in enumerate(stages_data):
             # Создаем основной этап
             stage_number = str(stage_data['number'])
             
-            # Получаем даты
             planned_start = stage_data.get('start_date')
             planned_end = stage_data.get('end_date')
             
@@ -239,22 +243,15 @@ class ResearchDocxImporter:
                 try:
                     substage_number = str(substage_data['number'])
                     
-                    # Получаем даты для подэтапа
                     substage_start = substage_data.get('start_date')
                     substage_end = substage_data.get('end_date')
                     
-                    # Формируем текст продукции
-                    products_text = ""
-                    if substage_data.get('products'):
-                        products_list = substage_data['products']
-                        products_text = "Ожидаемая продукция:\n" + "\n".join([f"• {p}" for p in products_list])
-                    
+                    # Создаем подэтап
                     substage = Subtask.objects.create(
                         task=task,
                         stage_number=substage_number,
                         title=substage_data['title'][:200],
                         description=f"Подэтап {substage_data['number']} из ТЗ",
-                        output=products_text,
                         planned_start=substage_start,
                         planned_end=substage_end,
                         status='pending',
@@ -262,14 +259,30 @@ class ResearchDocxImporter:
                     )
                     date_info = f", даты: {substage_start} - {substage_end}" if substage_start and substage_end else ""
                     print(f"    🔹 Создан подэтап {substage_number} ID: {substage.id}{date_info}")
-                    print(f"        Продукция: {len(substage_data.get('products', []))} позиций")
                     created_count += 1
-                        
+                    
+                    # СОЗДАЁМ ПРОДУКЦИЮ КАК ОТДЕЛЬНЫЕ ОБЪЕКТЫ
+                    products_list = substage_data.get('products', [])
+                    for product_name in products_list:
+                        if product_name and len(product_name) > 5:
+                            product = ResearchProduct.objects.create(
+                                subtask=substage,
+                                name=product_name[:500],  # Ограничиваем длину
+                                description=f"Продукция подэтапа {substage_number}",
+                                status='pending'
+                            )
+                            created_products_count += 1
+                            print(f"        📄 Создана продукция: {product_name[:80]}...")
+                    
+                    print(f"        Продукция: {len(products_list)} позиций создано")
+                            
                 except Exception as e:
                     print(f"    ❌ Ошибка создания подэтапа {substage_data.get('number')}: {e}")
         
         # Проверяем результат
         final_count = Subtask.objects.filter(task=task).count()
+        products_count = ResearchProduct.objects.filter(subtask__task=task).count()
         print(f"\n✅ Всего создано подэтапов: {final_count}")
+        print(f"✅ Всего создано продукции: {products_count}")
         
         return created_count

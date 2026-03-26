@@ -700,10 +700,7 @@ class ResearchProduct(models.Model):
     name = models.CharField('Наименование продукции', max_length=500)
     description = models.TextField('Описание', blank=True)
     due_date = models.DateField('Срок выполнения', null=True, blank=True)
-    
-    # Удаляем это поле:
-    # performers = models.ManyToManyField(Employee, ...)  # КОММЕНТИРУЕМ ИЛИ УДАЛЯЕМ
-    
+      
     # Оставляем ответственного (можно будет назначать через ProductPerformer)
     responsible = models.ForeignKey(
         Employee, 

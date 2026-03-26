@@ -22,8 +22,14 @@ from django.db.models import Q
 from .services.org_service import OrganizationService
 import os
 from .decorators import log_view
+from django.db import transaction
+import logging
+
 from django.core.cache import cache
+
+logger = logging.getLogger('tasks')
 # ============= АУТЕНТИФИКАЦИЯ =============
+
 @login_required
 def register(request):
     """Регистрация нового пользователя"""
@@ -228,19 +234,38 @@ def task_update(request, task_id):
         'is_create': False
     })
 
-
 @login_required
 def task_delete(request, task_id):
     """Удаление задачи"""
     task = get_object_or_404(Task, id=task_id, user=request.user)
     
     if request.method == 'POST':
-        task.delete()
-        messages.success(request, 'Задача удалена!')
+        try:
+            # Отключаем каскадное удаление
+            # Сначала обнуляем связи
+            for subtask in task.subtasks.all():
+                # Обнуляем ссылки на подэтапы в продукции
+                ResearchProduct.objects.filter(subtask=subtask).update(subtask=None)
+                
+                # Очищаем связи исполнителей
+                subtask.performers.clear()
+            
+            # Удаляем подэтапы
+            task.subtasks.all().delete()
+            
+            # Удаляем задачу
+            task.delete()
+            
+            messages.success(request, f'Задача "{task.title}" успешно удалена')
+            
+        except Exception as e:
+            messages.error(request, f'Ошибка при удалении задачи: {str(e)}')
+            import traceback
+            print(traceback.format_exc())
+        
         return redirect('task_list')
     
     return render(request, 'tasks/task_confirm_delete.html', {'task': task})
-
 
 @login_required
 def task_complete(request, task_id):
@@ -1572,8 +1597,9 @@ def department_detail_ajax(request, dept_id):
 
 @login_required
 def product_assign_performers(request, product_id):
-    """Назначение исполнителей на продукцию"""
-    from .models import ResearchProduct, Employee, ProductPerformer
+    """Назначение исполнителей на продукцию с фильтрацией"""
+    from .models import ResearchProduct, Employee, ProductPerformer, Department, StaffPosition
+    from django.db.models import Q
     
     product = get_object_or_404(ResearchProduct, id=product_id)
     
@@ -1605,17 +1631,71 @@ def product_assign_performers(request, product_id):
             return redirect('subtask_list', task_id=product.substage.task.id)
         return redirect('task_list')
     
-    # Загружаем сотрудников и добавляем информацию о подразделении
-    employees = Employee.objects.filter(is_active=True).order_by('last_name', 'first_name')
+    # Получаем параметры фильтрации
+    department_id = request.GET.get('department')
+    search_query = request.GET.get('search', '').strip()
+    
+    # Базовый queryset
+    employees = Employee.objects.filter(is_active=True)
+    
+    # Фильтр по подразделению (через штатные позиции)
+    if department_id:
+        employees = employees.filter(
+            staff_positions__department_id=department_id,
+            staff_positions__is_active=True
+        ).distinct()
+    
+    # Поиск по ФИО и должности - расширенный поиск
+    if search_query:
+        # Разбиваем поисковый запрос на слова
+        search_parts = search_query.split()
+        
+        # Создаем Q объекты для каждого слова
+        q_objects = Q()
+        for part in search_parts:
+            q_objects |= Q(last_name__icontains=part)
+            q_objects |= Q(first_name__icontains=part)
+            q_objects |= Q(patronymic__icontains=part)
+            q_objects |= Q(position__icontains=part)
+            # Поиск по полному имени (Фамилия Имя Отчество)
+            q_objects |= Q(last_name__icontains=part) & Q(first_name__icontains=part)
+        
+        employees = employees.filter(q_objects).distinct()
+    
+    # Сортируем результат
+    employees = employees.order_by('last_name', 'first_name')
+    
+    # Получаем все подразделения для фильтра (только те, где есть сотрудники)
+    departments = Department.objects.filter(
+        staff_positions__is_active=True,
+        staff_positions__employee__is_active=True
+    ).distinct().order_by('level', 'full_path')
+    
+    # Добавляем количество сотрудников для каждого подразделения
+    for dept in departments:
+        dept.staff_count = StaffPosition.objects.filter(
+            department=dept,
+            is_active=True,
+            employee__is_active=True
+        ).count()
+    
+    # Получаем название выбранного подразделения для отображения
+    selected_department_name = None
+    if department_id:
+        selected_dept = Department.objects.filter(id=department_id).first()
+        if selected_dept:
+            selected_department_name = selected_dept.full_path
     
     # Добавляем информацию о подразделении к каждому сотруднику
     for emp in employees:
         staff_pos = emp.staff_positions.filter(is_active=True).first()
         if staff_pos:
             emp.dept_full_path = staff_pos.department.full_path
+            emp.dept_id = staff_pos.department.id
             emp.position_name = staff_pos.position.name
         else:
             emp.dept_full_path = None
+            emp.dept_id = None
             emp.position_name = None
     
     current_performers = product.product_performers.values_list('employee_id', flat=True)
@@ -1623,13 +1703,14 @@ def product_assign_performers(request, product_id):
     context = {
         'product': product,
         'employees': employees,
+        'departments': departments,
         'current_performers': list(current_performers),
-        'current_responsible': product.responsible_id
+        'current_responsible': product.responsible_id,
+        'selected_department': department_id,
+        'selected_department_name': selected_department_name,
+        'search_query': search_query,
     }
     return render(request, 'tasks/product_assign_performers.html', context)
-
-from django.http import JsonResponse
-import json
 
 @login_required
 def create_external_employee(request):

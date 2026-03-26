@@ -2902,3 +2902,1039 @@ INFO 2026-03-25 17:37:57,411 autoreload 31076 23568 Watching for file changes wi
 INFO 2026-03-25 17:38:24,366 autoreload 31076 23568 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
 INFO 2026-03-25 17:38:25,121 autoreload 27800 26124 Watching for file changes with StatReloader
 INFO 2026-03-25 17:39:19,934 log 27800 30408 "GET /product/3/assign-performers/ HTTP/1.1" 200 9701
+INFO 2026-03-26 09:56:10,504 autoreload 18732 21040 Watching for file changes with StatReloader
+INFO 2026-03-26 09:56:13,241 log 18732 15712 "GET / HTTP/1.1" 200 3661
+INFO 2026-03-26 09:56:13,291 log 18732 15712 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-26 09:56:13,296 log 18732 15712 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-26 09:56:15,025 log 18732 15712 "GET /task/25/ HTTP/1.1" 200 2885
+INFO 2026-03-26 09:56:20,947 log 18732 15712 "GET /task/25/subtasks/ HTTP/1.1" 200 14627
+INFO 2026-03-26 09:56:24,891 log 18732 15712 "GET /product/5/assign-performers/ HTTP/1.1" 200 10607
+INFO 2026-03-26 09:57:16,702 log 18732 15712 "GET /product/5/assign-performers/?department=126&search= HTTP/1.1" 200 5504
+INFO 2026-03-26 10:20:43,017 log 18732 24652 "GET /product/5/assign-performers/?department=126&search= HTTP/1.1" 200 7559
+INFO 2026-03-26 10:39:16,556 autoreload 18732 21040 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 10:39:17,325 autoreload 21964 13492 Watching for file changes with StatReloader
+INFO 2026-03-26 10:39:21,015 log 21964 29148 "GET /product/3/assign-performers/ HTTP/1.1" 200 11809
+INFO 2026-03-26 14:02:03,553 autoreload 21964 13492 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:02:05,144 autoreload 17320 28992 Watching for file changes with StatReloader
+INFO 2026-03-26 14:02:22,901 log 17320 13784 "GET /product/3/assign-performers/?department=&search= HTTP/1.1" 200 11807
+INFO 2026-03-26 14:05:46,464 log 17320 13784 "GET /product/3/assign-performers/?department=&search= HTTP/1.1" 200 11776
+INFO 2026-03-26 14:06:11,154 log 17320 13784 "GET /product/3/assign-performers/?department=&search=%D0%B0%D0%BA%D0%BB%D0%B5 HTTP/1.1" 200 7430
+INFO 2026-03-26 14:06:14,751 log 17320 13784 "GET /product/3/assign-performers/?department=&search=%D0%B0%D0%BA%D0%BB%D0%B5%D0%B5%D0%B2 HTTP/1.1" 200 7389
+INFO 2026-03-26 14:06:23,286 log 17320 13784 "GET /product/3/assign-performers/?department=&search=%D0%B0%D1%85%D0%BC%D0%B0 HTTP/1.1" 200 7429
+INFO 2026-03-26 14:06:29,356 log 17320 13784 "GET /product/3/assign-performers/?department=&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B5%D0%B2 HTTP/1.1" 200 7414
+INFO 2026-03-26 14:06:37,303 log 17320 13784 "GET /product/3/assign-performers/?department=&search=%D0%90%D1%85%D0%BC%D0%B0%D0%B4%D0%B4%D1%83%D0%BB%D0%B8%D0%BD HTTP/1.1" 200 7432
+INFO 2026-03-26 14:06:43,916 log 17320 13784 "GET /product/3/assign-performers/ HTTP/1.1" 200 12225
+ERROR 2026-03-26 14:06:50,949 log 17320 13784 Internal Server Error: /product/3/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+ERROR 2026-03-26 14:06:50,960 log 17320 13784 "GET /product/3/assign-performers/?department=None&search=%D0%90%D0%B4%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0 HTTP/1.1" 500 18725
+ERROR 2026-03-26 14:07:01,882 log 17320 11356 Internal Server Error: /product/3/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+ERROR 2026-03-26 14:07:01,892 log 17320 11356 "GET /product/3/assign-performers/?department=None&search=%D0%90%D0%B4%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0 HTTP/1.1" 500 18767
+ERROR 2026-03-26 14:07:31,538 log 17320 11356 Internal Server Error: /product/3/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+ERROR 2026-03-26 14:07:31,550 log 17320 11356 "GET /product/3/assign-performers/?department=None&search=%D0%90%D0%B4%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0 HTTP/1.1" 500 18718
+ERROR 2026-03-26 14:07:34,384 log 17320 11356 Internal Server Error: /product/3/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+ERROR 2026-03-26 14:07:34,398 log 17320 11356 "GET /product/3/assign-performers/?department=None&search=%D0%90%D0%B4%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0 HTTP/1.1" 500 18687
+WARNING 2026-03-26 14:08:38,931 log 17320 11356 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:08:38,932 log 17320 11356 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1907
+INFO 2026-03-26 14:10:04,441 autoreload 17320 28992 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:10:05,394 autoreload 13752 18224 Watching for file changes with StatReloader
+INFO 2026-03-26 14:10:09,221 log 13752 1952 "GET /product/3/assign-performers/ HTTP/1.1" 200 12334
+WARNING 2026-03-26 14:10:09,294 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:10:09,295 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1924
+INFO 2026-03-26 14:10:11,090 log 13752 1952 "GET /product/3/assign-performers/ HTTP/1.1" 200 12291
+WARNING 2026-03-26 14:10:11,155 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:10:11,157 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1905
+ERROR 2026-03-26 14:10:14,313 log 13752 1952 Internal Server Error: /product/3/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+ERROR 2026-03-26 14:10:14,323 log 13752 1952 "GET /product/3/assign-performers/?department=None&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B5%D0%B2 HTTP/1.1" 500 18686
+WARNING 2026-03-26 14:10:14,384 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:10:14,385 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1889
+WARNING 2026-03-26 14:10:18,340 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:10:18,345 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1948
+WARNING 2026-03-26 14:10:18,425 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:10:18,427 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1930
+INFO 2026-03-26 14:11:21,507 log 13752 1952 "GET /product/3/assign-performers/ HTTP/1.1" 200 12313
+WARNING 2026-03-26 14:11:21,577 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:11:21,577 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1932
+ERROR 2026-03-26 14:11:31,261 log 13752 1952 Internal Server Error: /product/3/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2128, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1617, in product_assign_performers
+    employees = employees.filter(
+                ~~~~~~~~~~~~~~~~^
+        staff_positions__department_id=department_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        staff_positions__is_active=True
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).distinct()
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1618, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1445, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\lookups.py", line 35, in __init__
+    self.rhs = self.get_prep_lookup()
+               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\related_lookups.py", line 113, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\fields\__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+        "Field '%s' expected a number but got %r." % (self.name, value),
+    ) from e
+ValueError: Field 'id' expected a number but got 'None'.
+ERROR 2026-03-26 14:11:31,270 log 13752 1952 "GET /product/3/assign-performers/?department=None&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B5%D0%B2 HTTP/1.1" 500 18716
+WARNING 2026-03-26 14:11:31,330 log 13752 1952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:11:31,331 log 13752 1952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1945
+INFO 2026-03-26 14:12:00,264 autoreload 13604 13984 Watching for file changes with StatReloader
+WARNING 2026-03-26 14:12:11,263 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:11,265 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1941
+WARNING 2026-03-26 14:12:11,350 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:11,351 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1929
+INFO 2026-03-26 14:12:13,926 log 13604 9468 "GET /product/3/assign-performers/ HTTP/1.1" 200 12265
+WARNING 2026-03-26 14:12:13,989 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:13,991 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1900
+INFO 2026-03-26 14:12:38,394 log 13604 9468 "GET /product/3/assign-performers/?department=106&search= HTTP/1.1" 200 8051
+WARNING 2026-03-26 14:12:38,457 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:38,460 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1975
+INFO 2026-03-26 14:12:43,747 log 13604 9468 "GET /product/3/assign-performers/?department=&search= HTTP/1.1" 200 12256
+WARNING 2026-03-26 14:12:43,811 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:43,812 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1959
+INFO 2026-03-26 14:12:46,464 log 13604 9468 "GET /product/3/assign-performers/?department=115&search= HTTP/1.1" 200 7908
+WARNING 2026-03-26 14:12:46,521 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:46,522 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1959
+INFO 2026-03-26 14:12:51,098 log 13604 9468 "GET /product/3/assign-performers/?department=115&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B5%D0%B2 HTTP/1.1" 200 7475
+WARNING 2026-03-26 14:12:51,159 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:12:51,160 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1934
+WARNING 2026-03-26 14:13:38,789 log 13604 9468 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:13:38,792 log 13604 9468 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1943
+INFO 2026-03-26 14:17:16,225 autoreload 6428 21856 Watching for file changes with StatReloader
+INFO 2026-03-26 14:17:20,715 log 6428 29628 "GET /product/3/assign-performers/?department=115&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B5%D0%B2 HTTP/1.1" 200 7546
+WARNING 2026-03-26 14:17:20,805 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:20,806 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1956
+INFO 2026-03-26 14:17:26,403 log 6428 29628 "GET /product/3/assign-performers/?department=&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B5%D0%B2 HTTP/1.1" 200 7523
+WARNING 2026-03-26 14:17:26,464 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:26,465 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1941
+WARNING 2026-03-26 14:17:27,767 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:27,768 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1976
+INFO 2026-03-26 14:17:36,261 log 6428 29628 "GET /product/3/assign-performers/?department=&search=%D0%90%D0%B4%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0 HTTP/1.1" 200 7716
+WARNING 2026-03-26 14:17:36,325 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:36,326 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1927
+INFO 2026-03-26 14:17:42,417 log 6428 29628 "GET /product/3/assign-performers/?department=&search=%D0%90%D0%BA%D0%BB%D0%B5%D0%B5%D0%B2 HTTP/1.1" 200 7528
+WARNING 2026-03-26 14:17:42,485 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:42,486 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1914
+WARNING 2026-03-26 14:17:53,719 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:53,720 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1963
+INFO 2026-03-26 14:17:57,181 log 6428 29628 "GET /product/3/assign-performers/?department=&search=%D0%9A%D0%BE%D1%82%D0%B8%D0%BA%D0%BE%D0%B2%D0%B0 HTTP/1.1" 200 7572
+WARNING 2026-03-26 14:17:57,242 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:17:57,243 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1936
+INFO 2026-03-26 14:18:03,022 log 6428 29628 "GET /product/3/assign-performers/?department=&search=%D0%9A%D1%80%D0%B8%D0%B2%D0%BE%D1%89%D0%B0%D0%BF%D0%BE%D0%B2%D0%B0 HTTP/1.1" 200 7533
+WARNING 2026-03-26 14:18:03,088 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:18:03,089 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1920
+INFO 2026-03-26 14:21:11,880 log 6428 29628 "GET / HTTP/1.1" 200 3631
+WARNING 2026-03-26 14:21:11,947 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:21:11,948 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1916
+INFO 2026-03-26 14:21:14,716 log 6428 29628 "GET /task/25/delete/ HTTP/1.1" 200 1812
+WARNING 2026-03-26 14:21:14,775 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:21:14,776 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1910
+ERROR 2026-03-26 14:21:16,213 log 6428 29628 Internal Server Error: /task/25/delete/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 238, in task_delete
+    task.delete()
+    ~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\base.py", line 1299, in delete
+    collector.collect([self], keep_parents=keep_parents)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 349, in collect
+    on_delete(self, field, sub_objs, self.using)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 23, in CASCADE
+    collector.collect(
+    ~~~~~~~~~~~~~~~~~^
+        sub_objs,
+        ^^^^^^^^^
+    ...<3 lines>...
+        fail_on_restricted=False,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 349, in collect
+    on_delete(self, field, sub_objs, self.using)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 23, in CASCADE
+    collector.collect(
+    ~~~~~~~~~~~~~~~~~^
+        sub_objs,
+        ^^^^^^^^^
+    ...<3 lines>...
+        fail_on_restricted=False,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Заключительный отчёт о НИР": Must be "ResearchProduct" instance.
+ERROR 2026-03-26 14:21:16,229 log 6428 29628 "POST /task/25/delete/ HTTP/1.1" 500 26199
+WARNING 2026-03-26 14:21:16,288 log 6428 29628 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:21:16,289 log 6428 29628 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1972
+INFO 2026-03-26 14:22:47,266 autoreload 6428 21856 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:22:48,221 autoreload 28916 15796 Watching for file changes with StatReloader
+ERROR 2026-03-26 14:22:50,646 log 28916 16740 Internal Server Error: /task/25/delete/
+Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 245, in task_delete
+    ResearchProduct.objects.filter(subtask=subtask).delete()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 257, in task_delete
+    logger.error(f'Ошибка удаления задачи {task_id}: {e}')
+    ^^^^^^
+NameError: name 'logger' is not defined
+ERROR 2026-03-26 14:22:50,661 log 28916 16740 "POST /task/25/delete/ HTTP/1.1" 500 22184
+WARNING 2026-03-26 14:22:50,731 log 28916 16740 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:22:50,732 log 28916 16740 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1945
+ERROR 2026-03-26 14:22:51,792 log 28916 16740 Internal Server Error: /task/25/delete/
+Traceback (most recent call last):
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 245, in task_delete
+    ResearchProduct.objects.filter(subtask=subtask).delete()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1237, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 366, in collect
+    sub_objs = self.related_objects(related_model, related_fields, batch)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\deletion.py", line 410, in related_objects
+    return related_model._base_manager.using(self.using).filter(predicate)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1533, in build_filter
+    return self._add_q(
+           ~~~~~~~~~~~^
+        filter_expr,
+        ^^^^^^^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1593, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1405, in check_related_objects
+    self.check_query_object_type(v, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1379, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "Раздел в промежуточный отчет о разработке стратегии поиска, сбора и гармонизация в доступной литературе информации о генетических, эпигенетических, цитогенетических и протеомных предикторах радиационно-индуцированных патологий": Must be "ResearchProduct" instance.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 257, in task_delete
+    logger.error(f'Ошибка удаления задачи {task_id}: {e}')
+    ^^^^^^
+NameError: name 'logger' is not defined
+ERROR 2026-03-26 14:22:51,807 log 28916 16740 "POST /task/25/delete/ HTTP/1.1" 500 22718
+WARNING 2026-03-26 14:22:51,873 log 28916 16740 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:22:51,874 log 28916 16740 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1911
+INFO 2026-03-26 14:24:47,122 autoreload 28916 15796 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:24:47,985 autoreload 8668 18524 Watching for file changes with StatReloader
+INFO 2026-03-26 14:24:48,802 log 8668 26236 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:24:48,862 log 8668 26236 "GET / HTTP/1.1" 200 4009
+WARNING 2026-03-26 14:24:48,932 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:24:48,932 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1912
+INFO 2026-03-26 14:24:52,559 log 8668 26236 "GET /task/25/delete/ HTTP/1.1" 200 1851
+WARNING 2026-03-26 14:24:52,618 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:24:52,619 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1939
+INFO 2026-03-26 14:24:53,987 log 8668 26236 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:24:53,998 log 8668 26236 "GET / HTTP/1.1" 200 4059
+WARNING 2026-03-26 14:24:54,115 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:24:54,116 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1957
+INFO 2026-03-26 14:24:56,819 log 8668 26236 "GET / HTTP/1.1" 200 4005
+WARNING 2026-03-26 14:24:56,880 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:24:56,881 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1981
+INFO 2026-03-26 14:25:00,043 log 8668 26236 "GET /task/25/ HTTP/1.1" 200 2914
+WARNING 2026-03-26 14:25:00,106 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:25:00,107 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1951
+INFO 2026-03-26 14:25:05,566 log 8668 26236 "GET /task/25/delete/ HTTP/1.1" 200 1855
+WARNING 2026-03-26 14:25:05,637 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:25:05,637 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1896
+INFO 2026-03-26 14:25:07,420 log 8668 26236 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:25:07,427 log 8668 26236 "GET / HTTP/1.1" 200 4044
+WARNING 2026-03-26 14:25:07,497 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:25:07,497 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1950
+INFO 2026-03-26 14:26:17,108 log 8668 26236 "GET / HTTP/1.1" 200 3991
+WARNING 2026-03-26 14:26:17,166 log 8668 26236 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-26 14:26:17,166 log 8668 26236 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1971
+INFO 2026-03-26 14:26:20,147 log 8668 26236 "GET /task/25/delete/ HTTP/1.1" 200 1850
+INFO 2026-03-26 14:26:21,301 log 8668 26236 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:26:21,307 log 8668 26236 "GET / HTTP/1.1" 200 3999
+INFO 2026-03-26 14:32:15,738 autoreload 8668 18524 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:32:16,754 autoreload 28444 30084 Watching for file changes with StatReloader
+INFO 2026-03-26 14:32:49,272 log 28444 25700 "GET / HTTP/1.1" 200 3653
+INFO 2026-03-26 14:32:50,916 log 28444 25700 "GET /task/25/delete/ HTTP/1.1" 200 1870
+INFO 2026-03-26 14:32:53,251 log 28444 25700 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:32:53,257 log 28444 25700 "GET / HTTP/1.1" 200 3677
+INFO 2026-03-26 14:32:55,294 log 28444 25700 "GET /task/25/delete/ HTTP/1.1" 200 2081
+INFO 2026-03-26 14:33:05,632 log 28444 25700 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:33:05,639 log 28444 25700 "GET / HTTP/1.1" 200 3630
+INFO 2026-03-26 14:34:46,929 autoreload 28444 30084 E:\code\task_manager\taskmanager\tasks\models.py changed, reloading.
+INFO 2026-03-26 14:34:47,850 autoreload 15160 25524 Watching for file changes with StatReloader
+INFO 2026-03-26 14:34:54,411 log 15160 22360 "GET / HTTP/1.1" 200 4017
+INFO 2026-03-26 14:34:55,787 log 15160 22360 "GET /task/25/delete/ HTTP/1.1" 200 1863
+INFO 2026-03-26 14:34:56,916 log 15160 22360 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:34:56,923 log 15160 22360 "GET / HTTP/1.1" 200 3997
+INFO 2026-03-26 14:37:49,291 autoreload 23008 19856 Watching for file changes with StatReloader
+INFO 2026-03-26 14:37:54,011 log 23008 20628 "GET / HTTP/1.1" 200 3644
+INFO 2026-03-26 14:37:55,271 log 23008 20628 "GET /task/25/delete/ HTTP/1.1" 200 1865
+INFO 2026-03-26 14:37:56,202 log 23008 20628 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:37:56,207 log 23008 20628 "GET / HTTP/1.1" 200 3701
+INFO 2026-03-26 14:38:47,338 autoreload 23008 19856 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:38:48,190 autoreload 27380 24836 Watching for file changes with StatReloader
+INFO 2026-03-26 14:38:49,100 log 27380 32932 "GET / HTTP/1.1" 200 3957
+INFO 2026-03-26 14:38:50,424 log 27380 32932 "GET /task/25/delete/ HTTP/1.1" 200 1860
+INFO 2026-03-26 14:38:51,636 log 27380 32932 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:38:51,643 log 27380 32932 "GET / HTTP/1.1" 200 4004
+INFO 2026-03-26 14:41:36,286 autoreload 27380 24836 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:41:37,222 autoreload 26268 19088 Watching for file changes with StatReloader
+INFO 2026-03-26 14:41:38,120 log 26268 21096 "GET / HTTP/1.1" 200 3685
+INFO 2026-03-26 14:41:39,469 log 26268 21096 "GET /task/25/delete/ HTTP/1.1" 200 1833
+INFO 2026-03-26 14:41:40,686 log 26268 21096 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:41:40,691 log 26268 21096 "GET / HTTP/1.1" 200 3691
+INFO 2026-03-26 14:41:45,706 log 26268 21096 "GET / HTTP/1.1" 200 3682
+INFO 2026-03-26 14:41:45,846 log 26268 21096 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 14:41:45,863 log 26268 13976 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 14:41:46,257 log 26268 13976 Not Found: /favicon.ico
+WARNING 2026-03-26 14:41:46,258 log 26268 13976 "GET /favicon.ico HTTP/1.1" 404 1876
+INFO 2026-03-26 14:41:57,891 log 26268 13976 "GET / HTTP/1.1" 200 3635
+INFO 2026-03-26 14:41:58,622 log 26268 13976 "GET / HTTP/1.1" 200 3696
+INFO 2026-03-26 14:41:58,965 log 26268 13976 "GET / HTTP/1.1" 200 3672
+INFO 2026-03-26 14:41:59,163 log 26268 13976 "GET / HTTP/1.1" 200 3697
+INFO 2026-03-26 14:41:59,339 log 26268 13976 "GET / HTTP/1.1" 200 3639
+INFO 2026-03-26 14:41:59,569 log 26268 13976 "GET / HTTP/1.1" 200 3634
+INFO 2026-03-26 14:41:59,780 log 26268 13976 "GET / HTTP/1.1" 200 3649
+INFO 2026-03-26 14:41:59,963 log 26268 13976 "GET / HTTP/1.1" 200 3665
+INFO 2026-03-26 14:42:00,353 log 26268 13976 "GET / HTTP/1.1" 200 3721
+INFO 2026-03-26 14:42:00,674 log 26268 13976 "GET / HTTP/1.1" 200 3719
+INFO 2026-03-26 14:42:00,851 log 26268 13976 "GET / HTTP/1.1" 200 3669
+INFO 2026-03-26 14:42:01,018 log 26268 13976 "GET / HTTP/1.1" 200 3629
+INFO 2026-03-26 14:42:01,180 log 26268 13976 "GET / HTTP/1.1" 200 3676
+INFO 2026-03-26 14:42:01,675 log 26268 13976 "GET / HTTP/1.1" 200 3638
+INFO 2026-03-26 14:42:03,175 log 26268 13976 "GET /task/25/delete/ HTTP/1.1" 200 2164
+INFO 2026-03-26 14:42:05,731 log 26268 13976 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:42:05,737 log 26268 13976 "GET / HTTP/1.1" 200 3685
+INFO 2026-03-26 14:42:26,134 autoreload 26268 19088 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:42:26,988 autoreload 25196 22288 Watching for file changes with StatReloader
+INFO 2026-03-26 14:42:29,141 log 25196 17116 "GET /task/25/delete/ HTTP/1.1" 200 2157
+INFO 2026-03-26 14:42:30,117 log 25196 17116 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:42:30,181 log 25196 17116 "GET / HTTP/1.1" 200 4006
+INFO 2026-03-26 14:42:34,222 log 25196 17116 "GET /task/25/delete/ HTTP/1.1" 200 1785
+INFO 2026-03-26 14:42:35,375 log 25196 17116 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:42:35,382 log 25196 17116 "GET / HTTP/1.1" 200 3959
+INFO 2026-03-26 14:43:50,405 autoreload 25196 22288 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:43:51,289 autoreload 30812 18336 Watching for file changes with StatReloader
+INFO 2026-03-26 14:43:53,983 log 30812 13668 "GET / HTTP/1.1" 200 3678
+INFO 2026-03-26 14:43:55,356 log 30812 13668 "GET /task/25/delete/ HTTP/1.1" 200 1807
+INFO 2026-03-26 14:43:56,590 log 30812 13668 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:43:56,597 log 30812 13668 "GET / HTTP/1.1" 200 3711
+INFO 2026-03-26 14:44:00,764 log 30812 13668 "GET /task/25/delete/ HTTP/1.1" 200 2079
+INFO 2026-03-26 14:44:01,600 log 30812 13668 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:44:01,605 log 30812 13668 "GET / HTTP/1.1" 200 3670
+INFO 2026-03-26 14:44:31,581 autoreload 30812 18336 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:44:34,301 autoreload 15468 30248 Watching for file changes with StatReloader
+INFO 2026-03-26 14:44:39,574 log 15468 16588 "GET /task/25/delete/ HTTP/1.1" 200 1997
+INFO 2026-03-26 14:44:41,697 log 15468 16588 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:44:41,737 log 15468 16588 "GET / HTTP/1.1" 200 4033
+INFO 2026-03-26 14:44:46,584 log 15468 16588 "GET / HTTP/1.1" 200 4026
+INFO 2026-03-26 14:44:47,789 log 15468 16588 "GET / HTTP/1.1" 200 4007
+INFO 2026-03-26 14:44:47,880 log 15468 23472 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-26 14:44:47,881 log 15468 16588 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-26 14:44:48,136 log 15468 16588 Not Found: /favicon.ico
+WARNING 2026-03-26 14:44:48,137 log 15468 16588 "GET /favicon.ico HTTP/1.1" 404 1935
+INFO 2026-03-26 14:44:48,793 log 15468 16588 "GET / HTTP/1.1" 200 4013
+INFO 2026-03-26 14:44:48,833 log 15468 23472 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-26 14:44:48,833 log 15468 16588 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-26 14:44:49,064 log 15468 16588 Not Found: /favicon.ico
+WARNING 2026-03-26 14:44:49,065 log 15468 16588 "GET /favicon.ico HTTP/1.1" 404 1896
+INFO 2026-03-26 14:44:49,805 log 15468 16588 "GET / HTTP/1.1" 200 4031
+INFO 2026-03-26 14:44:49,849 log 15468 16588 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 14:44:49,850 log 15468 23472 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-26 14:44:50,132 log 15468 16588 "GET / HTTP/1.1" 200 3969
+WARNING 2026-03-26 14:44:50,132 log 15468 23472 Not Found: /favicon.ico
+WARNING 2026-03-26 14:44:50,133 log 15468 23472 "GET /favicon.ico HTTP/1.1" 404 1911
+INFO 2026-03-26 14:44:50,169 log 15468 23472 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 14:44:50,171 log 15468 16588 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 14:44:50,454 log 15468 16588 Not Found: /favicon.ico
+WARNING 2026-03-26 14:44:50,455 log 15468 16588 "GET /favicon.ico HTTP/1.1" 404 1924
+INFO 2026-03-26 14:44:50,498 log 15468 16588 "GET / HTTP/1.1" 200 3972
+INFO 2026-03-26 14:44:50,537 log 15468 16588 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 14:44:50,538 log 15468 23472 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 14:44:50,881 log 15468 23472 Not Found: /favicon.ico
+WARNING 2026-03-26 14:44:50,881 log 15468 23472 "GET /favicon.ico HTTP/1.1" 404 1949
+INFO 2026-03-26 14:44:52,218 log 15468 23472 "GET /task/25/delete/ HTTP/1.1" 200 1816
+INFO 2026-03-26 14:44:53,878 log 15468 23472 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:44:53,884 log 15468 23472 "GET / HTTP/1.1" 200 4039
+INFO 2026-03-26 14:45:02,104 log 15468 23472 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3628
+INFO 2026-03-26 14:45:03,707 log 15468 23472 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3643
+INFO 2026-03-26 14:45:05,058 log 15468 23472 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 3222
+INFO 2026-03-26 14:45:11,914 log 15468 23472 "GET /?status=done&employee=&search=&sort=-created_date HTTP/1.1" 200 3199
+INFO 2026-03-26 14:45:18,379 log 15468 23472 "GET /task/25/delete/ HTTP/1.1" 200 1835
+INFO 2026-03-26 14:45:19,271 log 15468 23472 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:45:19,278 log 15468 23472 "GET / HTTP/1.1" 200 4020
+INFO 2026-03-26 14:46:32,130 autoreload 15468 30248 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:46:33,058 autoreload 17352 23232 Watching for file changes with StatReloader
+INFO 2026-03-26 14:46:35,332 log 17352 18508 "GET /task/25/delete/ HTTP/1.1" 200 1843
+INFO 2026-03-26 14:46:37,003 log 17352 18508 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:46:37,039 log 17352 18508 "GET / HTTP/1.1" 200 3951
+INFO 2026-03-26 14:47:10,280 autoreload 17352 23232 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-26 14:47:11,181 autoreload 13924 13700 Watching for file changes with StatReloader
+INFO 2026-03-26 14:47:15,787 log 13924 14004 "GET / HTTP/1.1" 200 3689
+INFO 2026-03-26 14:47:17,235 log 13924 14004 "GET /task/25/delete/ HTTP/1.1" 200 1844
+INFO 2026-03-26 14:47:21,757 log 13924 14004 "POST /task/25/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:47:21,763 log 13924 14004 "GET / HTTP/1.1" 200 3630
+INFO 2026-03-26 14:47:26,004 log 13924 14004 "GET / HTTP/1.1" 200 3698
+INFO 2026-03-26 14:47:31,173 log 13924 14004 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3442
+INFO 2026-03-26 14:47:41,587 log 13924 14004 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3429
+INFO 2026-03-26 14:47:45,766 log 13924 14004 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3200
+INFO 2026-03-26 14:47:45,856 log 13924 30976 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-26 14:47:45,856 log 13924 14004 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-26 14:47:46,235 log 13924 14004 Not Found: /favicon.ico
+WARNING 2026-03-26 14:47:46,235 log 13924 14004 "GET /favicon.ico HTTP/1.1" 404 1925
+INFO 2026-03-26 14:47:49,385 log 13924 14004 "GET /task/create/ HTTP/1.1" 200 4759
+INFO 2026-03-26 14:48:24,502 log 13924 14004 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-26 14:48:24,508 log 13924 14004 "GET / HTTP/1.1" 200 3705
+WARNING 2026-03-26 14:48:27,392 log 13924 14004 Not Found: /task/25/
+WARNING 2026-03-26 14:48:27,393 log 13924 14004 "GET /task/25/ HTTP/1.1" 404 1186
+WARNING 2026-03-26 14:48:55,242 log 13924 14004 Not Found: /task/25/
+WARNING 2026-03-26 14:48:55,243 log 13924 14004 "GET /task/25/ HTTP/1.1" 404 1141
+INFO 2026-03-26 14:54:36,065 autoreload 30404 6468 Watching for file changes with StatReloader
+WARNING 2026-03-26 14:54:39,061 log 30404 14532 Not Found: /task/25/
+WARNING 2026-03-26 14:54:39,062 log 30404 14532 "GET /task/25/ HTTP/1.1" 404 1123
+WARNING 2026-03-26 14:54:39,187 log 30404 14532 Not Found: /favicon.ico
+WARNING 2026-03-26 14:54:39,188 log 30404 14532 "GET /favicon.ico HTTP/1.1" 404 1946
+WARNING 2026-03-26 14:54:45,014 log 30404 14532 Not Found: /task
+WARNING 2026-03-26 14:54:45,014 log 30404 14532 "GET /task HTTP/1.1" 404 1886
+WARNING 2026-03-26 14:54:52,693 log 30404 14532 Not Found: /task/25/
+WARNING 2026-03-26 14:54:52,694 log 30404 14532 "GET /task/25/ HTTP/1.1" 404 1156
+WARNING 2026-03-26 14:54:59,199 log 30404 14532 Not Found: /task/25/
+WARNING 2026-03-26 14:54:59,199 log 30404 14532 "GET /task/25/ HTTP/1.1" 404 1204
+INFO 2026-03-26 14:55:02,569 log 30404 14532 "GET / HTTP/1.1" 200 3747
+INFO 2026-03-26 14:55:02,663 log 30404 14532 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 14:55:02,663 log 30404 30648 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 14:55:02,915 log 30404 30648 Not Found: /favicon.ico
+WARNING 2026-03-26 14:55:02,915 log 30404 30648 "GET /favicon.ico HTTP/1.1" 404 1865
+INFO 2026-03-26 14:55:05,354 log 30404 30648 "GET /task/26/ HTTP/1.1" 200 2837
+INFO 2026-03-26 14:55:07,719 log 30404 30648 "GET /task/26/subtasks/ HTTP/1.1" 200 7219
+INFO 2026-03-26 14:55:23,039 log 30404 30648 "GET /task/26/subtasks/ HTTP/1.1" 200 7271
+INFO 2026-03-26 14:55:23,082 log 30404 30648 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 14:55:23,084 log 30404 14532 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 14:55:23,840 log 30404 14532 Not Found: /favicon.ico
+WARNING 2026-03-26 14:55:23,841 log 30404 14532 "GET /favicon.ico HTTP/1.1" 404 1919
+INFO 2026-03-26 14:55:27,582 log 30404 14532 "GET /subtask/153/update/ HTTP/1.1" 200 4791
+INFO 2026-03-26 14:55:43,335 log 30404 14532 "GET /subtask/157/update/ HTTP/1.1" 200 4332
+INFO 2026-03-26 15:02:42,755 autoreload 17832 10200 Watching for file changes with StatReloader
+INFO 2026-03-26 15:03:03,353 log 17832 33064 "GET / HTTP/1.1" 200 3682
+INFO 2026-03-26 15:03:05,085 log 17832 33064 "GET /task/26/delete/ HTTP/1.1" 200 1818
+INFO 2026-03-26 15:03:06,782 log 17832 33064 "POST /task/26/delete/ HTTP/1.1" 302 0
+INFO 2026-03-26 15:03:06,788 log 17832 33064 "GET / HTTP/1.1" 200 3713
+INFO 2026-03-26 15:03:10,475 log 17832 33064 "GET / HTTP/1.1" 200 3687
+INFO 2026-03-26 15:03:10,574 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:10,575 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:10,889 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:10,889 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1914
+INFO 2026-03-26 15:03:12,809 log 17832 32116 "GET / HTTP/1.1" 200 3639
+INFO 2026-03-26 15:03:12,849 log 17832 32116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:12,849 log 17832 33064 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:13,115 log 17832 33064 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:13,116 log 17832 33064 "GET /favicon.ico HTTP/1.1" 404 1900
+INFO 2026-03-26 15:03:17,432 log 17832 33064 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3370
+INFO 2026-03-26 15:03:19,167 log 17832 33064 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3170
+INFO 2026-03-26 15:03:20,358 log 17832 33064 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3163
+INFO 2026-03-26 15:03:20,396 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:20,398 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:20,667 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:20,667 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1866
+INFO 2026-03-26 15:03:21,242 log 17832 32116 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3244
+INFO 2026-03-26 15:03:21,283 log 17832 32116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:21,284 log 17832 33064 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:21,550 log 17832 33064 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:21,550 log 17832 33064 "GET /favicon.ico HTTP/1.1" 404 1952
+INFO 2026-03-26 15:03:22,009 log 17832 33064 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3220
+INFO 2026-03-26 15:03:22,053 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:22,054 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:22,372 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:22,373 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1863
+INFO 2026-03-26 15:03:24,160 log 17832 32116 "GET /task/create/ HTTP/1.1" 200 4710
+INFO 2026-03-26 15:03:37,627 log 17832 32116 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-26 15:03:37,634 log 17832 32116 "GET / HTTP/1.1" 200 3681
+WARNING 2026-03-26 15:03:39,889 log 17832 32116 Not Found: /task/26/
+WARNING 2026-03-26 15:03:39,889 log 17832 32116 "GET /task/26/ HTTP/1.1" 404 1174
+WARNING 2026-03-26 15:03:45,811 log 17832 32116 Not Found: /task/26/
+WARNING 2026-03-26 15:03:45,812 log 17832 32116 "GET /task/26/ HTTP/1.1" 404 1131
+WARNING 2026-03-26 15:03:45,870 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:45,870 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1872
+WARNING 2026-03-26 15:03:47,115 log 17832 32116 Not Found: /task/26/
+WARNING 2026-03-26 15:03:47,115 log 17832 32116 "GET /task/26/ HTTP/1.1" 404 1185
+WARNING 2026-03-26 15:03:47,171 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:47,171 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1885
+WARNING 2026-03-26 15:03:48,072 log 17832 32116 Not Found: /task/26/
+WARNING 2026-03-26 15:03:48,073 log 17832 32116 "GET /task/26/ HTTP/1.1" 404 1210
+WARNING 2026-03-26 15:03:48,133 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:48,134 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1940
+INFO 2026-03-26 15:03:50,305 log 17832 32116 "GET / HTTP/1.1" 200 3657
+INFO 2026-03-26 15:03:50,351 log 17832 32116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:50,351 log 17832 33064 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:50,641 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:50,641 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1948
+INFO 2026-03-26 15:03:52,206 log 17832 32116 "GET / HTTP/1.1" 200 3671
+INFO 2026-03-26 15:03:52,251 log 17832 32116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:52,252 log 17832 33064 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:52,510 log 17832 33064 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:52,511 log 17832 33064 "GET /favicon.ico HTTP/1.1" 404 1889
+INFO 2026-03-26 15:03:52,907 log 17832 33064 "GET / HTTP/1.1" 200 3705
+INFO 2026-03-26 15:03:52,953 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:03:52,957 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:03:53,205 log 17832 33064 Not Found: /favicon.ico
+WARNING 2026-03-26 15:03:53,206 log 17832 33064 "GET /favicon.ico HTTP/1.1" 404 1897
+WARNING 2026-03-26 15:03:54,279 log 17832 33064 Not Found: /task/26/
+WARNING 2026-03-26 15:03:54,280 log 17832 33064 "GET /task/26/ HTTP/1.1" 404 1133
+INFO 2026-03-26 15:04:03,233 log 17832 33064 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3445
+INFO 2026-03-26 15:04:07,225 log 17832 33064 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3422
+INFO 2026-03-26 15:04:07,269 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:04:07,269 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:04:07,533 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:04:07,534 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1951
+INFO 2026-03-26 15:04:07,872 log 17832 32116 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3384
+INFO 2026-03-26 15:04:07,916 log 17832 32116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:04:07,916 log 17832 33064 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:04:08,180 log 17832 33064 Not Found: /favicon.ico
+WARNING 2026-03-26 15:04:08,181 log 17832 33064 "GET /favicon.ico HTTP/1.1" 404 1897
+INFO 2026-03-26 15:04:13,125 log 17832 33064 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3198
+INFO 2026-03-26 15:04:13,881 log 17832 33064 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3187
+INFO 2026-03-26 15:04:13,920 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:04:13,921 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:04:14,201 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:04:14,201 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1900
+INFO 2026-03-26 15:04:14,777 log 17832 32116 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3197
+INFO 2026-03-26 15:04:14,818 log 17832 32116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:04:14,818 log 17832 33064 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:04:15,082 log 17832 33064 Not Found: /favicon.ico
+WARNING 2026-03-26 15:04:15,083 log 17832 33064 "GET /favicon.ico HTTP/1.1" 404 1927
+INFO 2026-03-26 15:04:15,578 log 17832 33064 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3220
+INFO 2026-03-26 15:04:15,621 log 17832 33064 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-26 15:04:15,621 log 17832 32116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-26 15:04:15,884 log 17832 32116 Not Found: /favicon.ico
+WARNING 2026-03-26 15:04:15,885 log 17832 32116 "GET /favicon.ico HTTP/1.1" 404 1908
+INFO 2026-03-26 15:04:41,874 autoreload 24160 10948 Watching for file changes with StatReloader
+INFO 2026-03-26 15:04:45,355 log 24160 10708 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3687
+INFO 2026-03-26 15:04:45,577 log 24160 10708 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3719
+INFO 2026-03-26 15:04:47,117 log 24160 10708 "GET /task/27/ HTTP/1.1" 200 2922
+INFO 2026-03-26 15:04:49,646 log 24160 10708 "GET /task/27/subtasks/ HTTP/1.1" 200 14702
+INFO 2026-03-26 15:04:54,338 log 24160 10708 "GET /product/87/assign-performers/ HTTP/1.1" 200 12328
+INFO 2026-03-26 15:04:58,520 log 24160 10708 "GET /product/87/assign-performers/?department=102&search= HTTP/1.1" 200 8090
+INFO 2026-03-26 15:05:03,096 log 24160 10708 "GET /product/87/assign-performers/?department=&search= HTTP/1.1" 200 12343
+INFO 2026-03-26 15:06:00,916 log 24160 10708 "GET /employees/ HTTP/1.1" 200 4091
+INFO 2026-03-26 15:06:09,616 log 24160 10708 "GET /employee/261/update/ HTTP/1.1" 200 2372
+INFO 2026-03-26 15:12:27,006 log 24160 30372 "GET / HTTP/1.1" 200 3628
+INFO 2026-03-26 15:12:28,312 log 24160 30372 "GET /task/27/ HTTP/1.1" 200 2849
+INFO 2026-03-26 15:12:30,522 log 24160 30372 "GET /task/27/subtasks/ HTTP/1.1" 200 14686
