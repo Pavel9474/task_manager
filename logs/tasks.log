@@ -4661,3 +4661,178 @@ DEBUG 2026-03-26 15:06:09,564 middleware 24160 10708 📨 GET /employee/261/upda
 INFO 2026-03-26 15:06:09,614 middleware 24160 10708 📤 GET /employee/261/update/ - 200 - Время: 0.054 сек
 DEBUG 2026-03-26 15:12:26,989 middleware 24160 30372 📨 GET / - Пользователь: pavel2
 INFO 2026-03-26 15:12:27,005 middleware 24160 30372 📤 GET / - 200 - Время: 0.019 сек
+DEBUG 2026-03-27 09:05:47,684 middleware 17968 19604 📨 GET / - Пользователь: pavel2
+INFO 2026-03-27 09:05:47,757 middleware 17968 19604 📤 GET / - 200 - Время: 0.078 сек
+DEBUG 2026-03-27 09:05:52,986 middleware 17968 19604 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:05:53,072 middleware 17968 19604 📤 GET /employees/ - 200 - Время: 0.089 сек
+DEBUG 2026-03-27 09:05:55,555 middleware 17968 19604 📨 GET /employee/285/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:05:55,571 middleware 17968 19604 📤 GET /employee/285/update/ - 200 - Время: 0.020 сек
+DEBUG 2026-03-27 09:06:05,671 middleware 17968 12984 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:06:05,682 middleware 17968 12984 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-03-27 09:06:05,682 middleware 17968 12984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:06:06,594 middleware 17968 19604 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:06:06,605 middleware 17968 19604 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-27 09:06:06,605 middleware 17968 19604 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:06:09,736 middleware 17968 19604 📨 GET /employee/285/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:06:09,922 middleware 17968 19604 📤 GET /employee/285/toggle-active/ - 302 - Время: 0.188 сек
+DEBUG 2026-03-27 09:06:09,931 middleware 17968 19604 📨 GET /employee/285/ - Пользователь: pavel2
+INFO 2026-03-27 09:06:09,949 middleware 17968 19604 📤 GET /employee/285/ - 200 - Время: 0.022 сек
+DEBUG 2026-03-27 09:06:14,033 middleware 17968 19604 📨 GET /employee/285/delete/ - Пользователь: pavel2
+INFO 2026-03-27 09:06:14,041 middleware 17968 19604 📤 GET /employee/285/delete/ - 200 - Время: 0.011 сек
+DEBUG 2026-03-27 09:06:20,554 middleware 17968 19604 📨 POST /employee/285/delete/ - Пользователь: pavel2
+INFO 2026-03-27 09:06:20,755 middleware 17968 19604 📤 POST /employee/285/delete/ - 302 - Время: 0.204 сек
+DEBUG 2026-03-27 09:06:25,463 middleware 17968 12984 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:06:25,473 middleware 17968 12984 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:06:25,473 middleware 17968 12984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:06:27,475 middleware 17968 19604 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:06:27,485 middleware 17968 19604 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:06:27,485 middleware 17968 19604 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:06:29,835 middleware 17968 12984 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:06:29,844 middleware 17968 12984 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:06:29,845 middleware 17968 12984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:06:33,427 middleware 17968 12984 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:06:33,431 middleware 17968 12984 📤 GET /employees/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-27 09:06:35,925 middleware 17968 12984 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:06:35,999 middleware 17968 12984 📤 GET /employees/ - 200 - Время: 0.077 сек
+DEBUG 2026-03-27 09:07:04,512 middleware 17968 12984 📨 GET /task/27/ - Пользователь: pavel2
+INFO 2026-03-27 09:07:04,532 middleware 17968 12984 📤 GET /task/27/ - 200 - Время: 0.023 сек
+DEBUG 2026-03-27 09:07:06,864 middleware 17968 12984 📨 GET /task/27/subtasks/ - Пользователь: pavel2
+INFO 2026-03-27 09:07:06,930 middleware 17968 12984 📤 GET /task/27/subtasks/ - 200 - Время: 0.069 сек
+DEBUG 2026-03-27 09:07:11,008 middleware 17968 12984 📨 GET /product/86/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:07:11,171 middleware 17968 12984 📤 GET /product/86/assign-performers/ - 200 - Время: 0.166 сек
+DEBUG 2026-03-27 09:07:20,755 middleware 17968 23952 📨 POST /product/86/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-27 09:07:21,085 middleware 17968 23952 💥 Исключение в POST /product/86/assign-performers/: 'ResearchProduct' object has no attribute 'substage'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1615, in product_assign_performers
+    if product.substage and product.substage.task:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'substage'. Did you mean: 'subtask'?
+INFO 2026-03-27 09:07:21,128 middleware 17968 23952 📤 POST /product/86/assign-performers/ - 500 - Время: 0.376 сек
+ERROR 2026-03-27 09:07:21,128 middleware 17968 23952 ❌ Ошибка 500: POST /product/86/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-03-27 09:08:29,837 middleware 14268 25968 📨 POST /product/86/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:08:30,251 middleware 14268 25968 📤 POST /product/86/assign-performers/ - 302 - Время: 0.419 сек
+DEBUG 2026-03-27 09:08:30,267 middleware 14268 25968 📨 GET /task/27/subtasks/ - Пользователь: pavel2
+INFO 2026-03-27 09:08:30,340 middleware 14268 25968 📤 GET /task/27/subtasks/ - 200 - Время: 0.076 сек
+DEBUG 2026-03-27 09:09:16,616 middleware 32616 29520 📨 GET /task/27/subtasks/ - Пользователь: pavel2
+INFO 2026-03-27 09:09:16,795 middleware 32616 29520 📤 GET /task/27/subtasks/ - 200 - Время: 0.183 сек
+DEBUG 2026-03-27 09:09:30,147 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:09:30,159 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-03-27 09:09:30,160 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:10:21,759 middleware 32616 29520 📨 GET /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:10:21,908 middleware 32616 29520 📤 GET /product/87/assign-performers/ - 200 - Время: 0.152 сек
+DEBUG 2026-03-27 09:10:30,205 middleware 32616 29520 📨 POST /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:10:30,460 middleware 32616 29520 📤 POST /product/87/assign-performers/ - 302 - Время: 0.259 сек
+DEBUG 2026-03-27 09:10:33,666 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:10:33,675 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:10:33,675 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:10:34,556 middleware 32616 33912 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:10:34,567 middleware 32616 33912 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:10:34,567 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:10:38,207 middleware 32616 33912 📨 GET / - Пользователь: pavel2
+INFO 2026-03-27 09:10:38,230 middleware 32616 33912 📤 GET / - 200 - Время: 0.026 сек
+DEBUG 2026-03-27 09:10:40,003 middleware 32616 33912 📨 GET / - Пользователь: pavel2
+INFO 2026-03-27 09:10:40,021 middleware 32616 33912 📤 GET / - 200 - Время: 0.021 сек
+DEBUG 2026-03-27 09:10:41,219 middleware 32616 33912 📨 GET / - Пользователь: pavel2
+INFO 2026-03-27 09:10:41,233 middleware 32616 33912 📤 GET / - 200 - Время: 0.017 сек
+DEBUG 2026-03-27 09:11:25,637 middleware 32616 33912 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:25,712 middleware 32616 33912 📤 GET /employees/ - 200 - Время: 0.078 сек
+DEBUG 2026-03-27 09:11:26,052 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:11:26,062 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:11:26,062 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:11:29,084 middleware 32616 29520 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:29,089 middleware 32616 29520 📤 GET /employees/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-27 09:11:31,307 middleware 32616 29520 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:31,384 middleware 32616 29520 📤 GET /employees/ - 200 - Время: 0.081 сек
+DEBUG 2026-03-27 09:11:32,658 middleware 32616 29520 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:32,662 middleware 32616 29520 📤 GET /employees/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-27 09:11:48,470 middleware 32616 29520 📨 GET /employee/251/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:48,488 middleware 32616 29520 📤 GET /employee/251/update/ - 200 - Время: 0.021 сек
+DEBUG 2026-03-27 09:11:52,974 middleware 32616 29520 📨 GET /employee/260/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:53,066 middleware 32616 29520 📤 GET /employee/260/toggle-active/ - 302 - Время: 0.095 сек
+DEBUG 2026-03-27 09:11:53,074 middleware 32616 29520 📨 GET /employee/260/ - Пользователь: pavel2
+INFO 2026-03-27 09:11:53,088 middleware 32616 29520 📤 GET /employee/260/ - 200 - Время: 0.017 сек
+DEBUG 2026-03-27 09:12:01,502 middleware 32616 29520 📨 GET /employee/260/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:01,588 middleware 32616 29520 📤 GET /employee/260/toggle-active/ - 302 - Время: 0.088 сек
+DEBUG 2026-03-27 09:12:06,022 middleware 32616 29520 📨 GET /employee/260/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:06,111 middleware 32616 29520 📤 GET /employee/260/toggle-active/ - 302 - Время: 0.091 сек
+DEBUG 2026-03-27 09:12:11,718 middleware 32616 29520 📨 GET /employee/277/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:11,728 middleware 32616 29520 📤 GET /employee/277/ - 200 - Время: 0.013 сек
+DEBUG 2026-03-27 09:12:17,164 middleware 32616 29520 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:17,237 middleware 32616 29520 📤 GET /employees/ - 200 - Время: 0.076 сек
+DEBUG 2026-03-27 09:12:17,538 middleware 32616 33912 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:12:17,548 middleware 32616 33912 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:12:17,548 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:12:19,087 middleware 32616 33912 📨 GET /employee/260/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:19,165 middleware 32616 33912 📤 GET /employee/260/toggle-active/ - 302 - Время: 0.081 сек
+DEBUG 2026-03-27 09:12:21,398 middleware 32616 33912 📨 GET /employee/260/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:21,477 middleware 32616 33912 📤 GET /employee/260/toggle-active/ - 302 - Время: 0.081 сек
+DEBUG 2026-03-27 09:12:23,467 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:12:23,478 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-03-27 09:12:23,478 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:12:24,316 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:12:24,331 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-03-27 09:12:24,331 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:12:28,815 middleware 32616 29520 📨 GET /employee/260/toggle-active/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:28,910 middleware 32616 29520 📤 GET /employee/260/toggle-active/ - 302 - Время: 0.098 сек
+DEBUG 2026-03-27 09:12:30,693 middleware 32616 29520 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:30,814 middleware 32616 29520 📤 GET /org-chart/ - 200 - Время: 0.123 сек
+DEBUG 2026-03-27 09:12:49,230 middleware 32616 29520 📨 GET /employee/255/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:49,240 middleware 32616 29520 📤 GET /employee/255/ - 200 - Время: 0.012 сек
+DEBUG 2026-03-27 09:12:58,534 middleware 32616 29520 📨 GET /employee/251/ - Пользователь: pavel2
+INFO 2026-03-27 09:12:58,545 middleware 32616 29520 📤 GET /employee/251/ - 200 - Время: 0.013 сек
+DEBUG 2026-03-27 09:13:08,486 middleware 32616 29520 📨 GET /employee/271/ - Пользователь: pavel2
+INFO 2026-03-27 09:13:08,516 middleware 32616 29520 📤 GET /employee/271/ - 200 - Время: 0.034 сек
+DEBUG 2026-03-27 09:13:19,782 middleware 32616 29520 📨 GET /employee/284/ - Пользователь: pavel2
+INFO 2026-03-27 09:13:19,792 middleware 32616 29520 📤 GET /employee/284/ - 200 - Время: 0.013 сек
+DEBUG 2026-03-27 09:13:47,825 middleware 32616 29520 📨 GET /subtask/171/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:13:47,853 middleware 32616 29520 📤 GET /subtask/171/update/ - 200 - Время: 0.030 сек
+DEBUG 2026-03-27 09:13:59,007 middleware 32616 29520 📨 POST /subtask/171/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:13:59,206 middleware 32616 29520 📤 POST /subtask/171/update/ - 302 - Время: 0.201 сек
+DEBUG 2026-03-27 09:14:11,818 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:14:11,827 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:14:11,827 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:14:14,349 middleware 32616 29520 📨 GET /task/27/ - Пользователь: pavel2
+INFO 2026-03-27 09:14:14,370 middleware 32616 29520 📤 GET /task/27/ - 200 - Время: 0.024 сек
+DEBUG 2026-03-27 09:14:33,688 middleware 32616 29520 📨 POST /subtask/171/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:14:33,784 middleware 32616 29520 📤 POST /subtask/171/update/ - 302 - Время: 0.099 сек
+DEBUG 2026-03-27 09:14:39,058 middleware 32616 33912 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:14:39,068 middleware 32616 33912 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:14:39,068 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:14:40,351 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:14:40,361 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:14:40,361 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:14:42,392 middleware 32616 33912 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:14:42,403 middleware 32616 33912 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-03-27 09:14:42,404 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:14:43,137 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:14:43,147 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-03-27 09:14:43,147 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:14:58,461 middleware 32616 29520 📨 GET /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:14:58,611 middleware 32616 29520 📤 GET /product/87/assign-performers/ - 200 - Время: 0.154 сек
+DEBUG 2026-03-27 09:15:09,439 middleware 32616 29520 📨 POST /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:15:09,895 middleware 32616 29520 📤 POST /product/87/assign-performers/ - 302 - Время: 0.459 сек
+DEBUG 2026-03-27 09:15:20,165 middleware 32616 29520 📨 GET /product/86/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:15:20,311 middleware 32616 29520 📤 GET /product/86/assign-performers/ - 200 - Время: 0.148 сек
+DEBUG 2026-03-27 09:15:27,694 middleware 32616 29520 📨 GET /product/86/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:15:27,877 middleware 32616 29520 📤 GET /product/86/assign-performers/ - 200 - Время: 0.187 сек
+DEBUG 2026-03-27 09:15:50,901 middleware 32616 29520 📨 GET /subtask/172/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:15:50,927 middleware 32616 29520 📤 GET /subtask/172/update/ - 200 - Время: 0.029 сек
+DEBUG 2026-03-27 09:15:58,705 middleware 32616 33912 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:15:58,717 middleware 32616 33912 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-27 09:15:58,717 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:15:59,606 middleware 32616 29520 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:15:59,617 middleware 32616 29520 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-27 09:15:59,617 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-27 09:18:00,793 middleware 32616 29520 📨 POST /subtask/172/update/ - Пользователь: pavel2
+INFO 2026-03-27 09:18:00,965 middleware 32616 29520 📤 POST /subtask/172/update/ - 302 - Время: 0.176 сек
+DEBUG 2026-03-27 09:18:57,517 middleware 32616 29520 📨 GET /product/87/assign-performers/ - Пользователь: pavel2
+INFO 2026-03-27 09:18:57,657 middleware 32616 29520 📤 GET /product/87/assign-performers/ - 200 - Время: 0.143 сек
+DEBUG 2026-03-27 09:25:15,449 middleware 31760 29248 📨 GET /task/27/subtasks/ - Пользователь: pavel2
+INFO 2026-03-27 09:25:15,557 middleware 31760 29248 📤 GET /task/27/subtasks/ - 200 - Время: 0.111 сек
+DEBUG 2026-03-27 09:25:16,949 middleware 31760 29248 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-27 09:25:16,962 middleware 31760 29248 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-27 09:25:16,962 middleware 31760 29248 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2

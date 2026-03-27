@@ -3938,3 +3938,195 @@ INFO 2026-03-26 15:06:09,616 log 24160 10708 "GET /employee/261/update/ HTTP/1.1
 INFO 2026-03-26 15:12:27,006 log 24160 30372 "GET / HTTP/1.1" 200 3628
 INFO 2026-03-26 15:12:28,312 log 24160 30372 "GET /task/27/ HTTP/1.1" 200 2849
 INFO 2026-03-26 15:12:30,522 log 24160 30372 "GET /task/27/subtasks/ HTTP/1.1" 200 14686
+INFO 2026-03-27 09:05:44,351 autoreload 17968 31012 Watching for file changes with StatReloader
+INFO 2026-03-27 09:05:47,760 log 17968 19604 "GET / HTTP/1.1" 200 3704
+INFO 2026-03-27 09:05:47,809 log 17968 12984 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-27 09:05:47,810 log 17968 19604 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-27 09:05:53,073 log 17968 19604 "GET /employees/ HTTP/1.1" 200 4064
+INFO 2026-03-27 09:05:55,572 log 17968 19604 "GET /employee/285/update/ HTTP/1.1" 200 2352
+INFO 2026-03-27 09:06:05,385 log 17968 19604 "GET /employees/ HTTP/1.1" 200 4034
+INFO 2026-03-27 09:06:05,469 log 17968 19604 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:06:05,469 log 17968 12984 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:06:05,683 log 17968 12984 Not Found: /favicon.ico
+WARNING 2026-03-27 09:06:05,684 log 17968 12984 "GET /favicon.ico HTTP/1.1" 404 1877
+INFO 2026-03-27 09:06:06,340 log 17968 12984 "GET /employees/ HTTP/1.1" 200 4076
+INFO 2026-03-27 09:06:06,373 log 17968 12984 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:06:06,374 log 17968 19604 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:06:06,606 log 17968 19604 Not Found: /favicon.ico
+WARNING 2026-03-27 09:06:06,607 log 17968 19604 "GET /favicon.ico HTTP/1.1" 404 1896
+INFO 2026-03-27 09:06:09,923 log 17968 19604 "GET /employee/285/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:06:09,950 log 17968 19604 "GET /employee/285/ HTTP/1.1" 200 2424
+INFO 2026-03-27 09:06:14,044 log 17968 19604 "GET /employee/285/delete/ HTTP/1.1" 200 1650
+INFO 2026-03-27 09:06:20,756 log 17968 19604 "POST /employee/285/delete/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:06:20,761 log 17968 19604 "GET /employees/ HTTP/1.1" 200 4098
+INFO 2026-03-27 09:06:25,200 log 17968 19604 "GET /employees/ HTTP/1.1" 200 4009
+INFO 2026-03-27 09:06:25,234 log 17968 19604 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:06:25,235 log 17968 12984 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:06:25,474 log 17968 12984 Not Found: /favicon.ico
+WARNING 2026-03-27 09:06:25,475 log 17968 12984 "GET /favicon.ico HTTP/1.1" 404 1896
+INFO 2026-03-27 09:06:27,205 log 17968 12984 "GET /employees/ HTTP/1.1" 200 4058
+INFO 2026-03-27 09:06:27,240 log 17968 12984 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:06:27,242 log 17968 19604 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:06:27,486 log 17968 19604 Not Found: /favicon.ico
+WARNING 2026-03-27 09:06:27,487 log 17968 19604 "GET /favicon.ico HTTP/1.1" 404 1942
+INFO 2026-03-27 09:06:29,557 log 17968 19604 "GET /employees/ HTTP/1.1" 200 4018
+INFO 2026-03-27 09:06:29,594 log 17968 19604 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:06:29,594 log 17968 12984 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:06:29,846 log 17968 12984 Not Found: /favicon.ico
+WARNING 2026-03-27 09:06:29,847 log 17968 12984 "GET /favicon.ico HTTP/1.1" 404 1883
+INFO 2026-03-27 09:06:33,432 log 17968 12984 "GET /employees/?department=development&is_active=&search= HTTP/1.1" 200 2229
+INFO 2026-03-27 09:06:36,000 log 17968 12984 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4059
+INFO 2026-03-27 09:07:04,533 log 17968 12984 "GET /task/27/ HTTP/1.1" 200 2845
+INFO 2026-03-27 09:07:06,933 log 17968 12984 "GET /task/27/subtasks/ HTTP/1.1" 200 14688
+INFO 2026-03-27 09:07:11,174 log 17968 12984 "GET /product/86/assign-performers/ HTTP/1.1" 200 12274
+ERROR 2026-03-27 09:07:21,126 log 17968 23952 Internal Server Error: /product/86/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1615, in product_assign_performers
+    if product.substage and product.substage.task:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'substage'. Did you mean: 'subtask'?
+ERROR 2026-03-27 09:07:21,130 log 17968 23952 "POST /product/86/assign-performers/ HTTP/1.1" 500 13079
+INFO 2026-03-27 09:08:27,959 autoreload 17968 31012 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-27 09:08:28,772 autoreload 14268 20976 Watching for file changes with StatReloader
+INFO 2026-03-27 09:08:30,253 log 14268 25968 "POST /product/86/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:08:30,344 log 14268 25968 "GET /task/27/subtasks/ HTTP/1.1" 200 14840
+INFO 2026-03-27 09:08:42,506 log 14268 25968 "GET /task/27/subtasks/ HTTP/1.1" 200 14751
+INFO 2026-03-27 09:08:42,588 log 14268 25968 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:08:42,588 log 14268 24124 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-27 09:08:47,304 log 14268 24124 "GET /task/27/subtasks/ HTTP/1.1" 200 14837
+INFO 2026-03-27 09:08:47,330 log 14268 24124 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:08:47,336 log 14268 25968 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-27 09:09:00,854 log 14268 25968 "GET /task/27/subtasks/ HTTP/1.1" 200 14755
+INFO 2026-03-27 09:09:13,669 autoreload 32616 26948 Watching for file changes with StatReloader
+INFO 2026-03-27 09:09:16,799 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14672
+WARNING 2026-03-27 09:09:30,161 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:09:30,162 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1930
+INFO 2026-03-27 09:10:21,912 log 32616 29520 "GET /product/87/assign-performers/ HTTP/1.1" 200 12243
+INFO 2026-03-27 09:10:30,461 log 32616 29520 "POST /product/87/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:10:30,468 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14728
+INFO 2026-03-27 09:10:33,352 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14720
+INFO 2026-03-27 09:10:33,431 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-27 09:10:33,431 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-27 09:10:33,677 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:10:33,677 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1911
+INFO 2026-03-27 09:10:34,271 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14700
+INFO 2026-03-27 09:10:34,303 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:10:34,304 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:10:34,569 log 32616 33912 Not Found: /favicon.ico
+WARNING 2026-03-27 09:10:34,569 log 32616 33912 "GET /favicon.ico HTTP/1.1" 404 1938
+INFO 2026-03-27 09:10:38,232 log 32616 33912 "GET / HTTP/1.1" 200 3773
+INFO 2026-03-27 09:10:40,023 log 32616 33912 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 3658
+INFO 2026-03-27 09:10:41,235 log 32616 33912 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 3680
+INFO 2026-03-27 09:11:25,714 log 32616 33912 "GET /employees/ HTTP/1.1" 200 4034
+INFO 2026-03-27 09:11:25,745 log 32616 33912 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:11:25,746 log 32616 29520 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:11:26,063 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:11:26,064 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1888
+INFO 2026-03-27 09:11:29,090 log 32616 29520 "GET /employees/?department=development&is_active=&search= HTTP/1.1" 200 2190
+INFO 2026-03-27 09:11:31,386 log 32616 29520 "GET /employees/?department=&is_active=active&search= HTTP/1.1" 200 4075
+INFO 2026-03-27 09:11:32,664 log 32616 29520 "GET /employees/?department=&is_active=inactive&search= HTTP/1.1" 200 2143
+INFO 2026-03-27 09:11:48,489 log 32616 29520 "GET /employee/251/update/ HTTP/1.1" 200 2335
+INFO 2026-03-27 09:11:53,067 log 32616 29520 "GET /employee/260/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:11:53,089 log 32616 29520 "GET /employee/260/ HTTP/1.1" 200 2333
+INFO 2026-03-27 09:12:01,589 log 32616 29520 "GET /employee/260/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:12:01,595 log 32616 29520 "GET /employee/260/ HTTP/1.1" 200 2345
+INFO 2026-03-27 09:12:06,112 log 32616 29520 "GET /employee/260/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:12:11,730 log 32616 29520 "GET /employee/277/ HTTP/1.1" 200 2380
+INFO 2026-03-27 09:12:17,239 log 32616 29520 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4054
+INFO 2026-03-27 09:12:17,270 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:12:17,271 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:12:17,549 log 32616 33912 Not Found: /favicon.ico
+WARNING 2026-03-27 09:12:17,550 log 32616 33912 "GET /favicon.ico HTTP/1.1" 404 1949
+INFO 2026-03-27 09:12:19,166 log 32616 33912 "GET /employee/260/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:12:21,478 log 32616 33912 "GET /employee/260/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:12:23,166 log 32616 33912 "GET /employee/260/ HTTP/1.1" 200 2327
+INFO 2026-03-27 09:12:23,199 log 32616 33912 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:12:23,199 log 32616 29520 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:12:23,479 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:12:23,480 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1890
+INFO 2026-03-27 09:12:24,025 log 32616 29520 "GET /employee/260/ HTTP/1.1" 200 2335
+INFO 2026-03-27 09:12:24,059 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-27 09:12:24,059 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-27 09:12:24,332 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:12:24,333 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1949
+INFO 2026-03-27 09:12:27,734 log 32616 29520 "GET /employee/260/ HTTP/1.1" 200 2278
+INFO 2026-03-27 09:12:28,911 log 32616 29520 "GET /employee/260/toggle-active/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:12:30,815 log 32616 29520 "GET /org-chart/ HTTP/1.1" 200 4308
+INFO 2026-03-27 09:12:30,861 log 32616 33912 "GET /static/js/organization.js HTTP/1.1" 200 6080
+INFO 2026-03-27 09:12:30,889 log 32616 29520 "GET /static/css/organization.css HTTP/1.1" 200 12144
+INFO 2026-03-27 09:12:49,241 log 32616 29520 "GET /employee/255/ HTTP/1.1" 200 2159
+INFO 2026-03-27 09:12:58,546 log 32616 29520 "GET /employee/251/ HTTP/1.1" 200 2214
+INFO 2026-03-27 09:13:08,519 log 32616 29520 "GET /employee/271/ HTTP/1.1" 200 2294
+INFO 2026-03-27 09:13:19,794 log 32616 29520 "GET /employee/284/ HTTP/1.1" 200 2365
+INFO 2026-03-27 09:13:28,460 log 32616 29520 "GET /employee/277/ HTTP/1.1" 200 2409
+INFO 2026-03-27 09:13:36,179 log 32616 29520 "GET / HTTP/1.1" 200 3712
+INFO 2026-03-27 09:13:47,855 log 32616 29520 "GET /subtask/171/update/ HTTP/1.1" 200 4369
+INFO 2026-03-27 09:13:59,207 log 32616 29520 "POST /subtask/171/update/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:13:59,214 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14691
+INFO 2026-03-27 09:14:03,924 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14679
+INFO 2026-03-27 09:14:03,965 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:14:03,965 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-27 09:14:06,935 log 32616 33912 "GET /task/27/subtasks/ HTTP/1.1" 200 14709
+INFO 2026-03-27 09:14:06,966 log 32616 33912 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:14:06,967 log 32616 29520 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:14:11,828 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:14:11,829 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1902
+INFO 2026-03-27 09:14:14,372 log 32616 29520 "GET /task/27/ HTTP/1.1" 200 2957
+INFO 2026-03-27 09:14:21,659 log 32616 29520 "GET /subtask/171/update/ HTTP/1.1" 200 4345
+INFO 2026-03-27 09:14:33,785 log 32616 29520 "POST /subtask/171/update/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:14:33,791 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14731
+INFO 2026-03-27 09:14:38,919 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14695
+INFO 2026-03-27 09:14:38,954 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:14:38,956 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:14:39,069 log 32616 33912 Not Found: /favicon.ico
+WARNING 2026-03-27 09:14:39,069 log 32616 33912 "GET /favicon.ico HTTP/1.1" 404 1932
+INFO 2026-03-27 09:14:40,203 log 32616 33912 "GET /task/27/subtasks/ HTTP/1.1" 200 14731
+INFO 2026-03-27 09:14:40,240 log 32616 33912 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:14:40,241 log 32616 29520 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:14:40,362 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:14:40,363 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1917
+INFO 2026-03-27 09:14:42,254 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14727
+INFO 2026-03-27 09:14:42,289 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:14:42,289 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:14:42,404 log 32616 33912 Not Found: /favicon.ico
+WARNING 2026-03-27 09:14:42,405 log 32616 33912 "GET /favicon.ico HTTP/1.1" 404 1858
+INFO 2026-03-27 09:14:42,995 log 32616 33912 "GET /task/27/subtasks/ HTTP/1.1" 200 14712
+INFO 2026-03-27 09:14:43,029 log 32616 33912 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:14:43,030 log 32616 29520 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:14:43,148 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:14:43,149 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1939
+INFO 2026-03-27 09:14:58,614 log 32616 29520 "GET /product/87/assign-performers/ HTTP/1.1" 200 12328
+INFO 2026-03-27 09:15:09,895 log 32616 29520 "POST /product/87/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:15:09,902 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14681
+INFO 2026-03-27 09:15:20,313 log 32616 29520 "GET /product/86/assign-performers/ HTTP/1.1" 200 12422
+INFO 2026-03-27 09:15:25,301 log 32616 29520 "GET /product/87/assign-performers/ HTTP/1.1" 200 12301
+INFO 2026-03-27 09:15:27,881 log 32616 29520 "GET /product/86/assign-performers/ HTTP/1.1" 200 12268
+INFO 2026-03-27 09:15:50,928 log 32616 29520 "GET /subtask/172/update/ HTTP/1.1" 200 4433
+INFO 2026-03-27 09:15:58,562 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14730
+INFO 2026-03-27 09:15:58,595 log 32616 29520 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:15:58,597 log 32616 33912 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:15:58,718 log 32616 33912 Not Found: /favicon.ico
+WARNING 2026-03-27 09:15:58,719 log 32616 33912 "GET /favicon.ico HTTP/1.1" 404 1899
+INFO 2026-03-27 09:15:59,470 log 32616 33912 "GET /task/27/subtasks/ HTTP/1.1" 200 14691
+INFO 2026-03-27 09:15:59,497 log 32616 33912 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:15:59,503 log 32616 29520 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:15:59,618 log 32616 29520 Not Found: /favicon.ico
+WARNING 2026-03-27 09:15:59,619 log 32616 29520 "GET /favicon.ico HTTP/1.1" 404 1894
+INFO 2026-03-27 09:17:45,486 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14696
+INFO 2026-03-27 09:18:00,966 log 32616 29520 "POST /subtask/172/update/ HTTP/1.1" 302 0
+INFO 2026-03-27 09:18:00,972 log 32616 29520 "GET /task/27/subtasks/ HTTP/1.1" 200 14728
+INFO 2026-03-27 09:18:57,661 log 32616 29520 "GET /product/87/assign-performers/ HTTP/1.1" 200 12386
+INFO 2026-03-27 09:25:09,713 autoreload 32616 26948 E:\code\task_manager\taskmanager\tasks\views.py changed, reloading.
+INFO 2026-03-27 09:25:10,547 autoreload 31760 19780 Watching for file changes with StatReloader
+INFO 2026-03-27 09:25:15,561 log 31760 29248 "GET /task/27/subtasks/ HTTP/1.1" 200 14796
+INFO 2026-03-27 09:25:16,691 log 31760 29248 "GET /task/27/subtasks/ HTTP/1.1" 200 14827
+INFO 2026-03-27 09:25:16,780 log 31760 29248 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-27 09:25:16,781 log 31760 11276 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-27 09:25:16,963 log 31760 29248 Not Found: /favicon.ico
+WARNING 2026-03-27 09:25:16,964 log 31760 29248 "GET /favicon.ico HTTP/1.1" 404 1934

@@ -3806,3 +3806,34 @@ ERROR 2026-03-26 15:04:08,178 middleware 17832 33064 ❌ Ошибка 404: GET /
 ERROR 2026-03-26 15:04:14,200 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-26 15:04:15,081 middleware 17832 33064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-26 15:04:15,883 middleware 17832 32116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:06:05,682 middleware 17968 12984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:06:06,605 middleware 17968 19604 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:06:25,473 middleware 17968 12984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:06:27,485 middleware 17968 19604 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:06:29,845 middleware 17968 12984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:07:21,085 middleware 17968 23952 💥 Исключение в POST /product/86/assign-performers/: 'ResearchProduct' object has no attribute 'substage'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views.py", line 1615, in product_assign_performers
+    if product.substage and product.substage.task:
+       ^^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'substage'. Did you mean: 'subtask'?
+ERROR 2026-03-27 09:07:21,128 middleware 17968 23952 ❌ Ошибка 500: POST /product/86/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-27 09:09:30,160 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:10:33,675 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:10:34,567 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:11:26,062 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:12:17,548 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:12:23,478 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:12:24,331 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:14:11,827 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:14:39,068 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:14:40,361 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:14:42,404 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:14:43,147 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:15:58,717 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:15:59,617 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 09:25:16,962 middleware 31760 29248 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
