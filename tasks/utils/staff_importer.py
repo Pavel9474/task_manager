@@ -184,6 +184,22 @@ class StaffImporter:
             return 'main'
     
     def import_staff(self):
+            # ОТЛАДКА: Вывести все строки, где есть фамилии Аклеев, Котиков, Кривощапов
+        print("\n🔍 ПОИСК КОНКРЕТНЫХ СОТРУДНИКОВ:")
+        for idx, row in self.df.iterrows():
+            if idx < 2:
+                continue
+            row_data = row.values
+            # Проверяем все ячейки строки на наличие фамилий
+            for cell in row_data:
+                if pd.isna(cell):
+                    continue
+                cell_str = str(cell).lower()
+                if any(name in cell_str for name in ['аклеев', 'котиков', 'кривощапов']):
+                    print(f"\n  Строка {idx + 1}:")
+                    for i, val in enumerate(row_data[:10]):  # Показываем первые 10 колонок
+                        print(f"    Колонка {i}: {val}")
+                    break
         """Основной метод импорта"""
         print("\n=== НАЧАЛО ИМПОРТА ШТАТНОГО РАСПИСАНИЯ ===\n")
         
@@ -237,7 +253,11 @@ class StaffImporter:
             dept_number = str(row_data[0]).strip() if not pd.isna(row_data[0]) else ''
             
             # Если это строка с подразделением, запоминаем текущее подразделение
-            if dept_number and re.match(r'^[\d\.]+$', dept_number):
+            if len(row_data) > 4 and not pd.isna(row_data[4]) and str(row_data[4]).strip() and str(row_data[4]).strip() != 'Вакансия':
+                # Это строка с сотрудником - используем текущий department
+                pass
+            # Иначе если в колонке 0 есть номер подразделения - обновляем current_department
+            elif dept_number and re.match(r'^[\d\.]+$', dept_number):
                 if dept_number in self.departments:
                     current_department = self.departments[dept_number]
                 continue

@@ -3837,3 +3837,562 @@ ERROR 2026-03-27 09:14:43,147 middleware 32616 29520 ❌ Ошибка 404: GET /
 ERROR 2026-03-27 09:15:58,717 middleware 32616 33912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-27 09:15:59,617 middleware 32616 29520 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-27 09:25:16,962 middleware 31760 29248 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 12:09:28,852 middleware 18400 24476 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 12:12:12,954 middleware 17644 17588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 12:12:14,194 middleware 17644 17588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 12:12:17,487 middleware 17644 30228 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:39:20,831 middleware 31460 27256 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:39:21,633 middleware 31460 33784 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:39:45,614 middleware 31460 33784 💥 Исключение в GET /task/27/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:39:45,629 middleware 31460 33784 ❌ Ошибка 404: GET /task/27/ - Пользователь: pavel2
+ERROR 2026-03-27 15:40:22,193 middleware 27908 16336 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:40:27,666 middleware 27908 16336 💥 Исключение в GET /task/27/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:40:27,678 middleware 27908 16336 ❌ Ошибка 404: GET /task/27/ - Пользователь: pavel2
+ERROR 2026-03-27 15:40:44,801 middleware 27908 16336 💥 Исключение в GET /task/27/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:40:44,810 middleware 27908 16336 ❌ Ошибка 404: GET /task/27/ - Пользователь: pavel2
+ERROR 2026-03-27 15:40:48,057 middleware 27908 16336 💥 Исключение в GET /task/27/update/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 183, in task_update
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:40:48,068 middleware 27908 16336 ❌ Ошибка 404: GET /task/27/update/ - Пользователь: pavel2
+ERROR 2026-03-27 15:40:50,420 middleware 27908 16336 💥 Исключение в GET /task/27/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:40:50,429 middleware 27908 16336 ❌ Ошибка 404: GET /task/27/ - Пользователь: pavel2
+ERROR 2026-03-27 15:40:55,448 middleware 27908 16336 💥 Исключение в GET /task/27/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:40:55,459 middleware 27908 16336 ❌ Ошибка 404: GET /task/27/ - Пользователь: pavel2
+ERROR 2026-03-27 15:45:18,507 middleware 14800 20200 💥 Исключение в GET /research/1/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:45:18,523 middleware 14800 20200 ❌ Ошибка 404: GET /research/1/ - Пользователь: pavel2
+ERROR 2026-03-27 15:45:25,252 middleware 14800 20200 💥 Исключение в GET /research/28/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:45:25,263 middleware 14800 20200 ❌ Ошибка 404: GET /research/28/ - Пользователь: pavel2
+ERROR 2026-03-27 15:47:36,529 middleware 19468 13460 💥 Исключение в GET /research/1/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:47:36,547 middleware 19468 13460 ❌ Ошибка 404: GET /research/1/ - Пользователь: pavel2
+ERROR 2026-03-27 15:52:23,225 middleware 20028 18336 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:53:08,900 middleware 20028 18336 💥 Исключение в GET /task/29/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:53:08,913 middleware 20028 18336 ❌ Ошибка 404: GET /task/29/ - Пользователь: pavel2
+ERROR 2026-03-27 15:53:24,367 middleware 20028 2760 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:53:25,636 middleware 20028 18336 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 15:53:48,019 middleware 20028 18336 💥 Исключение в GET /research/1/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:53:48,032 middleware 20028 18336 ❌ Ошибка 404: GET /research/1/ - Пользователь: pavel2
+ERROR 2026-03-27 15:53:52,660 middleware 20028 18336 💥 Исключение в GET /research/2/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:53:52,672 middleware 20028 18336 ❌ Ошибка 404: GET /research/2/ - Пользователь: pavel2
+ERROR 2026-03-27 15:53:58,693 middleware 20028 18336 💥 Исключение в GET /research/3/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:53:58,706 middleware 20028 18336 ❌ Ошибка 404: GET /research/3/ - Пользователь: pavel2
+ERROR 2026-03-27 15:54:03,569 middleware 20028 18336 ❌ Ошибка 404: GET /research// - Пользователь: pavel2
+ERROR 2026-03-27 15:54:09,097 middleware 20028 18336 💥 Исключение в GET /research/4/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:54:09,107 middleware 20028 18336 ❌ Ошибка 404: GET /research/4/ - Пользователь: pavel2
+ERROR 2026-03-27 15:54:17,305 middleware 20028 18336 💥 Исключение в GET /research/1/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:54:17,315 middleware 20028 18336 ❌ Ошибка 404: GET /research/1/ - Пользователь: pavel2
+ERROR 2026-03-27 15:56:42,903 middleware 17868 22892 💥 Исключение в GET /research/3/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:56:42,921 middleware 17868 22892 ❌ Ошибка 404: GET /research/3/ - Пользователь: pavel2
+ERROR 2026-03-27 15:56:43,881 middleware 17868 22892 💥 Исключение в GET /research/3/: No ResearchTask matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.ResearchTask.DoesNotExist: ResearchTask matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 56, in research_task_detail
+    research_task = get_object_or_404(ResearchTask, id=task_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No ResearchTask matches the given query.
+ERROR 2026-03-27 15:56:43,892 middleware 17868 22892 ❌ Ошибка 404: GET /research/3/ - Пользователь: pavel2
+ERROR 2026-03-27 15:56:53,796 middleware 17868 22892 💥 Исключение в GET /task/28/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:56:53,807 middleware 17868 22892 ❌ Ошибка 404: GET /task/28/ - Пользователь: pavel2
+ERROR 2026-03-27 15:56:57,331 middleware 17868 22892 💥 Исключение в GET /task/29/: No Task matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Task.DoesNotExist: Task matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\task_views.py", line 411, in task_detail
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Task matches the given query.
+ERROR 2026-03-27 15:56:57,343 middleware 17868 22892 ❌ Ошибка 404: GET /task/29/ - Пользователь: pavel2
+ERROR 2026-03-27 15:57:01,641 middleware 17868 34024 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-27 16:23:35,808 middleware 31412 13832 💥 Исключение в GET /research/assign/substage/6/: tasks/assign_research_performers.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-27 16:23:35,865 middleware 31412 13832 ❌ Ошибка 500: GET /research/assign/substage/6/ - Пользователь: pavel2
+ERROR 2026-03-27 16:24:03,041 middleware 31412 13832 💥 Исключение в GET /research/2/edit/: tasks/research_task_form.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 48, in research_task_edit
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form,
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+ERROR 2026-03-27 16:24:03,088 middleware 31412 13832 ❌ Ошибка 500: GET /research/2/edit/ - Пользователь: pavel2
+ERROR 2026-03-27 16:25:50,797 middleware 31412 13832 💥 Исключение в GET /research/: tasks/research_task_list.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+ERROR 2026-03-27 16:25:50,848 middleware 31412 13832 ❌ Ошибка 500: GET /research/ - Пользователь: pavel2
+ERROR 2026-03-27 16:26:48,027 middleware 31412 15500 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2

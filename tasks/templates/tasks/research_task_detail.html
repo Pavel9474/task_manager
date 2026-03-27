@@ -15,42 +15,162 @@
     </div>
 </div>
 
+<!-- Основные реквизиты и сроки -->
 <div class="row mb-4">
     <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5>Общая информация</h5>
+        <div class="card h-100">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> Основные реквизиты</h5>
             </div>
             <div class="card-body">
-                <p><strong>Номер ТЗ:</strong> {{ research_task.tz_number|default:"-" }}</p>
-                <p><strong>Заказчик:</strong> {{ research_task.customer|default:"-" }}</p>
-                <p><strong>Исполнитель:</strong> {{ research_task.executor|default:"-" }}</p>
-                <p><strong>Сроки:</strong> {{ research_task.start_date|date:"d.m.Y"|default:"-" }} - {{ research_task.end_date|date:"d.m.Y"|default:"-" }}</p>
-                <p><strong>Финансирование:</strong> {{ research_task.funding|default:"-" }} руб.</p>
+                <table class="table table-sm table-borderless">
+                    <tr>
+                        <th style="width: 40%">Шифр:</th>
+                        <td>{{ research_task.tz_number|default:"—" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Госзаказчик:</th>
+                        <td>{{ research_task.customer|default:"—" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Исполнитель:</th>
+                        <td>{{ research_task.executor|default:"—" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Адрес исполнителя:</th>
+                        <td>{{ research_task.executor_address|default:"—"|linebreaks }}</td>
+                    </tr>
+                    <tr>
+                        <th>Место проведения:</th>
+                        <td>{{ research_task.location|default:"—" }}</td>
+                    </tr>
+                    <tr>
+                        <th>Наименование гос. работы:</th>
+                        <td>{{ research_task.government_work_name|default:"—" }}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
     
     <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <h5>Прогресс</h5>
+        <div class="card h-100">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="bi bi-calendar3"></i> Сроки и финансирование</h5>
             </div>
             <div class="card-body">
-                <div class="progress mb-3" style="height: 25px;">
-                    <div class="progress-bar bg-success" style="width: {{ progress }}%">
-                        {{ progress }}%
-                    </div>
-                </div>
-                <p>Этапов: {{ total_stages }} | Подэтапов: {{ total_substages }} | Продукции: {{ total_products }}</p>
-                <p>Выполнено продукции: {{ completed_products }} из {{ total_products }}</p>
+                <table class="table table-sm table-borderless">
+                    <tr>
+                        <th style="width: 40%">Сроки выполнения:</th>
+                        <td>
+                            {% if research_task.start_date and research_task.end_date %}
+                                {{ research_task.start_date|date:"d.m.Y" }} — {{ research_task.end_date|date:"d.m.Y" }}
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Источник финансирования:</th>
+                        <td>{{ research_task.funding_source|default:"—" }}</td>
+                    </tr>
+                </table>
+                
+                {% if research_task.funding_years.all %}
+                    <h6 class="mt-3">Финансирование по годам:</h6>
+                    <table class="table table-sm table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Год</th>
+                                <th class="text-end">Сумма (руб.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for funding in research_task.funding_years.all %}
+                                <tr>
+                                    <td>{{ funding.year }}</td>
+                                    <td class="text-end">{{ funding.amount|floatformat:0|default:"—" }}</td>
+                                </tr>
+                            {% endfor %}
+                            <tr class="table-active">
+                                <th>Итого:</th>
+                                <th class="text-end">{{ research_task.total_funding|floatformat:0 }} руб.</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="text-muted mt-3">Финансирование не указано</p>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
 
-<!-- Этапы -->
-<h3>Этапы работы</h3>
+<!-- Основание, цели и задачи -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-file-text"></i> Основание и цели работы</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <h6><i class="bi bi-journal-bookmark-fill"></i> Основание для проведения работы:</h6>
+                    <p class="text-muted">{{ research_task.foundation|default:"—"|linebreaks }}</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h6><i class="bi bi-bullseye"></i> Цели работы:</h6>
+                    <p class="text-muted">{{ research_task.goals|default:"—"|linebreaks }}</p>
+                </div>
+                
+                <div>
+                    <h6><i class="bi bi-list-check"></i> Задачи работы:</h6>
+                    <p class="text-muted">{{ research_task.tasks|default:"—"|linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Прогресс -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="bi bi-graph-up"></i> Прогресс выполнения</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h3>{{ total_stages }}</h3>
+                        <p class="text-muted">Этапов</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>{{ total_substages }}</h3>
+                        <p class="text-muted">Подэтапов</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>{{ total_products }}</h3>
+                        <p class="text-muted">Продукции</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="text-success">{{ completed_products }}</h3>
+                        <p class="text-muted">Выполнено продукции</p>
+                    </div>
+                </div>
+                <div class="progress mt-3" style="height: 30px;">
+                    <div class="progress-bar bg-success" style="width: {{ progress }}%">
+                        {{ progress }}%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Этапы работы -->
+<h3 class="mb-3"><i class="bi bi-diagram-3"></i> Этапы работы</h3>
 <div class="accordion" id="stagesAccordion">
     {% for stage in stages %}
         <div class="accordion-item mb-2">
@@ -64,6 +184,11 @@
                         </div>
                         <div class="me-3">
                             <span class="badge bg-info">Подэтапов: {{ stage.substages.count }}</span>
+                            {% if stage.start_date and stage.end_date %}
+                                <span class="badge bg-secondary ms-2">
+                                    {{ stage.start_date|date:"d.m.Y" }} — {{ stage.end_date|date:"d.m.Y" }}
+                                </span>
+                            {% endif %}
                         </div>
                     </div>
                 </button>
@@ -73,7 +198,13 @@
                 <div class="accordion-body">
                     <div class="d-flex justify-content-between mb-3">
                         <div>
-                            <p><strong>Сроки:</strong> {{ stage.start_date|date:"d.m.Y"|default:"-" }} - {{ stage.end_date|date:"d.m.Y"|default:"-" }}</p>
+                            <p><strong>Сроки этапа:</strong> 
+                                {% if stage.start_date and stage.end_date %}
+                                    {{ stage.start_date|date:"d.m.Y" }} — {{ stage.end_date|date:"d.m.Y" }}
+                                {% else %}
+                                    Не указаны
+                                {% endif %}
+                            </p>
                         </div>
                         <div>
                             <a href="{% url 'research_stage_detail' stage.id %}" class="btn btn-sm btn-outline-primary">
@@ -86,19 +217,35 @@
                     </div>
                     
                     <!-- Подэтапы -->
-                    <h6>Подэтапы:</h6>
+                    <h6><i class="bi bi-list-ul"></i> Подэтапы:</h6>
                     <div class="list-group">
                         {% for substage in stage.substages.all %}
                             <div class="list-group-item">
-                                <div class="d-flex justify-content-between">
+                                <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <span class="badge bg-secondary me-2">{{ substage.substage_number }}</span>
                                         {{ substage.title|truncatechars:100 }}
                                     </div>
-                                    <small class="text-muted">
-                                        Продукции: {{ substage.products.count }}
-                                    </small>
+                                    <div>
+                                        <span class="badge bg-info">Продукции: {{ substage.products.count }}</span>
+                                        <a href="{% url 'assign_research_performers' 'substage' substage.id %}" class="btn btn-sm btn-outline-success ms-2">
+                                            <i class="bi bi-people"></i>
+                                        </a>
+                                    </div>
                                 </div>
+                                {% if substage.products.exists %}
+                                    <div class="mt-2">
+                                        <small class="text-muted">Продукция:</small>
+                                        <ul class="list-unstyled ms-3">
+                                            {% for product in substage.products.all|slice:":3" %}
+                                                <li><small><i class="bi bi-file-text"></i> {{ product.name|truncatechars:60 }}</small></li>
+                                            {% endfor %}
+                                            {% if substage.products.count > 3 %}
+                                                <li><small class="text-muted">... и ещё {{ substage.products.count|add:"-3" }}</small></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
                             </div>
                         {% empty %}
                             <p class="text-muted">Нет подэтапов</p>
@@ -106,6 +253,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info text-center">
+            <i class="bi bi-info-circle"></i> Нет этапов работы
         </div>
     {% endfor %}
 </div>

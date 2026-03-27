@@ -71,15 +71,25 @@ class ResearchImportForm(forms.Form):
 class ResearchTaskForm(forms.ModelForm):
     class Meta:
         model = ResearchTask
-        fields = ['title', 'tz_number', 'customer', 'executor', 'start_date', 'end_date', 'funding']
+        fields = [
+            'title', 'tz_number', 'customer', 'executor', 'executor_address',
+            'foundation', 'funding_source', 'government_work_name',
+            'start_date', 'end_date', 'location', 'goals', 'tasks'
+        ]
         widgets = {
             'title': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
             'tz_number': forms.TextInput(attrs={'class': 'form-control'}),
             'customer': forms.TextInput(attrs={'class': 'form-control'}),
             'executor': forms.TextInput(attrs={'class': 'form-control'}),
+            'executor_address': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
+            'foundation': forms.Textarea(attrs={'rows': 2, 'class': 'form-control'}),
+            'funding_source': forms.TextInput(attrs={'class': 'form-control'}),
+            'government_work_name': forms.TextInput(attrs={'class': 'form-control'}),
             'start_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'end_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'funding': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'goals': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+            'tasks': forms.Textarea(attrs={'rows': 6, 'class': 'form-control'}),
         }
 
 

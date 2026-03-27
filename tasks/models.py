@@ -383,14 +383,31 @@ class Subtask(models.Model):
 # Сначала определите ResearchTask (самый верхний уровень)
 class ResearchTask(models.Model):
     """Основная НИР (научно-исследовательская работа) - соответствует ТЗ"""
+    
+    # Основные реквизиты
     title = models.CharField('Наименование ТЗ', max_length=500)
-    tz_number = models.CharField('Номер ТЗ', max_length=100, blank=True)
+    tz_number = models.CharField('Шифр', max_length=100, blank=True, help_text='Шифр: "Депозит 2025"')
+    
+    # Исполнители и заказчики
     customer = models.CharField('Госзаказчик', max_length=500, blank=True)
     executor = models.CharField('Исполнитель', max_length=500, blank=True)
+    executor_address = models.TextField('Адрес исполнителя', blank=True, help_text='Индекс, почтовый адрес, телефон/факс')
+    
+    # Основание и прочее
+    foundation = models.TextField('Основание для проведения работы', blank=True)
+    funding_source = models.CharField('Источник финансирования', max_length=300, blank=True)
+    government_work_name = models.CharField('Наименование государственной работы', max_length=500, blank=True)
+    
+    # Сроки
     start_date = models.DateField('Дата начала', null=True, blank=True)
     end_date = models.DateField('Дата окончания', null=True, blank=True)
-    funding = models.DecimalField('Финансирование', max_digits=15, decimal_places=2, null=True, blank=True)
+    location = models.CharField('Место проведения работы', max_length=200, blank=True)
     
+    # Цели и задачи
+    goals = models.TextField('Цели работы', blank=True)
+    tasks = models.TextField('Задачи работы', blank=True)
+    
+    # Аудит
     created_date = models.DateTimeField('Дата создания', auto_now_add=True)
     updated_date = models.DateTimeField('Дата обновления', auto_now=True)
     
@@ -400,7 +417,32 @@ class ResearchTask(models.Model):
     
     def __str__(self):
         return self.title
+    
+    @property
+    def total_funding(self):
+        """Общее финансирование"""
+        return sum(f.amount for f in self.funding_years.all())
 
+
+class ResearchTaskFunding(models.Model):
+    """Финансирование НИР по годам"""
+    research_task = models.ForeignKey(
+        ResearchTask, 
+        on_delete=models.CASCADE,
+        related_name='funding_years',
+        verbose_name='НИР'
+    )
+    year = models.IntegerField('Год')
+    amount = models.DecimalField('Сумма (руб.)', max_digits=15, decimal_places=2)
+    
+    class Meta:
+        verbose_name = 'Финансирование по году'
+        verbose_name_plural = 'Финансирование по годам'
+        ordering = ['year']
+        unique_together = ['research_task', 'year']
+    
+    def __str__(self):
+        return f"{self.year}: {self.amount:,.0f} руб."
 
 # Затем ResearchStage (зависит от ResearchTask)
 class ResearchStage(models.Model):
@@ -695,8 +737,14 @@ class StaffPosition(models.Model):
 
 class ResearchProduct(models.Model):
     """Научная продукция"""
-    subtask = models.ForeignKey(Subtask, on_delete=models.CASCADE, related_name='products',
-                                verbose_name='Подэтап', null=True, blank=True)
+    # substage = models.ForeignKey(
+    #     'ResearchSubstage',
+    #     on_delete=models.CASCADE,
+    #     related_name='products',
+    #     verbose_name='Подэтап',
+    #     null=True,
+    #     blank=True
+    # )
     name = models.CharField('Наименование продукции', max_length=500)
     description = models.TextField('Описание', blank=True)
     due_date = models.DateField('Срок выполнения', null=True, blank=True)

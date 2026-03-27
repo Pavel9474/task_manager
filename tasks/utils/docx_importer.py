@@ -15,14 +15,185 @@ class ResearchDocxImporter:
         """Парсинг ТЗ и возврат структуры данных"""
         result = {
             'title': self._extract_title(),
+            'tz_number': self._extract_tz_number(),
+            'foundation': self._extract_foundation(),
+            'funding_source': self._extract_funding_source(),
+            'government_work_name': self._extract_government_work_name(),
+            'customer': self._extract_customer(),
+            'executor': self._extract_executor(),
+            'executor_address': self._extract_executor_address(),
+            'start_date': None,
+            'end_date': None,
+            'location': self._extract_location(),
+            'funding_years': self._extract_funding_years(),  # Словарь {год: сумма}
+            'goals': self._extract_goals(),
+            'tasks': self._extract_tasks(),
             'stages': self._extract_stages()
         }
         
+        # Извлекаем даты
+        start_date, end_date = self._extract_dates_from_text()
+        result['start_date'] = start_date
+        result['end_date'] = end_date
+        
         print(f"Найдено название: {result['title']}")
+        print(f"Найдено шифр: {result['tz_number']}")
+        print(f"Найдено финансирование по годам: {result['funding_years']}")
         print(f"Найдено этапов: {len(result['stages'])}")
         
         return result
-    
+    def _extract_tz_number(self):
+        """Извлечение шифра из текста"""
+        for paragraph in self.doc.paragraphs:
+            if 'шифр:' in paragraph.text.lower():
+                match = re.search(r'шифр:\s*[«"](.+?)[»"]', paragraph.text, re.IGNORECASE)
+                if match:
+                    return match.group(1)
+        return ''
+
+    def _extract_foundation(self):
+        """Извлечение основания для проведения работы"""
+        for paragraph in self.doc.paragraphs:
+            if '1. Основание для проведения работы:' in paragraph.text:
+                # Берем следующий абзац
+                idx = self.doc.paragraphs.index(paragraph)
+                if idx + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[idx + 1].text.strip()
+        return ''
+
+    def _extract_funding_source(self):
+        """Извлечение источника финансирования"""
+        for paragraph in self.doc.paragraphs:
+            if '2. Источник финансирования:' in paragraph.text:
+                idx = self.doc.paragraphs.index(paragraph)
+                if idx + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[idx + 1].text.strip()
+        return ''
+
+    def _extract_government_work_name(self):
+        """Извлечение наименования государственной работы"""
+        for paragraph in self.doc.paragraphs:
+            if '3. Наименование государственной работы:' in paragraph.text:
+                idx = self.doc.paragraphs.index(paragraph)
+                if idx + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[idx + 1].text.strip()
+        return ''
+
+    def _extract_customer(self):
+        """Извлечение государственного заказчика"""
+        for paragraph in self.doc.paragraphs:
+            if '4. Государственный заказчик:' in paragraph.text:
+                idx = self.doc.paragraphs.index(paragraph)
+                if idx + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[idx + 1].text.strip()
+        return ''
+
+    def _extract_executor(self):
+        """Извлечение исполнителя"""
+        for paragraph in self.doc.paragraphs:
+            if '5. Исполнитель' in paragraph.text:
+                # Берем следующую строку
+                idx = self.doc.paragraphs.index(paragraph)
+                if idx + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[idx + 1].text.strip()
+        return ''
+
+    def _extract_executor_address(self):
+        """Извлечение адреса исполнителя"""
+        for paragraph in self.doc.paragraphs:
+            if '5. Исполнитель' in paragraph.text:
+                # Ищем в этом же абзаце после двоеточия
+                match = re.search(r'5\. Исполнитель.*?:?\s*(.+?)(?:\n|$)', paragraph.text, re.DOTALL)
+                if match:
+                    return match.group(1).strip()
+        return ''
+
+    def _extract_location(self):
+        """Извлечение места проведения работы"""
+        for paragraph in self.doc.paragraphs:
+            if '7. Место проведения работы:' in paragraph.text:
+                idx = self.doc.paragraphs.index(paragraph)
+                if idx + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[idx + 1].text.strip()
+        return ''
+
+    def _extract_funding_years(self):
+        """Извлечение финансирования по годам"""
+        funding = {}
+        
+        # Проходим по всем таблицам
+        for table in self.doc.tables:
+            for row in table.rows:
+                # Получаем текст всех ячеек
+                cells_text = [cell.text.strip() for cell in row.cells]
+                if not cells_text:
+                    continue
+                
+                # Объединяем текст всех ячеек
+                full_text = ' '.join(cells_text)
+                
+                # Ищем паттерн: "В 2025 году: 44 747 500"
+                # Или "8.1 В 2025 году: 44 747 500"
+                match = re.search(r'В\s+(\d{4})\s+году:\s+([\d\s]+?)(?:\s*\(|$)', full_text)
+                if match:
+                    year = int(match.group(1))
+                    amount_str = match.group(2).strip()
+                    # Убираем пробелы
+                    amount_clean = amount_str.replace(' ', '')
+                    if amount_clean and amount_clean.isdigit():
+                        try:
+                            funding[year] = float(amount_clean)
+                            print(f"  Найдено: {year} год - {amount_clean} руб.")
+                        except:
+                            pass
+        
+        return funding
+    def _extract_goals(self):
+        """Извлечение целей работы"""
+        goals = []
+        collecting = False
+        for paragraph in self.doc.paragraphs:
+            if '9. Цели работы:' in paragraph.text:
+                collecting = True
+                continue
+            if collecting:
+                if '10. Задачи работы:' in paragraph.text:
+                    break
+                text = paragraph.text.strip()
+                if text and not text.startswith('----'):
+                    goals.append(text)
+        return '\n'.join(goals)
+
+    def _extract_tasks(self):
+        """Извлечение задач работы"""
+        tasks = []
+        collecting = False
+        for paragraph in self.doc.paragraphs:
+            if '10. Задачи работы:' in paragraph.text:
+                collecting = True
+                continue
+            if collecting:
+                if '11. Этапы' in paragraph.text:
+                    break
+                text = paragraph.text.strip()
+                if text and not text.startswith('----'):
+                    # Убираем номера задач
+                    text = re.sub(r'^\d+\.\d+\.?\s*', '', text)
+                    tasks.append(text)
+        return '\n'.join(tasks)
+
+    def _extract_dates_from_text(self):
+        """Извлечение дат начала и окончания из текста"""
+        for paragraph in self.doc.paragraphs:
+            if '6. Сроки выполнения работы:' in paragraph.text:
+                match = re.search(r'начало\s*-\s*(\d{2}\.\d{2}\.\d{4})\s*;\s*окончание\s*-\s*(\d{2}\.\d{2}\.\d{4})', paragraph.text)
+                if match:
+                    from datetime import datetime
+                    start_str, end_str = match.groups()
+                    start_date = datetime.strptime(start_str, '%d.%m.%Y').date()
+                    end_date = datetime.strptime(end_str, '%d.%m.%Y').date()
+                    return start_date, end_date
+        return None, None
     def _extract_title(self):
         """Извлечение названия ТЗ"""
         for paragraph in self.doc.paragraphs:
@@ -286,3 +457,83 @@ class ResearchDocxImporter:
         print(f"✅ Всего создано продукции: {products_count}")
         
         return created_count
+    def import_research(self, default_performers=None):
+        """Импорт НИР в базу данных (создаёт ResearchTask)"""
+        from ..models import ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct, ResearchTaskFunding
+        
+        data = self.parse_research_task()
+        
+        print(f"\n=== СОЗДАНИЕ НИР ===")
+        print(f"Название: {data['title']}")
+        print(f"Шифр: {data.get('tz_number', '')}")
+        
+        # Создаем НИР
+        research_task = ResearchTask.objects.create(
+            title=data['title'],
+            tz_number=data.get('tz_number', ''),
+            foundation=data.get('foundation', ''),
+            funding_source=data.get('funding_source', ''),
+            government_work_name=data.get('government_work_name', ''),
+            customer=data.get('customer', ''),
+            executor=data.get('executor', ''),
+            executor_address=data.get('executor_address', ''),
+            start_date=data.get('start_date'),
+            end_date=data.get('end_date'),
+            location=data.get('location', ''),
+            goals=data.get('goals', ''),
+            tasks=data.get('tasks', ''),
+        )
+        
+        print(f"✅ Создана НИР ID: {research_task.id}")
+        
+        # Сохраняем финансирование
+        for year, amount in data.get('funding_years', {}).items():
+            ResearchTaskFunding.objects.create(
+                research_task=research_task,
+                year=year,
+                amount=amount
+            )
+            print(f"  📊 Добавлено финансирование на {year} год: {amount:,.0f} руб.")
+        
+        # Создаем этапы
+        for stage_data in data.get('stages', []):
+            stage = ResearchStage.objects.create(
+                research_task=research_task,
+                stage_number=stage_data['number'],
+                title=stage_data['title'],
+                start_date=stage_data.get('start_date'),
+                end_date=stage_data.get('end_date')
+            )
+            print(f"  📁 Создан этап {stage.stage_number}: {stage.title[:50]}...")
+            
+            if default_performers:
+                stage.performers.set(default_performers)
+            
+            # Создаем подэтапы
+            for substage_data in stage_data.get('substages', []):
+                substage = ResearchSubstage.objects.create(
+                    stage=stage,
+                    substage_number=substage_data['number'],
+                    title=substage_data['title'],
+                    description=f"Подэтап {substage_data['number']}",
+                    start_date=substage_data.get('start_date'),
+                    end_date=substage_data.get('end_date')
+                )
+                print(f"    🔹 Подэтап {substage.substage_number}: {substage.title[:50]}...")
+                
+                if default_performers:
+                    substage.performers.set(default_performers)
+                
+                # Создаем продукцию - используем research_substage, а не substage!
+                for product_name in substage_data.get('products', []):
+                    if product_name and len(product_name) > 5:
+                        ResearchProduct.objects.create(
+                            research_substage=substage,  # <-- ИСПРАВЛЕНО!
+                            name=product_name[:500],
+                            description=f"Продукция подэтапа {substage_data['number']}",
+                            status='pending'
+                        )
+                        print(f"        📄 Продукция: {product_name[:60]}...")
+        
+        print(f"\n✅ Импорт завершён!")
+        return research_task
