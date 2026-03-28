@@ -213,7 +213,7 @@ def task_delete(request, task_id):
             # Сначала обнуляем связи
             for subtask in task.subtasks.all():
                 # Обнуляем ссылки на подэтапы в продукции
-                ResearchProduct.objects.filter(subtask=subtask).update(subtask=None)
+                ResearchProduct.objects.filter(research_substage=subtask).delete()
                 
                 # Очищаем связи исполнителей
                 subtask.performers.clear()

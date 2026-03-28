@@ -54,138 +54,73 @@ class ResearchDocxImporter:
     def _extract_foundation(self):
         """Извлечение основания для проведения работы"""
         for paragraph in self.doc.paragraphs:
-            if '1. Основание для проведения работы:' in paragraph.text:
-                # Берем следующий абзац
-                idx = self.doc.paragraphs.index(paragraph)
-                if idx + 1 < len(self.doc.paragraphs):
-                    return self.doc.paragraphs[idx + 1].text.strip()
+            if 'Основание для проведения работы:' in paragraph.text:
+                # Берём всё после двоеточия
+                parts = paragraph.text.split(':', 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
         return ''
 
     def _extract_funding_source(self):
         """Извлечение источника финансирования"""
         for paragraph in self.doc.paragraphs:
-            if '2. Источник финансирования:' in paragraph.text:
-                idx = self.doc.paragraphs.index(paragraph)
-                if idx + 1 < len(self.doc.paragraphs):
-                    return self.doc.paragraphs[idx + 1].text.strip()
+            if 'Источник финансирования:' in paragraph.text:
+                parts = paragraph.text.split(':', 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
         return ''
 
     def _extract_government_work_name(self):
         """Извлечение наименования государственной работы"""
         for paragraph in self.doc.paragraphs:
-            if '3. Наименование государственной работы:' in paragraph.text:
-                idx = self.doc.paragraphs.index(paragraph)
-                if idx + 1 < len(self.doc.paragraphs):
-                    return self.doc.paragraphs[idx + 1].text.strip()
+            if 'Наименование государственной работы:' in paragraph.text:
+                parts = paragraph.text.split(':', 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
         return ''
 
     def _extract_customer(self):
         """Извлечение государственного заказчика"""
         for paragraph in self.doc.paragraphs:
-            if '4. Государственный заказчик:' in paragraph.text:
-                idx = self.doc.paragraphs.index(paragraph)
-                if idx + 1 < len(self.doc.paragraphs):
-                    return self.doc.paragraphs[idx + 1].text.strip()
+            if 'Государственный заказчик:' in paragraph.text:
+                parts = paragraph.text.split(':', 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
         return ''
 
     def _extract_executor(self):
         """Извлечение исполнителя"""
         for paragraph in self.doc.paragraphs:
-            if '5. Исполнитель' in paragraph.text:
-                # Берем следующую строку
-                idx = self.doc.paragraphs.index(paragraph)
-                if idx + 1 < len(self.doc.paragraphs):
-                    return self.doc.paragraphs[idx + 1].text.strip()
+            # Проверяем, что это строка с номером 5 и содержит Исполнитель
+            if paragraph.text.startswith('5.') or '5. Исполнитель' in paragraph.text:
+                parts = paragraph.text.split(':', 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
         return ''
-
     def _extract_executor_address(self):
         """Извлечение адреса исполнителя"""
-        for paragraph in self.doc.paragraphs:
-            if '5. Исполнитель' in paragraph.text:
-                # Ищем в этом же абзаце после двоеточия
-                match = re.search(r'5\. Исполнитель.*?:?\s*(.+?)(?:\n|$)', paragraph.text, re.DOTALL)
-                if match:
-                    return match.group(1).strip()
+        for i, paragraph in enumerate(self.doc.paragraphs):
+            if 'Исполнитель' in paragraph.text and 'адрес' in paragraph.text:
+                # Адрес в следующем параграфе
+                if i + 1 < len(self.doc.paragraphs):
+                    return self.doc.paragraphs[i + 1].text.strip()
         return ''
 
     def _extract_location(self):
         """Извлечение места проведения работы"""
         for paragraph in self.doc.paragraphs:
-            if '7. Место проведения работы:' in paragraph.text:
-                idx = self.doc.paragraphs.index(paragraph)
-                if idx + 1 < len(self.doc.paragraphs):
-                    return self.doc.paragraphs[idx + 1].text.strip()
+            if 'Место проведения работы:' in paragraph.text:
+                # Ищем текст после двоеточия
+                if ':' in paragraph.text:
+                    parts = paragraph.text.split(':', 1)
+                    if len(parts) > 1:
+                        return parts[1].strip()
         return ''
-
-    def _extract_funding_years(self):
-        """Извлечение финансирования по годам"""
-        funding = {}
-        
-        # Проходим по всем таблицам
-        for table in self.doc.tables:
-            for row in table.rows:
-                # Получаем текст всех ячеек
-                cells_text = [cell.text.strip() for cell in row.cells]
-                if not cells_text:
-                    continue
-                
-                # Объединяем текст всех ячеек
-                full_text = ' '.join(cells_text)
-                
-                # Ищем паттерн: "В 2025 году: 44 747 500"
-                # Или "8.1 В 2025 году: 44 747 500"
-                match = re.search(r'В\s+(\d{4})\s+году:\s+([\d\s]+?)(?:\s*\(|$)', full_text)
-                if match:
-                    year = int(match.group(1))
-                    amount_str = match.group(2).strip()
-                    # Убираем пробелы
-                    amount_clean = amount_str.replace(' ', '')
-                    if amount_clean and amount_clean.isdigit():
-                        try:
-                            funding[year] = float(amount_clean)
-                            print(f"  Найдено: {year} год - {amount_clean} руб.")
-                        except:
-                            pass
-        
-        return funding
-    def _extract_goals(self):
-        """Извлечение целей работы"""
-        goals = []
-        collecting = False
-        for paragraph in self.doc.paragraphs:
-            if '9. Цели работы:' in paragraph.text:
-                collecting = True
-                continue
-            if collecting:
-                if '10. Задачи работы:' in paragraph.text:
-                    break
-                text = paragraph.text.strip()
-                if text and not text.startswith('----'):
-                    goals.append(text)
-        return '\n'.join(goals)
-
-    def _extract_tasks(self):
-        """Извлечение задач работы"""
-        tasks = []
-        collecting = False
-        for paragraph in self.doc.paragraphs:
-            if '10. Задачи работы:' in paragraph.text:
-                collecting = True
-                continue
-            if collecting:
-                if '11. Этапы' in paragraph.text:
-                    break
-                text = paragraph.text.strip()
-                if text and not text.startswith('----'):
-                    # Убираем номера задач
-                    text = re.sub(r'^\d+\.\d+\.?\s*', '', text)
-                    tasks.append(text)
-        return '\n'.join(tasks)
 
     def _extract_dates_from_text(self):
         """Извлечение дат начала и окончания из текста"""
         for paragraph in self.doc.paragraphs:
-            if '6. Сроки выполнения работы:' in paragraph.text:
+            if 'Сроки выполнения работы:' in paragraph.text:
                 match = re.search(r'начало\s*-\s*(\d{2}\.\d{2}\.\d{4})\s*;\s*окончание\s*-\s*(\d{2}\.\d{2}\.\d{4})', paragraph.text)
                 if match:
                     from datetime import datetime
@@ -194,6 +129,66 @@ class ResearchDocxImporter:
                     end_date = datetime.strptime(end_str, '%d.%m.%Y').date()
                     return start_date, end_date
         return None, None
+    def _extract_funding_years(self):
+        """Извлечение финансирования по годам"""
+        funding = {}
+        
+        for table in self.doc.tables:
+            for row in table.rows:
+                full_text = ' '.join([cell.text.strip() for cell in row.cells])
+                
+                match = re.search(r'В\s+(\d{4})\s+году:\s+([\d\s]+?)(?:\s*\(|$)', full_text)
+                if match:
+                    year = int(match.group(1))
+                    amount_str = match.group(2).strip()
+                    # Убираем все пробелы из всей строки суммы
+                    amount_clean = re.sub(r'[\s\xa0]', '', amount_str)
+                    # Если строка содержит несколько чисел подряд (как в 2027), берём первые 8 цифр
+                    if len(amount_clean) > 10:
+                        amount_clean = amount_clean[:8]  # 44747500 - 8 цифр
+                    print(f"  Найдено: {year} год - {amount_clean}")
+                    try:
+                        funding[year] = float(amount_clean)
+                    except ValueError as e:
+                        print(f"    Ошибка парсинга: {amount_clean} - {e}")
+        
+        return funding
+    def _extract_goals(self):
+        """Извлечение целей работы (из таблицы 2)"""
+        if len(self.doc.tables) > 2:
+            table = self.doc.tables[2]
+            for row in table.rows:
+                text = ' '.join([cell.text for cell in row.cells])
+                if text.strip():
+                    return text.strip()
+        return ''
+
+    def _extract_tasks(self):
+        """Извлечение задач работы (из таблицы 3)"""
+        tasks = []
+        if len(self.doc.tables) > 3:
+            table = self.doc.tables[3]
+            for row in table.rows:
+                text = ' '.join([cell.text for cell in row.cells])
+                text = text.strip()
+                if text:
+                    # Убираем номер задачи
+                    text = re.sub(r'^\d+\.\d+\s*', '', text)
+                    tasks.append(text)
+        return '\n'.join(tasks)
+
+    # def _extract_dates_from_text(self):
+    #     """Извлечение дат начала и окончания из текста"""
+    #     for paragraph in self.doc.paragraphs:
+    #         if '6. Сроки выполнения работы:' in paragraph.text:
+    #             match = re.search(r'начало\s*-\s*(\d{2}\.\d{2}\.\d{4})\s*;\s*окончание\s*-\s*(\d{2}\.\d{2}\.\d{4})', paragraph.text)
+    #             if match:
+    #                 from datetime import datetime
+    #                 start_str, end_str = match.groups()
+    #                 start_date = datetime.strptime(start_str, '%d.%m.%Y').date()
+    #                 end_date = datetime.strptime(end_str, '%d.%m.%Y').date()
+    #                 return start_date, end_date
+    #     return None, None
     def _extract_title(self):
         """Извлечение названия ТЗ"""
         for paragraph in self.doc.paragraphs:
@@ -370,24 +365,20 @@ class ResearchDocxImporter:
         return products
     
     def create_task_structure(self, task, stages_data):
-        """Создание структуры этапов и подэтапов для задачи"""
-        from ..models import Subtask, ResearchProduct
+        """Создание структуры этапов и подэтапов для задачи (обычная задача)"""
+        from ..models import Subtask
         
         print(f"\nСоздание структуры для задачи: {task.title}")
         print(f"Получено этапов: {len(stages_data)}")
         
-        # Удаляем все существующие подэтапы и продукцию
+        # Удаляем все существующие подэтапы
         subtasks_to_delete = Subtask.objects.filter(task=task)
-        for subtask in subtasks_to_delete:
-            # Удаляем продукцию этого подэтапа
-            ResearchProduct.objects.filter(subtask=subtask).delete()
         subtasks_to_delete.delete()
-        print(f"Удалено старых подэтапов и продукции")
+        print(f"Удалено старых подэтапов")
         
         created_count = 0
-        created_products_count = 0
         
-        # Создаем все этапы и подэтапы
+        # Создаем все этапы и подэтапы (БЕЗ ПРОДУКЦИИ)
         for stage_idx, stage_data in enumerate(stages_data):
             # Создаем основной этап
             stage_number = str(stage_data['number'])
@@ -417,7 +408,7 @@ class ResearchDocxImporter:
                     substage_start = substage_data.get('start_date')
                     substage_end = substage_data.get('end_date')
                     
-                    # Создаем подэтап
+                    # Создаем подэтап (без продукции)
                     substage = Subtask.objects.create(
                         task=task,
                         stage_number=substage_number,
@@ -432,29 +423,20 @@ class ResearchDocxImporter:
                     print(f"    🔹 Создан подэтап {substage_number} ID: {substage.id}{date_info}")
                     created_count += 1
                     
-                    # СОЗДАЁМ ПРОДУКЦИЮ КАК ОТДЕЛЬНЫЕ ОБЪЕКТЫ
+                    # Продукцию сохраняем в output (как было раньше)
                     products_list = substage_data.get('products', [])
-                    for product_name in products_list:
-                        if product_name and len(product_name) > 5:
-                            product = ResearchProduct.objects.create(
-                                subtask=substage,
-                                name=product_name[:500],  # Ограничиваем длину
-                                description=f"Продукция подэтапа {substage_number}",
-                                status='pending'
-                            )
-                            created_products_count += 1
-                            print(f"        📄 Создана продукция: {product_name[:80]}...")
-                    
-                    print(f"        Продукция: {len(products_list)} позиций создано")
-                            
+                    if products_list:
+                        products_text = "Ожидаемая продукция:\n" + "\n".join([f"• {p}" for p in products_list])
+                        substage.output = products_text
+                        substage.save()
+                        print(f"        📄 Сохранена продукция в output: {len(products_list)} позиций")
+                                
                 except Exception as e:
                     print(f"    ❌ Ошибка создания подэтапа {substage_data.get('number')}: {e}")
         
         # Проверяем результат
         final_count = Subtask.objects.filter(task=task).count()
-        products_count = ResearchProduct.objects.filter(subtask__task=task).count()
         print(f"\n✅ Всего создано подэтапов: {final_count}")
-        print(f"✅ Всего создано продукции: {products_count}")
         
         return created_count
     def import_research(self, default_performers=None):

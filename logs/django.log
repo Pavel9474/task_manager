@@ -4403,3 +4403,1143 @@ INFO 2026-03-27 16:28:38,320 log 31412 15500 "GET /research/stage/2/ HTTP/1.1" 2
 INFO 2026-03-27 16:33:20,458 autoreload 31412 17352 E:\code\task_manager\taskmanager\tasks\views\task_views.py changed, reloading.
 INFO 2026-03-27 16:33:21,404 autoreload 20428 26256 Watching for file changes with StatReloader
 INFO 2026-03-27 16:35:34,926 log 20428 15768 "GET / HTTP/1.1" 200 4489
+INFO 2026-03-28 20:31:46,639 autoreload 9772 1608 Watching for file changes with StatReloader
+INFO 2026-03-28 20:34:10,338 autoreload 3708 2436 Watching for file changes with StatReloader
+INFO 2026-03-28 20:37:14,649 autoreload 3796 1300 Watching for file changes with StatReloader
+INFO 2026-03-28 20:38:03,829 autoreload 10844 1356 Watching for file changes with StatReloader
+INFO 2026-03-28 20:38:08,602 log 10844 10380 "GET / HTTP/1.1" 302 0
+INFO 2026-03-28 20:38:08,641 log 10844 10380 "GET /login/?next=/ HTTP/1.1" 200 1687
+INFO 2026-03-28 20:38:08,741 log 10844 10380 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:38:08,749 log 10844 10492 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:38:08,819 log 10844 10492 Not Found: /favicon.ico
+WARNING 2026-03-28 20:38:08,819 log 10844 10492 "GET /favicon.ico HTTP/1.1" 404 1836
+INFO 2026-03-28 20:38:11,877 log 10844 10492 "POST /login/?next=/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:38:11,919 log 10844 10492 "GET / HTTP/1.1" 200 4515
+INFO 2026-03-28 20:41:15,290 autoreload 10844 1356 E:\taskmanager\tasks\utils\docx_importer.py changed, reloading.
+INFO 2026-03-28 20:41:16,003 autoreload 10744 1872 Watching for file changes with StatReloader
+INFO 2026-03-28 20:41:54,943 log 10744 2416 "GET /task/create/ HTTP/1.1" 200 5121
+INFO 2026-03-28 20:41:54,984 log 10744 2416 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 20:41:54,985 log 10744 9296 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 20:45:06,020 log 10744 9296 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:45:06,055 log 10744 9296 "GET / HTTP/1.1" 200 4824
+INFO 2026-03-28 20:45:06,081 log 10744 9296 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 20:45:06,082 log 10744 2416 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 20:45:27,350 autoreload 6104 10780 Watching for file changes with StatReloader
+INFO 2026-03-28 20:45:34,456 log 6104 2008 "GET /task/create/ HTTP/1.1" 200 5090
+INFO 2026-03-28 20:45:45,974 log 6104 2008 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:45:46,013 log 6104 2008 "GET / HTTP/1.1" 200 4990
+INFO 2026-03-28 20:47:56,738 log 6104 2008 "GET / HTTP/1.1" 200 4975
+INFO 2026-03-28 20:47:56,866 log 6104 2008 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:47:56,870 log 6104 6868 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:47:57,272 log 6104 6868 Not Found: /favicon.ico
+WARNING 2026-03-28 20:47:57,273 log 6104 6868 "GET /favicon.ico HTTP/1.1" 404 1835
+INFO 2026-03-28 20:48:06,806 log 6104 6868 "GET /research/2/ HTTP/1.1" 200 5262
+ERROR 2026-03-28 20:48:13,077 log 6104 6868 Internal Server Error: /research/2/edit/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 48, in research_task_edit
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form,
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+ERROR 2026-03-28 20:48:13,081 log 6104 6868 "GET /research/2/edit/ HTTP/1.1" 500 14840
+INFO 2026-03-28 20:48:29,145 log 6104 6868 "GET /task/32/ HTTP/1.1" 200 2921
+ERROR 2026-03-28 20:48:36,305 log 6104 6868 Internal Server Error: /task/32/subtasks/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\subtask_views.py", line 51, in subtask_list
+    subtask.products_list = ResearchProduct.objects.filter(subtask=subtask)
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1556, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1363, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1842, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'subtask' into field. Choices are: actual_end, actual_start, completion_percent, created_by, created_by_id, created_date, description, due_date, id, name, notes, planned_end, planned_start, product_performers, product_type, research_stage, research_stage_id, research_substage, research_substage_id, research_task, research_task_id, responsible, responsible_id, status, updated_date
+ERROR 2026-03-28 20:48:36,312 log 6104 6868 "GET /task/32/subtasks/ HTTP/1.1" 500 20092
+INFO 2026-03-28 20:48:43,610 log 6104 6868 "GET /task/32/delete/ HTTP/1.1" 200 1799
+INFO 2026-03-28 20:48:45,329 log 6104 6868 "POST /task/32/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:48:45,336 log 6104 6868 "GET / HTTP/1.1" 200 4949
+INFO 2026-03-28 20:48:51,985 log 6104 6868 "GET /task/32/delete/ HTTP/1.1" 200 1866
+INFO 2026-03-28 20:48:53,326 log 6104 6868 "POST /task/32/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:48:53,334 log 6104 6868 "GET / HTTP/1.1" 200 4976
+INFO 2026-03-28 20:48:57,929 log 6104 6868 "GET /task/31/delete/ HTTP/1.1" 200 1864
+INFO 2026-03-28 20:48:59,014 log 6104 6868 "POST /task/31/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:48:59,023 log 6104 6868 "GET / HTTP/1.1" 200 4918
+INFO 2026-03-28 20:49:02,016 log 6104 6868 "GET / HTTP/1.1" 200 4933
+INFO 2026-03-28 20:49:02,052 log 6104 6868 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:49:02,054 log 6104 2008 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:49:02,683 log 6104 2008 Not Found: /favicon.ico
+WARNING 2026-03-28 20:49:02,683 log 6104 2008 "GET /favicon.ico HTTP/1.1" 404 1814
+INFO 2026-03-28 20:49:10,511 log 6104 2008 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4694
+INFO 2026-03-28 20:49:17,072 log 6104 2008 "GET /task/32/delete/ HTTP/1.1" 200 1802
+INFO 2026-03-28 20:49:18,385 log 6104 2008 "POST /task/32/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:49:18,393 log 6104 2008 "GET / HTTP/1.1" 200 5007
+INFO 2026-03-28 20:49:20,772 log 6104 2008 "GET / HTTP/1.1" 200 5004
+INFO 2026-03-28 20:49:21,548 log 6104 2008 "GET / HTTP/1.1" 200 4954
+INFO 2026-03-28 20:49:21,580 log 6104 2008 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:49:21,580 log 6104 6868 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:49:21,905 log 6104 6868 Not Found: /favicon.ico
+WARNING 2026-03-28 20:49:21,906 log 6104 6868 "GET /favicon.ico HTTP/1.1" 404 1826
+INFO 2026-03-28 20:49:21,950 log 6104 6868 "GET / HTTP/1.1" 200 5011
+INFO 2026-03-28 20:49:21,982 log 6104 6868 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:49:21,983 log 6104 2008 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:49:22,326 log 6104 2008 Not Found: /favicon.ico
+WARNING 2026-03-28 20:49:22,326 log 6104 2008 "GET /favicon.ico HTTP/1.1" 404 1807
+INFO 2026-03-28 20:49:29,756 log 6104 2008 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 4048
+INFO 2026-03-28 20:49:32,063 log 6104 2008 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 4735
+INFO 2026-03-28 20:49:35,373 log 6104 2008 "GET /task/32/delete/ HTTP/1.1" 200 1812
+INFO 2026-03-28 20:49:36,556 log 6104 2008 "POST /task/32/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:49:36,565 log 6104 2008 "GET / HTTP/1.1" 200 4955
+INFO 2026-03-28 20:49:39,317 log 6104 2008 "GET / HTTP/1.1" 200 4920
+INFO 2026-03-28 20:49:39,348 log 6104 2008 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:49:39,351 log 6104 6868 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:49:39,632 log 6104 6868 Not Found: /favicon.ico
+WARNING 2026-03-28 20:49:39,633 log 6104 6868 "GET /favicon.ico HTTP/1.1" 404 1807
+INFO 2026-03-28 20:49:47,883 log 6104 6868 "GET /task/create/ HTTP/1.1" 200 5030
+ERROR 2026-03-28 20:49:56,459 log 6104 6868 Internal Server Error: /research/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+ERROR 2026-03-28 20:49:56,464 log 6104 6868 "GET /research/ HTTP/1.1" 500 14558
+INFO 2026-03-28 20:50:12,656 log 6104 6868 "GET /task/33/delete/ HTTP/1.1" 200 1839
+INFO 2026-03-28 20:50:13,965 log 6104 6868 "POST /task/33/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:50:13,973 log 6104 6868 "GET / HTTP/1.1" 200 4999
+INFO 2026-03-28 20:50:24,666 autoreload 6020 3812 Watching for file changes with StatReloader
+INFO 2026-03-28 20:50:30,558 log 6020 4312 "GET / HTTP/1.1" 200 4734
+INFO 2026-03-28 20:50:31,652 log 6020 4312 "GET / HTTP/1.1" 200 4649
+INFO 2026-03-28 20:50:31,744 log 6020 4312 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:50:31,748 log 6020 5848 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:50:32,135 log 6020 5848 Not Found: /favicon.ico
+WARNING 2026-03-28 20:50:32,136 log 6020 5848 "GET /favicon.ico HTTP/1.1" 404 1779
+INFO 2026-03-28 20:50:32,785 log 6020 5848 "GET / HTTP/1.1" 200 4658
+INFO 2026-03-28 20:50:32,824 log 6020 5848 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:50:32,825 log 6020 4312 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:50:33,118 log 6020 4312 Not Found: /favicon.ico
+WARNING 2026-03-28 20:50:33,119 log 6020 4312 "GET /favicon.ico HTTP/1.1" 404 1785
+INFO 2026-03-28 20:50:39,808 log 6020 4312 "GET /task/33/delete/ HTTP/1.1" 200 1856
+INFO 2026-03-28 20:50:40,946 log 6020 4312 "POST /task/33/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:50:40,955 log 6020 4312 "GET / HTTP/1.1" 200 4715
+INFO 2026-03-28 20:50:43,887 log 6020 4312 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4936
+INFO 2026-03-28 20:50:48,776 log 6020 4312 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4971
+INFO 2026-03-28 20:50:48,816 log 6020 4312 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:50:48,817 log 6020 5848 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:50:49,154 log 6020 5848 Not Found: /favicon.ico
+WARNING 2026-03-28 20:50:49,155 log 6020 5848 "GET /favicon.ico HTTP/1.1" 404 1845
+INFO 2026-03-28 20:50:50,389 log 6020 5848 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4996
+INFO 2026-03-28 20:50:50,430 log 6020 5848 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:50:50,430 log 6020 4312 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:50:50,705 log 6020 4312 Not Found: /favicon.ico
+WARNING 2026-03-28 20:50:50,705 log 6020 4312 "GET /favicon.ico HTTP/1.1" 404 1831
+INFO 2026-03-28 20:50:53,040 log 6020 4312 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5002
+INFO 2026-03-28 20:50:53,075 log 6020 4312 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 20:50:53,077 log 6020 5848 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 20:50:53,328 log 6020 5848 Not Found: /favicon.ico
+WARNING 2026-03-28 20:50:53,328 log 6020 5848 "GET /favicon.ico HTTP/1.1" 404 1793
+INFO 2026-03-28 20:50:54,043 log 6020 5848 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4923
+INFO 2026-03-28 20:50:54,075 log 6020 4312 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 20:50:54,075 log 6020 5848 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 20:50:54,355 log 6020 5848 Not Found: /favicon.ico
+WARNING 2026-03-28 20:50:54,355 log 6020 5848 "GET /favicon.ico HTTP/1.1" 404 1820
+INFO 2026-03-28 20:51:02,820 log 6020 5848 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4939
+INFO 2026-03-28 20:57:18,437 autoreload 8892 3216 Watching for file changes with StatReloader
+INFO 2026-03-28 20:57:36,369 log 8892 6040 "GET /task/create/ HTTP/1.1" 200 5033
+INFO 2026-03-28 20:57:36,402 log 8892 6040 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 20:57:36,404 log 8892 5984 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 20:57:46,948 log 8892 5984 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-28 20:57:46,998 log 8892 5984 "GET / HTTP/1.1" 200 5044
+INFO 2026-03-28 20:59:28,226 autoreload 8892 3216 E:\taskmanager\tasks\utils\docx_importer.py changed, reloading.
+INFO 2026-03-28 20:59:28,994 autoreload 4892 9500 Watching for file changes with StatReloader
+INFO 2026-03-28 21:06:01,861 autoreload 4892 9500 E:\taskmanager\tasks\views\task_views.py changed, reloading.
+INFO 2026-03-28 21:06:02,550 autoreload 2632 10780 Watching for file changes with StatReloader
+INFO 2026-03-28 21:11:22,883 autoreload 2632 10780 E:\taskmanager\tasks\views\product_views.py changed, reloading.
+INFO 2026-03-28 21:11:23,598 autoreload 9952 6320 Watching for file changes with StatReloader
+INFO 2026-03-28 21:14:31,607 log 9952 10664 "GET / HTTP/1.1" 200 4700
+INFO 2026-03-28 21:14:31,639 log 9952 10664 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 21:14:31,640 log 9952 7572 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 21:14:33,407 log 9952 7572 "GET / HTTP/1.1" 200 4786
+INFO 2026-03-28 21:14:38,794 log 9952 7572 "GET /task/34/delete/ HTTP/1.1" 200 1846
+INFO 2026-03-28 21:14:40,800 log 9952 7572 "POST /task/34/delete/ HTTP/1.1" 302 0
+INFO 2026-03-28 21:14:40,809 log 9952 7572 "GET / HTTP/1.1" 200 4757
+INFO 2026-03-28 21:14:45,624 log 9952 7572 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5021
+INFO 2026-03-28 21:14:56,989 log 9952 7572 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 4772
+INFO 2026-03-28 21:15:05,792 log 9952 7572 "GET /task/create/ HTTP/1.1" 200 5071
+INFO 2026-03-28 21:15:12,973 log 9952 7572 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-28 21:15:12,980 log 9952 7572 "GET / HTTP/1.1" 200 4705
+INFO 2026-03-28 21:15:27,074 log 9952 7572 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5054
+INFO 2026-03-28 21:15:31,373 log 9952 7572 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5016
+INFO 2026-03-28 21:15:31,488 log 9952 7572 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:15:31,490 log 9952 10664 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:15:31,872 log 9952 10664 Not Found: /favicon.ico
+WARNING 2026-03-28 21:15:31,873 log 9952 10664 "GET /favicon.ico HTTP/1.1" 404 1819
+INFO 2026-03-28 21:15:32,621 log 9952 10664 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4987
+INFO 2026-03-28 21:15:32,658 log 9952 10664 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:15:32,658 log 9952 7572 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:15:32,972 log 9952 7572 Not Found: /favicon.ico
+WARNING 2026-03-28 21:15:32,973 log 9952 7572 "GET /favicon.ico HTTP/1.1" 404 1857
+INFO 2026-03-28 21:15:53,266 log 9952 7572 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 3981
+INFO 2026-03-28 21:16:06,716 log 9952 7572 "GET /research/2/ HTTP/1.1" 200 5288
+ERROR 2026-03-28 21:16:12,945 log 9952 7572 Internal Server Error: /research/assign/substage/2/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-28 21:16:12,950 log 9952 7572 "GET /research/assign/substage/2/ HTTP/1.1" 500 15239
+INFO 2026-03-28 21:16:25,277 log 9952 7572 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5008
+INFO 2026-03-28 21:16:25,312 log 9952 7572 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:16:25,312 log 9952 10664 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:16:25,736 log 9952 10664 Not Found: /favicon.ico
+WARNING 2026-03-28 21:16:25,737 log 9952 10664 "GET /favicon.ico HTTP/1.1" 404 1775
+INFO 2026-03-28 21:16:26,976 log 9952 10664 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5007
+INFO 2026-03-28 21:16:27,013 log 9952 10664 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:16:27,013 log 9952 7572 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:16:27,378 log 9952 7572 Not Found: /favicon.ico
+WARNING 2026-03-28 21:16:27,379 log 9952 7572 "GET /favicon.ico HTTP/1.1" 404 1799
+INFO 2026-03-28 21:16:46,016 autoreload 9784 5232 Watching for file changes with StatReloader
+INFO 2026-03-28 21:16:51,154 log 9784 5460 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4783
+INFO 2026-03-28 21:16:51,238 log 9784 5460 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:16:51,247 log 9784 5328 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:16:51,615 log 9784 5328 Not Found: /favicon.ico
+WARNING 2026-03-28 21:16:51,616 log 9784 5328 "GET /favicon.ico HTTP/1.1" 404 1843
+INFO 2026-03-28 21:16:59,553 log 9784 5328 "GET /task/create/ HTTP/1.1" 200 5074
+INFO 2026-03-28 21:17:07,714 log 9784 5328 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-28 21:17:07,747 log 9784 5328 "GET / HTTP/1.1" 200 5136
+INFO 2026-03-28 21:20:27,261 autoreload 9784 5232 E:\taskmanager\tasks\utils\docx_importer.py changed, reloading.
+INFO 2026-03-28 21:20:28,092 autoreload 8552 5260 Watching for file changes with StatReloader
+INFO 2026-03-28 21:21:33,841 autoreload 5268 904 Watching for file changes with StatReloader
+INFO 2026-03-28 21:21:47,604 log 5268 5776 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 21:21:47,606 log 5268 10616 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 21:21:50,497 log 5268 10616 "GET / HTTP/1.1" 200 4901
+INFO 2026-03-28 21:21:52,282 log 5268 10616 "GET /task/create/ HTTP/1.1" 200 5122
+INFO 2026-03-28 21:22:00,229 log 5268 10616 "POST /task/create/ HTTP/1.1" 302 0
+INFO 2026-03-28 21:22:00,235 log 5268 10616 "GET / HTTP/1.1" 200 4864
+ERROR 2026-03-28 21:22:40,760 log 5268 10616 Internal Server Error: /research/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+ERROR 2026-03-28 21:22:40,766 log 5268 10616 "GET /research/ HTTP/1.1" 500 14844
+INFO 2026-03-28 21:23:53,492 log 5268 10616 "GET /research/import/ HTTP/1.1" 200 3837
+INFO 2026-03-28 21:24:07,129 log 5268 10616 "POST /research/import/ HTTP/1.1" 302 0
+INFO 2026-03-28 21:24:07,187 log 5268 10616 "GET /research/3/ HTTP/1.1" 200 5231
+INFO 2026-03-28 21:24:36,965 log 5268 10616 "GET / HTTP/1.1" 200 4859
+INFO 2026-03-28 21:24:37,082 log 5268 10616 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:24:37,086 log 5268 5776 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:24:37,676 log 5268 5776 Not Found: /favicon.ico
+WARNING 2026-03-28 21:24:37,677 log 5268 5776 "GET /favicon.ico HTTP/1.1" 404 1815
+INFO 2026-03-28 21:24:41,639 log 5268 5776 "GET / HTTP/1.1" 200 4905
+INFO 2026-03-28 21:24:42,255 log 5268 5776 "GET / HTTP/1.1" 200 4855
+INFO 2026-03-28 21:24:42,293 log 5268 5776 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:24:42,293 log 5268 10616 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:24:42,550 log 5268 10616 Not Found: /favicon.ico
+WARNING 2026-03-28 21:24:42,551 log 5268 10616 "GET /favicon.ico HTTP/1.1" 404 1768
+INFO 2026-03-28 21:24:42,627 log 5268 10616 "GET / HTTP/1.1" 200 4865
+INFO 2026-03-28 21:24:42,665 log 5268 10616 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:24:42,665 log 5268 5776 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:24:42,981 log 5268 10616 Not Found: /favicon.ico
+WARNING 2026-03-28 21:24:42,981 log 5268 10616 "GET /favicon.ico HTTP/1.1" 404 1774
+INFO 2026-03-28 21:24:43,300 log 5268 10616 "GET / HTTP/1.1" 200 4913
+INFO 2026-03-28 21:24:43,332 log 5268 10616 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:24:43,332 log 5268 5776 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:24:43,592 log 5268 5776 Not Found: /favicon.ico
+WARNING 2026-03-28 21:24:43,593 log 5268 5776 "GET /favicon.ico HTTP/1.1" 404 1785
+INFO 2026-03-28 21:24:44,129 log 5268 5776 "GET / HTTP/1.1" 200 4829
+INFO 2026-03-28 21:24:53,107 log 5268 5776 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 4044
+INFO 2026-03-28 21:25:03,876 log 5268 5776 "GET /research/3/ HTTP/1.1" 200 5251
+INFO 2026-03-28 21:37:52,318 autoreload 3096 1884 Watching for file changes with StatReloader
+INFO 2026-03-28 21:37:56,019 log 3096 904 "GET /research/import/ HTTP/1.1" 200 3745
+INFO 2026-03-28 21:37:56,063 log 3096 904 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 21:37:56,064 log 3096 3640 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 21:38:04,090 log 3096 3640 "POST /research/import/ HTTP/1.1" 302 0
+INFO 2026-03-28 21:38:04,146 log 3096 3640 "GET /research/4/ HTTP/1.1" 200 5255
+INFO 2026-03-28 21:38:35,729 log 3096 3640 "GET / HTTP/1.1" 200 5033
+INFO 2026-03-28 21:38:40,791 log 3096 3640 "GET /research/4/ HTTP/1.1" 200 5277
+INFO 2026-03-28 21:54:15,692 autoreload 7732 6204 Watching for file changes with StatReloader
+INFO 2026-03-28 21:54:22,701 log 7732 7328 "GET /research/4/ HTTP/1.1" 200 5136
+INFO 2026-03-28 21:54:22,731 log 7732 7328 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 21:54:22,734 log 7732 10092 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 21:54:24,715 log 7732 10092 "GET / HTTP/1.1" 200 5069
+ERROR 2026-03-28 21:54:30,824 log 7732 10092 Internal Server Error: /research/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+ERROR 2026-03-28 21:54:30,829 log 7732 10092 "GET /research/ HTTP/1.1" 500 14601
+INFO 2026-03-28 21:58:43,937 autoreload 3252 1008 Watching for file changes with StatReloader
+INFO 2026-03-28 21:58:49,612 log 3252 5848 "GET / HTTP/1.1" 200 5054
+INFO 2026-03-28 21:58:50,908 log 3252 5848 "GET / HTTP/1.1" 200 5060
+INFO 2026-03-28 21:58:51,004 log 3252 3700 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 21:58:51,007 log 3252 5848 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 21:58:51,530 log 3252 5848 Not Found: /favicon.ico
+WARNING 2026-03-28 21:58:51,531 log 3252 5848 "GET /favicon.ico HTTP/1.1" 404 1821
+INFO 2026-03-28 21:58:53,954 log 3252 5848 "GET / HTTP/1.1" 200 5058
+INFO 2026-03-28 21:58:53,999 log 3252 5848 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:58:53,999 log 3252 3700 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:58:54,354 log 3252 3700 Not Found: /favicon.ico
+WARNING 2026-03-28 21:58:54,355 log 3252 3700 "GET /favicon.ico HTTP/1.1" 404 1844
+INFO 2026-03-28 21:58:55,206 log 3252 3700 "GET / HTTP/1.1" 200 5038
+INFO 2026-03-28 21:58:55,241 log 3252 3700 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:58:55,243 log 3252 5848 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:58:55,518 log 3252 5848 Not Found: /favicon.ico
+WARNING 2026-03-28 21:58:55,519 log 3252 5848 "GET /favicon.ico HTTP/1.1" 404 1864
+INFO 2026-03-28 21:58:59,676 log 3252 5848 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5031
+INFO 2026-03-28 21:59:03,241 log 3252 5848 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 4108
+INFO 2026-03-28 21:59:04,930 log 3252 5848 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 4089
+INFO 2026-03-28 21:59:04,962 log 3252 5848 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 21:59:04,965 log 3252 3700 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 21:59:05,265 log 3252 3700 Not Found: /favicon.ico
+WARNING 2026-03-28 21:59:05,266 log 3252 3700 "GET /favicon.ico HTTP/1.1" 404 1862
+INFO 2026-03-28 21:59:06,040 log 3252 3700 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 4172
+INFO 2026-03-28 22:01:31,679 autoreload 2140 10008 Watching for file changes with StatReloader
+INFO 2026-03-28 22:01:35,680 log 2140 5084 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 3729
+INFO 2026-03-28 22:01:38,233 log 2140 5084 "GET /research/import/ HTTP/1.1" 200 3710
+INFO 2026-03-28 22:01:47,105 log 2140 5084 "POST /research/import/ HTTP/1.1" 302 0
+ERROR 2026-03-28 22:01:47,207 log 2140 5084 Internal Server Error: /research/5/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 86, in research_task_detail
+    return render(request, 'tasks/research_task_detail.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 332, in render
+    if match:
+       ^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 404, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 127, in __iter__
+    for row in compiler.results_iter(results):
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1542, in apply_converters
+    value = converter(value, expression, connection)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\operations.py", line 334, in converter
+    return create_decimal(value).quantize(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        quantize_value, context=expression.output_field.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+ERROR 2026-03-28 22:01:47,215 log 2140 5084 "GET /research/5/ HTTP/1.1" 500 22748
+ERROR 2026-03-28 22:01:57,606 log 2140 5084 Internal Server Error: /research/5/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 86, in research_task_detail
+    return render(request, 'tasks/research_task_detail.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 332, in render
+    if match:
+       ^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 404, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 127, in __iter__
+    for row in compiler.results_iter(results):
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1542, in apply_converters
+    value = converter(value, expression, connection)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\operations.py", line 334, in converter
+    return create_decimal(value).quantize(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        quantize_value, context=expression.output_field.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+ERROR 2026-03-28 22:01:57,615 log 2140 5084 "GET /research/5/ HTTP/1.1" 500 22377
+INFO 2026-03-28 22:01:59,951 log 2140 5084 "GET /research/import/ HTTP/1.1" 200 3728
+ERROR 2026-03-28 22:02:05,763 log 2140 5084 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 964, in _resolve_lookup
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\task_views.py", line 458, in task_list
+    return render(request, 'tasks/task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 579, in render
+    values = {key: val.resolve(context) for key, val in self.extra_context.items()}
+                   ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 788, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 928, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 976, in _resolve_lookup
+    current = getattr(current, bit)
+  File "E:\taskmanager\tasks\models.py", line 424, in total_funding
+    return sum(f.amount for f in self.funding_years.all())
+                                 ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 127, in __iter__
+    for row in compiler.results_iter(results):
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1542, in apply_converters
+    value = converter(value, expression, connection)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\operations.py", line 334, in converter
+    return create_decimal(value).quantize(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        quantize_value, context=expression.output_field.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+ERROR 2026-03-28 22:02:05,773 log 2140 5084 "GET / HTTP/1.1" 500 27785
+WARNING 2026-03-28 22:02:05,914 log 2140 5084 Not Found: /favicon.ico
+WARNING 2026-03-28 22:02:05,915 log 2140 5084 "GET /favicon.ico HTTP/1.1" 404 1785
+ERROR 2026-03-28 22:02:10,656 log 2140 5084 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 964, in _resolve_lookup
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\task_views.py", line 458, in task_list
+    return render(request, 'tasks/task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 579, in render
+    values = {key: val.resolve(context) for key, val in self.extra_context.items()}
+                   ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 788, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 928, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 976, in _resolve_lookup
+    current = getattr(current, bit)
+  File "E:\taskmanager\tasks\models.py", line 424, in total_funding
+    return sum(f.amount for f in self.funding_years.all())
+                                 ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 127, in __iter__
+    for row in compiler.results_iter(results):
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1542, in apply_converters
+    value = converter(value, expression, connection)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\operations.py", line 334, in converter
+    return create_decimal(value).quantize(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        quantize_value, context=expression.output_field.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+ERROR 2026-03-28 22:02:10,667 log 2140 5084 "GET / HTTP/1.1" 500 27854
+WARNING 2026-03-28 22:02:10,783 log 2140 5084 Not Found: /favicon.ico
+WARNING 2026-03-28 22:02:10,784 log 2140 5084 "GET /favicon.ico HTTP/1.1" 404 1778
+ERROR 2026-03-28 22:02:12,763 log 2140 5084 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 964, in _resolve_lookup
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\task_views.py", line 458, in task_list
+    return render(request, 'tasks/task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 579, in render
+    values = {key: val.resolve(context) for key, val in self.extra_context.items()}
+                   ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 788, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 928, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 976, in _resolve_lookup
+    current = getattr(current, bit)
+  File "E:\taskmanager\tasks\models.py", line 424, in total_funding
+    return sum(f.amount for f in self.funding_years.all())
+                                 ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 127, in __iter__
+    for row in compiler.results_iter(results):
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1542, in apply_converters
+    value = converter(value, expression, connection)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\operations.py", line 334, in converter
+    return create_decimal(value).quantize(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        quantize_value, context=expression.output_field.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+ERROR 2026-03-28 22:02:12,773 log 2140 5084 "GET / HTTP/1.1" 500 27861
+WARNING 2026-03-28 22:02:12,879 log 2140 5084 Not Found: /favicon.ico
+WARNING 2026-03-28 22:02:12,880 log 2140 5084 "GET /favicon.ico HTTP/1.1" 404 1813
+ERROR 2026-03-28 22:02:13,976 log 2140 5084 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 964, in _resolve_lookup
+    raise TypeError
+TypeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\task_views.py", line 458, in task_list
+    return render(request, 'tasks/task_list.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 579, in render
+    values = {key: val.resolve(context) for key, val in self.extra_context.items()}
+                   ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 788, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 928, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 976, in _resolve_lookup
+    current = getattr(current, bit)
+  File "E:\taskmanager\tasks\models.py", line 424, in total_funding
+    return sum(f.amount for f in self.funding_years.all())
+                                 ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 390, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 2000, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 127, in __iter__
+    for row in compiler.results_iter(results):
+               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\compiler.py", line 1542, in apply_converters
+    value = converter(value, expression, connection)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\backends\sqlite3\operations.py", line 334, in converter
+    return create_decimal(value).quantize(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        quantize_value, context=expression.output_field.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+decimal.InvalidOperation: [<class 'decimal.InvalidOperation'>]
+ERROR 2026-03-28 22:02:13,987 log 2140 5084 "GET / HTTP/1.1" 500 27844
+WARNING 2026-03-28 22:02:14,105 log 2140 5084 Not Found: /favicon.ico
+WARNING 2026-03-28 22:02:14,105 log 2140 5084 "GET /favicon.ico HTTP/1.1" 404 1859
+INFO 2026-03-28 22:07:45,488 autoreload 10228 6180 Watching for file changes with StatReloader
+INFO 2026-03-28 22:07:50,110 log 10228 408 "GET / HTTP/1.1" 200 4932
+INFO 2026-03-28 22:07:57,316 log 10228 408 "GET /research/7/ HTTP/1.1" 200 5363
+INFO 2026-03-28 22:07:57,349 log 10228 408 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 22:07:57,357 log 10228 10528 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 22:18:54,953 autoreload 6832 7012 Watching for file changes with StatReloader
+INFO 2026-03-28 22:19:00,418 log 6832 7664 "GET /research/7/ HTTP/1.1" 200 5291
+INFO 2026-03-28 22:19:00,450 log 6832 7664 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 22:19:00,454 log 6832 4260 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 22:19:02,128 log 6832 4260 "GET /research/7/ HTTP/1.1" 200 5296
+INFO 2026-03-28 22:19:06,404 log 6832 4260 "GET / HTTP/1.1" 200 4917
+INFO 2026-03-28 22:19:06,518 log 6832 7664 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:19:06,520 log 6832 4260 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 22:19:07,034 log 6832 4260 Not Found: /favicon.ico
+WARNING 2026-03-28 22:19:07,035 log 6832 4260 "GET /favicon.ico HTTP/1.1" 404 1771
+INFO 2026-03-28 22:19:10,251 log 6832 4260 "GET / HTTP/1.1" 200 4961
+INFO 2026-03-28 22:19:10,292 log 6832 4260 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:19:10,292 log 6832 7664 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:19:10,759 log 6832 7664 Not Found: /favicon.ico
+WARNING 2026-03-28 22:19:10,759 log 6832 7664 "GET /favicon.ico HTTP/1.1" 404 1778
+INFO 2026-03-28 22:19:11,917 log 6832 7664 "GET / HTTP/1.1" 200 4965
+INFO 2026-03-28 22:19:11,960 log 6832 7664 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:19:11,960 log 6832 4260 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:19:12,433 log 6832 4260 Not Found: /favicon.ico
+WARNING 2026-03-28 22:19:12,434 log 6832 4260 "GET /favicon.ico HTTP/1.1" 404 1821
+INFO 2026-03-28 22:19:15,682 log 6832 4260 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4979
+INFO 2026-03-28 22:19:17,230 log 6832 4260 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 4954
+INFO 2026-03-28 22:19:17,268 log 6832 7664 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:19:17,268 log 6832 4260 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 22:19:17,698 log 6832 7664 Not Found: /favicon.ico
+WARNING 2026-03-28 22:19:17,699 log 6832 7664 "GET /favicon.ico HTTP/1.1" 404 1784
+INFO 2026-03-28 22:19:20,047 log 6832 7664 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 4891
+ERROR 2026-03-28 22:19:36,880 log 6832 7664 Internal Server Error: /research/assign/stage/17/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-28 22:19:36,885 log 6832 7664 "GET /research/assign/stage/17/ HTTP/1.1" 500 15290
+INFO 2026-03-28 22:20:12,049 autoreload 10040 6580 Watching for file changes with StatReloader
+INFO 2026-03-28 22:20:23,934 log 10040 3916 "GET / HTTP/1.1" 200 4712
+INFO 2026-03-28 22:20:24,044 log 10040 3916 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:20:24,047 log 10040 7612 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:20:24,434 log 10040 7612 Not Found: /favicon.ico
+WARNING 2026-03-28 22:20:24,435 log 10040 7612 "GET /favicon.ico HTTP/1.1" 404 1848
+INFO 2026-03-28 22:20:26,786 log 10040 7612 "GET /research/import/ HTTP/1.1" 200 3746
+INFO 2026-03-28 22:20:33,694 log 10040 7612 "POST /research/import/ HTTP/1.1" 302 0
+INFO 2026-03-28 22:20:33,749 log 10040 7612 "GET /research/8/ HTTP/1.1" 200 5442
+INFO 2026-03-28 22:35:05,112 autoreload 2536 592 Watching for file changes with StatReloader
+WARNING 2026-03-28 22:35:11,623 log 2536 3304 Not Found: /research/8/
+WARNING 2026-03-28 22:35:11,624 log 2536 3304 "GET /research/8/ HTTP/1.1" 404 1593
+WARNING 2026-03-28 22:35:12,866 log 2536 3304 Not Found: /research/8/
+WARNING 2026-03-28 22:35:12,867 log 2536 3304 "GET /research/8/ HTTP/1.1" 404 1605
+INFO 2026-03-28 22:35:14,014 log 2536 3304 "GET /research/import/ HTTP/1.1" 200 3728
+INFO 2026-03-28 22:35:15,928 log 2536 3304 "GET / HTTP/1.1" 200 4980
+INFO 2026-03-28 22:35:15,964 log 2536 7124 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 22:35:15,965 log 2536 3304 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 22:35:18,984 log 2536 3304 "GET /research/9/ HTTP/1.1" 200 5554
+INFO 2026-03-28 22:37:58,678 autoreload 3608 3164 Watching for file changes with StatReloader
+INFO 2026-03-28 22:45:03,564 autoreload 10872 2700 Watching for file changes with StatReloader
+WARNING 2026-03-28 22:45:14,701 log 10872 6204 Not Found: /research/9/
+WARNING 2026-03-28 22:45:14,702 log 10872 6204 "GET /research/9/ HTTP/1.1" 404 1560
+WARNING 2026-03-28 22:45:14,789 log 10872 6204 Not Found: /favicon.ico
+WARNING 2026-03-28 22:45:14,790 log 10872 6204 "GET /favicon.ico HTTP/1.1" 404 1782
+WARNING 2026-03-28 22:45:20,870 log 10872 6204 Not Found: /research/9/
+WARNING 2026-03-28 22:45:20,871 log 10872 6204 "GET /research/9/ HTTP/1.1" 404 1613
+INFO 2026-03-28 22:45:30,647 log 10872 6204 "GET /research/11/ HTTP/1.1" 200 5612
+INFO 2026-03-28 22:48:16,141 autoreload 10872 2700 E:\taskmanager\tasks\utils\docx_importer.py changed, reloading.
+INFO 2026-03-28 22:48:17,034 autoreload 9168 11020 Watching for file changes with StatReloader
+INFO 2026-03-28 22:48:18,865 log 9168 10408 "GET /research/11/ HTTP/1.1" 200 5674
+INFO 2026-03-28 22:48:18,896 log 9168 10408 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 22:48:18,898 log 9168 10408 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-28 22:48:22,768 log 9168 10408 "GET /research/11/ HTTP/1.1" 200 5643
+INFO 2026-03-28 22:48:22,874 log 9168 10408 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:48:22,877 log 9168 2420 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:48:23,309 log 9168 2420 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:23,309 log 9168 2420 "GET /favicon.ico HTTP/1.1" 404 1833
+INFO 2026-03-28 22:48:25,568 log 9168 2420 "GET /research/11/ HTTP/1.1" 200 5646
+INFO 2026-03-28 22:48:26,527 log 9168 2420 "GET /research/11/ HTTP/1.1" 200 5622
+INFO 2026-03-28 22:48:26,561 log 9168 2420 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:48:26,563 log 9168 10408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:48:26,827 log 9168 10408 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:26,828 log 9168 10408 "GET /favicon.ico HTTP/1.1" 404 1778
+INFO 2026-03-28 22:48:28,218 log 9168 10408 "GET /research/11/ HTTP/1.1" 200 5613
+INFO 2026-03-28 22:48:28,254 log 9168 2420 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:48:28,254 log 9168 10408 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 22:48:28,484 log 9168 2420 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:28,485 log 9168 2420 "GET /favicon.ico HTTP/1.1" 404 1825
+INFO 2026-03-28 22:48:29,926 log 9168 2420 "GET /research/11/ HTTP/1.1" 200 5615
+INFO 2026-03-28 22:48:29,965 log 9168 2420 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:48:29,966 log 9168 10408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:48:30,194 log 9168 10408 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:30,194 log 9168 10408 "GET /favicon.ico HTTP/1.1" 404 1788
+INFO 2026-03-28 22:48:37,108 autoreload 5920 10284 Watching for file changes with StatReloader
+INFO 2026-03-28 22:48:40,782 log 5920 3664 "GET /research/11/ HTTP/1.1" 200 5664
+INFO 2026-03-28 22:48:40,872 log 5920 3664 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:48:40,878 log 5920 7612 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:48:41,067 log 5920 7612 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:41,068 log 5920 7612 "GET /favicon.ico HTTP/1.1" 404 1793
+INFO 2026-03-28 22:48:43,684 log 5920 7612 "GET /research/11/ HTTP/1.1" 200 5604
+INFO 2026-03-28 22:48:43,728 log 5920 7612 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:48:43,730 log 5920 3664 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:48:43,958 log 5920 3664 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:43,958 log 5920 3664 "GET /favicon.ico HTTP/1.1" 404 1816
+INFO 2026-03-28 22:48:44,689 log 5920 3664 "GET /research/11/ HTTP/1.1" 200 5646
+INFO 2026-03-28 22:48:44,725 log 5920 3664 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:48:44,727 log 5920 7612 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:48:44,991 log 5920 7612 Not Found: /favicon.ico
+WARNING 2026-03-28 22:48:44,991 log 5920 7612 "GET /favicon.ico HTTP/1.1" 404 1797
+INFO 2026-03-28 22:54:02,101 autoreload 5320 2220 Watching for file changes with StatReloader
+WARNING 2026-03-28 22:54:07,084 log 5320 8936 Not Found: /research/11/
+WARNING 2026-03-28 22:54:07,085 log 5320 8936 "GET /research/11/ HTTP/1.1" 404 1522
+WARNING 2026-03-28 22:54:07,157 log 5320 8936 Not Found: /favicon.ico
+WARNING 2026-03-28 22:54:07,157 log 5320 8936 "GET /favicon.ico HTTP/1.1" 404 1841
+INFO 2026-03-28 22:54:13,678 log 5320 8936 "GET /research/12/ HTTP/1.1" 200 5615
+INFO 2026-03-28 22:54:18,052 log 5320 8936 "GET /research/12/ HTTP/1.1" 200 5651
+INFO 2026-03-28 22:54:18,146 log 5320 400 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:54:18,156 log 5320 8936 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 22:54:18,523 log 5320 8936 Not Found: /favicon.ico
+WARNING 2026-03-28 22:54:18,524 log 5320 8936 "GET /favicon.ico HTTP/1.1" 404 1846
+INFO 2026-03-28 22:54:19,640 log 5320 8936 "GET /research/12/ HTTP/1.1" 200 5640
+INFO 2026-03-28 22:54:19,672 log 5320 8936 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:19,675 log 5320 400 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:54:19,994 log 5320 400 Not Found: /favicon.ico
+WARNING 2026-03-28 22:54:19,995 log 5320 400 "GET /favicon.ico HTTP/1.1" 404 1842
+INFO 2026-03-28 22:54:21,439 log 5320 400 "GET /research/12/ HTTP/1.1" 200 5684
+INFO 2026-03-28 22:54:21,479 log 5320 400 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:21,480 log 5320 8936 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:54:21,699 log 5320 8936 Not Found: /favicon.ico
+WARNING 2026-03-28 22:54:21,700 log 5320 8936 "GET /favicon.ico HTTP/1.1" 404 1817
+INFO 2026-03-28 22:54:23,637 log 5320 8936 "GET /research/12/ HTTP/1.1" 200 5617
+INFO 2026-03-28 22:54:23,668 log 5320 400 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:54:23,668 log 5320 8936 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-28 22:54:23,934 log 5320 400 Not Found: /favicon.ico
+WARNING 2026-03-28 22:54:23,934 log 5320 400 "GET /favicon.ico HTTP/1.1" 404 1770
+INFO 2026-03-28 22:54:24,352 log 5320 400 "GET /research/12/ HTTP/1.1" 200 5619
+INFO 2026-03-28 22:54:24,382 log 5320 8936 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:54:24,382 log 5320 400 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:24,533 log 5320 400 "GET /research/12/ HTTP/1.1" 200 5629
+INFO 2026-03-28 22:54:24,566 log 5320 400 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:24,568 log 5320 8936 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:54:24,690 log 5320 8936 "GET /research/12/ HTTP/1.1" 200 5624
+INFO 2026-03-28 22:54:24,724 log 5320 8936 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:24,724 log 5320 400 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:54:24,847 log 5320 400 "GET /research/12/ HTTP/1.1" 200 5632
+INFO 2026-03-28 22:54:24,878 log 5320 400 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:24,878 log 5320 8936 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-28 22:54:24,981 log 5320 8936 "GET /research/12/ HTTP/1.1" 200 5676
+INFO 2026-03-28 22:54:25,018 log 5320 8936 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-28 22:54:25,018 log 5320 400 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-28 22:54:25,242 log 5320 400 Not Found: /favicon.ico
+WARNING 2026-03-28 22:54:25,242 log 5320 400 "GET /favicon.ico HTTP/1.1" 404 1785
+WARNING 2026-03-28 22:54:30,321 log 5320 400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-28 22:54:30,322 log 5320 400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1856
+INFO 2026-03-28 23:06:11,765 autoreload 3280 5460 Watching for file changes with StatReloader
+WARNING 2026-03-28 23:06:22,060 log 3280 3916 Not Found: /research/12/
+WARNING 2026-03-28 23:06:22,061 log 3280 3916 "GET /research/12/ HTTP/1.1" 404 1575
+WARNING 2026-03-28 23:06:22,132 log 3280 3916 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-28 23:06:22,133 log 3280 3916 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1803
+WARNING 2026-03-28 23:06:28,728 log 3280 3916 Not Found: /research/13/
+WARNING 2026-03-28 23:06:28,729 log 3280 3916 "GET /research/13/ HTTP/1.1" 404 1533
+WARNING 2026-03-28 23:06:28,787 log 3280 3916 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-28 23:06:28,787 log 3280 3916 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1883
+INFO 2026-03-28 23:06:33,876 log 3280 3916 "GET /research/14/ HTTP/1.1" 200 5619
+WARNING 2026-03-28 23:06:33,927 log 3280 3916 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-28 23:06:33,928 log 3280 3916 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1852
+INFO 2026-03-28 23:12:58,299 autoreload 7380 2208 Watching for file changes with StatReloader
+INFO 2026-03-28 23:13:07,974 log 7380 6576 "GET /research/15/ HTTP/1.1" 200 6510
+INFO 2026-03-28 23:13:08,006 log 7380 6576 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-28 23:13:08,010 log 7380 6576 "GET /static/js/main.js HTTP/1.1" 304 0
+ERROR 2026-03-28 23:13:28,413 log 7380 6576 Internal Server Error: /research/assign/substage/210/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-28 23:13:28,419 log 7380 6576 "GET /research/assign/substage/210/ HTTP/1.1" 500 15266
+ERROR 2026-03-28 23:13:35,325 log 7380 6576 Internal Server Error: /research/assign/stage/41/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-28 23:13:35,330 log 7380 6576 "GET /research/assign/stage/41/ HTTP/1.1" 500 15310
