@@ -5543,3 +5543,415 @@ Traceback (most recent call last):
     raise TemplateDoesNotExist(template_name, chain=chain)
 django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
 ERROR 2026-03-28 23:13:35,330 log 7380 6576 "GET /research/assign/stage/41/ HTTP/1.1" 500 15310
+INFO 2026-03-29 11:29:44,450 autoreload 9600 9384 Watching for file changes with StatReloader
+INFO 2026-03-29 11:30:10,797 log 9600 11532 "GET /research/15/ HTTP/1.1" 200 6461
+INFO 2026-03-29 11:30:10,830 log 9600 11532 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-29 11:30:10,831 log 9600 6468 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-03-29 11:30:10,988 log 9600 6468 Not Found: /favicon.ico
+WARNING 2026-03-29 11:30:10,989 log 9600 6468 "GET /favicon.ico HTTP/1.1" 404 1813
+ERROR 2026-03-29 11:30:22,037 log 9600 6468 Internal Server Error: /research/assign/substage/211/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-29 11:30:22,042 log 9600 6468 "GET /research/assign/substage/211/ HTTP/1.1" 500 15335
+INFO 2026-03-29 11:34:51,098 autoreload 9600 9384 E:\taskmanager\tasks\urls.py changed, reloading.
+INFO 2026-03-29 11:34:51,788 autoreload 4276 10564 Watching for file changes with StatReloader
+ERROR 2026-03-29 11:35:07,733 log 4276 1360 Internal Server Error: /research/assign/substage/211/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: product_assign_performers() got an unexpected keyword argument 'item_type'
+ERROR 2026-03-29 11:35:07,738 log 4276 1360 "GET /research/assign/substage/211/ HTTP/1.1" 500 12681
+ERROR 2026-03-29 11:35:08,825 log 4276 1360 Internal Server Error: /research/assign/substage/211/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: product_assign_performers() got an unexpected keyword argument 'item_type'
+ERROR 2026-03-29 11:35:08,830 log 4276 1360 "GET /research/assign/substage/211/ HTTP/1.1" 500 12745
+INFO 2026-03-29 11:37:25,435 autoreload 4276 10564 E:\taskmanager\tasks\urls.py changed, reloading.
+INFO 2026-03-29 11:37:26,115 autoreload 4292 3032 Watching for file changes with StatReloader
+ERROR 2026-03-29 11:41:54,861 log 4292 9176 Internal Server Error: /research/15/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 86, in research_task_detail
+    return render(request, 'tasks/research_task_detail.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 590, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 657, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\research_task_detail.html, Unclosed tag on line 5: 'block'. Looking for one of: endblock.
+ERROR 2026-03-29 11:41:54,871 log 4292 9176 "GET /research/15/ HTTP/1.1" 500 22647
+INFO 2026-03-29 11:42:54,557 autoreload 7812 2640 Watching for file changes with StatReloader
+INFO 2026-03-29 11:42:58,014 log 7812 5296 "GET /research/15/ HTTP/1.1" 200 12362
+ERROR 2026-03-29 11:43:14,079 log 7812 5296 Internal Server Error: /research/assign/substage/210/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-29 11:43:14,085 log 7812 5296 "GET /research/assign/substage/210/ HTTP/1.1" 500 15338
+ERROR 2026-03-29 11:43:18,864 log 7812 5296 Internal Server Error: /product/1563/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\product_views.py", line 156, in product_assign_performers
+    return render(request, 'tasks/product_assign_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'subtask_list' with arguments '('',)' not found. 1 pattern(s) tried: ['task/(?P<task_id>[0-9]+)/subtasks/\\Z']
+ERROR 2026-03-29 11:43:18,873 log 7812 5296 "GET /product/1563/assign-performers/ HTTP/1.1" 500 23306
+ERROR 2026-03-29 12:02:28,204 log 7812 12572 Internal Server Error: /product/1578/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\product_views.py", line 156, in product_assign_performers
+    return render(request, 'tasks/product_assign_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'subtask_list' with arguments '('',)' not found. 1 pattern(s) tried: ['task/(?P<task_id>[0-9]+)/subtasks/\\Z']
+ERROR 2026-03-29 12:02:28,212 log 7812 12572 "GET /product/1578/assign-performers/ HTTP/1.1" 500 23309
+INFO 2026-03-29 12:06:27,540 autoreload 7812 2640 E:\taskmanager\tasks\views\product_views.py changed, reloading.
+INFO 2026-03-29 12:06:28,321 autoreload 4672 2400 Watching for file changes with StatReloader
+INFO 2026-03-29 12:07:29,666 autoreload 4672 2400 E:\taskmanager\tasks\views\product_views.py changed, reloading.
+INFO 2026-03-29 12:07:30,390 autoreload 12520 12440 Watching for file changes with StatReloader
+INFO 2026-03-29 12:09:40,972 autoreload 12520 12440 E:\taskmanager\tasks\views\product_views.py changed, reloading.
+INFO 2026-03-29 12:09:41,670 autoreload 7404 1232 Watching for file changes with StatReloader
+ERROR 2026-03-29 12:09:47,976 log 7404 6100 Internal Server Error: /product/1578/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\product_views.py", line 161, in product_assign_performers
+    return render(request, 'tasks/product_assign_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'subtask_list' with arguments '('',)' not found. 1 pattern(s) tried: ['task/(?P<task_id>[0-9]+)/subtasks/\\Z']
+ERROR 2026-03-29 12:09:47,986 log 7404 6100 "GET /product/1578/assign-performers/ HTTP/1.1" 500 23265
+INFO 2026-03-29 12:09:52,642 log 7404 6100 "GET /research/15/ HTTP/1.1" 200 12338
+INFO 2026-03-29 12:09:53,694 log 7404 6100 "GET /research/15/ HTTP/1.1" 200 12372
+INFO 2026-03-29 12:09:53,829 log 7404 11288 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-29 12:09:53,829 log 7404 6100 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-29 12:09:54,365 log 7404 6100 Not Found: /favicon.ico
+WARNING 2026-03-29 12:09:54,366 log 7404 6100 "GET /favicon.ico HTTP/1.1" 404 1804
+ERROR 2026-03-29 12:10:00,686 log 7404 6100 Internal Server Error: /product/1563/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\product_views.py", line 161, in product_assign_performers
+    return render(request, 'tasks/product_assign_performers.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'subtask_list' with arguments '('',)' not found. 1 pattern(s) tried: ['task/(?P<task_id>[0-9]+)/subtasks/\\Z']
+ERROR 2026-03-29 12:10:00,695 log 7404 6100 "GET /product/1563/assign-performers/ HTTP/1.1" 500 23335
+INFO 2026-03-29 12:14:39,146 autoreload 12180 2824 Watching for file changes with StatReloader
+INFO 2026-03-29 12:14:44,406 log 7404 6100 "GET /product/1563/assign-performers/ HTTP/1.1" 200 15382
+INFO 2026-03-29 12:15:28,905 log 7404 6100 "POST /product/1563/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-29 12:15:28,915 log 7404 6100 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:15:56,119 log 7404 6100 "GET /product/1563/assign-performers/ HTTP/1.1" 200 15399
+INFO 2026-03-29 12:16:04,017 log 7404 6100 "GET /product/1563/assign-performers/?department=147&search= HTTP/1.1" 200 9259
+INFO 2026-03-29 12:16:09,093 log 7404 6100 "GET /product/1563/assign-performers/?department=&search= HTTP/1.1" 200 15328
+INFO 2026-03-29 12:16:16,251 log 7404 6100 "GET / HTTP/1.1" 200 5007
+INFO 2026-03-29 12:16:17,943 log 7404 6100 "GET /research/15/ HTTP/1.1" 200 12394
+INFO 2026-03-29 12:16:29,133 log 7404 6100 "GET /research/15/ HTTP/1.1" 200 12330
+INFO 2026-03-29 12:16:29,174 log 7404 6100 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-29 12:16:29,174 log 7404 1880 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-29 12:16:30,049 log 7404 1880 Not Found: /favicon.ico
+WARNING 2026-03-29 12:16:30,049 log 7404 1880 "GET /favicon.ico HTTP/1.1" 404 1849
+INFO 2026-03-29 12:16:51,027 log 7404 1880 "GET /product/1560/assign-performers/ HTTP/1.1" 200 15321
+INFO 2026-03-29 12:17:06,809 log 7404 1880 "POST /product/1560/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-29 12:17:06,813 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:19:59,653 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:00,556 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:01,278 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:02,549 log 7404 1880 "GET /product/1560/assign-performers/ HTTP/1.1" 200 15463
+INFO 2026-03-29 12:20:06,602 log 7404 1880 "POST /product/1560/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-29 12:20:06,607 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:10,523 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:19,941 autoreload 12620 6972 Watching for file changes with StatReloader
+INFO 2026-03-29 12:20:23,129 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:23,889 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:24,111 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:24,274 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:24,413 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:24,547 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:20:34,309 log 7404 1880 "POST /product/1560/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-29 12:20:34,314 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:21:12,376 log 7404 1880 "GET /research/substage/210/ HTTP/1.1" 200 0
+INFO 2026-03-29 12:23:41,637 autoreload 7404 1232 E:\taskmanager\tasks\views\product_views.py changed, reloading.
+INFO 2026-03-29 12:23:42,046 autoreload 12620 6972 E:\taskmanager\tasks\views\product_views.py changed, reloading.
+INFO 2026-03-29 12:23:42,366 autoreload 12284 13228 Watching for file changes with StatReloader
+INFO 2026-03-29 12:23:42,766 autoreload 12652 6952 Watching for file changes with StatReloader
+INFO 2026-03-29 12:24:03,415 autoreload 6524 7692 Watching for file changes with StatReloader
+INFO 2026-03-29 12:24:06,910 log 12284 7388 "POST /product/1560/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-03-29 12:24:07,096 log 12284 7388 "GET /research/15/ HTTP/1.1" 200 12583
+INFO 2026-03-29 12:36:17,572 log 12284 10212 "GET /research/15/ HTTP/1.1" 200 12583
+INFO 2026-03-29 12:41:46,882 log 12284 12596 "GET /research/15/ HTTP/1.1" 200 12579

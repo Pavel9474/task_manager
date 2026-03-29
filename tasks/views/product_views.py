@@ -48,7 +48,7 @@ def product_assign_performers(request, product_id):
         performer_ids = request.POST.getlist('performers')
         responsible_id = request.POST.get('responsible')
         
-        # Очищаем существующих исполнителей
+        # Очищаем существующих испо лнителей
         product.product_performers.all().delete()
         
         # Создаем новых исполнителей
@@ -68,11 +68,16 @@ def product_assign_performers(request, product_id):
         
         messages.success(request, 'Исполнители назначены')
         
+        # Исправленный редирект
         if product.research_substage:
             # Возвращаемся на страницу НИР
             research_task_id = product.research_substage.stage.research_task.id
             return redirect('research_task_detail', task_id=research_task_id)
-        return redirect('research_task_list')
+        elif product.research_stage:
+            research_task_id = product.research_stage.research_task.id
+            return redirect('research_task_detail', task_id=research_task_id)
+        else:
+            return redirect('research_task_list')
     
     # Получаем параметры фильтрации
     department_id = request.GET.get('department')

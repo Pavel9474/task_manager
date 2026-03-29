@@ -270,8 +270,8 @@
                     </div>
 
                     <div class="mt-4 d-flex justify-content-between">
-                        <a href="{% url 'subtask_list' product.subtask.task.id %}" class="btn btn-secondary">
-                            <i class="bi bi-arrow-left"></i> Отмена
+                        <a href="{% url 'research_task_detail' product.research_substage.stage.research_task.id %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Назад к НИР
                         </a>
                         <button type="submit" class="btn btn-primary">
                             <i class="bi bi-check-lg"></i> Сохранить назначения

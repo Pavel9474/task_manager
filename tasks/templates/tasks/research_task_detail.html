@@ -224,26 +224,66 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <span class="badge bg-secondary me-2">{{ substage.substage_number }}</span>
-                                        {{ substage.title|truncatechars:100 }}
+                                        <strong>{{ substage.title|truncatechars:100 }}</strong>
+                                        {% if substage.start_date and substage.end_date %}
+                                            <br>
+                                            <small class="text-muted">
+                                                <i class="bi bi-calendar"></i> 
+                                                {{ substage.start_date|date:"d.m.Y" }} — {{ substage.end_date|date:"d.m.Y" }}
+                                            </small>
+                                        {% else %}
+                                            <br><small class="text-muted text-warning"><i class="bi bi-calendar-x"></i> Сроки не указаны</small>
+                                        {% endif %}
                                     </div>
-                                    <div>
+                                    <div class="text-end">
                                         <span class="badge bg-info">Продукции: {{ substage.products.count }}</span>
-                                        <a href="{% url 'assign_research_performers' 'substage' substage.id %}" class="btn btn-sm btn-outline-success ms-2">
+                                        <a href="{% url 'assign_research_performers' 'substage' substage.id %}" class="btn btn-sm btn-outline-success ms-2" title="Назначить исполнителей подэтапа">
                                             <i class="bi bi-people"></i>
                                         </a>
                                     </div>
                                 </div>
+                                <!-- Продукция -->
                                 {% if substage.products.exists %}
                                     <div class="mt-2">
                                         <small class="text-muted">Продукция:</small>
-                                        <ul class="list-unstyled ms-3">
-                                            {% for product in substage.products.all|slice:":3" %}
-                                                <li><small><i class="bi bi-file-text"></i> {{ product.name|truncatechars:60 }}</small></li>
+                                        <div class="list-group mt-1">
+                                            {% for product in substage.products.all %}
+                                                <div class="list-group-item p-2">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="flex-grow-1 me-2">
+                                                            <small><i class="bi bi-file-text"></i> {{ product.name|truncatechars:80 }}</small>
+                                                            {% if product.responsible %}
+                                                                <br><small class="text-muted">Ответственный: {{ product.responsible.short_name }}</small>
+                                                            {% endif %}
+                                                            {% with performers=product.product_performers.all %}
+                                                                {% if performers %}
+                                                                    <br><small class="text-muted">
+                                                                        Исполнители: 
+                                                                        {% for performer in performers %}
+                                                                            {{ performer.employee.short_name }}{% if not forloop.last %}, {% endif %}
+                                                                        {% endfor %}
+                                                                    </small>
+                                                                {% endif %}
+                                                            {% endwith %}
+                                                        </div>
+                                                        <div>
+                                                            <a href="{% url 'product_assign_performers' product.id %}" class="btn btn-sm btn-outline-primary" title="Назначить исполнителей">
+                                                                <i class="bi bi-people"></i>
+                                                            </a>
+                                                            <select class="form-select form-select-sm product-status-select" 
+                                                                    style="width: 100px; font-size: 0.7rem; display: inline-block; width: auto;"
+                                                                    data-product-id="{{ product.id }}"
+                                                                    onchange="updateProductStatus(this)">
+                                                                <option value="pending" {% if product.status == 'pending' %}selected{% endif %}>Ожидает</option>
+                                                                <option value="in_progress" {% if product.status == 'in_progress' %}selected{% endif %}>В работе</option>
+                                                                <option value="completed" {% if product.status == 'completed' %}selected{% endif %}>Выполнено</option>
+                                                                <option value="delayed" {% if product.status == 'delayed' %}selected{% endif %}>Задержка</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             {% endfor %}
-                                            {% if substage.products.count > 3 %}
-                                                <li><small class="text-muted">... и ещё {{ substage.products.count|add:"-3" }}</small></li>
-                                            {% endif %}
-                                        </ul>
+                                        </div>
                                     </div>
                                 {% endif %}
                             </div>
@@ -260,4 +300,45 @@
         </div>
     {% endfor %}
 </div>
+{% block extra_js %}
+<script>
+function updateProductStatus(select) {
+    const productId = select.getAttribute('data-product-id');
+    const status = select.value;
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || getCookie('csrftoken');
+    
+    fetch(`/research/product/${productId}/status/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `status=${status}`
+    })
+    .then(response => {
+        if (response.ok) {
+            location.reload();
+        } else {
+            console.error('Ошибка при обновлении статуса');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock %}
 {% endblock %}
