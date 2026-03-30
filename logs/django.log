@@ -5955,3 +5955,396 @@ INFO 2026-03-29 12:24:06,910 log 12284 7388 "POST /product/1560/assign-performer
 INFO 2026-03-29 12:24:07,096 log 12284 7388 "GET /research/15/ HTTP/1.1" 200 12583
 INFO 2026-03-29 12:36:17,572 log 12284 10212 "GET /research/15/ HTTP/1.1" 200 12583
 INFO 2026-03-29 12:41:46,882 log 12284 12596 "GET /research/15/ HTTP/1.1" 200 12579
+INFO 2026-03-30 15:56:35,563 autoreload 28068 19172 Watching for file changes with StatReloader
+INFO 2026-03-30 15:56:38,484 log 28068 15676 "GET / HTTP/1.1" 200 4973
+INFO 2026-03-30 15:56:38,529 log 28068 15676 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-30 15:56:38,529 log 28068 13448 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-30 15:56:40,012 log 28068 13448 "GET /research/15/ HTTP/1.1" 200 13040
+INFO 2026-03-30 15:56:45,949 log 28068 13448 "GET /product/1563/assign-performers/ HTTP/1.1" 200 15323
+ERROR 2026-03-30 15:58:09,083 log 28068 13448 Internal Server Error: /research/assign/substage/211/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\research_views.py", line 165, in assign_research_performers
+    return render(request, 'tasks/assign_research_performers.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/assign_research_performers.html
+ERROR 2026-03-30 15:58:09,088 log 28068 13448 "GET /research/assign/substage/211/ HTTP/1.1" 500 14861
+INFO 2026-03-30 16:00:00,589 log 28068 13448 "GET /employees/ HTTP/1.1" 200 3997
+INFO 2026-03-30 16:00:16,932 log 28068 13448 "GET /employee/295/ HTTP/1.1" 200 2131
+INFO 2026-03-30 16:32:05,052 log 28068 11076 "GET /employee/295/ HTTP/1.1" 200 2141
+INFO 2026-03-30 16:32:05,083 log 28068 11076 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-03-30 16:32:05,083 log 28068 2348 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-03-30 16:32:06,552 log 28068 2348 "GET /employee/295/ HTTP/1.1" 200 2182
+INFO 2026-03-30 16:32:06,636 log 28068 2348 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:06,636 log 28068 11076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:07,273 log 28068 11076 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:07,274 log 28068 11076 "GET /favicon.ico HTTP/1.1" 404 1821
+INFO 2026-03-30 16:32:09,785 log 28068 11076 "GET /employee/295/ HTTP/1.1" 200 2184
+INFO 2026-03-30 16:32:09,815 log 28068 11076 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:09,816 log 28068 2348 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:09,999 log 28068 2348 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:09,999 log 28068 2348 "GET /favicon.ico HTTP/1.1" 404 1824
+INFO 2026-03-30 16:32:10,639 log 28068 2348 "GET /employee/295/ HTTP/1.1" 200 2175
+INFO 2026-03-30 16:32:10,676 log 28068 2348 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:10,676 log 28068 11076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:10,861 log 28068 11076 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:10,862 log 28068 11076 "GET /favicon.ico HTTP/1.1" 404 1804
+INFO 2026-03-30 16:32:11,304 log 28068 11076 "GET /employee/295/ HTTP/1.1" 200 2110
+INFO 2026-03-30 16:32:11,342 log 28068 11076 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:11,342 log 28068 2348 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:11,521 log 28068 2348 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:11,522 log 28068 2348 "GET /favicon.ico HTTP/1.1" 404 1802
+INFO 2026-03-30 16:32:17,418 autoreload 10540 14444 Watching for file changes with StatReloader
+INFO 2026-03-30 16:32:20,615 log 10540 2812 "GET /employees/ HTTP/1.1" 200 3913
+INFO 2026-03-30 16:32:24,071 log 10540 2812 "GET /employee/307/ HTTP/1.1" 200 2252
+INFO 2026-03-30 16:32:28,700 log 10540 2812 "GET /employee/307/ HTTP/1.1" 200 2302
+INFO 2026-03-30 16:32:28,783 log 10540 27408 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:32:28,784 log 10540 2812 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:32:28,919 log 10540 2812 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:28,919 log 10540 2812 "GET /favicon.ico HTTP/1.1" 404 1796
+INFO 2026-03-30 16:32:29,837 log 10540 2812 "GET /employee/307/ HTTP/1.1" 200 2332
+INFO 2026-03-30 16:32:29,873 log 10540 2812 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:29,873 log 10540 27408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:30,055 log 10540 27408 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:30,056 log 10540 27408 "GET /favicon.ico HTTP/1.1" 404 1819
+INFO 2026-03-30 16:32:32,904 log 10540 27408 "GET /employee/307/ HTTP/1.1" 200 2241
+INFO 2026-03-30 16:32:32,942 log 10540 2812 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:32:32,942 log 10540 27408 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:32:33,120 log 10540 2812 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:33,121 log 10540 2812 "GET /favicon.ico HTTP/1.1" 404 1806
+INFO 2026-03-30 16:32:38,093 log 10540 2812 "GET /employees/?department=design&is_active=&search= HTTP/1.1" 200 2124
+INFO 2026-03-30 16:32:39,375 log 10540 2812 "GET /employees/?department=development&is_active=&search= HTTP/1.1" 200 2172
+INFO 2026-03-30 16:32:40,502 log 10540 2812 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 3939
+INFO 2026-03-30 16:32:41,475 log 10540 2812 "GET /employees/?department=&is_active=active&search= HTTP/1.1" 200 3995
+INFO 2026-03-30 16:32:42,494 log 10540 2812 "GET /employees/?department=&is_active=inactive&search= HTTP/1.1" 200 2113
+INFO 2026-03-30 16:32:45,313 log 10540 2812 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 3934
+INFO 2026-03-30 16:32:45,350 log 10540 2812 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:45,350 log 10540 27408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:45,547 log 10540 27408 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:45,547 log 10540 27408 "GET /favicon.ico HTTP/1.1" 404 1800
+INFO 2026-03-30 16:32:46,088 log 10540 27408 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 3937
+INFO 2026-03-30 16:32:46,127 log 10540 27408 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:32:46,130 log 10540 2812 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:32:46,331 log 10540 2812 Not Found: /favicon.ico
+WARNING 2026-03-30 16:32:46,332 log 10540 2812 "GET /favicon.ico HTTP/1.1" 404 1788
+INFO 2026-03-30 16:32:51,046 log 10540 2812 "GET / HTTP/1.1" 200 5009
+INFO 2026-03-30 16:32:52,131 log 10540 2812 "GET /research/15/ HTTP/1.1" 200 13057
+INFO 2026-03-30 16:33:18,719 log 10540 2812 "GET /employee/307/ HTTP/1.1" 200 2313
+INFO 2026-03-30 16:33:18,753 log 10540 2812 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:33:18,753 log 10540 27408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:33:18,943 log 10540 27408 Not Found: /favicon.ico
+WARNING 2026-03-30 16:33:18,944 log 10540 27408 "GET /favicon.ico HTTP/1.1" 404 1821
+INFO 2026-03-30 16:33:19,671 log 10540 27408 "GET /employee/307/ HTTP/1.1" 200 2277
+INFO 2026-03-30 16:33:19,708 log 10540 2812 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:33:19,708 log 10540 27408 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:33:19,887 log 10540 2812 Not Found: /favicon.ico
+WARNING 2026-03-30 16:33:19,888 log 10540 2812 "GET /favicon.ico HTTP/1.1" 404 1846
+INFO 2026-03-30 16:33:20,807 log 10540 2812 "GET /employee/307/ HTTP/1.1" 200 2249
+INFO 2026-03-30 16:33:20,845 log 10540 2812 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:33:20,846 log 10540 27408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:33:21,028 log 10540 27408 Not Found: /favicon.ico
+WARNING 2026-03-30 16:33:21,028 log 10540 27408 "GET /favicon.ico HTTP/1.1" 404 1792
+INFO 2026-03-30 16:33:21,704 log 10540 27408 "GET /employee/307/ HTTP/1.1" 200 2327
+INFO 2026-03-30 16:33:21,742 log 10540 27408 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:33:21,742 log 10540 2812 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:33:21,927 log 10540 2812 Not Found: /favicon.ico
+WARNING 2026-03-30 16:33:21,928 log 10540 2812 "GET /favicon.ico HTTP/1.1" 404 1865
+INFO 2026-03-30 16:33:22,467 log 10540 2812 "GET /employee/307/ HTTP/1.1" 200 2278
+INFO 2026-03-30 16:33:22,501 log 10540 2812 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:33:22,501 log 10540 27408 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:33:22,700 log 10540 27408 Not Found: /favicon.ico
+WARNING 2026-03-30 16:33:22,701 log 10540 27408 "GET /favicon.ico HTTP/1.1" 404 1834
+INFO 2026-03-30 16:35:47,600 autoreload 17360 19212 Watching for file changes with StatReloader
+INFO 2026-03-30 16:35:51,344 log 17360 15900 "GET /employee/307/ HTTP/1.1" 200 2284
+INFO 2026-03-30 16:35:52,386 log 17360 15900 "GET /employee/307/ HTTP/1.1" 200 2270
+INFO 2026-03-30 16:35:52,464 log 17360 15900 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:35:52,464 log 17360 4116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:35:52,913 log 17360 15900 Not Found: /favicon.ico
+WARNING 2026-03-30 16:35:52,914 log 17360 15900 "GET /favicon.ico HTTP/1.1" 404 1810
+INFO 2026-03-30 16:35:54,814 log 17360 15900 "GET /employee/307/ HTTP/1.1" 200 2288
+INFO 2026-03-30 16:35:54,849 log 17360 15900 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:35:54,850 log 17360 4116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:35:55,041 log 17360 4116 Not Found: /favicon.ico
+WARNING 2026-03-30 16:35:55,042 log 17360 4116 "GET /favicon.ico HTTP/1.1" 404 1806
+INFO 2026-03-30 16:35:57,006 log 17360 4116 "GET /employee/307/ HTTP/1.1" 200 2294
+INFO 2026-03-30 16:35:57,043 log 17360 15900 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:35:57,043 log 17360 4116 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:35:57,229 log 17360 4116 Not Found: /favicon.ico
+WARNING 2026-03-30 16:35:57,229 log 17360 4116 "GET /favicon.ico HTTP/1.1" 404 1803
+INFO 2026-03-30 16:35:58,008 log 17360 4116 "GET /employee/307/ HTTP/1.1" 200 2258
+INFO 2026-03-30 16:35:58,040 log 17360 4116 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:35:58,040 log 17360 15900 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:35:58,255 log 17360 15900 Not Found: /favicon.ico
+WARNING 2026-03-30 16:35:58,255 log 17360 15900 "GET /favicon.ico HTTP/1.1" 404 1856
+INFO 2026-03-30 16:35:59,541 log 17360 15900 "GET /employee/307/ HTTP/1.1" 200 2334
+INFO 2026-03-30 16:35:59,573 log 17360 15900 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:35:59,574 log 17360 4116 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:35:59,785 log 17360 4116 Not Found: /favicon.ico
+WARNING 2026-03-30 16:35:59,785 log 17360 4116 "GET /favicon.ico HTTP/1.1" 404 1779
+INFO 2026-03-30 16:36:00,969 log 17360 4116 "GET /employee/307/ HTTP/1.1" 200 2269
+INFO 2026-03-30 16:36:00,996 log 17360 15900 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:36:00,996 log 17360 4116 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:36:01,188 log 17360 4116 Not Found: /favicon.ico
+WARNING 2026-03-30 16:36:01,189 log 17360 4116 "GET /favicon.ico HTTP/1.1" 404 1784
+INFO 2026-03-30 16:39:02,695 log 17360 4116 "GET /task/37/ HTTP/1.1" 200 2884
+ERROR 2026-03-30 16:39:04,319 log 17360 4116 Internal Server Error: /task/37/subtasks/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\subtask_views.py", line 51, in subtask_list
+    subtask.products_list = ResearchProduct.objects.filter(subtask=subtask)
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1542, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1560, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 1570, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1676, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1708, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1556, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1363, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\sql\query.py", line 1842, in names_to_path
+    raise FieldError(
+    ...<2 lines>...
+    )
+django.core.exceptions.FieldError: Cannot resolve keyword 'subtask' into field. Choices are: actual_end, actual_start, completion_percent, created_by, created_by_id, created_date, description, due_date, id, name, notes, planned_end, planned_start, product_performers, product_type, research_stage, research_stage_id, research_substage, research_substage_id, research_task, research_task_id, responsible, responsible_id, status, updated_date
+ERROR 2026-03-30 16:39:04,332 log 17360 4116 "GET /task/37/subtasks/ HTTP/1.1" 500 19724
+INFO 2026-03-30 16:39:09,845 log 17360 4116 "GET /task/37/assign/ HTTP/1.1" 200 0
+INFO 2026-03-30 16:42:37,835 autoreload 19312 24152 Watching for file changes with StatReloader
+INFO 2026-03-30 16:42:43,925 log 19312 22800 "GET /employees/ HTTP/1.1" 200 3957
+INFO 2026-03-30 16:42:50,486 log 19312 22800 "GET /employee/307/ HTTP/1.1" 200 2255
+INFO 2026-03-30 16:42:50,562 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:50,562 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:50,976 log 19312 19296 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:50,977 log 19312 19296 "GET /favicon.ico HTTP/1.1" 404 1796
+INFO 2026-03-30 16:42:51,610 log 19312 19296 "GET /employee/307/ HTTP/1.1" 200 2321
+INFO 2026-03-30 16:42:51,640 log 19312 19296 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:51,640 log 19312 22800 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:51,812 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:51,813 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1850
+INFO 2026-03-30 16:42:52,554 log 19312 22800 "GET /employee/307/ HTTP/1.1" 200 2257
+INFO 2026-03-30 16:42:52,587 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:52,588 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:52,760 log 19312 19296 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:52,761 log 19312 19296 "GET /favicon.ico HTTP/1.1" 404 1781
+INFO 2026-03-30 16:42:53,322 log 19312 19296 "GET /employee/307/ HTTP/1.1" 200 2264
+INFO 2026-03-30 16:42:53,358 log 19312 22800 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:42:53,359 log 19312 19296 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:42:53,529 log 19312 19296 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:53,530 log 19312 19296 "GET /favicon.ico HTTP/1.1" 404 1798
+INFO 2026-03-30 16:42:54,154 log 19312 19296 "GET /employee/307/ HTTP/1.1" 200 2275
+INFO 2026-03-30 16:42:54,186 log 19312 19296 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:54,186 log 19312 22800 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:54,364 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:54,365 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1769
+INFO 2026-03-30 16:42:54,859 log 19312 22800 "GET /employee/307/ HTTP/1.1" 200 2268
+INFO 2026-03-30 16:42:54,891 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:54,891 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:55,077 log 19312 19296 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:55,078 log 19312 19296 "GET /favicon.ico HTTP/1.1" 404 1819
+INFO 2026-03-30 16:42:55,686 log 19312 19296 "GET /employee/307/ HTTP/1.1" 200 2302
+INFO 2026-03-30 16:42:55,712 log 19312 19296 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:55,712 log 19312 22800 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:55,892 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:55,893 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1809
+INFO 2026-03-30 16:42:56,451 log 19312 22800 "GET /employee/307/ HTTP/1.1" 200 2319
+INFO 2026-03-30 16:42:56,481 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:42:56,482 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:42:56,656 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:56,656 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1842
+INFO 2026-03-30 16:42:57,102 log 19312 22800 "GET /employee/307/ HTTP/1.1" 200 2310
+INFO 2026-03-30 16:42:57,130 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:57,130 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:57,314 log 19312 19296 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:57,315 log 19312 19296 "GET /favicon.ico HTTP/1.1" 404 1782
+INFO 2026-03-30 16:42:57,770 log 19312 19296 "GET /employee/307/ HTTP/1.1" 200 2300
+INFO 2026-03-30 16:42:57,799 log 19312 19296 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:42:57,800 log 19312 22800 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:42:57,977 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:42:57,978 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1819
+INFO 2026-03-30 16:42:59,266 log 19312 22800 "GET / HTTP/1.1" 200 5045
+INFO 2026-03-30 16:43:01,454 log 19312 22800 "GET /?status=todo&employee=&search=&sort=-created_date HTTP/1.1" 200 5018
+INFO 2026-03-30 16:43:02,695 log 19312 22800 "GET /?status=in_progress&employee=&search=&sort=-created_date HTTP/1.1" 200 4093
+INFO 2026-03-30 16:43:03,702 log 19312 22800 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 5061
+INFO 2026-03-30 16:43:05,121 log 19312 22800 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 5023
+INFO 2026-03-30 16:43:05,158 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:43:05,158 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 16:43:05,344 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:43:05,345 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1857
+INFO 2026-03-30 16:43:05,782 log 19312 22800 "GET /?status=all&employee=&search=&sort=-created_date HTTP/1.1" 200 5057
+INFO 2026-03-30 16:43:05,812 log 19312 22800 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:43:05,812 log 19312 19296 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:43:06,025 log 19312 22800 Not Found: /favicon.ico
+WARNING 2026-03-30 16:43:06,026 log 19312 22800 "GET /favicon.ico HTTP/1.1" 404 1822
+INFO 2026-03-30 16:43:21,670 log 19312 22800 "GET /employee/295/ HTTP/1.1" 200 2157
+INFO 2026-03-30 16:43:34,303 log 19312 22800 "GET /employee/307/update/ HTTP/1.1" 200 2420
+INFO 2026-03-30 16:43:54,054 log 19312 22800 "GET /employee/277/ HTTP/1.1" 200 2293
+INFO 2026-03-30 16:49:04,159 autoreload 25028 3880 Watching for file changes with StatReloader
+INFO 2026-03-30 16:49:06,725 log 25028 28352 "GET /employee/295/ HTTP/1.1" 200 2139
+INFO 2026-03-30 16:49:06,808 log 25028 28352 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:49:06,809 log 25028 18376 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:49:09,423 log 25028 18376 "GET /employee/295/ HTTP/1.1" 200 2103
+INFO 2026-03-30 16:49:09,459 log 25028 18376 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:49:09,460 log 25028 28352 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:49:10,731 log 25028 28352 Not Found: /favicon.ico
+WARNING 2026-03-30 16:49:10,731 log 25028 28352 "GET /favicon.ico HTTP/1.1" 404 1776
+INFO 2026-03-30 16:49:13,527 log 25028 28352 "GET /org-chart/ HTTP/1.1" 200 6733
+INFO 2026-03-30 16:49:13,554 log 25028 28352 "GET /static/css/organization.css HTTP/1.1" 200 12144
+INFO 2026-03-30 16:49:13,555 log 25028 18376 "GET /static/js/organization.js HTTP/1.1" 200 6080
+INFO 2026-03-30 16:49:21,980 log 25028 18376 "GET /employee/307/ HTTP/1.1" 200 2240
+INFO 2026-03-30 16:49:22,014 log 25028 18376 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:49:22,014 log 25028 28352 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:49:24,038 log 25028 28352 "GET /employee/307/ HTTP/1.1" 200 2291
+INFO 2026-03-30 16:49:24,072 log 25028 28352 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:49:24,073 log 25028 18376 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 16:49:25,509 log 25028 18376 Not Found: /favicon.ico
+WARNING 2026-03-30 16:49:25,509 log 25028 18376 "GET /favicon.ico HTTP/1.1" 404 1773
+INFO 2026-03-30 16:54:19,878 autoreload 16476 21636 Watching for file changes with StatReloader
+INFO 2026-03-30 16:54:22,249 log 16476 21192 "GET /employee/307/ HTTP/1.1" 200 2312
+INFO 2026-03-30 16:54:22,332 log 16476 21192 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 16:54:22,345 log 16476 14256 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 16:54:25,397 log 16476 14256 "GET / HTTP/1.1" 200 5057
+WARNING 2026-03-30 16:54:26,002 log 16476 14256 Not Found: /favicon.ico
+WARNING 2026-03-30 16:54:26,003 log 16476 14256 "GET /favicon.ico HTTP/1.1" 404 1833
+INFO 2026-03-30 16:54:27,570 log 16476 14256 "GET /research/15/ HTTP/1.1" 200 13049
+INFO 2026-03-30 16:54:32,595 log 16476 14256 "GET /product/1562/assign-performers/ HTTP/1.1" 200 15388
+INFO 2026-03-30 16:54:41,175 log 16476 14256 "GET /employees/ HTTP/1.1" 200 3958
+INFO 2026-03-30 16:55:06,336 log 16476 14256 "GET /employee/295/update/ HTTP/1.1" 200 2397
+INFO 2026-03-30 17:01:23,678 log 16476 660 "GET /employee/295/ HTTP/1.1" 200 2119
+INFO 2026-03-30 17:01:27,104 log 16476 660 "GET /employee/295/ HTTP/1.1" 200 2170
+INFO 2026-03-30 17:01:27,138 log 16476 660 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:01:27,140 log 16476 28076 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:01:29,009 log 16476 28076 "GET /employee/295/ HTTP/1.1" 200 2174
+INFO 2026-03-30 17:01:29,043 log 16476 28076 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:01:29,043 log 16476 660 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:01:29,643 log 16476 660 Not Found: /favicon.ico
+WARNING 2026-03-30 17:01:29,644 log 16476 660 "GET /favicon.ico HTTP/1.1" 404 1865
+INFO 2026-03-30 17:01:31,267 log 16476 660 "GET /employee/295/ HTTP/1.1" 200 2183
+INFO 2026-03-30 17:01:31,294 log 16476 660 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:01:31,294 log 16476 28076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:01:33,081 log 16476 28076 Not Found: /favicon.ico
+WARNING 2026-03-30 17:01:33,082 log 16476 28076 "GET /favicon.ico HTTP/1.1" 404 1770
+INFO 2026-03-30 17:01:35,849 log 16476 28076 "GET /employee/307/ HTTP/1.1" 200 2246
+INFO 2026-03-30 17:01:35,880 log 16476 660 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:01:35,881 log 16476 28076 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 17:01:36,527 log 16476 660 Not Found: /favicon.ico
+WARNING 2026-03-30 17:01:36,528 log 16476 660 "GET /favicon.ico HTTP/1.1" 404 1813
+INFO 2026-03-30 17:01:38,336 log 16476 660 "GET /employee/307/ HTTP/1.1" 200 2303
+INFO 2026-03-30 17:01:38,372 log 16476 660 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:01:38,373 log 16476 28076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:01:39,015 log 16476 28076 Not Found: /favicon.ico
+WARNING 2026-03-30 17:01:39,016 log 16476 28076 "GET /favicon.ico HTTP/1.1" 404 1810
+INFO 2026-03-30 17:01:48,854 log 16476 28076 "GET /employees/?department=&is_active=active&search= HTTP/1.1" 200 3935
+INFO 2026-03-30 17:01:49,998 log 16476 28076 "GET /employees/?department=&is_active=inactive&search= HTTP/1.1" 200 2093
+INFO 2026-03-30 17:01:52,753 log 16476 28076 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 3927
+INFO 2026-03-30 17:01:55,256 log 16476 28076 "GET /employees/?department=&is_active=inactive&search= HTTP/1.1" 200 2138
+INFO 2026-03-30 17:01:55,293 log 16476 28076 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:01:55,294 log 16476 660 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:01:57,917 log 16476 660 Not Found: /favicon.ico
+WARNING 2026-03-30 17:01:57,918 log 16476 660 "GET /favicon.ico HTTP/1.1" 404 1789
+INFO 2026-03-30 17:02:02,216 log 16476 660 "GET /employee/307/ HTTP/1.1" 200 2320
+INFO 2026-03-30 17:02:02,247 log 16476 660 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:02:02,248 log 16476 28076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:02:02,910 log 16476 660 Not Found: /favicon.ico
+WARNING 2026-03-30 17:02:02,911 log 16476 660 "GET /favicon.ico HTTP/1.1" 404 1838
+INFO 2026-03-30 17:02:13,421 autoreload 4060 27952 Watching for file changes with StatReloader
+INFO 2026-03-30 17:02:17,526 log 4060 12748 "GET /employee/307/ HTTP/1.1" 200 2325
+INFO 2026-03-30 17:02:17,632 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:02:17,632 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 17:02:18,192 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:02:18,193 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1793
+INFO 2026-03-30 17:02:24,499 log 4060 12748 "GET /employee/277/ HTTP/1.1" 200 2339
+INFO 2026-03-30 17:02:26,257 log 4060 12748 "GET /employee/277/ HTTP/1.1" 200 2346
+INFO 2026-03-30 17:02:26,290 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:02:26,291 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:02:26,933 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:02:26,934 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1816
+INFO 2026-03-30 17:02:33,111 log 4060 12748 "GET /employee/313/ HTTP/1.1" 200 2319
+INFO 2026-03-30 17:02:35,009 log 4060 12748 "GET /employee/313/ HTTP/1.1" 200 2273
+INFO 2026-03-30 17:02:35,042 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:02:35,042 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:02:36,480 log 4060 16860 "GET /employee/313/ HTTP/1.1" 200 2281
+INFO 2026-03-30 17:02:36,515 log 4060 16860 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:02:36,515 log 4060 12748 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:02:37,261 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:02:37,262 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1810
+INFO 2026-03-30 17:04:48,709 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2141
+INFO 2026-03-30 17:04:50,285 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2109
+INFO 2026-03-30 17:04:50,854 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2145
+INFO 2026-03-30 17:04:51,334 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2150
+INFO 2026-03-30 17:04:52,582 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2172
+INFO 2026-03-30 17:04:52,613 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:04:52,613 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:05:00,118 log 4060 16860 "GET /employee/295/ HTTP/1.1" 200 2153
+INFO 2026-03-30 17:05:00,161 log 4060 16860 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:05:00,161 log 4060 12748 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:05:00,747 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:05:00,748 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1780
+INFO 2026-03-30 17:05:40,941 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2146
+INFO 2026-03-30 17:05:40,981 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:05:40,982 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 17:05:41,572 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:05:41,573 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1817
+INFO 2026-03-30 17:05:43,217 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2134
+INFO 2026-03-30 17:05:43,243 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:05:43,247 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:05:44,358 log 4060 16860 "GET /employee/295/ HTTP/1.1" 200 2095
+INFO 2026-03-30 17:05:44,389 log 4060 16860 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:05:44,391 log 4060 12748 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:05:45,365 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2125
+WARNING 2026-03-30 17:05:45,482 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:05:45,482 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1800
+INFO 2026-03-30 17:05:45,806 log 4060 12748 "GET /employee/295/ HTTP/1.1" 200 2128
+INFO 2026-03-30 17:05:45,839 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:05:45,839 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 17:05:46,399 log 4060 12748 Not Found: /favicon.ico
+WARNING 2026-03-30 17:05:46,400 log 4060 12748 "GET /favicon.ico HTTP/1.1" 404 1819
+INFO 2026-03-30 17:05:48,782 log 4060 12748 "GET / HTTP/1.1" 200 5049
+INFO 2026-03-30 17:05:50,445 log 4060 12748 "GET /employees/ HTTP/1.1" 200 4006
+INFO 2026-03-30 17:05:54,314 log 4060 12748 "GET /employee/307/ HTTP/1.1" 200 2339
+INFO 2026-03-30 17:05:54,345 log 4060 12748 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-30 17:05:54,345 log 4060 16860 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-30 17:05:54,920 log 4060 16860 Not Found: /favicon.ico
+WARNING 2026-03-30 17:05:54,920 log 4060 16860 "GET /favicon.ico HTTP/1.1" 404 1802
+INFO 2026-03-30 17:06:13,141 autoreload 23104 19772 Watching for file changes with StatReloader
+INFO 2026-03-30 17:06:16,886 log 23104 7700 "GET /employee/307/ HTTP/1.1" 200 2276
+INFO 2026-03-30 17:06:16,967 log 23104 21000 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-30 17:06:16,979 log 23104 7700 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-30 17:06:17,734 log 23104 7700 Not Found: /favicon.ico
+WARNING 2026-03-30 17:06:17,734 log 23104 7700 "GET /favicon.ico HTTP/1.1" 404 1829

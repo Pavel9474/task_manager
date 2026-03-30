@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ task.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>{{ task.title }}</h3>
+                <div>
+                    <span class="badge {% if task.priority == 'high' %}bg-danger{% elif task.priority == 'medium' %}bg-warning text-dark{% else %}bg-info text-dark{% endif %} me-1">
+                        <i class="bi bi-flag-fill"></i> {{ task.get_priority_display }}
+                    </span>
+                    <span class="badge {% if task.status == 'done' %}bg-success{% elif task.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
+                        {{ task.get_status_display }}
+                    </span>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Описание задачи -->
+                <div class="mb-4">
+                    <h5>Описание:</h5>
+                    <p class="card-text">{{ task.description|linebreaks|default:"<span class='text-muted'>Нет описания</span>" }}</p>
+                </div>
+                
+                <!-- Информация о времени -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p><strong>Дата создания:</strong> {{ task.created_date|date:"d.m.Y H:i" }}</p>
+                        <p><strong>Время начала:</strong> 
+                            {% if task.start_time %}
+                                {{ task.start_time|date:"d.m.Y H:i" }}
+                            {% else %}
+                                <span class="text-muted">Не начато</span>
+                            {% endif %}
+                        </p>
+                        <p><strong>Время окончания:</strong> 
+                            {% if task.end_time %}
+                                {{ task.end_time|date:"d.m.Y H:i" }}
+                            {% else %}
+                                <span class="text-muted">Не завершено</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Срок выполнения:</strong> 
+                            {% if task.due_date %}
+                                {{ task.due_date|date:"d.m.Y H:i" }}
+                                {% if task.is_overdue %}
+                                    <span class="badge bg-danger">Просрочено</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="text-muted">Не указан</span>
+                            {% endif %}
+                        </p>
+                        {% if task.duration %}
+                        <p><strong>Длительность выполнения:</strong> {{ task.duration }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Исполнители задачи -->
+                {% if task.assigned_to.exists %}
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5><i class="bi bi-people-fill"></i> Исполнители:</h5>
+                        <a href="{% url 'task_assign_employees' task.id %}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil"></i> Изменить состав
+                        </a>
+                    </div>
+                    <div class="row">
+                        {% for employee in task.assigned_to.all %}
+                            <div class="col-md-4 mb-2">
+                                <div class="card">
+                                    <div class="card-body py-2">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-person-circle me-2 text-primary" style="font-size: 1.5rem;"></i>
+                                            <div>
+                                                <a href="{% url 'employee_detail' employee.id %}" class="text-decoration-none">
+                                                    <strong>{{ employee.short_name }}</strong>
+                                                </a>
+                                                <br>
+                                                <small class="text-muted">{{ employee.position }}</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5><i class="bi bi-people-fill"></i> Исполнители:</h5>
+                        <a href="{% url 'task_assign_employees' task.id %}" class="btn btn-sm btn-primary">
+                            <i class="bi bi-plus"></i> Назначить исполнителей
+                        </a>
+                    </div>
+                    <p class="text-muted">Исполнители не назначены</p>
+                </div>
+                {% endif %}
+                <!-- ============= БЛОК С ПОДЗАДАЧАМИ (ЭТАПАМИ) ============= -->
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4><i class="bi bi-diagram-3"></i> Этапы выполнения</h4>
+                        <a href="{% url 'subtask_list' task.id %}" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye"></i> Управление этапами
+                        </a>
+                    </div>
+                    
+                    {% with subtasks=task.subtasks.all %}
+                        {% if subtasks %}
+                            <!-- Прогресс-бар -->
+                            {% with total=subtasks.count %}
+                                {% with completed=subtasks.filter.status.completed.count %}
+                                    {% if total > 0 %}
+                                    <div class="progress mb-3" style="height: 10px;">
+                                        <div class="progress-bar bg-success" style="width: {% widthratio completed total 100 %}%">
+                                            <span class="visually-hidden">{{ completed }}/{{ total }} завершено</span>
+                                        </div>
+                                    </div>
+                                    <div class="small text-muted text-end mb-2">
+                                        Выполнено: {{ completed }} из {{ total }} ({% widthratio completed total 100 %}%)
+                                    </div>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endwith %}
+                            <!-- Список последних 3 этапов -->
+                            <div class="list-group">
+                                {% for subtask in subtasks|slice:":3" %}
+                                    <div class="list-group-item">
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="mb-1">
+                                                    <span class="badge bg-secondary me-2">Этап {{ subtask.stage_number }}</span>
+                                                    {{ subtask.title }}
+                                                </h6>
+                                                <small class="text-muted">
+                                                    {% if subtask.responsible %}
+                                                        <i class="bi bi-person-check"></i> {{ subtask.responsible.short_name }}
+                                                    {% endif %}
+                                                </small>
+                                            </div>
+                                            <span class="badge {% if subtask.status == 'completed' %}bg-success{% elif subtask.status == 'in_progress' %}bg-primary{% elif subtask.status == 'delayed' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                                                {{ subtask.get_status_display }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% if subtasks.count > 3 %}
+                                <div class="text-center mt-2">
+                                    <a href="{% url 'subtask_list' task.id %}" class="btn btn-sm btn-link">
+                                        Показать все {{ subtasks.count }} этапов...
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="text-center py-4 bg-light rounded">
+                                <i class="bi bi-diagram-3" style="font-size: 3rem; color: #ccc;"></i>
+                                <p class="text-muted mt-2">Для этой задачи еще нет этапов</p>
+                                <a href="{% url 'subtask_create' task.id %}" class="btn btn-sm btn-success">
+                                    <i class="bi bi-plus-lg"></i> Добавить первый этап
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <!-- ============= КОНЕЦ БЛОКА С ПОДЗАДАЧАМИ ============= -->  
+                <!-- Кнопки управления задачей -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'task_list' %}" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> К списку задач
+                    </a>
+                    <div class="btn-group" role="group">
+                        {% if task.can_start %}
+                            <a href="{% url 'task_start' task.id %}" class="btn btn-success">
+                                <i class="bi bi-play-fill"></i> Начать
+                            </a>
+                        {% endif %}
+                        
+                        {% if task.can_complete %}
+                            <a href="{% url 'task_finish' task.id %}" class="btn btn-primary">
+                                <i class="bi bi-check-lg"></i> Завершить
+                            </a>
+                        {% endif %}
+                        
+                        <a href="{% url 'task_update' task.id %}" class="btn btn-outline-primary">
+                            <i class="bi bi-pencil"></i> Редактировать
+                        </a>
+                        
+                        <a href="{% url 'task_delete' task.id %}" class="btn btn-outline-danger">
+                            <i class="bi bi-trash"></i> Удалить
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Информация о создании/обновлении -->
+            <div class="card-footer text-muted small">
+                <div class="d-flex justify-content-between">
+                    <span>Создано: {{ task.created_date|date:"d.m.Y H:i" }}</span>
+                    <span>Обновлено: {{ task.updated_date|date:"d.m.Y H:i" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

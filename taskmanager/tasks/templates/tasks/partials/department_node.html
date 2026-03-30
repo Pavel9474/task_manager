@@ -1,0 +1,17 @@
+<div class="org-node" id="node-{{ department.id }}">
+    <div class="org-header" onclick="loadChildren('{{ department.id }}', this)">
+        <div>
+            <i class="toggle-icon bi bi-chevron-right me-2"></i>
+            <i class="bi bi-building"></i>
+            <strong>{{ department.name }}</strong>
+            {% if department.staff_count %}
+                <span class="badge-count ms-2">{{ department.staff_count }} сотр.</span>
+            {% endif %}
+        </div>
+        <small class="text-muted">{{ department.get_type_display }}</small>
+    </div>
+    
+    <div class="org-children" id="children-{{ department.id }}" style="display: none;">
+        <!-- Дочерние элементы будут загружены через AJAX -->
+    </div>
+</div>

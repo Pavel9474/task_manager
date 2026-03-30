@@ -1,0 +1,8 @@
+<!-- Частичный шаблон для динамической загрузки -->
+{% for employee in employees %}
+<div class="employee-item" data-id="{{ employee.id }}">
+    <input type="checkbox" name="employees" value="{{ employee.id }}" 
+           {% if employee.id in assigned_ids %}checked{% endif %}>
+    <label>{{ employee.short_name }} - {{ employee.position }}</label>
+</div>
+{% endfor %}

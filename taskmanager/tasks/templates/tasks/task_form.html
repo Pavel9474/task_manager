@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_css %}
+<!-- Подключаем Select2 для красивого множественного выбора -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+<style>
+    .import-section {
+        background-color: #f8f9fa;
+        border: 2px dashed #dee2e6;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .import-section:hover {
+        border-color: #0d6efd;
+        background-color: #e9ecef;
+    }
+    .import-section i {
+        font-size: 3rem;
+        color: #6c757d;
+    }
+    .file-info {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #d1e7dd;
+        border: 1px solid #badbcc;
+        border-radius: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h3>{{ title }}</h3>
+            </div>
+            <div class="card-body">
+                
+                <!-- КНОПКА ИМПОРТА ИЗ ТЗ -->
+                <div class="import-section" onclick="document.getElementById('tzFileInput').click()">
+                    <i class="bi bi-file-earmark-arrow-up"></i>
+                    <h4>Импортировать из ТЗ</h4>
+                    <p class="text-muted">Нажмите, чтобы выбрать файл технического задания (.docx)</p>
+                    <div class="file-info" id="fileInfo">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        Выбран файл: <span id="fileName"></span>
+                    </div>
+                </div>
+                
+                <form method="post" enctype="multipart/form-data" novalidate id="taskForm">
+                    {% csrf_token %}
+                    
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                    {% endif %}
+                    
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <!-- Скрытое поле для файла -->
+                    <div style="display: none;">
+                        {{ form.tz_file }}
+                    </div>
+                    
+                    <!-- Название задачи -->
+                    <div class="mb-3">
+                        <label for="{{ form.title.id_for_label }}" class="form-label">
+                            Название задачи
+                        </label>
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                            <div class="text-danger small">{{ form.title.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">{{ form.title.help_text }}</div>
+                    </div>
+                    
+                    <!-- Описание -->
+                    <div class="mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">Описание</label>
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="text-danger small">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Исполнители -->
+                    <div class="mb-3">
+                        <label for="{{ form.assigned_to.id_for_label }}" class="form-label">
+                            <i class="bi bi-people-fill"></i> Исполнители (будут назначены на все этапы)
+                        </label>
+                        {{ form.assigned_to }}
+                        {% if form.assigned_to.errors %}
+                            <div class="text-danger small">{{ form.assigned_to.errors }}</div>
+                        {% endif %}
+                        <div class="form-text">
+                            Можно выбрать несколько исполнителей. Они будут автоматически назначены на все импортированные этапы.
+                        </div>
+                    </div>
+                    
+                    <!-- Временные поля -->
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.start_time.id_for_label }}" class="form-label">Время начала</label>
+                            {{ form.start_time }}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.end_time.id_for_label }}" class="form-label">Время окончания</label>
+                            {{ form.end_time }}
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.due_date.id_for_label }}" class="form-label">Срок выполнения</label>
+                            {{ form.due_date }}
+                        </div>
+                    </div>
+                    
+                    <!-- Приоритет и статус -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.priority.id_for_label }}" class="form-label">Приоритет</label>
+                            {{ form.priority }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.status.id_for_label }}" class="form-label">Статус</label>
+                            {{ form.status }}
+                        </div>
+                    </div>
+                    
+                    <!-- Кнопки -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'task_list' %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Отмена
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> 
+                            {% if title == 'Создать задачу' %}
+                                Создать задачу
+                            {% else %}
+                                Сохранить изменения
+                            {% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/ru.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Инициализация Select2
+        $('#{{ form.assigned_to.id_for_label }}').select2({
+            theme: 'bootstrap-5',
+            language: 'ru',
+            placeholder: 'Выберите исполнителей...',
+            allowClear: true,
+            width: '100%'
+        });
+        
+        // Обработка выбора файла
+        document.getElementById('tzFileInput').addEventListener('change', function(e) {
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            
+            if (this.files.length > 0) {
+                fileName.textContent = this.files[0].name;
+                fileInfo.style.display = 'block';
+                
+                // Если название задачи пустое, предлагаем взять из файла
+                const titleField = document.getElementById('{{ form.title.id_for_label }}');
+                if (!titleField.value) {
+                    titleField.placeholder = 'Будет взято из ТЗ';
+                }
+            } else {
+                fileInfo.style.display = 'none';
+            }
+        });
+        
+        // Предпросмотр импорта (опционально)
+        $('#previewImportBtn').click(function() {
+            const fileInput = document.getElementById('tzFileInput');
+            if (fileInput.files.length === 0) {
+                alert('Сначала выберите файл');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('tz_file', fileInput.files[0]);
+            
+            $.ajax({
+                url: '{% url "preview_import" %}',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Показать предпросмотр
+                    alert('Найдено этапов: ' + response.stages_count);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

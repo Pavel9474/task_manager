@@ -1,0 +1,1 @@
+$(document).ready(function(){$('#id_excel_file').select2({theme:'bootstrap-5',placeholder:'Выберите файл...',allowClear:true,width:'100%'});});;

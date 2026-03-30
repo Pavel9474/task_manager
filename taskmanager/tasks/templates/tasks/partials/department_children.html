@@ -1,0 +1,27 @@
+{% for child in children %}
+    {% include 'tasks/partials/department_node.html' with department=child %}
+{% endfor %}
+
+{% if staff_positions %}
+    <div class="staff-list">
+        <div class="staff-header">
+            <small class="text-muted">
+                <i class="bi bi-people"></i> Сотрудники ({{ staff_positions.count }})
+            </small>
+        </div>
+        {% for sp in staff_positions %}
+            <div class="staff-item">
+                <i class="bi bi-person-circle staff-icon"></i>
+                <div class="staff-info">
+                    <a href="{% url 'employee_detail' sp.employee.id %}" class="staff-name">
+                        {{ sp.employee.short_name }}
+                    </a>
+                    <span class="staff-position">{{ sp.position.name }}</span>
+                    {% if sp.workload != 1 %}
+                        <span class="staff-badge">{{ sp.workload }} ставки</span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

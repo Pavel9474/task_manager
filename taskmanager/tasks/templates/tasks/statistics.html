@@ -1,0 +1,329 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика задач{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Статистика задач</h1>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Назад к задачам
+    </a>
+</div>
+
+<div class="row">
+    <!-- Общая статистика -->
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Общая статистика</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Всего задач
+                        <span class="badge bg-primary rounded-pill">{{ stats.total }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        К выполнению
+                        <span class="badge bg-secondary rounded-pill">{{ stats.todo }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        В процессе
+                        <span class="badge bg-primary rounded-pill">{{ stats.in_progress }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Выполнено
+                        <span class="badge bg-success rounded-pill">{{ stats.done }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Просрочено
+                        <span class="badge bg-danger rounded-pill">{{ stats.overdue }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Статистика по приоритетам -->
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-header bg-warning">
+                <h5 class="mb-0">По приоритетам</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Высокий приоритет
+                        <span class="badge bg-danger rounded-pill">{{ stats.high_priority }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Средний приоритет
+                        <span class="badge bg-warning text-dark rounded-pill">{{ stats.medium_priority }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Низкий приоритет
+                        <span class="badge bg-info text-dark rounded-pill">{{ stats.low_priority }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Статистика по времени -->
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">По времени</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Выполняется сейчас
+                        <span class="badge bg-success rounded-pill">{{ stats.active_now }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Завершенных задач
+                        <span class="badge bg-success rounded-pill">{{ stats.completed_count }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Среднее время выполнения
+                        <span class="badge bg-info rounded-pill">{{ stats.avg_duration }} ч</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Прогресс выполнения -->
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Прогресс выполнения задач</h5>
+            </div>
+            <div class="card-body">
+                <div class="progress mb-3" style="height: 30px;">
+                    {% if stats.total > 0 %}
+                        {% with done_percent=stats.done|floatformat:0 in_progress_percent=stats.in_progress|floatformat:0 todo_percent=stats.todo|floatformat:0 %}
+                            <div class="progress-bar bg-success" style="width: {{ done_percent }}%" role="progressbar">
+                                Выполнено: {{ stats.done }}
+                            </div>
+                            <div class="progress-bar bg-primary" style="width: {{ in_progress_percent }}%" role="progressbar">
+                                В процессе: {{ stats.in_progress }}
+                            </div>
+                            <div class="progress-bar bg-secondary" style="width: {{ todo_percent }}%" role="progressbar">
+                                К выполнению: {{ stats.todo }}
+                            </div>
+                        {% endwith %}
+                    {% else %}
+                        <div class="progress-bar bg-secondary" style="width: 100%" role="progressbar">Нет задач</div>
+                    {% endif %}
+                </div>
+                
+                {% if stats.overdue > 0 %}
+                <div class="alert alert-danger">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    У вас <strong>{{ stats.overdue }}</strong> {% if stats.overdue == 1 %}просроченная задача{% else %}просроченных задач{% endif %}!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Статистика в виде таблицы -->
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Распределение по статусам</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Статус</th>
+                            <th>Количество</th>
+                            <th>Процент</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge bg-success">Выполнено</span></td>
+                            <td>{{ stats.done }}</td>
+                            <td>
+                                {% if stats.total > 0 %}
+                                    {{ stats.done|divisibleby:stats.total|floatformat:1 }}%
+                                {% else %}
+                                    0%
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge bg-primary">В процессе</span></td>
+                            <td>{{ stats.in_progress }}</td>
+                            <td>
+                                {% if stats.total > 0 %}
+                                    {{ stats.in_progress|divisibleby:stats.total|floatformat:1 }}%
+                                {% else %}
+                                    0%
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge bg-secondary">К выполнению</span></td>
+                            <td>{{ stats.todo }}</td>
+                            <td>
+                                {% if stats.total > 0 %}
+                                    {{ stats.todo|divisibleby:stats.total|floatformat:1 }}%
+                                {% else %}
+                                    0%
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Советы по продуктивности</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% if stats.overdue > 0 %}
+                        <li class="list-group-item text-danger">
+                            <i class="bi bi-exclamation-circle-fill me-2"></i>
+                            У вас есть <strong>{{ stats.overdue }}</strong> просроченных задач. Начните с них!
+                        </li>
+                    {% endif %}
+                    
+                    {% if stats.high_priority > stats.medium_priority and stats.high_priority > stats.low_priority %}
+                        <li class="list-group-item text-warning">
+                            <i class="bi bi-flag-fill me-2"></i>
+                            Большинство задач имеют высокий приоритет. Сосредоточьтесь на них в первую очередь.
+                        </li>
+                    {% endif %}
+                    
+                    {% if stats.todo > stats.in_progress|add:stats.done %}
+                        <li class="list-group-item text-info">
+                            <i class="bi bi-list-task me-2"></i>
+                            У вас <strong>{{ stats.todo }}</strong> не начатых задач. Попробуйте начать с самой простой.
+                        </li>
+                    {% else %}
+                        <li class="list-group-item text-success">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            Хорошая работа! Большинство задач либо в работе, либо выполнены.
+                        </li>
+                    {% endif %}
+                    
+                    {% if stats.done > 0 and stats.avg_duration %}
+                        <li class="list-group-item text-success">
+                            <i class="bi bi-clock-history me-2"></i>
+                            В среднем вы выполняете задачу за <strong>{{ stats.avg_duration }}</strong> часов.
+                        </li>
+                    {% endif %}
+                    
+                    {% if stats.active_now > 0 %}
+                        <li class="list-group-item text-primary">
+                            <i class="bi bi-play-circle-fill me-2"></i>
+                            Сейчас выполняется <strong>{{ stats.active_now }}</strong> задач. Продолжайте в том же духе!
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Детальная статистика по приоритетам (если есть данные) -->
+{% if stats.priority_stats %}
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Детальная статистика по приоритетам</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Приоритет</th>
+                            <th>Количество задач</th>
+                            <th>Процент от общего</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stat in stats.priority_stats %}
+                        <tr>
+                            <td>
+                                {% if stat.priority == 'high' %}
+                                    <span class="badge bg-danger">Высокий</span>
+                                {% elif stat.priority == 'medium' %}
+                                    <span class="badge bg-warning text-dark">Средний</span>
+                                {% elif stat.priority == 'low' %}
+                                    <span class="badge bg-info text-dark">Низкий</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ stat.count }}</td>
+                            <td>
+                                {% if stats.total > 0 %}
+                                    {{ stat.count|divisibleby:stats.total|floatformat:1 }}%
+                                {% else %}
+                                    0%
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Ежедневная статистика (если есть данные) -->
+{% if stats.daily_stats %}
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Задачи за последние 7 дней</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Количество созданных задач</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for day_stat in stats.daily_stats %}
+                        <tr>
+                            <td>{{ day_stat.day|date:"d.m.Y" }}</td>
+                            <td>{{ day_stat.count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Кнопка экспорта (опционально) -->
+<div class="row mt-4">
+    <div class="col-md-12 text-center">
+        <a href="{% url 'task_list' %}" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Вернуться к задачам
+        </a>
+    </div>
+</div>
+{% endblock %}

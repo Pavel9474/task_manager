@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+<style>
+    .date-field {
+        margin-bottom: 15px;
+    }
+    .date-field label {
+        font-weight: 600;
+        color: #495057;
+    }
+    .help-text {
+        font-size: 0.875em;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-header">
+                <h3>{{ title }}</h3>
+                {% if subtask %}
+                    <p class="text-muted mb-0">Этап {{ subtask.stage_number }}</p>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <div class="row">
+                        <div class="col-md-2 mb-3">
+                            <label for="{{ form.stage_number.id_for_label }}" class="form-label">
+                                Номер этапа *
+                            </label>
+                            {{ form.stage_number }}
+                            {% if form.stage_number.errors %}
+                                <div class="text-danger small">{{ form.stage_number.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-10 mb-3">
+                            <label for="{{ form.title.id_for_label }}" class="form-label">
+                                Название этапа *
+                            </label>
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <div class="text-danger small">{{ form.title.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.description.id_for_label }}" class="form-label">
+                            Описание
+                        </label>
+                        {{ form.description }}
+                        {% if form.description.errors %}
+                            <div class="text-danger small">{{ form.description.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.output.id_for_label }}" class="form-label">
+                            Выход/Результат
+                        </label>
+                        {{ form.output }}
+                        {% if form.output.errors %}
+                            <div class="text-danger small">{{ form.output.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.priority.id_for_label }}" class="form-label">
+                                Приоритет
+                            </label>
+                            {{ form.priority }}
+                            {% if form.priority.errors %}
+                                <div class="text-danger small">{{ form.priority.errors }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="{{ form.status.id_for_label }}" class="form-label">
+                                Статус
+                            </label>
+                            {{ form.status }}
+                            {% if form.status.errors %}
+                                <div class="text-danger small">{{ form.status.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3 date-field">
+                            <label for="{{ form.planned_start.id_for_label }}" class="form-label">
+                                План. начало
+                            </label>
+                            {{ form.planned_start }}
+                            {% if form.planned_start.errors %}
+                                <div class="text-danger small">{{ form.planned_start.errors }}</div>
+                            {% endif %}
+                            <div class="help-text">Формат: ГГГГ-ММ-ДД</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3 date-field">
+                            <label for="{{ form.planned_end.id_for_label }}" class="form-label">
+                                План. окончание
+                            </label>
+                            {{ form.planned_end }}
+                            {% if form.planned_end.errors %}
+                                <div class="text-danger small">{{ form.planned_end.errors }}</div>
+                            {% endif %}
+                            <div class="help-text">Формат: ГГГГ-ММ-ДД</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.performers.id_for_label }}" class="form-label">
+                                Исполнители
+                            </label>
+                            {{ form.performers }}
+                            {% if form.performers.errors %}
+                                <div class="text-danger small">{{ form.performers.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">
+                                Можно выбрать несколько исполнителей
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.responsible.id_for_label }}" class="form-label">
+                                Ответственный
+                            </label>
+                            {{ form.responsible }}
+                            {% if form.responsible.errors %}
+                                <div class="text-danger small">{{ form.responsible.errors }}</div>
+                            {% endif %}
+                            <div class="form-text">
+                                Если выбран один исполнитель, он станет ответственным автоматически
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.notes.id_for_label }}" class="form-label">
+                            Заметки
+                        </label>
+                        {{ form.notes }}
+                        {% if form.notes.errors %}
+                            <div class="text-danger small">{{ form.notes.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'subtask_list' task.id %}" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Отмена
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save"></i> Сохранить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/ru.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Инициализация Select2
+        $('#{{ form.performers.id_for_label }}').select2({
+            theme: 'bootstrap-5',
+            language: 'ru',
+            placeholder: 'Выберите исполнителей...',
+            allowClear: true,
+            width: '100%'
+        });
+        
+        $('#{{ form.responsible.id_for_label }}').select2({
+            theme: 'bootstrap-5',
+            language: 'ru',
+            placeholder: 'Выберите ответственного...',
+            allowClear: true,
+            width: '100%'
+        });
+        
+        // Автоматическое обновление списка ответственных при изменении исполнителей
+        $('#{{ form.performers.id_for_label }}').on('change', function() {
+            var selectedPerformers = $(this).val() || [];
+            var responsibleSelect = $('#{{ form.responsible.id_for_label }}');
+            
+            // Если выбран ровно один исполнитель
+            if (selectedPerformers.length === 1) {
+                responsibleSelect.val(selectedPerformers[0]).trigger('change');
+            }
+            // Если не выбран ни один исполнитель
+            else if (selectedPerformers.length === 0) {
+                responsibleSelect.val(null).trigger('change');
+            }
+        });
+        
+        // Если даты уже заполнены, они отобразятся автоматически
+        console.log('Даты загружены:', {
+            start: '{{ form.planned_start.value|default:"" }}',
+            end: '{{ form.planned_end.value|default:"" }}'
+        });
+    });
+</script>
+{% endblock %}
