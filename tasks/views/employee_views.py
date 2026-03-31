@@ -4,17 +4,21 @@ from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.core.paginator import Paginator
-from ..models import Task, Employee, Subtask, ResearchProduct, ProductPerformer
+from ..models import Employee, Task, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct, ProductPerformer
 from ..forms_employee import EmployeeForm, EmployeeImportForm
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta, date
 from django.db.models import Q
 import json
-
+# В самом верху файла, после импортов
+print("=" * 60)
+print("ФАЙЛ employee_views.py ЗАГРУЖЕН")
+print("=" * 60)
 @login_required
 def employee_list(request):
-    """Список сотрудников"""
+    """Список сотрудников с задачами и научной продукцией, отсортированными по близости к текущей дате"""
     employees = Employee.objects.all()
+    print(f"DEBUG: Найдено сотрудников: {employees.count()}") 
     
     # Фильтрация
     department = request.GET.get('department', '')
@@ -50,7 +54,266 @@ def employee_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
+    # Получаем текущую дату для расчетов
+    today = timezone.now().date()
+    
+    # Цвета для разных исследовательских задач (НИР)
+    research_task_colors = [
+        '#0d6efd',  # Blue
+        '#198754',  # Green
+        '#dc3545',  # Red
+        '#fd7e14',  # Orange
+        '#6f42c1',  # Purple
+        '#d63384',  # Pink
+        '#0dcaf0',  # Cyan
+        '#ffc107',  # Yellow
+        '#20c997',  # Teal
+        '#6610f2',  # Indigo
+    ]
+    
+    # Для каждого сотрудника получаем и сортируем задачи
+    employee_tasks_data = {}
+    employee_research_products = {}
+    gantt_data = {}
+    
+    for employee in page_obj:
+        # Собираем все задачи сотрудника
+        all_tasks = []
+        
+        # Обычные задачи
+        for task in employee.tasks.all():
+            task_date = task.due_date.date() if task.due_date else None
+            all_tasks.append({
+                'type': 'task',
+                'id': task.id,
+                'title': task.title,
+                'date': task_date,
+                'status': task.status,
+                'priority': task.priority,
+                'is_overdue': task.is_overdue() if task.due_date else False,
+            })
+        
+        # Подзадачи (этапы)
+        for subtask in employee.subtasks.all():
+            subtask_date = subtask.planned_end.date() if subtask.planned_end else None
+            all_tasks.append({
+                'type': 'subtask',
+                'id': subtask.id,
+                'title': subtask.title,
+                'date': subtask_date,
+                'status': subtask.status,
+                'priority': subtask.priority,
+                'is_overdue': subtask.is_overdue() if subtask.planned_end else False,
+                'stage_number': subtask.stage_number,
+            })
+        
+        # Сортируем задачи: ближайшие к сегодня первыми
+        def sort_key(task):
+            task_date = task['date']
+            if task_date is None:
+                return (9999, 1)  # Без даты в конец
+            days_diff = (task_date - today).days
+            if days_diff < 0:
+                # Просроченные: чем больше просрочка, тем ниже в списке просроченных
+                return (-9999 - days_diff, 0)
+            else:
+                # Будущие: чем ближе, тем выше
+                return (days_diff, 0)
+        
+        all_tasks.sort(key=sort_key)
+        employee_tasks_data[employee.id] = all_tasks
+        
+        # Получаем научную продукцию сотрудника через разные связи
+        research_products = []
+        research_task_color_map = {}  # Map research task ID to color
+        color_index = 0
+        processed_product_ids = set()  # Track already processed products
+        
+        # 1. Get products through ProductPerformer (with role info)
+        for product_performer in employee.product_performers.select_related(
+            'product', 
+            'product__research_task',
+            'product__research_stage',
+            'product__research_substage'
+        ).all():
+            product = product_performer.product
+            if product.id in processed_product_ids:
+                continue
+            processed_product_ids.add(product.id)
+            
+            # Get research task info
+            research_task = product.research_task
+            research_stage = product.research_stage
+            research_substage = product.research_substage
+            
+            # Assign color to research task
+            if research_task:
+                if research_task.id not in research_task_color_map:
+                    research_task_color_map[research_task.id] = research_task_colors[color_index % len(research_task_colors)]
+                    color_index += 1
+                task_color = research_task_color_map[research_task.id]
+            else:
+                task_color = '#6c757d'  # Gray for products without research task
+            
+            product_date = product.planned_end if product.planned_end else product.due_date
+            product_date = product_date if isinstance(product_date, date) else (product_date.date() if product_date else None)
+            
+            is_overdue = False
+            if product_date and product.status not in ['completed', 'cancelled']:
+                is_overdue = today > product_date
+            
+            research_products.append({
+                'id': product.id,
+                'name': product.name,
+                'date': product_date,
+                'status': product.status,
+                'product_type': product.product_type,
+                'is_overdue': is_overdue,
+                'role': product_performer.role,
+                'contribution': str(product_performer.contribution_percent) if product_performer.contribution_percent else None,
+                'research_task': {
+                    'id': research_task.id if research_task else None,
+                    'title': research_task.title if research_task else None,
+                    'tz_number': research_task.tz_number if research_task else None,
+                    'color': task_color,
+                } if research_task else None,
+                'research_stage': {
+                    'id': research_stage.id if research_stage else None,
+                    'title': research_stage.title if research_stage else None,
+                    'stage_number': research_stage.stage_number if research_stage else None,
+                } if research_stage else None,
+                'research_substage': {
+                    'id': research_substage.id if research_substage else None,
+                    'title': research_substage.title if research_substage else None,
+                    'substage_number': research_substage.substage_number if research_substage else None,
+                } if research_substage else None,
+            })
+        
+        # 2. Also get products through ProductPerformer intermediate model
+        # The ResearchProduct model uses ProductPerformer for employee assignments
+        from ..models import ProductPerformer
+        for product_performer in ProductPerformer.objects.filter(employee=employee).select_related('product', 'product__research_task', 'product__research_stage', 'product__research_substage'):
+            product = product_performer.product
+            if product.id in processed_product_ids:
+                continue
+            processed_product_ids.add(product.id)
+            
+            # Get research task info directly from product
+            research_task = product.research_task
+            research_stage = product.research_stage
+            research_substage = product.research_substage
+            
+            # Assign color to research task
+            if research_task:
+                if research_task.id not in research_task_color_map:
+                    research_task_color_map[research_task.id] = research_task_colors[color_index % len(research_task_colors)]
+                    color_index += 1
+                task_color = research_task_color_map[research_task.id]
+            else:
+                task_color = '#6c757d'
+            
+            product_date = product.planned_end or product.due_date
+            product_date = product_date if isinstance(product_date, date) else (product_date.date() if product_date else None)
+            
+            is_overdue = False
+            if product_date and product.status not in ['completed', 'cancelled']:
+                is_overdue = today > product_date
+            
+            research_products.append({
+                'id': product.id,
+                'name': product.name,
+                'date': product_date,
+                'status': product.status,
+                'product_type': product.product_type if hasattr(product, 'product_type') else 'other',
+                'is_overdue': is_overdue,
+                'role': product_performer.role,
+                'contribution': product_performer.contribution_percent,
+                'research_task': {
+                    'id': research_task.id if research_task else None,
+                    'title': research_task.title if research_task else None,
+                    'tz_number': research_task.tz_number if research_task else None,
+                    'color': task_color,
+                } if research_task else None,
+                'research_stage': {
+                    'id': research_stage.id if research_stage else None,
+                    'title': research_stage.title if research_stage else None,
+                    'stage_number': research_stage.stage_number if research_stage else None,
+                } if research_stage else None,
+                'research_substage': {
+                    'id': research_substage.id if research_substage else None,
+                    'title': research_substage.title if research_substage else None,
+                    'substage_number': research_substage.substage_number if research_substage else None,
+                } if research_substage else None,
+            })
+        
+        # Sort research products by date (closest to today first)
+        research_products.sort(key=sort_key)
+        employee_research_products[employee.id] = research_products
+        
+        # Данные для Gantt-диаграммы
+        gantt_tasks = []
+        
+        # Add regular tasks to Gantt
+        for task in all_tasks:
+            if task['date']:
+                task_date = task['date']
+                # Определяем длительность (для визуализации)
+                if task['type'] == 'subtask':
+                    duration = 7  # По умолчанию 7 дней для подзадач
+                else:
+                    duration = 14  # По умолчанию 14 дней для задач
+                
+                # Определяем цвет в зависимости от статуса и просрочки
+                if task['is_overdue']:
+                    color = '#dc3545'  # Красный - просрочено
+                elif task['status'] in ['completed', 'done']:
+                    color = '#198754'  # Зеленый - выполнено
+                elif task['status'] == 'in_progress':
+                    color = '#0d6efd'  # Синий - в работе
+                else:
+                    color = '#6c757d'  # Серый - ожидание
+                
+                gantt_tasks.append({
+                    'id': f"{task['type']}_{task['id']}",
+                    'name': task['title'][:30] + '...' if len(task['title']) > 30 else task['title'],
+                    'start': (task_date - timedelta(days=duration)).isoformat() if task_date else today.isoformat(),
+                    'end': task_date.isoformat() if task_date else (today + timedelta(days=duration)).isoformat(),
+                    'progress': 100 if task['status'] in ['completed', 'done'] else (50 if task['status'] == 'in_progress' else 0),
+                    'color': color,
+                    'status': task['status'],
+                    'type': 'regular',
+                })
+        
+        # Add research products to Gantt with research task colors
+        for product in research_products:
+            if product['date']:
+                product_date = product['date']
+                duration = 21  # Default 21 days for research products
+                
+                # Use research task color
+                color = product['research_task']['color'] if product['research_task'] else '#6c757d'
+                
+                # Darken color if overdue
+                if product['is_overdue']:
+                    color = '#dc3545'  # Red for overdue
+                
+                gantt_tasks.append({
+                    'id': f"product_{product['id']}",
+                    'name': product['name'][:30] + '...' if len(product['name']) > 30 else product['name'],
+                    'start': (product_date - timedelta(days=duration)).isoformat(),
+                    'end': product_date.isoformat(),
+                    'progress': 100 if product['status'] == 'completed' else (50 if product['status'] == 'in_progress' else 0),
+                    'color': color,
+                    'status': product['status'],
+                    'type': 'research',
+                    'research_task_title': product['research_task']['title'] if product['research_task'] else None,
+                })
+        
+        gantt_data[employee.id] = gantt_tasks
+    
     context = {
+        'page_obj': employees,  # Для пагинации
+        'employee_list': employees,  # Простой список
         'page_obj': page_obj,
         'departments': Employee.DEPARTMENT_CHOICES,
         'laboratories': Employee.LABORATORY_CHOICES,
@@ -60,121 +323,287 @@ def employee_list(request):
             'is_active': is_active,
             'search': search,
             'sort': sort,
-        }
+        },
+        'employee_tasks': employee_tasks_data,
+        'employee_research_products': employee_research_products,
+        'gantt_data_json': json.dumps(gantt_data),
+        'today': today.isoformat(),
     }
     return render(request, 'tasks/employee_list.html', context)
-
 
 @login_required
 def employee_detail(request, employee_id):
     """Детальная информация о сотруднике"""
-    employee = get_object_or_404(Employee, id=employee_id)
+    print(f"=== employee_detail вызван для id={employee_id} ===")
     
-    # 👇 НОВЫЙ КОД: Получаем штатные позиции сотрудника
-    staff_positions = employee.staff_positions.filter(is_active=True)
-    
-    # 👇 НОВЫЙ КОД: Получаем организационную структуру
-    org_structure = employee.get_organization_structure()
-    
-    # Получаем тип отображения (все, только задачи, только этапы)
-    item_type = request.GET.get('type', 'all')
-    
-    # Собираем все задачи и подзадачи сотрудника
-    items = []
-    
-    # Добавляем задачи, где сотрудник является исполнителем
-    tasks = employee.tasks.all()
-    for task in tasks:
-        # Определяем дату для сортировки (дедлайн задачи)
-        sort_date = task.due_date if task.due_date else task.created_date
-        items.append({
-            'type': 'task',
-            'id': task.id,
-            'title': task.title,
-            'description': task.description,
-            'status': task.status,
-            'priority': task.priority,
-            'due_date': task.due_date,
-            'sort_date': sort_date,
-            'is_overdue': task.is_overdue() if task.due_date else False,
-            'assigned_to': task.assigned_to,
-            'task': task,  # оригинальный объект для ссылок
-            'get_priority_display': task.get_priority_display,
-            'get_status_display': task.get_status_display,
-            'priority_color': {
-                'critical': 'danger',
-                'high': 'warning',
-                'medium': 'info',
-                'low': 'success'
-            }.get(task.priority, 'secondary')
-        })
-    
-    # Добавляем подзадачи, где сотрудник является исполнителем или ответственным
-    subtasks_as_performer = employee.subtasks.all()
-    subtasks_as_responsible = employee.responsible_subtasks.all()
-    all_subtasks = (subtasks_as_performer | subtasks_as_responsible).distinct()
-    
-    for subtask in all_subtasks:
-        # Определяем дату для сортировки (планируемое окончание этапа)
-        sort_date = subtask.planned_end if subtask.planned_end else subtask.created_date
-        items.append({
-            'type': 'subtask',
-            'id': subtask.id,
-            'title': subtask.title,
-            'description': subtask.description,
-            'status': subtask.status,
-            'priority': subtask.priority,
-            'due_date': subtask.planned_end,
-            'sort_date': sort_date,
-            'is_overdue': subtask.is_overdue() if subtask.planned_end else False,
-            'stage_number': subtask.stage_number,
-            'task': subtask.task,  # родительская задача
-            'responsible': subtask.responsible,
-            'performers': subtask.performers,
-            'progress': subtask.progress,
-            'get_priority_display': subtask.get_priority_display,
-            'get_status_display': subtask.get_status_display,
-            'priority_color': subtask.priority_color
-        })
-    
-    # Фильтрация по типу
-    if item_type == 'tasks':
-        items = [item for item in items if item['type'] == 'task']
-    elif item_type == 'subtasks':
-        items = [item for item in items if item['type'] == 'subtask']
-    
-    # Сортировка: сначала по дате (чем ближе к сегодня, тем выше),
-    # затем просроченные в начало, затем без даты в конец
-    from datetime import date, datetime
-    today = timezone.now().date()
-    
-    def sort_key(item):
-        date_val = item['sort_date']
-        if date_val:
-            # Преобразуем datetime в date для сравнения
-            if isinstance(date_val, datetime):
-                date_val = date_val.date()
-            # Считаем разницу в днях от сегодня
-            days_diff = (date_val - today).days if date_val else 9999
-            # Отрицательные значения (просроченные) должны быть в начале
-            return (days_diff if days_diff >= 0 else -9999 + days_diff, 0)
-        else:
-            return (9999, 1)  # без даты в самый конец
-    
-    items.sort(key=sort_key)
-    
-    context = {
-        'employee': employee,
-        'items': items,
-        'current_type': item_type,
-        # 👇 НОВЫЙ КОД: Добавляем новые переменные в контекст
-        'staff_positions': staff_positions,
-        'org_structure': org_structure,
-    }
-    return render(request, 'tasks/employee_detail.html', context)
+    try:
+        # Используем get_object_or_404 для автоматического 404
+        employee = get_object_or_404(Employee, id=employee_id)
+        print(f"=== Найден сотрудник: {employee.full_name} ===")
+        
+        # Штатные позиции
+        staff_positions = employee.staff_positions.filter(is_active=True)
+        org_structure = employee.get_organization_structure()
+        
+        # Тип отображения
+        item_type = request.GET.get('type', 'all')
+        
+        items = []
+        
+        # ===== 1. Обычные задачи =====
+        tasks = employee.tasks.all()
+        for task in tasks:
+            sort_date = task.due_date if task.due_date else task.created_date
+            items.append({
+                'type': 'task',
+                'id': task.id,
+                'title': task.title,
+                'description': task.description,
+                'status': task.status,
+                'priority': task.priority,
+                'due_date': task.due_date,
+                'sort_date': sort_date,
+                'is_overdue': task.is_overdue() if task.due_date else False,
+                'get_priority_display': task.get_priority_display(),
+                'get_status_display': task.get_status_display(),
+                'priority_color': {'high': 'warning', 'medium': 'info', 'low': 'success'}.get(task.priority, 'secondary')
+            })
+        
+        # ===== 2. Подзадачи =====
+        subtasks_as_performer = employee.subtasks.all()
+        subtasks_as_responsible = employee.responsible_subtasks.all()
+        all_subtasks = (subtasks_as_performer | subtasks_as_responsible).distinct()
+        
+        for subtask in all_subtasks:
+            sort_date = subtask.planned_end if subtask.planned_end else subtask.created_date
+            items.append({
+                'type': 'subtask',
+                'id': subtask.id,
+                'title': subtask.title,
+                'description': subtask.description,
+                'status': subtask.status,
+                'priority': subtask.priority,
+                'due_date': subtask.planned_end,
+                'sort_date': sort_date,
+                'is_overdue': subtask.is_overdue() if subtask.planned_end else False,
+                'task': subtask.task,
+                'progress': getattr(subtask, 'progress', 0),
+                'get_priority_display': subtask.get_priority_display(),
+                'get_status_display': subtask.get_status_display(),
+                'priority_color': getattr(subtask, 'priority_color', 'secondary')
+            })
+        
+        # ===== 3. НИР =====
+        research_tasks_as_performer = ResearchTask.objects.filter(
+            stages__substages__products__product_performers__employee=employee
+        ).distinct()
+        research_tasks_as_responsible = ResearchTask.objects.filter(
+            stages__substages__products__responsible=employee
+        ).distinct()
+        all_research_tasks = (research_tasks_as_performer | research_tasks_as_responsible).distinct()
+        
+        for rt in all_research_tasks:
+            sort_date = rt.end_date if rt.end_date else rt.created_date
+            items.append({
+                'type': 'research_task',
+                'id': rt.id,
+                'title': rt.title,
+                'tz_number': rt.tz_number,
+                'start_date': rt.start_date,
+                'end_date': rt.end_date,
+                'sort_date': sort_date,
+                'is_overdue': rt.end_date and rt.end_date < timezone.now().date() if rt.end_date else False,
+                'stages_count': rt.stages.count(),
+                'url': 'research_task_detail',
+                'url_args': {'task_id': rt.id},
+            })
+        
+        # ===== 4. Этапы НИР =====
+        stages = ResearchStage.objects.filter(performers=employee) | ResearchStage.objects.filter(responsible=employee)
+        stages = stages.select_related('research_task').distinct()
+        
+        for stage in stages:
+            sort_date = stage.end_date if stage.end_date else stage.created_date
+            items.append({
+                'type': 'research_stage',
+                'id': stage.id,
+                'title': stage.title,
+                'stage_number': stage.stage_number,
+                'research_task': stage.research_task,
+                'start_date': stage.start_date,
+                'end_date': stage.end_date,
+                'sort_date': sort_date,
+                'is_overdue': stage.end_date and stage.end_date < timezone.now().date() if stage.end_date else False,
+                'substages_count': stage.substages.count(),
+                'url': 'research_stage_detail',
+                'url_args': {'stage_id': stage.id},
+            })
+        
+        # ===== 5. Подэтапы НИР =====
+        substages = ResearchSubstage.objects.filter(performers=employee) | ResearchSubstage.objects.filter(responsible=employee)
+        substages = substages.select_related('stage', 'stage__research_task').distinct()
+        
+        for substage in substages:
+            sort_date = substage.end_date if substage.end_date else substage.created_date
+            items.append({
+                'type': 'research_substage',
+                'id': substage.id,
+                'title': substage.title,
+                'substage_number': substage.substage_number,
+                'stage': substage.stage,
+                'research_task': substage.stage.research_task,
+                'start_date': substage.start_date,
+                'end_date': substage.end_date,
+                'sort_date': sort_date,
+                'is_overdue': substage.end_date and substage.end_date < timezone.now().date() if substage.end_date else False,
+                'products_count': substage.products.count(),
+                'url': 'research_substage_detail',
+                'url_args': {'substage_id': substage.id},
+            })
+        
+        # ===== 6. Продукция =====
+        # Собираем ID продукции через исполнителя и ответственного
+        product_ids = set()
 
+        # Продукция где сотрудник исполнитель
+        performer_product_ids = ResearchProduct.objects.filter(
+            product_performers__employee=employee
+        ).values_list('id', flat=True)
+        product_ids.update(performer_product_ids)
 
+        # Продукция где сотрудник ответственный
+        responsible_product_ids = ResearchProduct.objects.filter(
+            responsible=employee
+        ).values_list('id', flat=True)
+        product_ids.update(responsible_product_ids)
 
+        # Получаем все продукты по ID с оптимизацией
+        all_products = ResearchProduct.objects.filter(
+            id__in=product_ids
+        ).select_related(
+            'research_task', 'research_stage', 'research_substage', 'responsible'
+        )
+
+        print(f"\n=== ОТЛАДКА ПРОДУКЦИИ ===")
+        print(f"Продукция как исполнитель: {len(performer_product_ids)}")
+        print(f"Продукция как ответственный: {len(responsible_product_ids)}")
+        print(f"Всего продукции: {all_products.count()}")
+
+        # Импортируем timedelta для расчета дней до срока
+        from datetime import timedelta
+
+        for product in all_products:
+            sort_date = product.planned_end if product.planned_end else product.created_date
+            
+            # Получаем связанные объекты
+            research_substage = product.research_substage
+            research_stage = product.research_stage
+            if not research_stage and research_substage:
+                research_stage = research_substage.stage
+            research_task = product.research_task
+            if not research_task and research_stage:
+                research_task = research_stage.research_task
+            
+            # Получаем информацию о подэтапе
+            substage_info = None
+            if research_substage:
+                substage_info = {
+                    'id': research_substage.id,
+                    'number': research_substage.substage_number,
+                    'title': research_substage.title,
+                    'start_date': research_substage.start_date,
+                    'end_date': research_substage.end_date,
+                }
+            
+            # Вычисляем статус выполнения и цвет
+            today = timezone.now().date()
+            is_completed = product.status == 'completed'
+            
+            # Проверяем, осталось ли менее 2 месяцев до срока
+            days_until_due = None
+            due_date_warning = False
+            if product.planned_end and not is_completed:
+                days_until_due = (product.planned_end - today).days
+                due_date_warning = days_until_due <= 60  # 2 месяца = примерно 60 дней
+            
+            # Цвет индикатора выполнения
+            status_color = 'success' if is_completed else 'danger'
+            
+            items.append({
+                'type': 'product',
+                'id': product.id,
+                'name': product.name,
+                'description': product.description,
+                'status': product.status,
+                'is_completed': is_completed,
+                'status_color': status_color,
+                'due_date': product.planned_end,
+                'due_date_warning': due_date_warning,
+                'days_until_due': days_until_due,
+                'planned_start': product.planned_start,
+                'planned_end': product.planned_end,
+                'sort_date': sort_date,
+                'is_overdue': product.is_overdue,
+                'responsible': product.responsible,
+                'substage': substage_info,  # Теперь содержит полную информацию о подэтапе
+                'stage': research_stage,
+                'research_task': research_task,
+                'get_status_display': product.get_status_display(),
+                'status_color_badge': {
+                    'pending': 'secondary',
+                    'in_progress': 'primary',
+                    'completed': 'success',
+                    'delayed': 'danger',
+                    'cancelled': 'dark'
+                }.get(product.status, 'secondary'),
+                'completion_percent': product.completion_percent,
+            })
+        
+        # Фильтрация по типу
+        if item_type != 'all':
+            items = [item for item in items if item['type'] == item_type]
+        
+        # Сортировка по дате
+        today = timezone.now().date()
+        
+        def sort_key(item):
+            date_val = item.get('sort_date')
+            if date_val:
+                if isinstance(date_val, datetime):
+                    date_val = date_val.date()
+                return (date_val - today).days if date_val else 9999
+            return 9999
+        
+        items.sort(key=sort_key)
+        
+        # Статистика
+        context = {
+            'employee': employee,
+            'items': items,
+            'current_type': item_type,
+            'staff_positions': staff_positions,
+            'org_structure': org_structure,
+            'tasks_count': len([i for i in items if i['type'] == 'task']),
+            'subtasks_count': len([i for i in items if i['type'] == 'subtask']),
+            'products_count': len([i for i in items if i['type'] == 'product']),
+            'research_tasks_count': len([i for i in items if i['type'] == 'research_task']),
+            'research_stages_count': len([i for i in items if i['type'] == 'research_stage']),
+            'research_substages_count': len([i for i in items if i['type'] == 'research_substage']),
+            'overdue_count': len([i for i in items if i.get('is_overdue')]),
+        }
+        
+        print(f"\n=== СТАТИСТИКА ===")
+        print(f"products_count в контексте: {context['products_count']}")
+        
+        return render(request, 'tasks/employee_detail.html', context)
+        
+    except Exception as e:
+        print(f"ОШИБКА в employee_detail: {e}")
+        import traceback
+        traceback.print_exc()
+        messages.error(request, f'Ошибка при загрузке данных: {str(e)}')
+        return redirect('employee_list')
+   
 @login_required
 def employee_create(request):
     """Создание нового сотрудника"""
@@ -487,4 +916,3 @@ def employee_tasks(request, employee_id):
         'current_status': status,
     }
     return render(request, 'tasks/employee_tasks.html', context)
-

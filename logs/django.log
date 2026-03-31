@@ -8280,3 +8280,274 @@ INFO 2026-03-31 13:57:01,206 log 11868 3596 "GET /static/css/style.css HTTP/1.1"
 WARNING 2026-03-31 13:57:01,379 log 11868 3596 Not Found: /favicon.ico
 WARNING 2026-03-31 13:57:01,380 log 11868 3596 "GET /favicon.ico HTTP/1.1" 404 1791
 INFO 2026-03-31 13:57:55,452 log 11868 3596 "GET /employee/286/?debug=1 HTTP/1.1" 200 2334
+INFO 2026-03-31 14:09:57,495 autoreload 8512 12872 Watching for file changes with StatReloader
+INFO 2026-03-31 14:09:59,079 log 8512 16516 "GET /employee/286/ HTTP/1.1" 200 2399
+INFO 2026-03-31 14:10:01,250 log 8512 16516 "GET /employee/286/ HTTP/1.1" 200 2320
+INFO 2026-03-31 14:10:01,333 log 8512 16516 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 14:10:01,333 log 8512 10624 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 14:10:08,101 log 8512 10624 "GET /employee/286/ HTTP/1.1" 200 2344
+INFO 2026-03-31 14:10:08,131 log 8512 16516 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 14:10:08,131 log 8512 10624 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 14:28:07,128 log 8512 7492 "GET /employee/286/?debug=1 HTTP/1.1" 200 2318
+INFO 2026-03-31 14:28:07,157 log 8512 7492 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 14:28:07,160 log 8512 16888 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 14:28:07,299 autoreload 8512 12872 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 14:28:08,056 autoreload 2992 12500 Watching for file changes with StatReloader
+WARNING 2026-03-31 14:28:08,834 log 2992 10708 Not Found: /favicon.ico
+WARNING 2026-03-31 14:28:08,835 log 2992 10708 "GET /favicon.ico HTTP/1.1" 404 1809
+INFO 2026-03-31 14:28:10,622 log 2992 10708 "GET /employee/286/?debug=1 HTTP/1.1" 200 287
+WARNING 2026-03-31 14:28:10,666 log 2992 10708 Not Found: /favicon.ico
+WARNING 2026-03-31 14:28:10,667 log 2992 10708 "GET /favicon.ico HTTP/1.1" 404 1763
+INFO 2026-03-31 14:28:22,791 autoreload 14920 3628 Watching for file changes with StatReloader
+INFO 2026-03-31 14:28:25,815 log 14920 17956 "GET /employee/286/?debug=1 HTTP/1.1" 200 288
+INFO 2026-03-31 14:28:30,433 log 14920 17956 "GET /employee/286 HTTP/1.1" 301 0
+INFO 2026-03-31 14:28:30,496 log 14920 17956 "GET /employee/286/ HTTP/1.1" 200 2134
+INFO 2026-03-31 14:28:34,594 log 14920 17956 "GET /employee/286/ HTTP/1.1" 200 2161
+INFO 2026-03-31 14:28:34,675 log 14920 14720 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 14:28:34,676 log 14920 17956 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-31 14:28:34,924 log 14920 17956 Not Found: /favicon.ico
+WARNING 2026-03-31 14:28:34,925 log 14920 17956 "GET /favicon.ico HTTP/1.1" 404 1820
+INFO 2026-03-31 14:28:35,637 log 14920 17956 "GET /employee/286/ HTTP/1.1" 200 2083
+INFO 2026-03-31 14:28:35,667 log 14920 14720 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 14:28:35,667 log 14920 17956 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-31 14:28:35,921 log 14920 14720 Not Found: /favicon.ico
+WARNING 2026-03-31 14:28:35,922 log 14920 14720 "GET /favicon.ico HTTP/1.1" 404 1844
+INFO 2026-03-31 14:28:36,668 log 14920 14720 "GET /employee/286/ HTTP/1.1" 200 2162
+INFO 2026-03-31 14:28:36,694 log 14920 14720 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 14:28:36,699 log 14920 17956 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 14:28:36,951 log 14920 17956 Not Found: /favicon.ico
+WARNING 2026-03-31 14:28:36,951 log 14920 17956 "GET /favicon.ico HTTP/1.1" 404 1814
+INFO 2026-03-31 14:29:55,089 log 14920 17956 "GET /employee/286/ HTTP/1.1" 200 2095
+INFO 2026-03-31 14:29:55,093 autoreload 14920 3628 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 14:29:55,851 autoreload 12688 14112 Watching for file changes with StatReloader
+INFO 2026-03-31 14:29:56,888 log 12688 4184 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 14:29:56,896 log 12688 2860 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 14:29:57,146 log 12688 2860 Not Found: /favicon.ico
+WARNING 2026-03-31 14:29:57,147 log 12688 2860 "GET /favicon.ico HTTP/1.1" 404 1839
+INFO 2026-03-31 14:29:59,164 log 12688 2860 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 14:29:59,383 log 12688 2860 "GET /employees/ HTTP/1.1" 200 4157
+INFO 2026-03-31 14:29:59,410 log 12688 2860 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 14:29:59,415 log 12688 4184 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 14:29:59,711 log 12688 4184 Not Found: /favicon.ico
+WARNING 2026-03-31 14:29:59,712 log 12688 4184 "GET /favicon.ico HTTP/1.1" 404 1824
+WARNING 2026-03-31 14:30:07,580 log 12688 4184 Not Found: /employees/287
+WARNING 2026-03-31 14:30:07,580 log 12688 4184 "GET /employees/287 HTTP/1.1" 404 1812
+WARNING 2026-03-31 14:30:19,528 log 12688 4184 Not Found: /employees/286
+WARNING 2026-03-31 14:30:19,529 log 12688 4184 "GET /employees/286 HTTP/1.1" 404 1854
+WARNING 2026-03-31 14:53:40,993 log 12688 16800 Not Found: /employees/286
+WARNING 2026-03-31 14:53:40,994 log 12688 16800 "GET /employees/286 HTTP/1.1" 404 1845
+WARNING 2026-03-31 14:53:41,076 log 12688 16800 Not Found: /favicon.ico
+WARNING 2026-03-31 14:53:41,076 log 12688 16800 "GET /favicon.ico HTTP/1.1" 404 1855
+INFO 2026-03-31 14:59:22,550 autoreload 13256 864 Watching for file changes with StatReloader
+WARNING 2026-03-31 14:59:25,571 log 13256 13116 Not Found: /employees/286
+WARNING 2026-03-31 14:59:25,572 log 13256 13116 "GET /employees/286 HTTP/1.1" 404 1803
+WARNING 2026-03-31 14:59:26,443 log 13256 13116 Not Found: /employees/286
+WARNING 2026-03-31 14:59:26,444 log 13256 13116 "GET /employees/286 HTTP/1.1" 404 1824
+WARNING 2026-03-31 14:59:27,105 log 13256 13116 Not Found: /employees/286
+WARNING 2026-03-31 14:59:27,106 log 13256 13116 "GET /employees/286 HTTP/1.1" 404 1792
+WARNING 2026-03-31 14:59:27,155 log 13256 13116 Not Found: /favicon.ico
+WARNING 2026-03-31 14:59:27,156 log 13256 13116 "GET /favicon.ico HTTP/1.1" 404 1846
+INFO 2026-03-31 14:59:29,492 log 13256 13116 "GET /employees HTTP/1.1" 301 0
+INFO 2026-03-31 14:59:29,778 log 13256 13116 "GET /employees/ HTTP/1.1" 200 4001
+INFO 2026-03-31 14:59:31,478 log 13256 13116 "GET /employee/295/ HTTP/1.1" 302 0
+INFO 2026-03-31 14:59:31,668 log 13256 13116 "GET /employees/ HTTP/1.1" 200 4100
+INFO 2026-03-31 14:59:32,728 log 13256 13116 "GET /employee/295/ HTTP/1.1" 302 0
+INFO 2026-03-31 14:59:32,912 log 13256 13116 "GET /employees/ HTTP/1.1" 200 4124
+INFO 2026-03-31 15:03:14,930 log 13256 13116 "GET /employees/ HTTP/1.1" 200 4006
+INFO 2026-03-31 15:03:19,807 log 13256 13116 "GET /employee/277/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:03:19,994 log 13256 13116 "GET /employees/ HTTP/1.1" 200 4125
+INFO 2026-03-31 15:10:06,437 log 13256 14928 "GET /employees/ HTTP/1.1" 200 3955
+INFO 2026-03-31 15:10:32,875 autoreload 15092 15064 Watching for file changes with StatReloader
+INFO 2026-03-31 15:10:50,467 log 15092 16420 "GET /employee/295/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:10:50,754 log 15092 16420 "GET /employees/ HTTP/1.1" 200 4148
+INFO 2026-03-31 15:10:58,374 log 15092 16420 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:10:58,566 log 15092 16420 "GET /employees/ HTTP/1.1" 200 4119
+INFO 2026-03-31 15:11:17,661 autoreload 18260 9380 Watching for file changes with StatReloader
+INFO 2026-03-31 15:11:30,391 log 18260 2192 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:11:30,618 log 18260 2192 "GET /employees/ HTTP/1.1" 200 4114
+INFO 2026-03-31 15:13:51,034 autoreload 18260 9380 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 15:13:51,776 autoreload 12588 15960 Watching for file changes with StatReloader
+INFO 2026-03-31 15:13:55,220 autoreload 12588 15960 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 15:13:56,020 autoreload 2008 2352 Watching for file changes with StatReloader
+INFO 2026-03-31 15:14:00,623 autoreload 15868 17772 Watching for file changes with StatReloader
+INFO 2026-03-31 15:14:04,456 log 15868 12672 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:14:04,667 log 15868 12672 "GET /employees/ HTTP/1.1" 200 4171
+INFO 2026-03-31 15:14:12,370 log 15868 12672 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:14:12,541 log 15868 12672 "GET /employees/ HTTP/1.1" 200 4172
+INFO 2026-03-31 15:16:08,208 autoreload 15868 17772 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 15:16:08,999 autoreload 17208 13284 Watching for file changes with StatReloader
+INFO 2026-03-31 15:16:12,218 log 17208 5348 "GET /employee/277/ HTTP/1.1" 200 2373
+INFO 2026-03-31 15:16:20,962 log 17208 5348 "GET /employee/287/ HTTP/1.1" 200 2405
+INFO 2026-03-31 15:16:27,049 log 17208 5348 "GET /employee/267/ HTTP/1.1" 200 2204
+INFO 2026-03-31 15:41:43,270 log 17208 9760 "GET /employee/286/ HTTP/1.1" 200 2358
+INFO 2026-03-31 15:42:03,615 log 17208 9760 "GET /employee/286/ HTTP/1.1" 200 2394
+INFO 2026-03-31 15:42:03,700 log 17208 9760 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:42:03,701 log 17208 3676 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:42:04,056 log 17208 3676 Not Found: /favicon.ico
+WARNING 2026-03-31 15:42:04,056 log 17208 3676 "GET /favicon.ico HTTP/1.1" 404 1826
+INFO 2026-03-31 15:42:04,875 log 17208 3676 "GET /employee/286/ HTTP/1.1" 200 2313
+INFO 2026-03-31 15:42:04,907 log 17208 3676 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:42:04,907 log 17208 9760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:42:05,085 log 17208 9760 Not Found: /favicon.ico
+WARNING 2026-03-31 15:42:05,085 log 17208 9760 "GET /favicon.ico HTTP/1.1" 404 1831
+WARNING 2026-03-31 15:42:07,756 log 17208 9760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:42:07,757 log 17208 9760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1799
+WARNING 2026-03-31 15:42:47,075 log 17208 9760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:42:47,076 log 17208 9760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1804
+INFO 2026-03-31 15:43:14,280 log 17208 9760 "GET /employee/286/ HTTP/1.1" 200 2392
+INFO 2026-03-31 15:43:14,316 log 17208 9760 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:43:14,320 log 17208 3676 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:43:14,412 log 17208 3676 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:43:14,413 log 17208 3676 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1854
+INFO 2026-03-31 15:44:53,841 log 17208 3676 "GET / HTTP/1.1" 200 5275
+INFO 2026-03-31 15:44:53,876 log 17208 3676 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:44:53,877 log 17208 9760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:44:53,916 log 17208 9760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:44:53,917 log 17208 9760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1885
+INFO 2026-03-31 15:44:56,222 log 17208 9760 "GET /research/15/ HTTP/1.1" 200 13085
+INFO 2026-03-31 15:44:56,258 log 17208 9760 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:44:56,259 log 17208 3676 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:44:56,303 log 17208 3676 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:44:56,304 log 17208 3676 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1877
+INFO 2026-03-31 15:45:03,517 log 17208 3676 "GET /product/1563/assign-performers/ HTTP/1.1" 200 15703
+INFO 2026-03-31 15:45:03,565 log 17208 3676 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:45:03,569 log 17208 9760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:45:03,599 log 17208 9760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:45:03,601 log 17208 9760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+ERROR 2026-03-31 15:45:12,802 log 17208 9760 Internal Server Error: /product/1563/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 80, in product_assign_performers
+    if product.subtask and product.subtask.task:
+       ^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'subtask'
+ERROR 2026-03-31 15:45:12,809 log 17208 9760 "POST /product/1563/assign-performers/ HTTP/1.1" 500 12980
+WARNING 2026-03-31 15:45:12,896 log 17208 9760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:45:12,896 log 17208 9760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+INFO 2026-03-31 15:45:25,735 log 17208 9760 "GET /product/1563/assign-performers/ HTTP/1.1" 200 15773
+INFO 2026-03-31 15:45:25,788 log 17208 9760 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:45:25,788 log 17208 3676 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:45:25,812 log 17208 3676 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:45:25,812 log 17208 3676 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1856
+INFO 2026-03-31 15:45:31,791 log 17208 3676 "GET /employees/ HTTP/1.1" 200 4006
+INFO 2026-03-31 15:45:31,832 log 17208 3676 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:45:31,834 log 17208 9760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:45:31,866 log 17208 9760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:45:31,867 log 17208 9760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1814
+INFO 2026-03-31 15:45:35,100 log 17208 9760 "GET /employee/307/ HTTP/1.1" 200 2296
+INFO 2026-03-31 15:45:35,143 log 17208 9760 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:45:35,144 log 17208 3676 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:45:35,161 log 17208 3676 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:45:35,162 log 17208 3676 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1823
+INFO 2026-03-31 15:45:37,592 log 17208 3676 "GET /employee/307/ HTTP/1.1" 200 2292
+INFO 2026-03-31 15:45:37,638 log 17208 3676 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:45:37,638 log 17208 9760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:45:37,659 log 17208 3676 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:45:37,660 log 17208 3676 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1861
+WARNING 2026-03-31 15:45:37,882 log 17208 3676 Not Found: /favicon.ico
+WARNING 2026-03-31 15:45:37,883 log 17208 3676 "GET /favicon.ico HTTP/1.1" 404 1803
+INFO 2026-03-31 15:45:58,587 autoreload 9680 18372 Watching for file changes with StatReloader
+INFO 2026-03-31 15:46:14,556 log 9680 14496 "GET /employee/286/ HTTP/1.1" 200 2383
+INFO 2026-03-31 15:46:14,692 log 9680 14496 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:46:14,708 log 9680 10704 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:46:14,795 log 9680 7900 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:46:14,797 log 9680 7900 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1881
+INFO 2026-03-31 15:48:59,851 autoreload 9680 18372 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 15:49:00,625 autoreload 5204 9528 Watching for file changes with StatReloader
+INFO 2026-03-31 15:49:10,221 log 5204 14796 "GET /employee/286/ HTTP/1.1" 200 2324
+WARNING 2026-03-31 15:49:10,304 log 5204 11052 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:49:10,305 log 5204 11052 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1869
+INFO 2026-03-31 15:49:10,330 log 5204 14548 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 15:49:10,346 log 5204 14796 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:52:17,053 log 5204 14796 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:52:17,250 log 5204 14796 "GET /employees/ HTTP/1.1" 200 4184
+INFO 2026-03-31 15:52:17,290 log 5204 14796 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:52:17,293 log 5204 14548 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:52:17,315 log 5204 14548 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:17,316 log 5204 14548 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1817
+WARNING 2026-03-31 15:52:17,533 log 5204 14548 Not Found: /favicon.ico
+WARNING 2026-03-31 15:52:17,534 log 5204 14548 "GET /favicon.ico HTTP/1.1" 404 1783
+INFO 2026-03-31 15:52:19,683 log 5204 14548 "GET /employees/ HTTP/1.1" 200 3967
+INFO 2026-03-31 15:52:19,720 log 5204 14548 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:52:19,720 log 5204 14796 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:52:19,742 log 5204 14796 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:19,743 log 5204 14796 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1855
+WARNING 2026-03-31 15:52:20,005 log 5204 14796 Not Found: /favicon.ico
+WARNING 2026-03-31 15:52:20,005 log 5204 14796 "GET /favicon.ico HTTP/1.1" 404 1781
+INFO 2026-03-31 15:52:29,513 autoreload 17288 1456 Watching for file changes with StatReloader
+WARNING 2026-03-31 15:52:32,412 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:32,413 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1855
+WARNING 2026-03-31 15:52:32,471 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:32,472 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1861
+WARNING 2026-03-31 15:52:34,292 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:34,293 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1818
+WARNING 2026-03-31 15:52:34,348 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:34,349 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1877
+WARNING 2026-03-31 15:52:35,899 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:35,899 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1844
+WARNING 2026-03-31 15:52:35,943 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:35,944 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1826
+WARNING 2026-03-31 15:52:37,057 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:37,058 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1803
+WARNING 2026-03-31 15:52:37,106 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:37,107 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1859
+INFO 2026-03-31 15:52:42,902 log 17288 14432 "GET /employees/?page=2&sort=last_name HTTP/1.1" 200 4120
+WARNING 2026-03-31 15:52:42,978 log 17288 2276 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:42,979 log 17288 2276 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+INFO 2026-03-31 15:52:43,032 log 17288 14432 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:52:43,040 log 17288 18348 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 15:52:47,946 log 17288 18348 "GET /employees/?page=3&sort=last_name HTTP/1.1" 200 4204
+INFO 2026-03-31 15:52:47,990 log 17288 18348 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:52:47,993 log 17288 14432 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:52:48,027 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:48,027 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1867
+INFO 2026-03-31 15:52:50,245 log 17288 14432 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 15:52:50,458 log 17288 14432 "GET /employees/ HTTP/1.1" 200 4175
+INFO 2026-03-31 15:52:50,505 log 17288 14432 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:52:50,506 log 17288 18348 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:52:50,539 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:52:50,540 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1881
+WARNING 2026-03-31 15:54:00,524 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:00,525 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+WARNING 2026-03-31 15:54:00,578 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:00,578 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1872
+WARNING 2026-03-31 15:54:01,434 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:01,435 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1880
+WARNING 2026-03-31 15:54:01,485 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:01,486 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1837
+INFO 2026-03-31 15:54:03,559 log 17288 18348 "GET /employee/307/ HTTP/1.1" 200 1983
+INFO 2026-03-31 15:54:03,599 log 17288 18348 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:54:03,604 log 17288 14432 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:54:03,623 log 17288 2276 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:03,624 log 17288 2276 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1836
+WARNING 2026-03-31 15:54:08,833 log 17288 2276 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:08,834 log 17288 2276 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1812
+WARNING 2026-03-31 15:54:08,893 log 17288 2276 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:08,894 log 17288 2276 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1800
+INFO 2026-03-31 15:54:34,240 log 17288 2276 "GET /employees/?department=&is_active=&search=%D0%BE%D0%B1%D0%B2%D0%B8%D0%BD%D1%86%D0%B5%D0%B2%D0%B0 HTTP/1.1" 200 2360
+INFO 2026-03-31 15:54:34,292 log 17288 2276 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:54:34,292 log 17288 14432 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:54:34,307 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:34,308 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1879
+INFO 2026-03-31 15:54:36,588 log 17288 18348 "GET /employee/286/ HTTP/1.1" 200 1839
+INFO 2026-03-31 15:54:36,629 log 17288 14432 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 15:54:36,629 log 17288 18348 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-31 15:54:36,666 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:54:36,667 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1876
+INFO 2026-03-31 15:55:47,712 log 17288 18348 "GET /employees/ HTTP/1.1" 200 3947
+INFO 2026-03-31 15:55:47,757 log 17288 18348 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:55:47,760 log 17288 14432 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:55:47,789 log 17288 14432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:55:47,789 log 17288 14432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1836
+INFO 2026-03-31 15:55:49,001 log 17288 14432 "GET /employee/307/ HTTP/1.1" 200 1996
+INFO 2026-03-31 15:55:49,042 log 17288 14432 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 15:55:49,042 log 17288 18348 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 15:55:49,065 log 17288 18348 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-03-31 15:55:49,067 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1799
+INFO 2026-03-31 16:04:45,626 autoreload 17288 1456 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 16:04:46,420 autoreload 9936 2848 Watching for file changes with StatReloader

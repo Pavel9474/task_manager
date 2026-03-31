@@ -11,8 +11,17 @@ def research_product_detail(request, product_id):
     """Детальная информация о продукции"""
     product = get_object_or_404(ResearchProduct, id=product_id)
     
+    # Get performers with their details
+    performers = product.product_performers.select_related('employee').all()
+    
+    # Create a simple form for adding performers
+    from ..forms_product import ProductPerformerForm
+    performer_form = ProductPerformerForm()
+    
     context = {
         'product': product,
+        'performers': performers,
+        'performer_form': performer_form,
     }
     return render(request, 'tasks/research_product_detail.html', context)
 
@@ -48,7 +57,7 @@ def product_assign_performers(request, product_id):
         performer_ids = request.POST.getlist('performers')
         responsible_id = request.POST.get('responsible')
         
-        # Очищаем существующих испо лнителей
+        # Очищаем существующих исполнителей
         product.product_performers.all().delete()
         
         # Создаем новых исполнителей
@@ -68,16 +77,9 @@ def product_assign_performers(request, product_id):
         
         messages.success(request, 'Исполнители назначены')
         
-        # Исправленный редирект
-        if product.research_substage:
-            # Возвращаемся на страницу НИР
-            research_task_id = product.research_substage.stage.research_task.id
-            return redirect('research_task_detail', task_id=research_task_id)
-        elif product.research_stage:
-            research_task_id = product.research_stage.research_task.id
-            return redirect('research_task_detail', task_id=research_task_id)
-        else:
-            return redirect('research_task_list')
+        if product.subtask and product.subtask.task:
+            return redirect('subtask_list', task_id=product.subtask.task.id)
+        return redirect('task_list')
     
     # Получаем параметры фильтрации
     department_id = request.GET.get('department')
@@ -159,6 +161,41 @@ def product_assign_performers(request, product_id):
         'search_query': search_query,
     }
     return render(request, 'tasks/product_assign_performers.html', context)
+
+
+@login_required
+def assign_product_performer(request, product_id):
+    """Назначение исполнителя на продукцию"""
+    product = get_object_or_404(ResearchProduct, id=product_id)
+    
+    if request.method == 'POST':
+        from ..forms_product import ProductPerformerForm
+        form = ProductPerformerForm(request.POST)
+        if form.is_valid():
+            performer = form.save(commit=False)
+            performer.product = product
+            performer.save()
+            messages.success(request, f'Исполнитель {performer.employee.full_name} назначен')
+        else:
+            messages.error(request, 'Ошибка при назначении исполнителя')
+    
+    return redirect('research_product_detail', product_id=product.id)
+
+
+@login_required
+def remove_product_performer(request, product_id, performer_id):
+    """Удаление исполнителя с продукции"""
+    product = get_object_or_404(ResearchProduct, id=product_id)
+    performer = get_object_or_404(ProductPerformer, id=performer_id, product=product)
+    
+    if request.method == 'POST':
+        employee_name = performer.employee.full_name
+        performer.delete()
+        messages.success(request, f'Исполнитель {employee_name} удален')
+    
+    return redirect('research_product_detail', product_id=product.id)
+
+
 @login_required
 def research_product_list(request):
     """Список научной продукции"""

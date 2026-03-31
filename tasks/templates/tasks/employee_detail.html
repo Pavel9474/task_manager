@@ -3,189 +3,45 @@
 {% block title %}{{ employee.full_name }}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-10 offset-md-1">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h3>{{ employee.full_name }}</h3>
-                <div>
-                    <span class="badge {% if employee.is_active %}bg-success{% else %}bg-secondary{% endif %}">
-                        {{ employee.is_active|yesno:"Активен,Неактивен" }}
-                    </span>
-                </div>
-            </div>
-            <div class="card-body">
-                <!-- Основная информация -->
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <h5>Основная информация</h5>
-                        <table class="table table-sm">
-                            <tr>
-                                <th style="width: 40%;">Должность:</th>
-                                <td><strong>{{ employee.position }}</strong></td>
-                            </tr>
-                            {% if org_structure %}
-                                {% if org_structure.institute %}
-                                <tr>
-                                    <th>Институт/Подразделение:</th>
-                                    <td>{{ org_structure.institute }}</td>
-                                </tr>
-                                {% endif %}
-                                {% if org_structure.department %}
-                                <tr>
-                                    <th>Отдел:</th>
-                                    <td>{{ org_structure.department }}</td>
-                                </tr>
-                                {% endif %}
-                                {% if org_structure.laboratory %}
-                                <tr>
-                                    <th>Лаборатория:</th>
-                                    <td>{{ org_structure.laboratory }}</td>
-                                </tr>
-                                {% endif %}
-                                {% if org_structure.group %}
-                                <tr>
-                                    <th>Группа:</th>
-                                    <td>{{ org_structure.group }}</td>
-                                </tr>
-                                {% endif %}
-                                <tr>
-                                    <th>Полный путь:</th>
-                                    <td><small class="text-muted">{{ org_structure.full_path }}</small></td>
-                                </tr>
-                            {% else %}
-                                <tr>
-                                    <th>Отдел:</th>
-                                    <td>{{ employee.get_department_display|default:"Не указан" }}</td>
-                                </tr>
-                                {% if employee.laboratory %}
-                                <tr>
-                                    <th>Лаборатория:</th>
-                                    <td>{{ employee.get_laboratory_display }}</td>
-                                </tr>
-                                {% endif %}
-                            {% endif %}
-                            {% if employee.hire_date %}
-                            <tr>
-                                <th>Дата найма:</th>
-                                <td>{{ employee.hire_date|date:"d.m.Y" }}</td>
-                            </tr>
-                            {% endif %}
-                        </table>
-                    </div>
-                    <div class="col-md-6">
-                        <h5>Контакты</h5>
-                        <table class="table table-sm">
-                            <tr>
-                                <th style="width: 40%;">Email:</th>
-                                <td><a href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
-                            </tr>
-                            {% if employee.phone %}
-                            <tr>
-                                <th>Телефон:</th>
-                                <td><a href="tel:{{ employee.phone }}">{{ employee.phone }}</a></td>
-                            </tr>
-                            {% endif %}
-                        </table>
-                        
-                        <h5 class="mt-3">Штатные позиции</h5>
-                        <table class="table table-sm table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Должность</th>
-                                    <th>Подразделение</th>
-                                    <th>Ставка</th>
-                                    <th>Тип</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for sp in staff_positions %}
-                                <tr>
-                                    <td>{{ sp.position.name }}</td>
-                                    <td><small>{{ sp.department.name }}</small></td>
-                                    <td>{{ sp.workload }}</td>
-                                    <td><small>{{ sp.get_employment_type_display }}</small></td>
-                                </tr>
-                                {% empty %}
-                                <tr>
-                                    <td colspan="4" class="text-muted">Нет активных штатных позиций</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                {% if employee.notes %}
-                <div class="mb-4">
-                    <h5>Заметки</h5>
-                    <p class="card-text">{{ employee.notes|linebreaks }}</p>
-                </div>
-                {% endif %}
-                
-                <!-- Задачи сотрудника -->
-                <div class="mb-4">
-                    <h5>Последние задачи</h5>
-                    {% if assigned_tasks %}
-                        <div class="list-group">
-                            {% for task in assigned_tasks %}
-                                <a href="{% url 'task_detail' task.id %}" class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-1">{{ task.title }}</h6>
-                                        <small class="text-muted">{{ task.created_date|date:"d.m.Y" }}</small>
-                                    </div>
-                                    <p class="mb-1 small">{{ task.description|truncatechars:100 }}</p>
-                                    <small>
-                                        <span class="badge {% if task.status == 'done' %}bg-success{% elif task.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
-                                            {{ task.get_status_display }}
-                                        </span>
-                                        <span class="badge {% if task.priority == 'high' %}bg-danger{% elif task.priority == 'medium' %}bg-warning{% else %}bg-info{% endif %}">
-                                            {{ task.get_priority_display }}
-                                        </span>
-                                    </small>
-                                </a>
-                            {% endfor %}
-                        </div>
-                        <div class="mt-2">
-                            <a href="{% url 'employee_tasks' employee.id %}" class="btn btn-sm btn-outline-primary">
-                                Все задачи сотрудника
-                            </a>
-                        </div>
-                    {% else %}
-                        <p class="text-muted">У сотрудника пока нет задач</p>
-                    {% endif %}
-                </div>
-                
-                <!-- Кнопки действий -->
-                <div class="d-flex justify-content-between">
-                    <a href="{% url 'employee_list' %}" class="btn btn-secondary">
-                        <i class="bi bi-arrow-left"></i> К списку
-                    </a>
-                    <div>
-                        <a href="{% url 'employee_update' employee.id %}" class="btn btn-primary">
-                            <i class="bi bi-pencil"></i> Редактировать
-                        </a>
-                        <a href="{% url 'employee_toggle_active' employee.id %}" class="btn btn-warning">
-                            <i class="bi bi-power"></i> 
-                            {{ employee.is_active|yesno:"Деактивировать,Активировать" }}
-                        </a>
-                        <a href="{% url 'employee_delete' employee.id %}" class="btn btn-danger">
-                            <i class="bi bi-trash"></i> Удалить
-                        </a>
-                    </div>
-                </div>
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ employee.full_name }}</h3>
+            <p class="mb-0">{{ employee.position }}</p>
+        </div>
+        <div class="card-body">
+            <!-- Отладочная информация -->
+            <div class="alert alert-info">
+                <h5>Отладка:</h5>
+                <p>Всего items: {{ items|length }}</p>
+                <p>Продуктов: {{ products_count }}</p>
+                <p>Типы items: 
+                    {% for item in items %}
+                        {{ item.type }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
             </div>
             
-            <!-- Информация о создании/обновлении -->
-            <div class="card-footer text-muted small">
-                <div class="d-flex justify-content-between">
-                    <span>Создано: {{ employee.created_date|date:"d.m.Y H:i" }}</span>
-                    <span>Обновлено: {{ employee.updated_date|date:"d.m.Y H:i" }}</span>
+            <!-- Продукция -->
+            <h4>Научная продукция ({{ products_count }})</h4>
+            {% for item in items %}
+                {% if item.type == 'product' %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5>{{ item.name }}</h5>
+                        <p>Статус: {{ item.get_status_display }}</p>
+                        <p>Готовность: {{ item.completion_percent }}%</p>
+                        {% if item.research_task %}
+                            <p>НИР: {{ item.research_task.title }}</p>
+                        {% endif %}
+                    </div>
                 </div>
-                {% if employee.created_by %}
-                    <div>Создал: {{ employee.created_by.username }}</div>
                 {% endif %}
-            </div>
+            {% endfor %}
+            
+            {% if products_count == 0 %}
+                <p class="text-muted">Нет продукции</p>
+            {% endif %}
         </div>
     </div>
 </div>

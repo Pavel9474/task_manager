@@ -6015,3 +6015,73 @@ ERROR 2026-03-31 13:56:24,134 middleware 11868 3596 ❌ Ошибка 404: GET /f
 ERROR 2026-03-31 13:56:24,801 middleware 11868 12240 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-31 13:57:01,010 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-31 13:57:01,379 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:28:08,815 middleware 2992 10708 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:28:10,665 middleware 2992 10708 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:28:30,432 middleware 14920 17956 ❌ Ошибка 404: GET /employee/286 - Пользователь: pavel2
+ERROR 2026-03-31 14:28:34,924 middleware 14920 17956 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:28:35,920 middleware 14920 14720 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:28:36,950 middleware 14920 17956 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:29:57,145 middleware 12688 2860 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:29:59,709 middleware 12688 4184 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:30:07,579 middleware 12688 4184 ❌ Ошибка 404: GET /employees/287 - Пользователь: pavel2
+ERROR 2026-03-31 14:30:19,527 middleware 12688 4184 ❌ Ошибка 404: GET /employees/286 - Пользователь: pavel2
+ERROR 2026-03-31 14:53:40,993 middleware 12688 16800 ❌ Ошибка 404: GET /employees/286 - Пользователь: pavel2
+ERROR 2026-03-31 14:53:41,074 middleware 12688 16800 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:59:25,569 middleware 13256 13116 ❌ Ошибка 404: GET /employees/286 - Пользователь: pavel2
+ERROR 2026-03-31 14:59:26,442 middleware 13256 13116 ❌ Ошибка 404: GET /employees/286 - Пользователь: pavel2
+ERROR 2026-03-31 14:59:27,104 middleware 13256 13116 ❌ Ошибка 404: GET /employees/286 - Пользователь: pavel2
+ERROR 2026-03-31 14:59:27,153 middleware 13256 13116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 14:59:29,490 middleware 13256 13116 ❌ Ошибка 404: GET /employees - Пользователь: pavel2
+ERROR 2026-03-31 15:42:04,055 middleware 17208 3676 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 15:42:05,084 middleware 17208 9760 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 15:42:07,755 middleware 17208 9760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:42:47,074 middleware 17208 9760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:43:14,411 middleware 17208 3676 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:44:53,914 middleware 17208 9760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:44:56,301 middleware 17208 3676 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:03,598 middleware 17208 9760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:12,762 middleware 17208 9760 💥 Исключение в POST /product/1563/assign-performers/: 'ResearchProduct' object has no attribute 'subtask'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 80, in product_assign_performers
+    if product.subtask and product.subtask.task:
+       ^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'subtask'
+ERROR 2026-03-31 15:45:12,806 middleware 17208 9760 ❌ Ошибка 500: POST /product/1563/assign-performers/ - Пользователь: pavel2
+ERROR 2026-03-31 15:45:12,895 middleware 17208 9760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:25,811 middleware 17208 3676 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:31,864 middleware 17208 9760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:35,160 middleware 17208 3676 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:37,657 middleware 17208 3676 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:45:37,881 middleware 17208 3676 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 15:46:14,789 middleware 9680 7900 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:49:10,302 middleware 5204 11052 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:17,314 middleware 5204 14548 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:17,532 middleware 5204 14548 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 15:52:19,741 middleware 5204 14796 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:20,004 middleware 5204 14796 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 15:52:32,409 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:32,470 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:34,291 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:34,346 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:35,897 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:35,942 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:37,056 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:37,105 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:42,976 middleware 17288 2276 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:48,026 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:52:50,537 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:00,523 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:00,577 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:01,433 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:01,484 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:03,621 middleware 17288 2276 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:08,831 middleware 17288 2276 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:08,892 middleware 17288 2276 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:34,306 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:54:36,664 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:55:47,787 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 15:55:49,064 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
