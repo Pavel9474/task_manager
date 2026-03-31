@@ -7,17 +7,18 @@ from django.core.paginator import Paginator
 from ..models import Employee, Task, Subtask, ResearchTask, ResearchStage, ResearchSubstage, ResearchProduct, ProductPerformer
 from ..forms_employee import EmployeeForm, EmployeeImportForm
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta, date
 from django.db.models import Q
 import json
-
+# В самом верху файла, после импортов
+print("=" * 60)
+print("ФАЙЛ employee_views.py ЗАГРУЖЕН")
+print("=" * 60)
 @login_required
 def employee_list(request):
     """Список сотрудников с задачами и научной продукцией, отсортированными по близости к текущей дате"""
-    from datetime import date, datetime, timedelta
-    import json
-    
     employees = Employee.objects.all()
+    print(f"DEBUG: Найдено сотрудников: {employees.count()}") 
     
     # Фильтрация
     department = request.GET.get('department', '')
@@ -311,6 +312,8 @@ def employee_list(request):
         gantt_data[employee.id] = gantt_tasks
     
     context = {
+        'page_obj': employees,  # Для пагинации
+        'employee_list': employees,  # Простой список
         'page_obj': page_obj,
         'departments': Employee.DEPARTMENT_CHOICES,
         'laboratories': Employee.LABORATORY_CHOICES,
@@ -328,228 +331,271 @@ def employee_list(request):
     }
     return render(request, 'tasks/employee_list.html', context)
 
-
+# @login_required
+# def employee_detail(request, employee_id):
+#     with open('debug.txt', 'a') as f:
+#         f.write(f"employee_detail called for {employee_id}\n")
+#     print("=" * 60)
+#     print(f"!!! ФУНКЦИЯ employee_detail ВЫЗВАНА для ID: {employee_id} !!!")
+#     print("=" * 60)
+#     """Детальная информация о сотруднике"""
+#     print(f"=== employee_detail вызван для id={employee_id} ===")
+    
+#     try:
+#         # Используем get_object_or_404 для автоматического 404
+#         employee = get_object_or_404(Employee, id=employee_id)
+#         print(f"=== Найден сотрудник: {employee.full_name} ===")
+        
+#         # Штатные позиции
+#         staff_positions = employee.staff_positions.filter(is_active=True)
+#         org_structure = employee.get_organization_structure()
+        
+#         # Тип отображения
+#         item_type = request.GET.get('type', 'all')
+        
+#         items = []
+        
+#         # ===== 1. Обычные задачи =====
+#         tasks = employee.tasks.all()
+#         for task in tasks:
+#             sort_date = task.due_date if task.due_date else task.created_date
+#             items.append({
+#                 'type': 'task',
+#                 'id': task.id,
+#                 'title': task.title,
+#                 'description': task.description,
+#                 'status': task.status,
+#                 'priority': task.priority,
+#                 'due_date': task.due_date,
+#                 'sort_date': sort_date,
+#                 'is_overdue': task.is_overdue() if task.due_date else False,
+#                 'get_priority_display': task.get_priority_display(),
+#                 'get_status_display': task.get_status_display(),
+#                 'priority_color': {'high': 'warning', 'medium': 'info', 'low': 'success'}.get(task.priority, 'secondary')
+#             })
+        
+#         # ===== 2. Подзадачи =====
+#         subtasks_as_performer = employee.subtasks.all()
+#         subtasks_as_responsible = employee.responsible_subtasks.all()
+#         all_subtasks = (subtasks_as_performer | subtasks_as_responsible).distinct()
+        
+#         for subtask in all_subtasks:
+#             sort_date = subtask.planned_end if subtask.planned_end else subtask.created_date
+#             items.append({
+#                 'type': 'subtask',
+#                 'id': subtask.id,
+#                 'title': subtask.title,
+#                 'description': subtask.description,
+#                 'status': subtask.status,
+#                 'priority': subtask.priority,
+#                 'due_date': subtask.planned_end,
+#                 'sort_date': sort_date,
+#                 'is_overdue': subtask.is_overdue() if subtask.planned_end else False,
+#                 'task': subtask.task,
+#                 'progress': getattr(subtask, 'progress', 0),
+#                 'get_priority_display': subtask.get_priority_display(),
+#                 'get_status_display': subtask.get_status_display(),
+#                 'priority_color': getattr(subtask, 'priority_color', 'secondary')
+#             })
+        
+#         # ===== 3. НИР =====
+#         research_tasks_as_performer = ResearchTask.objects.filter(
+#             stages__substages__products__product_performers__employee=employee
+#         ).distinct()
+#         research_tasks_as_responsible = ResearchTask.objects.filter(
+#             stages__substages__products__responsible=employee
+#         ).distinct()
+#         all_research_tasks = (research_tasks_as_performer | research_tasks_as_responsible).distinct()
+        
+#         for rt in all_research_tasks:
+#             sort_date = rt.end_date if rt.end_date else rt.created_date
+#             items.append({
+#                 'type': 'research_task',
+#                 'id': rt.id,
+#                 'title': rt.title,
+#                 'tz_number': rt.tz_number,
+#                 'start_date': rt.start_date,
+#                 'end_date': rt.end_date,
+#                 'sort_date': sort_date,
+#                 'is_overdue': rt.end_date and rt.end_date < timezone.now().date() if rt.end_date else False,
+#                 'stages_count': rt.stages.count(),
+#                 'url': 'research_task_detail',
+#                 'url_args': {'task_id': rt.id},
+#             })
+        
+#         # ===== 4. Этапы НИР =====
+#         stages = ResearchStage.objects.filter(performers=employee) | ResearchStage.objects.filter(responsible=employee)
+#         stages = stages.select_related('research_task').distinct()
+        
+#         for stage in stages:
+#             sort_date = stage.end_date if stage.end_date else stage.created_date
+#             items.append({
+#                 'type': 'research_stage',
+#                 'id': stage.id,
+#                 'title': stage.title,
+#                 'stage_number': stage.stage_number,
+#                 'research_task': stage.research_task,
+#                 'start_date': stage.start_date,
+#                 'end_date': stage.end_date,
+#                 'sort_date': sort_date,
+#                 'is_overdue': stage.end_date and stage.end_date < timezone.now().date() if stage.end_date else False,
+#                 'substages_count': stage.substages.count(),
+#                 'url': 'research_stage_detail',
+#                 'url_args': {'stage_id': stage.id},
+#             })
+        
+#         # ===== 5. Подэтапы НИР =====
+#         substages = ResearchSubstage.objects.filter(performers=employee) | ResearchSubstage.objects.filter(responsible=employee)
+#         substages = substages.select_related('stage', 'stage__research_task').distinct()
+        
+#         for substage in substages:
+#             sort_date = substage.end_date if substage.end_date else substage.created_date
+#             items.append({
+#                 'type': 'research_substage',
+#                 'id': substage.id,
+#                 'title': substage.title,
+#                 'substage_number': substage.substage_number,
+#                 'stage': substage.stage,
+#                 'research_task': substage.stage.research_task,
+#                 'start_date': substage.start_date,
+#                 'end_date': substage.end_date,
+#                 'sort_date': sort_date,
+#                 'is_overdue': substage.end_date and substage.end_date < timezone.now().date() if substage.end_date else False,
+#                 'products_count': substage.products.count(),
+#                 'url': 'research_substage_detail',
+#                 'url_args': {'substage_id': substage.id},
+#             })
+        
+#         # ===== 6. Продукция =====
+#         products_as_performer = ResearchProduct.objects.filter(
+#             product_performers__employee=employee
+#         ).select_related('research_task', 'research_stage', 'research_substage', 'responsible').distinct()
+        
+#         products_as_responsible = ResearchProduct.objects.filter(responsible=employee)
+#         all_products = (products_as_performer | products_as_responsible).distinct()
+        
+#         for product in all_products:
+#             sort_date = product.planned_end if product.planned_end else product.created_date
+            
+#             research_substage = product.research_substage
+#             research_stage = product.research_stage or (research_substage.stage if research_substage else None)
+#             research_task = product.research_task or (research_stage.research_task if research_stage else None)
+            
+#             items.append({
+#                 'type': 'product',
+#                 'id': product.id,
+#                 'name': product.name,
+#                 'description': product.description,
+#                 'status': product.status,
+#                 'due_date': product.planned_end,
+#                 'planned_start': product.planned_start,
+#                 'planned_end': product.planned_end,
+#                 'sort_date': sort_date,
+#                 'is_overdue': product.is_overdue,
+#                 'responsible': product.responsible,
+#                 'substage': research_substage,
+#                 'stage': research_stage,
+#                 'research_task': research_task,
+#                 'get_status_display': product.get_status_display(),
+#                 'status_color': {
+#                     'pending': 'secondary',
+#                     'in_progress': 'primary',
+#                     'completed': 'success',
+#                     'delayed': 'danger',
+#                     'cancelled': 'dark'
+#                 }.get(product.status, 'secondary'),
+#                 'completion_percent': product.completion_percent,
+#             })
+        
+#         # Отладочный вывод продукции
+#         print(f"\n=== ОТЛАДКА ПРОДУКЦИИ ===")
+#         products_in_items = [item for item in items if item['type'] == 'product']
+#         print(f"Найдено продукции: {len(products_in_items)}")
+#         for p in products_in_items:
+#             print(f"  - {p['name']} (статус: {p['status']})")
+#             print(f"    research_task: {p.get('research_task')}")
+#             print(f"    stage: {p.get('stage')}")
+#             print(f"    substage: {p.get('substage')}")
+        
+#         # Фильтрация по типу
+#         if item_type != 'all':
+#             items = [item for item in items if item['type'] == item_type]
+        
+#         # Сортировка по дате
+#         today = timezone.now().date()
+        
+#         def sort_key(item):
+#             date_val = item.get('sort_date')
+#             if date_val:
+#                 if isinstance(date_val, datetime):
+#                     date_val = date_val.date()
+#                 return (date_val - today).days if date_val else 9999
+#             return 9999
+        
+#         items.sort(key=sort_key)
+        
+#         # Статистика
+#         context = {
+#             'employee': employee,
+#             'items': items,
+#             'current_type': item_type,
+#             'staff_positions': staff_positions,
+#             'org_structure': org_structure,
+#             'tasks_count': len([i for i in items if i['type'] == 'task']),
+#             'subtasks_count': len([i for i in items if i['type'] == 'subtask']),
+#             'products_count': len([i for i in items if i['type'] == 'product']),
+#             'research_tasks_count': len([i for i in items if i['type'] == 'research_task']),
+#             'research_stages_count': len([i for i in items if i['type'] == 'research_stage']),
+#             'research_substages_count': len([i for i in items if i['type'] == 'research_substage']),
+#             'overdue_count': len([i for i in items if i.get('is_overdue')]),
+#         }
+        
+#         print(f"\n=== СТАТИСТИКА ===")
+#         print(f"products_count в контексте: {context['products_count']}")
+        
+#         return render(request, 'tasks/employee_detail.html', context)
+        
+#     except Exception as e:
+#         print(f"ОШИБКА в employee_detail: {e}")
+#         import traceback
+#         traceback.print_exc()
+#         messages.error(request, f'Ошибка при загрузке данных: {str(e)}')
+#         return redirect('employee_list')
+   
 @login_required
 def employee_detail(request, employee_id):
-    """Детальная информация о сотруднике"""
+    """Временная отладочная версия"""
+    from django.http import JsonResponse
+    from ..models import Employee, ResearchProduct, ProductPerformer
+    
     employee = get_object_or_404(Employee, id=employee_id)
     
-    # Штатные позиции
-    staff_positions = employee.staff_positions.filter(is_active=True)
-    org_structure = employee.get_organization_structure()
-    
-    # Тип отображения
-    item_type = request.GET.get('type', 'all')
-    
-    items = []
-    
-    # ===== 1. Обычные задачи =====
-    tasks = employee.tasks.all()
-    for task in tasks:
-        sort_date = task.due_date if task.due_date else task.created_date
-        items.append({
-            'type': 'task',
-            'id': task.id,
-            'title': task.title,
-            'description': task.description,
-            'status': task.status,
-            'priority': task.priority,
-            'due_date': task.due_date,
-            'sort_date': sort_date,
-            'is_overdue': task.is_overdue() if task.due_date else False,
-            'get_priority_display': task.get_priority_display,
-            'get_status_display': task.get_status_display,
-            'priority_color': {'critical': 'danger', 'high': 'warning', 'medium': 'info', 'low': 'success'}.get(task.priority, 'secondary')
-        })
-    
-    # ===== 2. Обычные подзадачи =====
-    subtasks_as_performer = employee.subtasks.all()
-    subtasks_as_responsible = employee.responsible_subtasks.all()
-    all_subtasks = (subtasks_as_performer | subtasks_as_responsible).distinct()
-    
-    for subtask in all_subtasks:
-        sort_date = subtask.planned_end if subtask.planned_end else subtask.created_date
-        items.append({
-            'type': 'subtask',
-            'id': subtask.id,
-            'title': subtask.title,
-            'description': subtask.description,
-            'status': subtask.status,
-            'priority': subtask.priority,
-            'due_date': subtask.planned_end,
-            'sort_date': sort_date,
-            'is_overdue': subtask.is_overdue() if subtask.planned_end else False,
-            'task': subtask.task,
-            'progress': subtask.progress,
-            'get_priority_display': subtask.get_priority_display,
-            'get_status_display': subtask.get_status_display,
-            'priority_color': subtask.priority_color
-        })
-    
-    # ===== 3. НИР (ResearchTask) =====
-    # НИР, где сотрудник исполнитель
-    research_tasks_as_performer = ResearchTask.objects.filter(
-        stages__substages__products__product_performers__employee=employee
-    ).distinct()
-    # НИР, где сотрудник ответственный
-    research_tasks_as_responsible = ResearchTask.objects.filter(
-        stages__substages__products__responsible=employee
-    ).distinct()
-    all_research_tasks = (research_tasks_as_performer | research_tasks_as_responsible).distinct()
-    
-    for rt in all_research_tasks:
-        sort_date = rt.end_date if rt.end_date else rt.created_date
-        items.append({
-            'type': 'research_task',
-            'id': rt.id,
-            'title': rt.title,
-            'tz_number': rt.tz_number,
-            'start_date': rt.start_date,
-            'end_date': rt.end_date,
-            'sort_date': sort_date,
-            'is_overdue': rt.end_date and rt.end_date < timezone.now().date() if rt.end_date else False,
-            'stages_count': rt.stages.count(),
-            'url': 'research_task_detail',
-            'url_args': {'task_id': rt.id},
-        })
-    
-    # ===== 4. Этапы НИР (ResearchStage) =====
-    stages = ResearchStage.objects.filter(
-        performers=employee
-    ) | ResearchStage.objects.filter(responsible=employee)
-    stages = stages.distinct()
-    
-    for stage in stages:
-        sort_date = stage.end_date if stage.end_date else stage.created_date
-        items.append({
-            'type': 'research_stage',
-            'id': stage.id,
-            'title': stage.title,
-            'stage_number': stage.stage_number,
-            'research_task': stage.research_task,
-            'start_date': stage.start_date,
-            'end_date': stage.end_date,
-            'sort_date': sort_date,
-            'is_overdue': stage.end_date and stage.end_date < timezone.now().date() if stage.end_date else False,
-            'substages_count': stage.substages.count(),
-            'url': 'research_stage_detail',
-            'url_args': {'stage_id': stage.id},
-        })
-    
-    # ===== 5. Подэтапы НИР (ResearchSubstage) =====
-    substages = ResearchSubstage.objects.filter(
-        performers=employee
-    ) | ResearchSubstage.objects.filter(responsible=employee)
-    substages = substages.distinct()
-    
-    for substage in substages:
-        sort_date = substage.end_date if substage.end_date else substage.created_date
-        items.append({
-            'type': 'research_substage',
-            'id': substage.id,
-            'title': substage.title,
-            'substage_number': substage.substage_number,
-            'stage': substage.stage,
-            'research_task': substage.stage.research_task,
-            'start_date': substage.start_date,
-            'end_date': substage.end_date,
-            'sort_date': sort_date,
-            'is_overdue': substage.end_date and substage.end_date < timezone.now().date() if substage.end_date else False,
-            'products_count': substage.products.count(),
-            'url': 'research_substage_detail',
-            'url_args': {'substage_id': substage.id},
-        })
-    
-    # ===== 6. Продукция (ResearchProduct) - уже есть =====
+    # Получаем продукцию
     products_as_performer = ResearchProduct.objects.filter(
         product_performers__employee=employee
-    ).distinct()
-    products_as_responsible = ResearchProduct.objects.filter(responsible=employee)
-    all_products = (products_as_performer | products_as_responsible).distinct()
+    ).values('id', 'name', 'status')
     
-    for product in all_products:
-        sort_date = product.planned_end if product.planned_end else product.created_date
-        items.append({
-            'type': 'product',
-            'id': product.id,
-            'name': product.name,
-            'description': product.description,
-            'status': product.status,
-            'due_date': product.planned_end,
-            'planned_start': product.planned_start,
-            'planned_end': product.planned_end,
-            'sort_date': sort_date,
-            'is_overdue': product.is_overdue(),
-            'responsible': product.responsible,
-            'substage': product.research_substage,
-            'stage': product.research_substage.stage if product.research_substage else None,
-            'research_task': product.research_substage.stage.research_task if product.research_substage else None,
-            'get_status_display': product.get_status_display,
-            'status_color': {
-                'pending': 'secondary',
-                'in_progress': 'primary',
-                'completed': 'success',
-                'delayed': 'danger',
-                'cancelled': 'dark'
-            }.get(product.status, 'secondary'),
-            'completion_percent': product.completion_percent,
-        })
+    products_as_responsible = ResearchProduct.objects.filter(
+        responsible=employee
+    ).values('id', 'name', 'status')
     
-    # Фильтрация по типу
-    if item_type != 'all':
-        items = [item for item in items if item['type'] == item_type]
-    
-    # Сортировка
-    from datetime import date
-    today = timezone.now().date()
-    
-    def sort_key(item):
-        date_val = item.get('sort_date')
-        if date_val:
-            if isinstance(date_val, datetime):
-                date_val = date_val.date()
-            days_diff = (date_val - today).days if date_val else 9999
-            return (days_diff if days_diff >= 0 else -9999 + days_diff, 0)
-        return (9999, 1)
-    
-    items.sort(key=sort_key)
-    
-    # Статистика
-    tasks_count = len([i for i in items if i['type'] == 'task'])
-    subtasks_count = len([i for i in items if i['type'] == 'subtask'])
-    products_count = len([i for i in items if i['type'] == 'product'])
-    research_tasks_count = len([i for i in items if i['type'] == 'research_task'])
-    research_stages_count = len([i for i in items if i['type'] == 'research_stage'])
-    research_substages_count = len([i for i in items if i['type'] == 'research_substage'])
-    
-    context = {
-        'employee': employee,
-        'items': items,
-        'current_type': item_type,
-        'staff_positions': staff_positions,
-        'org_structure': org_structure,
-        'tasks_count': tasks_count,
-        'subtasks_count': subtasks_count,
-        'products_count': products_count,
-        'research_tasks_count': research_tasks_count,
-        'research_stages_count': research_stages_count,
-        'research_substages_count': research_substages_count,
-        'overdue_count': len([i for i in items if i.get('is_overdue')]),
+    data = {
+        'employee': employee.full_name,
+        'products_as_performer': list(products_as_performer),
+        'products_as_responsible': list(products_as_responsible),
+        'total_products': products_as_performer.count() + products_as_responsible.count(),
     }
-    print(f"DEBUG employee_detail: items count = {len(items)}")
-    print(f"DEBUG: research_tasks_count = {research_tasks_count}")
-    print(f"DEBUG: research_stages_count = {research_stages_count}")
-    print(f"DEBUG: research_substages_count = {research_substages_count}")
-    print(f"DEBUG: products_count = {products_count}")
-    print(f"DEBUG: tasks_count = {tasks_count}")
-    print(f"DEBUG: subtasks_count = {subtasks_count}")
-
-    # Выведем первые 5 типов items
-    for i, item in enumerate(items[:5]):
-        print(f"  item {i}: type={item.get('type')}, title={item.get('title', item.get('name', ''))[:50]}")
-    return render(request, 'tasks/employee_detail.html', context)
-
-
+    
+    # Если есть параметр debug, вернуть JSON
+    if request.GET.get('debug'):
+        return JsonResponse(data)
+    
+    # Иначе обычный рендер (но упрощенный)
+    return render(request, 'tasks/employee_detail.html', {
+        'employee': employee,
+        'products': list(products_as_performer) + list(products_as_responsible),
+        'debug_data': data,
+    })
 
 @login_required
 def employee_create(request):
@@ -863,4 +909,3 @@ def employee_tasks(request, employee_id):
         'current_status': status,
     }
     return render(request, 'tasks/employee_tasks.html', context)
-

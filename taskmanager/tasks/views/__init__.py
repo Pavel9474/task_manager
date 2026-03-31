@@ -2,6 +2,7 @@
 from .auth_views import *
 from .task_views import *
 from .subtask_views import *
+from .employee_views import employee_detail 
 from .employee_views import *
 from .research_views import *
 from .product_views import *

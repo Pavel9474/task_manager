@@ -1,5 +1,4 @@
 # tasks/urls.py
-
 from django.urls import path
 from .views import (
     # Задачи
@@ -36,7 +35,10 @@ from .views import (
 from .views import product_views as views_product
 
 urlpatterns = [
+    # Главная
     path('', task_list, name='task_list'),
+    
+    # Задачи
     path('task/<int:task_id>/', task_detail, name='task_detail'),
     path('task/create/', task_create, name='task_create'),
     path('task/<int:task_id>/update/', task_update, name='task_update'),

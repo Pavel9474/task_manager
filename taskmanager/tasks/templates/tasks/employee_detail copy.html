@@ -1,16 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- Отладочная информация -->
-<div class="alert alert-info">
-    <strong>Отладка:</strong>
-    <p>Всего items: {{ items|length }}</p>
-    <p>Типы: 
-        {% for item in items %}
-            {{ item.type }},
-        {% endfor %}
-    </p>
-</div>
-{% block content %}
 <div class="alert alert-info">
     <h3>Тестовая страница</h3>
     <p>{{ test_message }}</p>

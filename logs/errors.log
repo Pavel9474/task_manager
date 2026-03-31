@@ -1,870 +1,4 @@
 ERROR 2026-03-20 16:41:55,379 views 22556 23808 Тестовая ошибка ERROR
-<<<<<<< HEAD
-=======
-ERROR 2026-03-21 01:21:06,755 middleware 17036 6476 💥 Исключение в GET /task/25/subtasks/: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
-
-
-        <style>
-            .status-select {
-                width: auto;
-                min-width: 120px;
-            }
-            .accordion-item .badge {
-                font-size: 0.85rem;
-            }
-            .list-group-item {
-                transition: all 0.2s;
-            }
-            .list-group-item:hover {
-                background-color: #f8f9fa;
-            }
-        </style>
-    
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
-    return self.render_offline(context)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 71, in render_offline
-    original_content = self.get_original_content(context)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 146, in get_original_content
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
-    result = block.nodelist.render(context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
-    return self.render_offline(context)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
-    raise OfflineGenerationError(
-    ...<4 lines>...
-    )
-compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
-
-
-        <style>
-            .status-select {
-                width: auto;
-                min-width: 120px;
-            }
-            .accordion-item .badge {
-                font-size: 0.85rem;
-            }
-            .list-group-item {
-                transition: all 0.2s;
-            }
-            .list-group-item:hover {
-                background-color: #f8f9fa;
-            }
-        </style>
-    
-ERROR 2026-03-21 01:21:06,819 middleware 17036 6476 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:22:37,303 middleware 16860 13960 💥 Исключение в GET /task/25/subtasks/: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
-
-
-        <style>
-            .status-select {
-                width: auto;
-                min-width: 120px;
-            }
-            .accordion-item .badge {
-                font-size: 0.85rem;
-            }
-            .list-group-item {
-                transition: all 0.2s;
-            }
-            .list-group-item:hover {
-                background-color: #f8f9fa;
-            }
-        </style>
-    
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
-    return self.render_offline(context)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 71, in render_offline
-    original_content = self.get_original_content(context)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 146, in get_original_content
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 66, in render
-    result = block.nodelist.render(context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 106, in render_compressed
-    return self.render_offline(context)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 84, in render_offline
-    raise OfflineGenerationError(
-    ...<4 lines>...
-    )
-compressor.exceptions.OfflineGenerationError: You have offline compression enabled but key "b6c50f43e0e05205eb0560717306e748512935a117a87a88eb10abd8e358093a" is missing from offline manifest. You may need to run "python manage.py compress". Here is the original content:
-
-
-        <style>
-            .status-select {
-                width: auto;
-                min-width: 120px;
-            }
-            .accordion-item .badge {
-                font-size: 0.85rem;
-            }
-            .list-group-item {
-                transition: all 0.2s;
-            }
-            .list-group-item:hover {
-                background-color: #f8f9fa;
-            }
-        </style>
-    
-ERROR 2026-03-21 01:22:37,357 middleware 16860 13960 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:24:17,233 middleware 11772 3248 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
-    basename = self.get_basename(elem_attribs["href"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:24:17,295 middleware 11772 3248 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:25:20,952 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
-    basename = self.get_basename(elem_attribs["href"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:25:20,996 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:25:22,264 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
-    basename = self.get_basename(elem_attribs["href"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:25:22,307 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:25:24,757 middleware 6336 2184 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
-    basename = self.get_basename(elem_attribs["href"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:25:24,800 middleware 6336 2184 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:25:58,702 middleware 14360 17688 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
-    basename = self.get_basename(elem_attribs["href"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:25:58,748 middleware 14360 17688 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:29:06,591 middleware 15572 17356 💥 Исключение в GET /task/25/subtasks/: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\css.py", line 22, in split_contents
-    basename = self.get_basename(elem_attribs["href"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:29:06,636 middleware 15572 17356 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:33:51,978 middleware 17628 18076 💥 Исключение в GET /task/25/subtasks/: 'https://code.jquery.com/jquery-3.6.0.min.js' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 979, in subtask_list
-    return render(request, 'tasks/subtask_list.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
-    return template.render(context, request)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
-    return self.template.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 174, in render
-    return self._render(context)
-           ~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 160, in render
-    return compiled_parent._render(context)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 166, in _render
-    return self.nodelist.render(context)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1091, in render
-    return SafeString("".join([node.render_annotated(context) for node in self]))
-                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
-    return self.render(context)
-           ~~~~~~~~~~~^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 160, in render
-    return self.render_compressed(
-           ~~~~~~~~~~~~~~~~~~~~~~^
-        context, self.kind, self.mode, forced=forced, log=log, verbosity=verbosity
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 123, in render_compressed
-    cache_key, cache_content = self.render_cached(compressor, kind, mode)
-                               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\templatetags\compress.py", line 96, in render_cached
-    cache_key = get_templatetag_cachekey(compressor, mode, kind)
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\cache.py", line 100, in get_templatetag_cachekey
-    return get_cachekey("templatetag.%s.%s.%s" % (compressor.cachekey, mode, kind))
-                                                  ^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 240, in cachekey
-    "".join([self.content] + self.mtimes).encode(self.charset), 12
-                             ^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
-    res = instance.__dict__[self.name] = self.func(instance)
-                                         ~~~~~~~~~^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 233, in mtimes
-    for kind, value, basename, elem in self.split_contents()
-                                       ~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\js.py", line 16, in split_contents
-    basename = self.get_basename(attribs["src"])
-  File "E:\taskmanager\.venv\Lib\site-packages\compressor\base.py", line 121, in get_basename
-    raise UncompressableFileError(
-    ...<3 lines>...
-    )
-compressor.exceptions.UncompressableFileError: 'https://code.jquery.com/jquery-3.6.0.min.js' isn't accessible via COMPRESS_URL ('/static/') and can't be compressed
-ERROR 2026-03-21 01:33:52,023 middleware 17628 18076 ❌ Ошибка 500: GET /task/25/subtasks/ - Пользователь: pavel2
-ERROR 2026-03-21 01:44:20,726 middleware 16864 2872 💥 Исключение в GET /task/25/assign/: Template: E:\taskmanager\tasks\templates\tasks\task_assign_employees.html, default requires 2 arguments, 1 provided
-Traceback (most recent call last):
-  File "E:\taskmanager\.venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-  File "E:\taskmanager\tasks\views.py", line 720, in task_assign_employees
-    return render(request, 'tasks/task_assign_employees.html', context)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\shortcuts.py", line 25, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
-    template = get_template(template_name, using=using)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
-    return Template(self.engine.get_template(template_name), self)
-                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\engine.py", line 186, in get_template
-    template, origin = self.find_template(template_name)
-                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
-    template = super().get_template(template_name, skip)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-        contents,
-    ...<2 lines>...
-        self.engine,
-    )
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 157, in __init__
-    self.nodelist = self.compile_nodelist()
-                    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
-    nodelist = parser.parse()
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
-    raise self.error(token, e)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
-    compiled_result = compile_func(self, token)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
-    nodelist = parser.parse()
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 585, in parse
-    raise self.error(token, e)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 583, in parse
-    compiled_result = compile_func(self, token)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
-    nodelist = parser.parse(("endblock",))
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 556, in parse
-    raise self.error(token, e)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 554, in parse
-    filter_expression = self.compile_filter(token.contents)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 676, in compile_filter
-    return FilterExpression(token, self)
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 772, in __init__
-    self.args_check(filter_name, filter_func, args)
-    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\taskmanager\.venv\Lib\site-packages\django\template\base.py", line 835, in args_check
-    raise TemplateSyntaxError(
-        "%s requires %d arguments, %d provided" % (name, alen - dlen, plen)
-    )
-django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\task_assign_employees.html, default requires 2 arguments, 1 provided
-ERROR 2026-03-21 01:44:20,766 middleware 16864 2872 ❌ Ошибка 500: GET /task/25/assign/ - Пользователь: pavel2
-ERROR 2026-03-22 15:59:18,787 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
-ERROR 2026-03-22 15:59:21,605 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
-ERROR 2026-03-22 15:59:22,679 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
-ERROR 2026-03-22 15:59:27,192 middleware 2092 15392 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel
-ERROR 2026-03-22 16:01:14,610 middleware 2092 13492 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:10:15,028 middleware 1992 15608 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:20:29,084 middleware 6712 5540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:25:31,956 middleware 6712 5192 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-22 16:27:48,874 middleware 14536 17280 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:28:19,901 middleware 14536 8064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-22 16:31:44,121 middleware 17280 2352 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:32:03,581 middleware 17280 10368 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-22 16:32:06,984 middleware 17280 10368 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
-ERROR 2026-03-22 16:32:40,917 middleware 17280 10368 ❌ Ошибка 404: GET /test/ - Пользователь: Аноним
-ERROR 2026-03-22 16:35:21,573 middleware 6740 5732 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
-ERROR 2026-03-22 16:36:40,816 middleware 6740 5732 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
-ERROR 2026-03-22 16:36:42,980 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
-ERROR 2026-03-22 16:36:49,138 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
-ERROR 2026-03-22 16:37:16,095 middleware 6740 5824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel
-ERROR 2026-03-22 16:40:34,973 middleware 14972 12888 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-22 16:40:50,516 middleware 14972 13816 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:45:44,368 middleware 15932 16644 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 16:46:06,667 middleware 15932 16644 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 22:50:22,093 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-22 22:50:32,462 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 22:50:43,402 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-22 22:50:51,238 middleware 9312 15776 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-23 00:02:23,647 middleware 8688 19428 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-23 01:50:58,694 middleware 11508 1928 ❌ Ошибка 404: GET /task/1 - Пользователь: pavel
-ERROR 2026-03-23 01:51:11,049 middleware 11508 1928 ❌ Ошибка 404: GET /task/1/subtasks - Пользователь: pavel
-ERROR 2026-03-23 01:54:16,097 middleware 11508 11964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
-ERROR 2026-03-23 02:02:21,042 middleware 6856 19332 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
-ERROR 2026-03-23 02:02:28,611 middleware 6856 5440 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel
->>>>>>> 3124d7e (22032026 production employers need to add)
 ERROR 2026-03-25 09:33:10,362 middleware 16272 17048 💥 Исключение в GET /login/: Template: E:\code\task_manager\taskmanager\tasks\templates\base.html, Invalid block tag on line 14: 'compress'. Did you forget to register or load this tag?
 Traceback (most recent call last):
   File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 577, in parse
@@ -5764,3 +4898,1120 @@ ERROR 2026-03-30 17:05:45,481 middleware 4060 12748 ❌ Ошибка 404: GET /f
 ERROR 2026-03-30 17:05:46,399 middleware 4060 12748 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-30 17:05:54,919 middleware 4060 16860 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-03-30 17:06:17,733 middleware 23104 7700 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:20:18,652 middleware 10852 22824 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:20:21,604 middleware 10852 18208 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:20:22,414 middleware 10852 22824 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:22:58,995 middleware 10852 22824 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:22:59,674 middleware 10852 18208 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:00,303 middleware 10852 18208 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:00,932 middleware 10852 22824 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:01,538 middleware 10852 22824 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:02,103 middleware 10852 18208 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:03,827 middleware 10852 22824 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:06,218 middleware 10852 18208 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:13,268 middleware 20520 23384 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:36,916 middleware 20520 21724 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:37,743 middleware 20520 23384 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:38,498 middleware 20520 21724 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:41,636 middleware 20520 23384 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:43,107 middleware 20520 21724 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:23:57,040 middleware 20520 21724 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:24:43,748 middleware 20520 23384 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:24:44,502 middleware 20520 23384 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:25:06,121 middleware 16596 22176 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:23,922 middleware 16596 22176 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:25,759 middleware 16596 22176 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:26,035 middleware 16596 2908 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:25:26,377 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:26,604 middleware 16596 2908 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:25:29,535 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:35,495 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:35,523 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:37,388 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:38,744 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:40,330 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:25:40,497 middleware 16596 24832 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:27:02,034 middleware 16596 24832 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:27:03,476 middleware 16596 24832 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:27:05,019 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:27:05,189 middleware 16596 2908 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:27:05,762 middleware 16596 2908 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:27:05,956 middleware 16596 24832 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:27:17,785 middleware 25476 18408 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:27:32,386 middleware 24192 17224 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:27:32,567 middleware 24192 19392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:30:38,356 middleware 25680 27592 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:30:38,497 middleware 25680 2588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:30:39,188 middleware 25680 2588 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 09:30:39,428 middleware 25680 2588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:30:50,847 middleware 25680 2588 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel2
+ERROR 2026-03-31 09:30:52,729 middleware 25680 2588 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel2
+ERROR 2026-03-31 09:30:53,710 middleware 25680 2588 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel2
+ERROR 2026-03-31 09:31:00,934 middleware 25680 27592 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:31:08,895 middleware 25680 27592 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:31:09,218 middleware 25680 2588 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:31:09,577 middleware 25680 27592 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:33:38,739 middleware 15108 17092 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:33:39,714 middleware 15108 18772 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:33:40,468 middleware 15108 17092 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:34:42,719 middleware 21664 21104 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:34:43,630 middleware 21664 23244 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:34:44,447 middleware 21664 23244 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:34:45,242 middleware 21664 21104 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:34:58,008 middleware 17168 25052 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:37:39,945 middleware 21192 15892 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:37:41,350 middleware 21192 15892 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:37:42,156 middleware 21192 15892 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:37:42,615 middleware 21192 15892 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:37:43,219 middleware 21192 17064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:37:45,895 middleware 21192 15892 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:38:03,617 middleware 21192 17064 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:38:04,134 middleware 21192 15892 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:46:39,835 middleware 26876 1916 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:46:40,609 middleware 26876 18320 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:46:41,384 middleware 26876 1916 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:46:41,822 middleware 26876 18320 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:46:42,128 middleware 26876 1916 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:46:42,757 middleware 26876 18320 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:30,364 middleware 16952 21540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:31,224 middleware 16952 14820 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:33,579 middleware 16952 21540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:34,058 middleware 16952 14820 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:34,436 middleware 16952 21540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:34,836 middleware 16952 14820 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:35,223 middleware 16952 21540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:48:35,589 middleware 16952 14820 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:49:04,208 middleware 16248 24656 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:53:40,241 middleware 14896 14936 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:55:14,048 middleware 27892 13248 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:55:14,631 middleware 27892 23072 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:55:15,465 middleware 27892 13248 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:55:15,999 middleware 27892 23072 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 09:58:31,105 middleware 18964 19604 ❌ Ошибка 404: GET /test/ - Пользователь: pavel2
+ERROR 2026-03-31 09:59:54,284 middleware 18964 21552 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:01:07,896 middleware 18964 21552 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:01:44,375 middleware 18964 21552 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:01:45,830 middleware 18964 21552 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:01:46,720 middleware 18964 21552 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:01:49,453 middleware 18964 21552 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:01:49,833 middleware 18964 26048 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:01:50,400 middleware 18964 26048 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:01:50,943 middleware 18964 26048 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:01:59,327 middleware 18964 21552 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:02:00,736 middleware 18964 21552 ❌ Ошибка 404: GET /test/ - Пользователь: Аноним
+ERROR 2026-03-31 10:02:03,499 middleware 18964 26048 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:20:03,109 middleware 21720 13416 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:20:06,343 middleware 21720 2516 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:20:07,342 middleware 21720 13416 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:23:59,528 middleware 9844 5036 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:24:21,396 middleware 9844 13880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:25:59,669 middleware 9844 5036 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:26:00,650 middleware 9844 5036 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:28:26,017 middleware 9844 13880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:28:26,985 middleware 9844 5036 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:29:12,677 middleware 9844 13880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:29:14,910 middleware 9844 5036 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:34:21,084 middleware 11180 5112 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:34:53,018 middleware 11180 9116 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:37:47,069 middleware 12460 4636 ❌ Ошибка 404: GET /employee/307 - Пользователь: pavel2
+ERROR 2026-03-31 10:37:47,195 middleware 12460 4636 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:37:50,403 middleware 12460 4636 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:37:50,649 middleware 12460 3496 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:37:51,585 middleware 12460 3496 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:37:51,716 middleware 12460 3496 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:38:09,213 middleware 12460 3496 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:38:11,414 middleware 12460 4636 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:38:11,554 middleware 12460 4636 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:38:12,192 middleware 12460 3496 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:38:12,298 middleware 12460 3496 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:38:39,529 middleware 12460 3496 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:38:40,963 middleware 12460 5324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:38:41,109 middleware 12460 5324 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:38:41,769 middleware 12460 3496 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:38:41,957 middleware 12460 3496 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:39:58,359 middleware 12460 4636 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:39:59,113 middleware 12460 4636 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:40:00,243 middleware 12460 4636 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:40:00,536 middleware 12460 4636 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:40:01,728 middleware 12460 3496 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:40:01,947 middleware 12460 3496 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:40:10,110 middleware 12460 4636 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:40:10,378 middleware 12460 4636 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:40:23,774 middleware 12460 7672 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:40:50,354 middleware 13276 2444 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: Аноним
+ERROR 2026-03-31 10:40:53,643 middleware 13276 8116 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:40:58,537 middleware 13276 2444 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:41:00,332 middleware 13276 5864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:41:02,516 middleware 13276 2444 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 10:41:09,180 middleware 13276 3964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 10:41:47,842 middleware 13276 3964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:42:24,982 middleware 13276 4728 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 10:49:30,213 middleware 6372 10812 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:31:10,940 middleware 13828 7236 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+ERROR 2026-03-31 11:31:38,806 middleware 13828 7236 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel2
+ERROR 2026-03-31 11:31:42,871 middleware 13828 7236 ❌ Ошибка 405: GET /logout/ - Пользователь: pavel2
+ERROR 2026-03-31 11:32:36,496 middleware 13828 5640 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:32:37,353 middleware 13828 7236 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:36:03,284 middleware 13792 12980 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:43:44,187 middleware 11084 5612 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:43:45,225 middleware 11084 3756 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:50:01,168 middleware 13696 1760 ❌ Ошибка 404: GET /test-print/ - Пользователь: pavel2
+ERROR 2026-03-31 11:50:09,595 middleware 13828 13356 ❌ Ошибка 404: GET /test-print/ - Пользователь: pavel2
+ERROR 2026-03-31 11:50:10,235 middleware 13828 13356 ❌ Ошибка 404: GET /test-print/ - Пользователь: pavel2
+ERROR 2026-03-31 11:50:10,284 middleware 13828 13356 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 11:50:10,722 middleware 13828 13356 ❌ Ошибка 404: GET /test-print/ - Пользователь: pavel2
+ERROR 2026-03-31 11:50:10,765 middleware 13828 13356 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 12:30:13,640 middleware 8084 4524 ❌ Ошибка 404: GET /test-print/ - Пользователь: pavel2
+ERROR 2026-03-31 13:21:51,124 middleware 5408 3076 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:21:51,288 middleware 5408 3076 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:21:51,640 middleware 5408 3076 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:21:51,799 middleware 5408 3076 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:22:23,952 middleware 5636 9516 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:22:24,129 middleware 5636 9516 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:22:24,233 middleware 5636 9516 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:22:25,015 middleware 5636 9516 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:22:25,173 middleware 5636 9516 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:22:25,268 middleware 5636 9516 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:25:43,631 middleware 5636 9516 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:25:43,790 middleware 5636 9516 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:25:44,681 middleware 5636 9516 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:25:44,837 middleware 5636 9516 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:25:46,760 middleware 5636 9516 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:25:46,951 middleware 5636 9516 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:25:47,056 middleware 5636 9516 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:25:57,182 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:25:57,352 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:25:57,459 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:25:58,797 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:25:58,953 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:25:59,069 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:27:45,212 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:27:45,406 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:27:45,517 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:27:46,316 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:27:46,474 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:27:46,569 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:27:47,220 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:27:47,395 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:27:47,498 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:27:48,159 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:27:48,318 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:27:48,463 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:28:35,516 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:28:35,675 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:28:36,742 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:28:36,898 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:28:45,068 middleware 11408 8704 💥 Исключение в GET /employee/286/: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\employee_views.py", line 174, in employee_detail
+    return render(request, 'tasks/employee_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'logout' not found. 'logout' is not a valid view function or pattern name.
+ERROR 2026-03-31 13:28:45,224 middleware 11408 8704 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 13:28:45,322 middleware 11408 8704 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:28:56,984 middleware 12420 11076 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:29:51,166 middleware 12420 6328 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:31:54,433 middleware 12420 11076 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:31:56,046 middleware 12420 6328 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:33:02,405 middleware 6100 6600 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:33:03,271 middleware 6100 7880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:33:04,300 middleware 6100 7880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:33:35,306 middleware 3980 3260 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:33:49,020 middleware 11216 12832 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:37:08,902 middleware 4452 12996 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:37,943 middleware 4452 2924 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:38,954 middleware 4452 10844 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:40,088 middleware 4452 2924 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:54,163 middleware 848 2852 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:54,931 middleware 848 9648 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:55,762 middleware 848 2852 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:56,181 middleware 848 9648 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:41:56,727 middleware 848 2852 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:48:07,496 middleware 4780 1388 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-03-31 13:48:08,090 middleware 4780 4856 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:53:28,428 middleware 11868 12240 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:53:36,801 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:54:06,201 middleware 11868 12240 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:54:06,839 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:56:18,579 middleware 11868 12240 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:56:21,476 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:56:23,265 middleware 11868 12240 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:56:24,134 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:56:24,801 middleware 11868 12240 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:57:01,010 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-03-31 13:57:01,379 middleware 11868 3596 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2

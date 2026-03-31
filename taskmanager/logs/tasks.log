@@ -6433,3 +6433,911 @@ DEBUG 2026-03-30 15:48:35,173 middleware 17696 21864 📨 POST /research/import/
 INFO 2026-03-30 15:48:44,374 middleware 17696 21864 📤 POST /research/import/ - 302 - Время: 9.203 сек
 DEBUG 2026-03-30 15:48:44,386 middleware 17696 21864 📨 GET /research/1/ - Пользователь: pavel5
 INFO 2026-03-30 15:48:44,458 middleware 17696 21864 📤 GET /research/1/ - 200 - Время: 0.078 сек
+DEBUG 2026-03-31 10:57:03,541 middleware 1308 7600 📨 GET /employee/307/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:03,564 middleware 1308 7600 📤 GET /employee/307/ - 302 - Время: 0.023 сек
+DEBUG 2026-03-31 10:57:16,405 middleware 1308 6448 📨 GET /employee/307/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:16,406 middleware 1308 6448 📤 GET /employee/307/ - 302 - Время: 0.003 сек
+DEBUG 2026-03-31 10:57:16,410 middleware 1308 13304 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:16,447 middleware 1308 13304 📤 GET /login/ - 200 - Время: 0.037 сек
+DEBUG 2026-03-31 10:57:16,642 middleware 1308 4108 📨 GET /favicon.ico - Пользователь: Аноним
+INFO 2026-03-31 10:57:16,673 middleware 1308 4108 📤 GET /favicon.ico - 404 - Время: 0.030 сек
+ERROR 2026-03-31 10:57:16,673 middleware 1308 4108 ❌ Ошибка 404: GET /favicon.ico - Пользователь: Аноним
+DEBUG 2026-03-31 10:57:24,936 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:26,192 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.256 сек
+DEBUG 2026-03-31 10:57:32,895 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:34,148 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.252 сек
+DEBUG 2026-03-31 10:57:40,745 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:42,143 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.398 сек
+DEBUG 2026-03-31 10:57:47,444 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:57:48,717 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.273 сек
+DEBUG 2026-03-31 10:58:05,249 middleware 1308 4108 📨 GET /employee/307/ - Пользователь: Аноним
+INFO 2026-03-31 10:58:05,250 middleware 1308 4108 📤 GET /employee/307/ - 302 - Время: 0.001 сек
+DEBUG 2026-03-31 10:58:05,257 middleware 1308 4108 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:58:05,260 middleware 1308 4108 📤 GET /login/ - 200 - Время: 0.003 сек
+DEBUG 2026-03-31 10:58:14,881 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:58:16,156 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.276 сек
+DEBUG 2026-03-31 10:58:20,883 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:58:22,143 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.260 сек
+DEBUG 2026-03-31 10:58:35,846 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:58:37,074 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.227 сек
+DEBUG 2026-03-31 10:58:49,462 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:58:50,754 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.291 сек
+DEBUG 2026-03-31 10:58:59,842 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:01,063 middleware 1308 4108 📤 POST /login/ - 200 - Время: 1.222 сек
+DEBUG 2026-03-31 10:59:11,765 middleware 1308 11968 📨 GET /employee/307/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:11,766 middleware 1308 11968 📤 GET /employee/307/ - 302 - Время: 0.004 сек
+DEBUG 2026-03-31 10:59:11,772 middleware 1308 11968 📨 GET /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:11,776 middleware 1308 11968 📤 GET /login/ - 200 - Время: 0.003 сек
+DEBUG 2026-03-31 10:59:13,430 middleware 1308 11968 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:14,655 middleware 1308 11968 📤 POST /login/ - 200 - Время: 1.225 сек
+DEBUG 2026-03-31 10:59:20,395 middleware 1308 11968 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:21,625 middleware 1308 11968 📤 POST /login/ - 200 - Время: 1.230 сек
+DEBUG 2026-03-31 10:59:22,883 middleware 1308 11968 📨 GET /register/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:22,909 middleware 1308 11968 📤 GET /register/ - 200 - Время: 0.026 сек
+DEBUG 2026-03-31 10:59:36,761 middleware 1308 11968 📨 POST /register/ - Пользователь: Аноним
+INFO 2026-03-31 10:59:38,273 middleware 1308 11968 📤 POST /register/ - 302 - Время: 1.511 сек
+DEBUG 2026-03-31 10:59:38,370 middleware 1308 11968 📨 GET / - Пользователь: pavel2
+INFO 2026-03-31 10:59:38,434 middleware 1308 11968 📤 GET / - 200 - Время: 0.070 сек
+DEBUG 2026-03-31 10:59:41,110 middleware 1308 11968 📨 GET /research/1/ - Пользователь: pavel2
+INFO 2026-03-31 10:59:41,161 middleware 1308 11968 📤 GET /research/1/ - 200 - Время: 0.054 сек
+DEBUG 2026-03-31 10:59:56,910 middleware 1308 11968 📨 GET /research/1/edit/ - Пользователь: pavel2
+ERROR 2026-03-31 10:59:56,913 middleware 1308 11968 💥 Исключение в GET /research/1/edit/: tasks/research_task_form.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 48, in research_task_edit
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form,
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+INFO 2026-03-31 10:59:56,957 middleware 1308 11968 📤 GET /research/1/edit/ - 500 - Время: 0.050 сек
+ERROR 2026-03-31 10:59:56,960 middleware 1308 11968 ❌ Ошибка 500: GET /research/1/edit/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:00:01,582 middleware 1308 11968 📨 GET /research/ - Пользователь: pavel2
+ERROR 2026-03-31 11:00:01,583 middleware 1308 11968 💥 Исключение в GET /research/: tasks/research_task_list.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+INFO 2026-03-31 11:00:01,624 middleware 1308 11968 📤 GET /research/ - 500 - Время: 0.045 сек
+ERROR 2026-03-31 11:00:01,626 middleware 1308 11968 ❌ Ошибка 500: GET /research/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:00:04,926 middleware 1308 11968 📨 GET /task/create/ - Пользователь: pavel2
+INFO 2026-03-31 11:00:04,938 middleware 1308 11968 📤 GET /task/create/ - 200 - Время: 0.015 сек
+DEBUG 2026-03-31 11:00:14,824 middleware 1308 11968 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:00:14,824 middleware 1308 11968 📤 GET /employees/ - 200 - Время: 0.004 сек
+DEBUG 2026-03-31 11:00:34,396 middleware 1308 11968 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-03-31 11:00:34,399 middleware 1308 11968 📤 GET /employee/307/ - 500 - Время: 0.007 сек
+ERROR 2026-03-31 11:00:34,400 middleware 1308 11968 ❌ Ошибка 500: GET /employee/307/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:00:34,977 middleware 1308 11968 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-03-31 11:00:34,981 middleware 1308 11968 📤 GET /employee/307/ - 500 - Время: 0.007 сек
+ERROR 2026-03-31 11:00:34,981 middleware 1308 11968 ❌ Ошибка 500: GET /employee/307/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:00:48,360 middleware 1308 4108 📨 POST /login/ - Пользователь: Аноним
+INFO 2026-03-31 11:00:49,731 middleware 1308 4108 📤 POST /login/ - 302 - Время: 1.371 сек
+DEBUG 2026-03-31 11:00:49,827 middleware 1308 4108 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-03-31 11:00:49,831 middleware 1308 4108 📤 GET /employee/307/ - 500 - Время: 0.009 сек
+ERROR 2026-03-31 11:00:49,832 middleware 1308 4108 ❌ Ошибка 500: GET /employee/307/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:00:49,885 middleware 1308 4108 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:00:49,895 middleware 1308 4108 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:00:49,896 middleware 1308 4108 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:01:55,428 middleware 1308 11968 📨 GET /research/ - Пользователь: pavel2
+ERROR 2026-03-31 11:01:55,429 middleware 1308 11968 💥 Исключение в GET /research/: tasks/research_task_list.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+INFO 2026-03-31 11:01:55,469 middleware 1308 11968 📤 GET /research/ - 500 - Время: 0.043 сек
+ERROR 2026-03-31 11:01:55,471 middleware 1308 11968 ❌ Ошибка 500: GET /research/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:01:58,204 middleware 1308 11968 📨 GET /research/1/edit/ - Пользователь: pavel2
+ERROR 2026-03-31 11:01:58,206 middleware 1308 11968 💥 Исключение в GET /research/1/edit/: tasks/research_task_form.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 48, in research_task_edit
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form,
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+INFO 2026-03-31 11:01:58,241 middleware 1308 11968 📤 GET /research/1/edit/ - 500 - Время: 0.039 сек
+ERROR 2026-03-31 11:01:58,241 middleware 1308 11968 ❌ Ошибка 500: GET /research/1/edit/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:02:17,763 middleware 1308 11968 📨 GET /research_task/create/ - Пользователь: pavel2
+INFO 2026-03-31 11:02:17,773 middleware 1308 11968 📤 GET /research_task/create/ - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:02:17,773 middleware 1308 11968 ❌ Ошибка 404: GET /research_task/create/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:02:54,935 middleware 1308 11968 📨 GET /research/create/ - Пользователь: pavel2
+ERROR 2026-03-31 11:02:54,936 middleware 1308 11968 💥 Исключение в GET /research/create/: tasks/research_task_form.html
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 31, in research_task_create
+    return render(request, 'tasks/research_task_form.html', {'form': form, 'title': 'Создание НИР'})
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+INFO 2026-03-31 11:02:54,976 middleware 1308 11968 📤 GET /research/create/ - 500 - Время: 0.044 сек
+ERROR 2026-03-31 11:02:54,978 middleware 1308 11968 ❌ Ошибка 500: GET /research/create/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:04:45,816 middleware 1308 5936 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:04:45,819 middleware 1308 5936 📤 GET /employee/1/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:04:45,819 middleware 1308 5936 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:04:48,213 middleware 1308 5936 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:04:48,216 middleware 1308 5936 📤 GET /employee/1/ - 500 - Время: 0.005 сек
+ERROR 2026-03-31 11:04:48,216 middleware 1308 5936 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:04:49,155 middleware 1308 5936 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:04:49,157 middleware 1308 5936 📤 GET /employee/1/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:04:49,158 middleware 1308 5936 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:04:49,189 middleware 1308 5936 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:04:49,197 middleware 1308 5936 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:04:49,197 middleware 1308 5936 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:01,569 middleware 1308 684 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:05:01,572 middleware 1308 684 📤 GET /employee/1/ - 500 - Время: 0.005 сек
+ERROR 2026-03-31 11:05:01,572 middleware 1308 684 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:05,104 middleware 1308 11164 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:05:05,107 middleware 1308 11164 📤 GET /employee/1/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:05:05,107 middleware 1308 11164 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:05,128 middleware 1308 11164 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:05:05,137 middleware 1308 11164 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:05:05,137 middleware 1308 11164 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:32,978 middleware 11996 4072 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:05:32,981 middleware 11996 4072 📤 GET /employee/1/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:05:32,981 middleware 11996 4072 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:33,719 middleware 11996 4072 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:05:33,722 middleware 11996 4072 📤 GET /employee/1/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:05:33,722 middleware 11996 4072 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:34,168 middleware 11996 4072 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:05:34,171 middleware 11996 4072 📤 GET /employee/1/ - 500 - Время: 0.007 сек
+ERROR 2026-03-31 11:05:34,171 middleware 11996 4072 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:34,535 middleware 11996 5816 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:05:34,537 middleware 11996 5816 📤 GET /employee/1/ - 500 - Время: 0.005 сек
+ERROR 2026-03-31 11:05:34,538 middleware 11996 5816 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:05:34,560 middleware 11996 5816 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:05:34,574 middleware 11996 5816 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-31 11:05:34,574 middleware 11996 5816 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:06:08,895 middleware 11996 8148 📨 GET /employee/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:06:08,897 middleware 11996 8148 📤 GET /employee/1/ - 500 - Время: 0.004 сек
+ERROR 2026-03-31 11:06:08,897 middleware 11996 8148 ❌ Ошибка 500: GET /employee/1/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:06:08,918 middleware 11996 8148 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:06:08,927 middleware 11996 8148 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:06:08,927 middleware 11996 8148 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:06:13,939 middleware 11996 8148 📨 GET / - Пользователь: pavel2
+INFO 2026-03-31 11:06:13,991 middleware 11996 8148 📤 GET / - 200 - Время: 0.055 сек
+DEBUG 2026-03-31 11:06:15,881 middleware 11996 8148 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:06:15,881 middleware 11996 8148 📤 GET /employees/ - 200 - Время: 0.003 сек
+DEBUG 2026-03-31 11:06:58,136 middleware 11996 8148 📨 GET /employee/277/ - Пользователь: pavel2
+INFO 2026-03-31 11:06:58,138 middleware 11996 8148 📤 GET /employee/277/ - 500 - Время: 0.005 сек
+ERROR 2026-03-31 11:06:58,139 middleware 11996 8148 ❌ Ошибка 500: GET /employee/277/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:07:02,348 middleware 11996 8148 📨 GET /employee/277 - Пользователь: pavel2
+INFO 2026-03-31 11:07:02,357 middleware 11996 8148 📤 GET /employee/277 - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:07:02,357 middleware 11996 8148 ❌ Ошибка 404: GET /employee/277 - Пользователь: pavel2
+DEBUG 2026-03-31 11:07:02,364 middleware 11996 8148 📨 GET /employee/277/ - Пользователь: pavel2
+INFO 2026-03-31 11:07:02,365 middleware 11996 8148 📤 GET /employee/277/ - 500 - Время: 0.004 сек
+ERROR 2026-03-31 11:07:02,366 middleware 11996 8148 ❌ Ошибка 500: GET /employee/277/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:07:38,366 middleware 11996 8148 📨 GET /admin/tasks/employee/ - Пользователь: pavel2
+INFO 2026-03-31 11:07:38,371 middleware 11996 8148 📤 GET /admin/tasks/employee/ - 302 - Время: 0.008 сек
+DEBUG 2026-03-31 11:07:38,377 middleware 11996 8148 📨 GET /admin/login/ - Пользователь: pavel2
+INFO 2026-03-31 11:07:38,435 middleware 11996 8148 📤 GET /admin/login/ - 200 - Время: 0.060 сек
+DEBUG 2026-03-31 11:07:47,644 middleware 11996 8148 📨 POST /admin/login/ - Пользователь: pavel2
+INFO 2026-03-31 11:07:49,072 middleware 11996 8148 📤 POST /admin/login/ - 302 - Время: 1.431 сек
+DEBUG 2026-03-31 11:07:49,174 middleware 11996 8148 📨 GET /admin/tasks/employee/ - Пользователь: admin
+ERROR 2026-03-31 11:07:49,175 middleware 11996 8148 💥 Исключение в GET /admin/tasks/employee/: 
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 266, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\common.py", line 23, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 468, in catch_all_view
+    raise Http404
+django.http.response.Http404
+INFO 2026-03-31 11:07:49,197 middleware 11996 8148 📤 GET /admin/tasks/employee/ - 404 - Время: 0.028 сек
+ERROR 2026-03-31 11:07:49,197 middleware 11996 8148 ❌ Ошибка 404: GET /admin/tasks/employee/ - Пользователь: admin
+DEBUG 2026-03-31 11:07:49,226 middleware 11996 5140 📨 GET /favicon.ico - Пользователь: admin
+INFO 2026-03-31 11:07:49,235 middleware 11996 5140 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:07:49,235 middleware 11996 5140 ❌ Ошибка 404: GET /favicon.ico - Пользователь: admin
+DEBUG 2026-03-31 11:08:06,215 middleware 11996 1816 📨 GET /employee/277/ - Пользователь: pavel2
+INFO 2026-03-31 11:08:06,217 middleware 11996 1816 📤 GET /employee/277/ - 500 - Время: 0.005 сек
+ERROR 2026-03-31 11:08:06,218 middleware 11996 1816 ❌ Ошибка 500: GET /employee/277/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:08:09,134 middleware 11996 1816 📨 GET /employee/277/ - Пользователь: pavel2
+INFO 2026-03-31 11:08:09,137 middleware 11996 1816 📤 GET /employee/277/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:08:09,138 middleware 11996 1816 ❌ Ошибка 500: GET /employee/277/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:08:36,218 middleware 11996 1816 📨 GET /employee/286/ - Пользователь: pavel2
+INFO 2026-03-31 11:08:36,222 middleware 11996 1816 📤 GET /employee/286/ - 500 - Время: 0.006 сек
+ERROR 2026-03-31 11:08:36,222 middleware 11996 1816 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:09:01,393 middleware 9256 3596 📨 GET /employee/286/ - Пользователь: pavel2
+INFO 2026-03-31 11:09:01,396 middleware 9256 3596 📤 GET /employee/286/ - 500 - Время: 0.007 сек
+ERROR 2026-03-31 11:09:01,396 middleware 9256 3596 ❌ Ошибка 500: GET /employee/286/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:33,809 middleware 10676 8308 📨 GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 11:10:33,811 middleware 10676 8308 💥 Исключение в GET /employee/286/: No Employee matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Employee.DoesNotExist: Employee matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 339, in employee_detail
+    employee = get_object_or_404(Employee, id=employee_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Employee matches the given query.
+INFO 2026-03-31 11:10:33,824 middleware 10676 8308 📤 GET /employee/286/ - 404 - Время: 0.019 сек
+ERROR 2026-03-31 11:10:33,824 middleware 10676 8308 ❌ Ошибка 404: GET /employee/286/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:34,967 middleware 10676 8308 📨 GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 11:10:34,969 middleware 10676 8308 💥 Исключение в GET /employee/286/: No Employee matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Employee.DoesNotExist: Employee matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 339, in employee_detail
+    employee = get_object_or_404(Employee, id=employee_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Employee matches the given query.
+INFO 2026-03-31 11:10:34,978 middleware 10676 8308 📤 GET /employee/286/ - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:10:34,978 middleware 10676 8308 ❌ Ошибка 404: GET /employee/286/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:35,011 middleware 10676 8308 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:10:35,022 middleware 10676 8308 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-31 11:10:35,023 middleware 10676 8308 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:41,946 middleware 10676 8308 📨 GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 11:10:41,948 middleware 10676 8308 💥 Исключение в GET /employee/286/: No Employee matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Employee.DoesNotExist: Employee matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 339, in employee_detail
+    employee = get_object_or_404(Employee, id=employee_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Employee matches the given query.
+INFO 2026-03-31 11:10:41,956 middleware 10676 8308 📤 GET /employee/286/ - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:10:41,957 middleware 10676 8308 ❌ Ошибка 404: GET /employee/286/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:43,193 middleware 10676 8308 📨 GET /employee/286/ - Пользователь: pavel2
+ERROR 2026-03-31 11:10:43,195 middleware 10676 8308 💥 Исключение в GET /employee/286/: No Employee matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Employee.DoesNotExist: Employee matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 339, in employee_detail
+    employee = get_object_or_404(Employee, id=employee_id)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Employee matches the given query.
+INFO 2026-03-31 11:10:43,204 middleware 10676 8308 📤 GET /employee/286/ - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:10:43,204 middleware 10676 8308 ❌ Ошибка 404: GET /employee/286/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:43,236 middleware 10676 8308 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:10:43,245 middleware 10676 8308 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-03-31 11:10:43,245 middleware 10676 8308 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:10:51,061 middleware 10676 3776 📨 GET /admin/tasks/employee/ - Пользователь: admin
+ERROR 2026-03-31 11:10:51,061 middleware 10676 3776 💥 Исключение в GET /admin/tasks/employee/: 
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 266, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\common.py", line 23, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 468, in catch_all_view
+    raise Http404
+django.http.response.Http404
+INFO 2026-03-31 11:10:51,072 middleware 10676 3776 📤 GET /admin/tasks/employee/ - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:10:51,072 middleware 10676 3776 ❌ Ошибка 404: GET /admin/tasks/employee/ - Пользователь: admin
+DEBUG 2026-03-31 11:10:51,796 middleware 10676 3776 📨 GET /admin/tasks/employee/ - Пользователь: admin
+ERROR 2026-03-31 11:10:51,796 middleware 10676 3776 💥 Исключение в GET /admin/tasks/employee/: 
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 266, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\common.py", line 23, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 468, in catch_all_view
+    raise Http404
+django.http.response.Http404
+INFO 2026-03-31 11:10:51,804 middleware 10676 3776 📤 GET /admin/tasks/employee/ - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:10:51,804 middleware 10676 3776 ❌ Ошибка 404: GET /admin/tasks/employee/ - Пользователь: admin
+DEBUG 2026-03-31 11:10:52,693 middleware 10676 11076 📨 GET /admin/tasks/employee/ - Пользователь: admin
+ERROR 2026-03-31 11:10:52,693 middleware 10676 11076 💥 Исключение в GET /admin/tasks/employee/: 
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 266, in wrapper
+    return self.admin_view(view, cacheable)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 247, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\views\decorators\common.py", line 23, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\admin\sites.py", line 468, in catch_all_view
+    raise Http404
+django.http.response.Http404
+INFO 2026-03-31 11:10:52,700 middleware 10676 11076 📤 GET /admin/tasks/employee/ - 404 - Время: 0.010 сек
+ERROR 2026-03-31 11:10:52,701 middleware 10676 11076 ❌ Ошибка 404: GET /admin/tasks/employee/ - Пользователь: admin
+DEBUG 2026-03-31 11:10:52,725 middleware 10676 11076 📨 GET /favicon.ico - Пользователь: admin
+INFO 2026-03-31 11:10:52,734 middleware 10676 11076 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:10:52,734 middleware 10676 11076 ❌ Ошибка 404: GET /favicon.ico - Пользователь: admin
+DEBUG 2026-03-31 11:10:54,796 middleware 10676 11076 📨 GET /employees/ - Пользователь: admin
+ERROR 2026-03-31 11:10:54,808 middleware 10676 11076 💥 Исключение в GET /employees/: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+INFO 2026-03-31 11:10:54,916 middleware 10676 11076 📤 GET /employees/ - 500 - Время: 0.122 сек
+ERROR 2026-03-31 11:10:54,919 middleware 10676 11076 ❌ Ошибка 500: GET /employees/ - Пользователь: admin
+DEBUG 2026-03-31 11:16:07,345 middleware 344 3888 📨 GET /employee/286/ - Пользователь: pavel2
+INFO 2026-03-31 11:16:07,365 middleware 344 3888 📤 GET /employee/286/ - 302 - Время: 0.024 сек
+DEBUG 2026-03-31 11:16:07,374 middleware 344 3888 📨 GET /employees/ - Пользователь: pavel2
+ERROR 2026-03-31 11:16:07,380 middleware 344 3888 💥 Исключение в GET /employees/: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+INFO 2026-03-31 11:16:07,486 middleware 344 3888 📤 GET /employees/ - 500 - Время: 0.115 сек
+ERROR 2026-03-31 11:16:07,488 middleware 344 3888 ❌ Ошибка 500: GET /employees/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:17:53,166 middleware 13236 8808 📨 GET /employees/ - Пользователь: pavel2
+ERROR 2026-03-31 11:17:53,174 middleware 13236 8808 💥 Исключение в GET /employees/: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+INFO 2026-03-31 11:17:53,262 middleware 13236 8808 📤 GET /employees/ - 500 - Время: 0.100 сек
+ERROR 2026-03-31 11:17:53,264 middleware 13236 8808 ❌ Ошибка 500: GET /employees/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:17:54,370 middleware 13236 8808 📨 GET /employees/ - Пользователь: pavel2
+ERROR 2026-03-31 11:17:54,375 middleware 13236 8808 💥 Исключение в GET /employees/: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+INFO 2026-03-31 11:17:54,461 middleware 13236 8808 📤 GET /employees/ - 500 - Время: 0.093 сек
+ERROR 2026-03-31 11:17:54,463 middleware 13236 8808 ❌ Ошибка 500: GET /employees/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:17:55,478 middleware 13236 8808 📨 GET /employees/ - Пользователь: pavel2
+ERROR 2026-03-31 11:17:55,482 middleware 13236 8808 💥 Исключение в GET /employees/: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+INFO 2026-03-31 11:17:55,564 middleware 13236 8808 📤 GET /employees/ - 500 - Время: 0.089 сек
+ERROR 2026-03-31 11:17:55,566 middleware 13236 8808 ❌ Ошибка 500: GET /employees/ - Пользователь: pavel2
+DEBUG 2026-03-31 11:17:55,681 middleware 13236 8808 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:17:55,692 middleware 13236 8808 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:17:55,693 middleware 13236 8808 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:19:41,812 middleware 9956 11236 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:19:41,844 middleware 9956 11236 📤 GET /employees/ - 200 - Время: 0.035 сек
+DEBUG 2026-03-31 11:20:00,645 middleware 9956 11236 📨 GET /employees/287 - Пользователь: pavel2
+INFO 2026-03-31 11:20:00,655 middleware 9956 11236 📤 GET /employees/287 - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:20:00,655 middleware 9956 11236 ❌ Ошибка 404: GET /employees/287 - Пользователь: pavel2
+DEBUG 2026-03-31 11:20:41,922 middleware 9956 11236 📨 GET /employee/286/ - Пользователь: pavel2
+INFO 2026-03-31 11:20:41,932 middleware 9956 11236 📤 GET /employee/286/ - 302 - Время: 0.013 сек
+DEBUG 2026-03-31 11:20:46,729 middleware 9956 11236 📨 GET /employees/286 - Пользователь: pavel2
+INFO 2026-03-31 11:20:46,740 middleware 9956 11236 📤 GET /employees/286 - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:20:46,740 middleware 9956 11236 ❌ Ошибка 404: GET /employees/286 - Пользователь: pavel2
+DEBUG 2026-03-31 11:21:18,451 middleware 9956 11236 📨 GET /employee/create/ - Пользователь: pavel2
+INFO 2026-03-31 11:21:18,480 middleware 9956 11236 📤 GET /employee/create/ - 200 - Время: 0.033 сек
+DEBUG 2026-03-31 11:21:22,195 middleware 9956 11236 📨 GET /staff/import/ - Пользователь: pavel2
+INFO 2026-03-31 11:21:22,200 middleware 9956 11236 📤 GET /staff/import/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-31 11:22:30,826 middleware 9956 2124 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:22:30,846 middleware 9956 2124 📤 GET /favicon.ico - 404 - Время: 0.026 сек
+ERROR 2026-03-31 11:22:30,847 middleware 9956 2124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:22:32,740 middleware 9956 2124 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:22:32,749 middleware 9956 2124 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-03-31 11:22:32,749 middleware 9956 2124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:22:41,798 middleware 9204 4864 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:22:41,830 middleware 9204 4864 📤 GET /employees/ - 200 - Время: 0.036 сек
+DEBUG 2026-03-31 11:22:42,046 middleware 9204 9540 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:22:42,056 middleware 9204 9540 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:22:42,056 middleware 9204 9540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:22:42,935 middleware 9204 4864 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:22:42,945 middleware 9204 4864 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:22:42,945 middleware 9204 4864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:22:43,635 middleware 9204 9540 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:22:43,647 middleware 9204 9540 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-03-31 11:22:43,647 middleware 9204 9540 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:22:44,484 middleware 9204 4864 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:22:44,493 middleware 9204 4864 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-03-31 11:22:44,493 middleware 9204 4864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:22:45,877 middleware 9204 4864 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:22:45,882 middleware 9204 4864 📤 GET /employees/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-31 11:22:47,109 middleware 9204 4864 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:22:47,113 middleware 9204 4864 📤 GET /employees/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-31 11:22:48,500 middleware 9204 4864 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:22:48,505 middleware 9204 4864 📤 GET /employees/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-31 11:22:50,837 middleware 9204 4864 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:22:50,841 middleware 9204 4864 📤 GET /employees/ - 200 - Время: 0.006 сек
+DEBUG 2026-03-31 11:22:53,109 middleware 9204 4864 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:22:53,113 middleware 9204 4864 📤 GET /employees/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-31 11:25:45,282 middleware 13416 1984 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:25:45,315 middleware 13416 1984 📤 GET /employees/ - 200 - Время: 0.035 сек
+DEBUG 2026-03-31 11:25:47,101 middleware 13416 7220 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:25:47,117 middleware 13416 7220 📤 GET /favicon.ico - 404 - Время: 0.022 сек
+ERROR 2026-03-31 11:25:47,117 middleware 13416 7220 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:25:48,188 middleware 13416 1984 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:25:48,208 middleware 13416 1984 📤 GET /favicon.ico - 404 - Время: 0.027 сек
+ERROR 2026-03-31 11:25:48,209 middleware 13416 1984 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:25:49,474 middleware 13416 7220 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:25:49,483 middleware 13416 7220 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-03-31 11:25:49,483 middleware 13416 7220 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:26:28,393 middleware 12800 10960 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:26:28,426 middleware 12800 10960 📤 GET /employees/ - 200 - Время: 0.036 сек
+DEBUG 2026-03-31 11:26:28,755 middleware 12800 14152 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:26:28,764 middleware 12800 14152 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-03-31 11:26:28,764 middleware 12800 14152 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:26:29,396 middleware 12800 10960 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:26:29,425 middleware 12800 10960 📤 GET /favicon.ico - 404 - Время: 0.032 сек
+ERROR 2026-03-31 11:26:29,425 middleware 12800 10960 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:26:30,124 middleware 12800 14152 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:26:30,132 middleware 12800 14152 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:26:30,133 middleware 12800 14152 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:26:40,653 middleware 8936 2444 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:26:40,685 middleware 8936 2444 📤 GET /employees/ - 200 - Время: 0.036 сек
+DEBUG 2026-03-31 11:26:42,003 middleware 8936 6420 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:26:42,013 middleware 8936 6420 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-03-31 11:26:42,014 middleware 8936 6420 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:26:42,711 middleware 8936 2444 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:26:42,720 middleware 8936 2444 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-03-31 11:26:42,721 middleware 8936 2444 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:26:43,428 middleware 8936 2444 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-03-31 11:26:43,436 middleware 8936 2444 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-03-31 11:26:43,437 middleware 8936 2444 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-03-31 11:27:32,970 middleware 8936 2444 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:27:32,975 middleware 8936 2444 📤 GET /employees/ - 200 - Время: 0.008 сек
+DEBUG 2026-03-31 11:27:33,922 middleware 8936 2444 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-03-31 11:27:33,926 middleware 8936 2444 📤 GET /employees/ - 200 - Время: 0.007 сек
+DEBUG 2026-03-31 11:27:35,879 middleware 8936 2444 📨 GET / - Пользователь: pavel2
+INFO 2026-03-31 11:27:35,897 middleware 8936 2444 📤 GET / - 200 - Время: 0.020 сек
+DEBUG 2026-03-31 11:27:38,879 middleware 8936 2444 📨 GET /research/1/ - Пользователь: pavel2
+INFO 2026-03-31 11:27:38,915 middleware 8936 2444 📤 GET /research/1/ - 200 - Время: 0.039 сек
+DEBUG 2026-03-31 11:27:47,319 middleware 8936 2444 📨 GET /research/assign/substage/4/ - Пользователь: pavel2
+INFO 2026-03-31 11:27:47,347 middleware 8936 2444 📤 GET /research/assign/substage/4/ - 200 - Время: 0.031 сек

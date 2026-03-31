@@ -5200,3 +5200,709 @@ INFO 2026-03-30 15:48:22,125 log 17696 21864 "GET / HTTP/1.1" 200 2762
 INFO 2026-03-30 15:48:30,604 log 17696 21864 "GET /research/import/ HTTP/1.1" 200 2344
 INFO 2026-03-30 15:48:44,375 log 17696 21864 "POST /research/import/ HTTP/1.1" 302 0
 INFO 2026-03-30 15:48:44,460 log 17696 21864 "GET /research/1/ HTTP/1.1" 200 5222
+INFO 2026-03-31 10:54:28,103 autoreload 3624 8888 Watching for file changes with StatReloader
+INFO 2026-03-31 10:56:51,604 autoreload 3624 8888 E:\code\task_manager\taskmanager\tasks\urls.py changed, reloading.
+INFO 2026-03-31 10:56:52,296 autoreload 1308 9992 Watching for file changes with StatReloader
+INFO 2026-03-31 10:57:03,565 log 1308 7600 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-03-31 10:57:16,406 log 1308 6448 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-03-31 10:57:16,448 log 1308 13304 "GET /login/?next=/employee/307/ HTTP/1.1" 200 1701
+INFO 2026-03-31 10:57:16,523 log 1308 13304 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 10:57:16,529 log 1308 4108 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 10:57:16,679 log 1308 4108 Not Found: /favicon.ico
+WARNING 2026-03-31 10:57:16,680 log 1308 4108 "GET /favicon.ico HTTP/1.1" 404 1853
+INFO 2026-03-31 10:57:26,193 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1768
+INFO 2026-03-31 10:57:34,149 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1829
+INFO 2026-03-31 10:57:42,144 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1754
+INFO 2026-03-31 10:57:48,718 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1748
+INFO 2026-03-31 10:58:05,251 log 1308 4108 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-03-31 10:58:05,261 log 1308 4108 "GET /login/?next=/employee/307/ HTTP/1.1" 200 1661
+INFO 2026-03-31 10:58:16,157 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1811
+INFO 2026-03-31 10:58:22,145 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1742
+INFO 2026-03-31 10:58:37,075 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1797
+INFO 2026-03-31 10:58:50,755 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1791
+INFO 2026-03-31 10:59:01,065 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1818
+INFO 2026-03-31 10:59:11,767 log 1308 11968 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-03-31 10:59:11,778 log 1308 11968 "GET /login/?next=/employee/307/ HTTP/1.1" 200 1749
+INFO 2026-03-31 10:59:14,655 log 1308 11968 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1818
+INFO 2026-03-31 10:59:21,626 log 1308 11968 "POST /login/?next=/employee/307/ HTTP/1.1" 200 1804
+INFO 2026-03-31 10:59:22,910 log 1308 11968 "GET /register/ HTTP/1.1" 200 2107
+INFO 2026-03-31 10:59:38,356 log 1308 11968 "POST /register/ HTTP/1.1" 302 0
+INFO 2026-03-31 10:59:38,436 log 1308 11968 "GET / HTTP/1.1" 200 3057
+INFO 2026-03-31 10:59:41,162 log 1308 11968 "GET /research/1/ HTTP/1.1" 200 5179
+ERROR 2026-03-31 10:59:56,955 log 1308 11968 Internal Server Error: /research/1/edit/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 48, in research_task_edit
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form,
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+ERROR 2026-03-31 10:59:56,961 log 1308 11968 "GET /research/1/edit/ HTTP/1.1" 500 13829
+ERROR 2026-03-31 11:00:01,622 log 1308 11968 Internal Server Error: /research/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+ERROR 2026-03-31 11:00:01,628 log 1308 11968 "GET /research/ HTTP/1.1" 500 13654
+INFO 2026-03-31 11:00:04,940 log 1308 11968 "GET /task/create/ HTTP/1.1" 200 3687
+INFO 2026-03-31 11:00:14,826 log 1308 11968 "GET /employees/ HTTP/1.1" 200 35
+INFO 2026-03-31 11:00:19,546 log 1308 11968 "GET /employees/ HTTP/1.1" 200 35
+ERROR 2026-03-31 11:00:34,400 log 1308 11968 Internal Server Error: /employee/307/
+ERROR 2026-03-31 11:00:34,401 log 1308 11968 "GET /employee/307/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:00:34,982 log 1308 11968 Internal Server Error: /employee/307/
+ERROR 2026-03-31 11:00:34,982 log 1308 11968 "GET /employee/307/ HTTP/1.1" 500 50
+INFO 2026-03-31 11:00:49,815 log 1308 4108 "POST /login/?next=/employee/307/ HTTP/1.1" 302 0
+ERROR 2026-03-31 11:00:49,832 log 1308 4108 Internal Server Error: /employee/307/
+ERROR 2026-03-31 11:00:49,833 log 1308 4108 "GET /employee/307/ HTTP/1.1" 500 50
+WARNING 2026-03-31 11:00:49,897 log 1308 4108 Not Found: /favicon.ico
+WARNING 2026-03-31 11:00:49,897 log 1308 4108 "GET /favicon.ico HTTP/1.1" 404 1852
+INFO 2026-03-31 11:01:39,507 log 1308 11968 "GET / HTTP/1.1" 200 3079
+ERROR 2026-03-31 11:01:55,467 log 1308 11968 Internal Server Error: /research/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 16, in research_task_list
+    return render(request, 'tasks/research_task_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_list.html
+ERROR 2026-03-31 11:01:55,473 log 1308 11968 "GET /research/ HTTP/1.1" 500 13588
+ERROR 2026-03-31 11:01:58,238 log 1308 11968 Internal Server Error: /research/1/edit/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 48, in research_task_edit
+    return render(request, 'tasks/research_task_form.html', {
+        'form': form,
+        'title': f'Редактирование: {research_task.title}',
+        'research_task': research_task
+    })
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+ERROR 2026-03-31 11:01:58,243 log 1308 11968 "GET /research/1/edit/ HTTP/1.1" 500 13885
+WARNING 2026-03-31 11:02:17,774 log 1308 11968 Not Found: /research_task/create/
+WARNING 2026-03-31 11:02:17,774 log 1308 11968 "GET /research_task/create/ HTTP/1.1" 404 1861
+ERROR 2026-03-31 11:02:54,974 log 1308 11968 Internal Server Error: /research/create/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\research_views.py", line 31, in research_task_create
+    return render(request, 'tasks/research_task_form.html', {'form': form, 'title': 'Создание НИР'})
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: tasks/research_task_form.html
+ERROR 2026-03-31 11:02:54,980 log 1308 11968 "GET /research/create/ HTTP/1.1" 500 13603
+ERROR 2026-03-31 11:04:45,820 log 1308 5936 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:04:45,821 log 1308 5936 "GET /employee/1/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:04:48,216 log 1308 5936 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:04:48,217 log 1308 5936 "GET /employee/1/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:04:49,158 log 1308 5936 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:04:49,159 log 1308 5936 "GET /employee/1/ HTTP/1.1" 500 50
+WARNING 2026-03-31 11:04:49,198 log 1308 5936 Not Found: /favicon.ico
+WARNING 2026-03-31 11:04:49,199 log 1308 5936 "GET /favicon.ico HTTP/1.1" 404 1877
+ERROR 2026-03-31 11:05:01,572 log 1308 684 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:05:01,573 log 1308 684 "GET /employee/1/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:05:05,107 log 1308 11164 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:05:05,108 log 1308 11164 "GET /employee/1/ HTTP/1.1" 500 50
+WARNING 2026-03-31 11:05:05,138 log 1308 11164 Not Found: /favicon.ico
+WARNING 2026-03-31 11:05:05,139 log 1308 11164 "GET /favicon.ico HTTP/1.1" 404 1874
+INFO 2026-03-31 11:05:29,013 autoreload 11996 3776 Watching for file changes with StatReloader
+ERROR 2026-03-31 11:05:32,982 log 11996 4072 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:05:32,983 log 11996 4072 "GET /employee/1/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:05:33,723 log 11996 4072 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:05:33,723 log 11996 4072 "GET /employee/1/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:05:34,172 log 11996 4072 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:05:34,172 log 11996 4072 "GET /employee/1/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:05:34,538 log 11996 5816 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:05:34,539 log 11996 5816 "GET /employee/1/ HTTP/1.1" 500 50
+WARNING 2026-03-31 11:05:34,575 log 11996 5816 Not Found: /favicon.ico
+WARNING 2026-03-31 11:05:34,576 log 11996 5816 "GET /favicon.ico HTTP/1.1" 404 1886
+ERROR 2026-03-31 11:06:08,898 log 11996 8148 Internal Server Error: /employee/1/
+ERROR 2026-03-31 11:06:08,898 log 11996 8148 "GET /employee/1/ HTTP/1.1" 500 50
+WARNING 2026-03-31 11:06:08,928 log 11996 8148 Not Found: /favicon.ico
+WARNING 2026-03-31 11:06:08,928 log 11996 8148 "GET /favicon.ico HTTP/1.1" 404 1864
+INFO 2026-03-31 11:06:13,993 log 11996 8148 "GET / HTTP/1.1" 200 2897
+INFO 2026-03-31 11:06:15,883 log 11996 8148 "GET /employees/ HTTP/1.1" 200 35
+ERROR 2026-03-31 11:06:58,139 log 11996 8148 Internal Server Error: /employee/277/
+ERROR 2026-03-31 11:06:58,140 log 11996 8148 "GET /employee/277/ HTTP/1.1" 500 50
+INFO 2026-03-31 11:07:02,358 log 11996 8148 "GET /employee/277 HTTP/1.1" 301 0
+ERROR 2026-03-31 11:07:02,366 log 11996 8148 Internal Server Error: /employee/277/
+ERROR 2026-03-31 11:07:02,366 log 11996 8148 "GET /employee/277/ HTTP/1.1" 500 50
+INFO 2026-03-31 11:07:38,372 log 11996 8148 "GET /admin/tasks/employee/ HTTP/1.1" 302 0
+INFO 2026-03-31 11:07:38,436 log 11996 8148 "GET /admin/login/?next=/admin/tasks/employee/ HTTP/1.1" 200 1721
+INFO 2026-03-31 11:07:38,568 log 11996 5140 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2026-03-31 11:07:38,569 log 11996 8148 "GET /static/admin/css/base.css HTTP/1.1" 200 23100
+INFO 2026-03-31 11:07:38,572 log 11996 5140 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16273
+INFO 2026-03-31 11:07:38,579 log 11996 13904 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2026-03-31 11:07:38,581 log 11996 236 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2026-03-31 11:07:38,584 log 11996 12704 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2026-03-31 11:07:38,585 log 11996 4316 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 3538
+INFO 2026-03-31 11:07:49,162 log 11996 8148 "POST /admin/login/?next=/admin/tasks/employee/ HTTP/1.1" 302 0
+WARNING 2026-03-31 11:07:49,200 log 11996 8148 Not Found: /admin/tasks/employee/
+WARNING 2026-03-31 11:07:49,200 log 11996 8148 "GET /admin/tasks/employee/ HTTP/1.1" 404 1281
+WARNING 2026-03-31 11:07:49,237 log 11996 5140 Not Found: /favicon.ico
+WARNING 2026-03-31 11:07:49,238 log 11996 5140 "GET /favicon.ico HTTP/1.1" 404 1872
+INFO 2026-03-31 11:07:57,564 log 11996 8148 "GET /employees/ HTTP/1.1" 200 35
+ERROR 2026-03-31 11:08:06,219 log 11996 1816 Internal Server Error: /employee/277/
+ERROR 2026-03-31 11:08:06,219 log 11996 1816 "GET /employee/277/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:08:09,138 log 11996 1816 Internal Server Error: /employee/277/
+ERROR 2026-03-31 11:08:09,138 log 11996 1816 "GET /employee/277/ HTTP/1.1" 500 50
+ERROR 2026-03-31 11:08:36,222 log 11996 1816 Internal Server Error: /employee/286/
+ERROR 2026-03-31 11:08:36,223 log 11996 1816 "GET /employee/286/ HTTP/1.1" 500 50
+INFO 2026-03-31 11:08:51,943 autoreload 9256 7608 Watching for file changes with StatReloader
+ERROR 2026-03-31 11:09:01,397 log 9256 3596 Internal Server Error: /employee/286/
+ERROR 2026-03-31 11:09:01,398 log 9256 3596 "GET /employee/286/ HTTP/1.1" 500 50
+INFO 2026-03-31 11:10:14,070 autoreload 9256 7608 E:\code\task_manager\taskmanager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 11:10:14,781 autoreload 11504 568 Watching for file changes with StatReloader
+INFO 2026-03-31 11:10:27,834 autoreload 10676 12752 Watching for file changes with StatReloader
+WARNING 2026-03-31 11:10:33,826 log 10676 8308 Not Found: /employee/286/
+WARNING 2026-03-31 11:10:33,826 log 10676 8308 "GET /employee/286/ HTTP/1.1" 404 1310
+WARNING 2026-03-31 11:10:34,979 log 10676 8308 Not Found: /employee/286/
+WARNING 2026-03-31 11:10:34,980 log 10676 8308 "GET /employee/286/ HTTP/1.1" 404 1338
+WARNING 2026-03-31 11:10:35,024 log 10676 8308 Not Found: /favicon.ico
+WARNING 2026-03-31 11:10:35,025 log 10676 8308 "GET /favicon.ico HTTP/1.1" 404 1807
+WARNING 2026-03-31 11:10:41,958 log 10676 8308 Not Found: /employee/286/
+WARNING 2026-03-31 11:10:41,958 log 10676 8308 "GET /employee/286/ HTTP/1.1" 404 1355
+WARNING 2026-03-31 11:10:43,205 log 10676 8308 Not Found: /employee/286/
+WARNING 2026-03-31 11:10:43,205 log 10676 8308 "GET /employee/286/ HTTP/1.1" 404 1315
+WARNING 2026-03-31 11:10:43,246 log 10676 8308 Not Found: /favicon.ico
+WARNING 2026-03-31 11:10:43,246 log 10676 8308 "GET /favicon.ico HTTP/1.1" 404 1840
+WARNING 2026-03-31 11:10:51,073 log 10676 3776 Not Found: /admin/tasks/employee/
+WARNING 2026-03-31 11:10:51,073 log 10676 3776 "GET /admin/tasks/employee/ HTTP/1.1" 404 1293
+WARNING 2026-03-31 11:10:51,805 log 10676 3776 Not Found: /admin/tasks/employee/
+WARNING 2026-03-31 11:10:51,805 log 10676 3776 "GET /admin/tasks/employee/ HTTP/1.1" 404 1275
+WARNING 2026-03-31 11:10:52,702 log 10676 11076 Not Found: /admin/tasks/employee/
+WARNING 2026-03-31 11:10:52,703 log 10676 11076 "GET /admin/tasks/employee/ HTTP/1.1" 404 1308
+WARNING 2026-03-31 11:10:52,736 log 10676 11076 Not Found: /favicon.ico
+WARNING 2026-03-31 11:10:52,737 log 10676 11076 "GET /favicon.ico HTTP/1.1" 404 1872
+ERROR 2026-03-31 11:10:54,908 log 10676 11076 Internal Server Error: /employees/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+ERROR 2026-03-31 11:10:54,923 log 10676 11076 "GET /employees/ HTTP/1.1" 500 26548
+INFO 2026-03-31 11:15:21,589 autoreload 10676 12752 E:\code\task_manager\taskmanager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 11:15:22,308 autoreload 2840 1376 Watching for file changes with StatReloader
+INFO 2026-03-31 11:15:58,749 autoreload 344 12780 Watching for file changes with StatReloader
+INFO 2026-03-31 11:16:07,367 log 344 3888 "GET /employee/286/ HTTP/1.1" 302 0
+ERROR 2026-03-31 11:16:07,479 log 344 3888 Internal Server Error: /employees/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+ERROR 2026-03-31 11:16:07,491 log 344 3888 "GET /employees/ HTTP/1.1" 500 26947
+INFO 2026-03-31 11:17:43,755 autoreload 344 12780 E:\code\task_manager\taskmanager\tasks\templatetags\task_extras.py changed, reloading.
+INFO 2026-03-31 11:17:44,456 autoreload 13236 12844 Watching for file changes with StatReloader
+ERROR 2026-03-31 11:17:53,256 log 13236 8808 Internal Server Error: /employees/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+ERROR 2026-03-31 11:17:53,268 log 13236 8808 "GET /employees/ HTTP/1.1" 500 26874
+ERROR 2026-03-31 11:17:54,454 log 13236 8808 Internal Server Error: /employees/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+ERROR 2026-03-31 11:17:54,466 log 13236 8808 "GET /employees/ HTTP/1.1" 500 26879
+ERROR 2026-03-31 11:17:55,558 log 13236 8808 Internal Server Error: /employees/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\taskmanager\tasks\views\employee_views.py", line 331, in employee_list
+    return render(request, 'tasks/employee_list.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 307, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 235, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 894, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 556, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 554, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 676, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 771, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 682, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\taskmanager\tasks\templates\tasks\employee_list.html, Invalid filter: 'get_item'
+ERROR 2026-03-31 11:17:55,570 log 13236 8808 "GET /employees/ HTTP/1.1" 500 26961
+WARNING 2026-03-31 11:17:55,694 log 13236 8808 Not Found: /favicon.ico
+WARNING 2026-03-31 11:17:55,695 log 13236 8808 "GET /favicon.ico HTTP/1.1" 404 1882
+INFO 2026-03-31 11:19:02,630 autoreload 13236 12844 E:\code\task_manager\taskmanager\tasks\templatetags\task_extras.py changed, reloading.
+INFO 2026-03-31 11:19:03,344 autoreload 13224 7080 Watching for file changes with StatReloader
+INFO 2026-03-31 11:19:29,453 autoreload 9956 992 Watching for file changes with StatReloader
+INFO 2026-03-31 11:19:41,846 log 9956 11236 "GET /employees/ HTTP/1.1" 200 4122
+WARNING 2026-03-31 11:20:00,656 log 9956 11236 Not Found: /employees/287
+WARNING 2026-03-31 11:20:00,656 log 9956 11236 "GET /employees/287 HTTP/1.1" 404 1892
+INFO 2026-03-31 11:20:41,933 log 9956 11236 "GET /employee/286/ HTTP/1.1" 302 0
+INFO 2026-03-31 11:20:41,939 log 9956 11236 "GET /employees/ HTTP/1.1" 200 4141
+WARNING 2026-03-31 11:20:46,741 log 9956 11236 Not Found: /employees/286
+WARNING 2026-03-31 11:20:46,741 log 9956 11236 "GET /employees/286 HTTP/1.1" 404 1835
+INFO 2026-03-31 11:21:18,482 log 9956 11236 "GET /employee/create/ HTTP/1.1" 200 2272
+INFO 2026-03-31 11:21:22,202 log 9956 11236 "GET /staff/import/ HTTP/1.1" 200 2839
+INFO 2026-03-31 11:22:30,262 log 9956 11236 "GET /employees/ HTTP/1.1" 200 4210
+INFO 2026-03-31 11:22:30,341 log 9956 11236 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:22:30,341 log 9956 2124 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:22:30,849 log 9956 2124 Not Found: /favicon.ico
+WARNING 2026-03-31 11:22:30,850 log 9956 2124 "GET /favicon.ico HTTP/1.1" 404 1817
+INFO 2026-03-31 11:22:32,535 log 9956 2124 "GET /employees/ HTTP/1.1" 200 4145
+INFO 2026-03-31 11:22:32,564 log 9956 11236 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 11:22:32,564 log 9956 2124 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-31 11:22:32,750 log 9956 2124 Not Found: /favicon.ico
+WARNING 2026-03-31 11:22:32,751 log 9956 2124 "GET /favicon.ico HTTP/1.1" 404 1880
+INFO 2026-03-31 11:22:38,564 autoreload 9204 14152 Watching for file changes with StatReloader
+INFO 2026-03-31 11:22:41,833 log 9204 4864 "GET /employees/ HTTP/1.1" 200 4057
+INFO 2026-03-31 11:22:41,908 log 9204 4864 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:22:41,909 log 9204 9540 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:22:42,057 log 9204 9540 Not Found: /favicon.ico
+WARNING 2026-03-31 11:22:42,058 log 9204 9540 "GET /favicon.ico HTTP/1.1" 404 1845
+INFO 2026-03-31 11:22:42,711 log 9204 9540 "GET /employees/ HTTP/1.1" 200 4101
+INFO 2026-03-31 11:22:42,739 log 9204 9540 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:22:42,739 log 9204 4864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:22:42,946 log 9204 4864 Not Found: /favicon.ico
+WARNING 2026-03-31 11:22:42,947 log 9204 4864 "GET /favicon.ico HTTP/1.1" 404 1846
+INFO 2026-03-31 11:22:43,399 log 9204 4864 "GET /employees/ HTTP/1.1" 200 4022
+INFO 2026-03-31 11:22:43,436 log 9204 4864 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:22:43,438 log 9204 9540 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:22:43,648 log 9204 9540 Not Found: /favicon.ico
+WARNING 2026-03-31 11:22:43,649 log 9204 9540 "GET /favicon.ico HTTP/1.1" 404 1810
+INFO 2026-03-31 11:22:44,246 log 9204 9540 "GET /employees/ HTTP/1.1" 200 4096
+INFO 2026-03-31 11:22:44,284 log 9204 9540 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:22:44,285 log 9204 4864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:22:44,494 log 9204 4864 Not Found: /favicon.ico
+WARNING 2026-03-31 11:22:44,495 log 9204 4864 "GET /favicon.ico HTTP/1.1" 404 1844
+INFO 2026-03-31 11:22:45,884 log 9204 4864 "GET /employees/?department=design&is_active=&search= HTTP/1.1" 200 4037
+INFO 2026-03-31 11:22:47,114 log 9204 4864 "GET /employees/?department=development&is_active=&search= HTTP/1.1" 200 4049
+INFO 2026-03-31 11:22:48,506 log 9204 4864 "GET /employees/?department=development&is_active=active&search= HTTP/1.1" 200 4013
+INFO 2026-03-31 11:22:50,842 log 9204 4864 "GET /employees/?department=development&is_active=inactive&search= HTTP/1.1" 200 4070
+INFO 2026-03-31 11:22:53,114 log 9204 4864 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4075
+INFO 2026-03-31 11:22:54,518 log 9204 4864 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4053
+INFO 2026-03-31 11:24:35,197 autoreload 9204 14152 E:\code\task_manager\taskmanager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 11:24:35,935 autoreload 8932 1492 Watching for file changes with StatReloader
+INFO 2026-03-31 11:24:46,677 autoreload 8932 1492 E:\code\task_manager\taskmanager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 11:24:47,408 autoreload 9612 11400 Watching for file changes with StatReloader
+INFO 2026-03-31 11:25:32,448 autoreload 9612 11400 E:\code\task_manager\taskmanager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 11:25:33,140 autoreload 13416 5648 Watching for file changes with StatReloader
+INFO 2026-03-31 11:25:45,317 log 13416 1984 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4018
+INFO 2026-03-31 11:25:46,040 log 13416 1984 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4071
+INFO 2026-03-31 11:25:46,712 log 13416 1984 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4061
+INFO 2026-03-31 11:25:46,780 log 13416 1984 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:25:46,782 log 13416 7220 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:25:47,119 log 13416 7220 Not Found: /favicon.ico
+WARNING 2026-03-31 11:25:47,119 log 13416 7220 "GET /favicon.ico HTTP/1.1" 404 1801
+INFO 2026-03-31 11:25:47,949 log 13416 7220 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4055
+INFO 2026-03-31 11:25:47,980 log 13416 7220 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:25:47,981 log 13416 1984 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:25:48,211 log 13416 1984 Not Found: /favicon.ico
+WARNING 2026-03-31 11:25:48,212 log 13416 1984 "GET /favicon.ico HTTP/1.1" 404 1885
+INFO 2026-03-31 11:25:49,252 log 13416 1984 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4054
+INFO 2026-03-31 11:25:49,280 log 13416 1984 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:25:49,281 log 13416 7220 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:25:49,485 log 13416 7220 Not Found: /favicon.ico
+WARNING 2026-03-31 11:25:49,486 log 13416 7220 "GET /favicon.ico HTTP/1.1" 404 1823
+INFO 2026-03-31 11:26:26,058 autoreload 13416 5648 E:\code\task_manager\taskmanager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-03-31 11:26:26,820 autoreload 12800 7932 Watching for file changes with StatReloader
+INFO 2026-03-31 11:26:28,428 log 12800 10960 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4077
+INFO 2026-03-31 11:26:28,499 log 12800 10960 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:26:28,500 log 12800 14152 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:26:28,765 log 12800 14152 Not Found: /favicon.ico
+WARNING 2026-03-31 11:26:28,766 log 12800 14152 "GET /favicon.ico HTTP/1.1" 404 1867
+INFO 2026-03-31 11:26:29,199 log 12800 14152 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4056
+INFO 2026-03-31 11:26:29,244 log 12800 14152 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:26:29,244 log 12800 10960 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:26:29,426 log 12800 10960 Not Found: /favicon.ico
+WARNING 2026-03-31 11:26:29,427 log 12800 10960 "GET /favicon.ico HTTP/1.1" 404 1830
+INFO 2026-03-31 11:26:29,893 log 12800 10960 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4065
+INFO 2026-03-31 11:26:29,919 log 12800 10960 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:26:29,919 log 12800 14152 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:26:30,135 log 12800 14152 Not Found: /favicon.ico
+WARNING 2026-03-31 11:26:30,136 log 12800 14152 "GET /favicon.ico HTTP/1.1" 404 1841
+INFO 2026-03-31 11:26:38,026 autoreload 8936 9520 Watching for file changes with StatReloader
+INFO 2026-03-31 11:26:40,688 log 8936 2444 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4048
+INFO 2026-03-31 11:26:41,765 log 8936 2444 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4022
+INFO 2026-03-31 11:26:41,844 log 8936 2444 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:26:41,846 log 8936 6420 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:26:42,015 log 8936 6420 Not Found: /favicon.ico
+WARNING 2026-03-31 11:26:42,015 log 8936 6420 "GET /favicon.ico HTTP/1.1" 404 1819
+INFO 2026-03-31 11:26:42,511 log 8936 6420 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4076
+INFO 2026-03-31 11:26:42,539 log 8936 6420 "GET /static/css/style.css HTTP/1.1" 200 5892
+INFO 2026-03-31 11:26:42,540 log 8936 2444 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-03-31 11:26:42,721 log 8936 2444 Not Found: /favicon.ico
+WARNING 2026-03-31 11:26:42,722 log 8936 2444 "GET /favicon.ico HTTP/1.1" 404 1831
+INFO 2026-03-31 11:26:43,228 log 8936 2444 "GET /employees/?department=&is_active=&search= HTTP/1.1" 200 4053
+INFO 2026-03-31 11:26:43,255 log 8936 6420 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-03-31 11:26:43,256 log 8936 2444 "GET /static/css/style.css HTTP/1.1" 200 5892
+WARNING 2026-03-31 11:26:43,438 log 8936 2444 Not Found: /favicon.ico
+WARNING 2026-03-31 11:26:43,438 log 8936 2444 "GET /favicon.ico HTTP/1.1" 404 1814
+INFO 2026-03-31 11:27:32,977 log 8936 2444 "GET /employees/?department=design&is_active=active&search= HTTP/1.1" 200 4017
+INFO 2026-03-31 11:27:33,927 log 8936 2444 "GET /employees/?department=&is_active=active&search= HTTP/1.1" 200 4065
+INFO 2026-03-31 11:27:35,316 log 8936 2444 "GET /employees/?department=&is_active=active&search= HTTP/1.1" 200 4056
+INFO 2026-03-31 11:27:35,898 log 8936 2444 "GET / HTTP/1.1" 200 2954
+INFO 2026-03-31 11:27:38,916 log 8936 2444 "GET /research/1/ HTTP/1.1" 200 5090
+INFO 2026-03-31 11:27:47,348 log 8936 2444 "GET /research/assign/substage/4/ HTTP/1.1" 200 1912
