@@ -1,48 +1,871 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load task_extras %}
 
-{% block title %}{{ employee.full_name }}{% endblock %}
+{% block title %}{{ employee.full_name }} - Детали сотрудника{% endblock %}
+
+{% block extra_css %}
+<style>
+    .product-card {
+        transition: all 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .due-date-warning {
+        background-color: #fff3cd !important;
+        border-left: 4px solid #ffc107 !important;
+    }
+    .due-date-overdue {
+        background-color: #f8d7da !important;
+        border-left: 4px solid #dc3545 !important;
+    }
+    .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+    .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .stat-label {
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+    .nav-tabs .nav-link {
+        color: #495057;
+    }
+    .nav-tabs .nav-link.active {
+        font-weight: bold;
+        color: #0d6efd;
+    }
+    .gantt-tooltip {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 10px;
+        font-size: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        z-index: 1000;
+        min-width: 250px;
+    }
+    .gantt .bar:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    .gantt .bar-label {
+        font-size: 11px;
+        fill: #fff;
+        font-weight: 500;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        margin-right: 8px;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="card">
+<div class="container-fluid">
+    <!-- Вкладки для переключения типов -->
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'all' %}active{% endif %}" 
+               href="?type=all">Все ({{ tasks_count|add:subtasks_count|add:products_count|add:research_tasks_count|add:research_stages_count|add:research_substages_count }})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'task' %}active{% endif %}" 
+               href="?type=task">Задачи ({{ tasks_count }})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'subtask' %}active{% endif %}" 
+               href="?type=subtask">Подзадачи ({{ subtasks_count }})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'research_task' %}active{% endif %}" 
+               href="?type=research_task">НИР ({{ research_tasks_count }})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'research_stage' %}active{% endif %}" 
+               href="?type=research_stage">Этапы НИР ({{ research_stages_count }})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'research_substage' %}active{% endif %}" 
+               href="?type=research_substage">Подэтапы НИР ({{ research_substages_count }})</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if current_type == 'product' %}active{% endif %}" 
+               href="?type=product">Продукция ({{ products_count }})</a>
+        </li>
+    </ul>
+
+    <!-- Основная информация о сотруднике -->
+    <div class="card mb-4">
         <div class="card-header">
-            <h3>{{ employee.full_name }}</h3>
-            <p class="mb-0">{{ employee.position }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <h3>{{ employee.full_name }}</h3>
+                <div>
+                    <span class="badge {% if employee.is_active %}bg-success{% else %}bg-secondary{% endif %}">
+                        {{ employee.is_active|yesno:"Активен,Неактивен" }}
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="card-body">
-            <!-- Отладочная информация -->
-            <div class="alert alert-info">
-                <h5>Отладка:</h5>
-                <p>Всего items: {{ items|length }}</p>
-                <p>Продуктов: {{ products_count }}</p>
-                <p>Типы items: 
-                    {% for item in items %}
-                        {{ item.type }}{% if not forloop.last %}, {% endif %}
-                    {% endfor %}
-                </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Основная информация</h5>
+                    <table class="table table-sm">
+                         <tr>
+                            <th style="width: 40%;">Должность:</th>
+                            <td><strong>{{ employee.position }}</strong></td>
+                        </tr>
+                        {% if org_structure %}
+                            {% if org_structure.institute %}
+                            <tr>
+                                <th>Институт/Подразделение:</th>
+                                <td>{{ org_structure.institute }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if org_structure.department %}
+                            <tr>
+                                <th>Отдел:</th>
+                                <td>{{ org_structure.department }}</td>
+                            </tr>
+                            {% endif %}
+                            {% if org_structure.laboratory %}
+                            <tr>
+                                <th>Лаборатория:</th>
+                                <td>{{ org_structure.laboratory }}</td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <th>Полный путь:</th>
+                                <td><small class="text-muted">{{ org_structure.full_path }}</small></td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <th>Отдел:</th>
+                                <td>{{ employee.get_department_display|default:"Не указан" }}</td>
+                            </tr>
+                            {% if employee.laboratory %}
+                            <tr>
+                                <th>Лаборатория:</th>
+                                <td>{{ employee.get_laboratory_display }}</td>
+                            </tr>
+                            {% endif %}
+                        {% endif %}
+                        {% if employee.hire_date %}
+                        <tr>
+                            <th>Дата найма:</th>
+                            <td>{{ employee.hire_date|date:"d.m.Y" }}</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h5>Контакты</h5>
+                    <table class="table table-sm">
+                        <tr>
+                            <th style="width: 40%;">Email:</th>
+                            <td><a href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
+                        </tr>
+                        {% if employee.phone %}
+                        <tr>
+                            <th>Телефон:</th>
+                            <td><a href="tel:{{ employee.phone }}">{{ employee.phone }}</a></td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                    
+                    <h5 class="mt-3">Штатные позиции</h5>
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Должность</th>
+                                <th>Подразделение</th>
+                                <th>Ставка</th>
+                                <th>Тип</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sp in staff_positions %}
+                            <tr>
+                                <td>{{ sp.position.name }}</td>
+                                <td><small>{{ sp.department.name }}</small></td>
+                                <td>{{ sp.workload }}</td>
+                                <td><small>{{ sp.get_employment_type_display }}</small></td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-muted">Нет активных штатных позиций</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
-            <!-- Продукция -->
-            <h4>Научная продукция ({{ products_count }})</h4>
-            {% for item in items %}
-                {% if item.type == 'product' %}
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <h5>{{ item.name }}</h5>
-                        <p>Статус: {{ item.get_status_display }}</p>
-                        <p>Готовность: {{ item.completion_percent }}%</p>
-                        {% if item.research_task %}
-                            <p>НИР: {{ item.research_task.title }}</p>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endif %}
-            {% endfor %}
-            
-            {% if products_count == 0 %}
-                <p class="text-muted">Нет продукции</p>
+            {% if employee.notes %}
+            <div class="mt-3">
+                <h5>Заметки</h5>
+                <p class="card-text">{{ employee.notes|linebreaks }}</p>
+            </div>
             {% endif %}
         </div>
     </div>
+
+    <!-- Статистика -->
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <div class="stat-card">
+                <div class="stat-number">{{ tasks_count }}</div>
+                <div class="stat-label">Задачи</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="stat-number">{{ subtasks_count }}</div>
+                <div class="stat-label">Подзадачи</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="stat-number">{{ research_tasks_count }}</div>
+                <div class="stat-label">НИР</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                <div class="stat-number">{{ research_stages_count }}</div>
+                <div class="stat-label">Этапы НИР</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <div class="stat-number">{{ research_substages_count }}</div>
+                <div class="stat-label">Подэтапы</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="stat-card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                <div class="stat-number">{{ products_count }}</div>
+                <div class="stat-label">Продукция</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диаграмма Ганта -->
+    <div class="mb-4">
+        <h5>
+            <i class="bi bi-bar-chart-steps"></i> 
+            Календарный план продукции
+            <button class="btn btn-sm btn-outline-secondary ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#ganttChart">
+                <i class="bi bi-chevron-down"></i>
+            </button>
+        </h5>
+        <div class="collapse show" id="ganttChart">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form method="get" class="row g-3">
+                        <input type="hidden" name="type" value="{{ current_type }}">
+                        <div class="col-md-3">
+                            <label class="form-label">Год</label>
+                            <select name="year" class="form-select" onchange="this.form.submit()">
+                                <option value="">Все годы</option>
+                                {% for year in available_years %}
+                                    <option value="{{ year }}" {% if gantt_year == year %}selected{% endif %}>
+                                        {{ year }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">С</label>
+                            <input type="date" name="start_date" class="form-control" value="{{ gantt_start_date }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">По</label>
+                            <input type="date" name="end_date" class="form-control" value="{{ gantt_end_date }}">
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100 me-2">
+                                <i class="bi bi-search"></i> Применить
+                            </button>
+                            <a href="?type={{ current_type }}" class="btn btn-secondary w-100">
+                                <i class="bi bi-arrow-repeat"></i> Сбросить
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <div id="ganttChartContainer" style="height: 500px; width: 100%;"></div>
+                </div>
+            </div>
+            
+            <!-- Легенда цветов -->
+            {% if research_tasks_list %}
+            <div class="card mt-3">
+                <div class="card-header">
+                    <strong><i class="bi bi-palette"></i> Легенда цветов НИР</strong>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for rt in research_tasks_list %}
+                        <div class="col-md-4 col-lg-3 mb-2">
+                            <div class="d-flex align-items-center">
+                                <div style="width: 20px; height: 20px; background-color: {{ rt.color }}; border-radius: 3px; margin-right: 8px;"></div>
+                                <small>{{ rt.title|truncatechars:40 }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Список элементов (задачи, НИР, продукция и т.д.) -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- НИР -->
+            {% if current_type == 'all' or current_type == 'research_task' %}
+            <div class="mb-4">
+                <h5>Научно-исследовательские работы (НИР)</h5>
+                {% for item in items %}
+                    {% if item.type == 'research_task' %}
+                    <div class="card mb-2 border-primary">
+                        <div class="card-body py-2">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge bg-primary">НИР</span>
+                                        {% if item.is_overdue %}
+                                            <span class="badge bg-danger">Завершена с просрочкой</span>
+                                        {% endif %}
+                                    </div>
+                                    <strong>
+                                        <a href="{% url 'research_task_detail' item.id %}" class="text-decoration-none">
+                                            {{ item.title|truncatechars:100 }}
+                                        </a>
+                                    </strong>
+                                    {% if item.tz_number %}
+                                        <br><small class="text-muted">Шифр: {{ item.tz_number }}</small>
+                                    {% endif %}
+                                    <div class="mt-1 small text-muted">
+                                        {% if item.start_date or item.end_date %}
+                                            <i class="bi bi-calendar"></i> 
+                                            Сроки: 
+                                            {% if item.start_date %}{{ item.start_date|date:"d.m.Y" }}{% endif %}
+                                            {% if item.end_date %} — {{ item.end_date|date:"d.m.Y" }}{% endif %}
+                                        {% endif %}
+                                        <br><i class="bi bi-diagram-3"></i> Этапов: {{ item.stages_count }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Этапы НИР -->
+            {% if current_type == 'all' or current_type == 'research_stage' %}
+            <div class="mb-4">
+                <h5>Этапы НИР</h5>
+                {% for item in items %}
+                    {% if item.type == 'research_stage' %}
+                    <div class="card mb-2 border-info">
+                        <div class="card-body py-2">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge bg-info">Этап {{ item.stage_number }}</span>
+                                        {% if item.is_overdue %}
+                                            <span class="badge bg-danger">Просрочено</span>
+                                        {% endif %}
+                                    </div>
+                                    <strong>
+                                        <a href="{% url 'research_stage_detail' item.id %}" class="text-decoration-none">
+                                            {{ item.title|truncatechars:100 }}
+                                        </a>
+                                    </strong>
+                                    <div class="mt-1 small text-muted">
+                                        {% if item.research_task %}
+                                            <i class="bi bi-mortarboard"></i> НИР: 
+                                            <a href="{% url 'research_task_detail' item.research_task.id %}">{{ item.research_task.title|truncatechars:50 }}</a>
+                                            <br>
+                                        {% endif %}
+                                        {% if item.start_date or item.end_date %}
+                                            <i class="bi bi-calendar"></i> 
+                                            Сроки: 
+                                            {% if item.start_date %}{{ item.start_date|date:"d.m.Y" }}{% endif %}
+                                            {% if item.end_date %} — {{ item.end_date|date:"d.m.Y" }}{% endif %}
+                                        {% endif %}
+                                        <br><i class="bi bi-list-ul"></i> Подэтапов: {{ item.substages_count }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Подэтапы НИР -->
+            {% if current_type == 'all' or current_type == 'research_substage' %}
+            <div class="mb-4">
+                <h5>Подэтапы НИР</h5>
+                {% for item in items %}
+                    {% if item.type == 'research_substage' %}
+                    <div class="card mb-2 border-secondary">
+                        <div class="card-body py-2">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex align-items-center gap-2 mb-1">
+                                        <span class="badge bg-secondary">Подэтап {{ item.substage_number }}</span>
+                                        {% if item.is_overdue %}
+                                            <span class="badge bg-danger">Просрочено</span>
+                                        {% endif %}
+                                    </div>
+                                    <strong>
+                                        <a href="{% url 'research_substage_detail' item.id %}" class="text-decoration-none">
+                                            {{ item.title|truncatechars:100 }}
+                                        </a>
+                                    </strong>
+                                    <div class="mt-1 small text-muted">
+                                        {% if item.research_task %}
+                                            <i class="bi bi-mortarboard"></i> НИР: 
+                                            <a href="{% url 'research_task_detail' item.research_task.id %}">{{ item.research_task.title|truncatechars:50 }}</a>
+                                            <br>
+                                        {% endif %}
+                                        {% if item.stage %}
+                                            <i class="bi bi-diagram-3"></i> Этап: {{ item.stage.stage_number }} - {{ item.stage.title|truncatechars:50 }}
+                                            <br>
+                                        {% endif %}
+                                        {% if item.start_date or item.end_date %}
+                                            <i class="bi bi-calendar"></i> 
+                                            Сроки: 
+                                            {% if item.start_date %}{{ item.start_date|date:"d.m.Y" }}{% endif %}
+                                            {% if item.end_date %} — {{ item.end_date|date:"d.m.Y" }}{% endif %}
+                                        {% endif %}
+                                        <br><i class="bi bi-file-text"></i> Продукции: {{ item.products_count }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Задачи -->
+            {% if current_type == 'all' or current_type == 'task' %}
+            <div class="mb-4">
+                <h5>Задачи</h5>
+                {% for item in items %}
+                    {% if item.type == 'task' %}
+                    <div class="card mb-2 {% if item.is_overdue %}border-danger{% endif %}">
+                        <div class="card-body py-2">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                                        <span class="badge bg-{{ item.priority_color }}">
+                                            {{ item.get_priority_display }}
+                                        </span>
+                                        <span class="badge {% if item.status == 'done' %}bg-success{% elif item.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
+                                            {{ item.get_status_display }}
+                                        </span>
+                                        {% if item.is_overdue %}
+                                            <span class="badge bg-danger">Просрочено</span>
+                                        {% endif %}
+                                    </div>
+                                    <strong>
+                                        <a href="{% url 'task_detail' item.id %}" class="text-decoration-none">
+                                            {{ item.title|truncatechars:100 }}
+                                        </a>
+                                    </strong>
+                                    {% if item.description %}
+                                        <br><small class="text-muted">{{ item.description|truncatechars:150 }}</small>
+                                    {% endif %}
+                                    <div class="mt-1 small text-muted">
+                                        {% if item.due_date %}
+                                            <i class="bi bi-calendar"></i> Срок: {{ item.due_date|date:"d.m.Y" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Подзадачи -->
+            {% if current_type == 'all' or current_type == 'subtask' %}
+            <div class="mb-4">
+                <h5>Подзадачи (этапы работ)</h5>
+                {% for item in items %}
+                    {% if item.type == 'subtask' %}
+                    <div class="card mb-2 {% if item.is_overdue %}border-danger{% endif %}">
+                        <div class="card-body py-2">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
+                                        <span class="badge bg-{{ item.priority_color }}">
+                                            {{ item.get_priority_display }}
+                                        </span>
+                                        <span class="badge {% if item.status == 'completed' %}bg-success{% elif item.status == 'in_progress' %}bg-primary{% else %}bg-secondary{% endif %}">
+                                            {{ item.get_status_display }}
+                                        </span>
+                                        {% if item.is_overdue %}
+                                            <span class="badge bg-danger">Просрочено</span>
+                                        {% endif %}
+                                        {% if item.progress %}
+                                            <span class="badge bg-info">{{ item.progress }}%</span>
+                                        {% endif %}
+                                    </div>
+                                    <strong>
+                                        <a href="{% url 'subtask_update' item.id %}" class="text-decoration-none">
+                                            {{ item.title|truncatechars:100 }}
+                                        </a>
+                                    </strong>
+                                    <div class="mt-1 small text-muted">
+                                        {% if item.task %}
+                                            <i class="bi bi-list-check"></i> Задача: 
+                                            <a href="{% url 'task_detail' item.task.id %}">{{ item.task.title|truncatechars:50 }}</a>
+                                            <br>
+                                        {% endif %}
+                                        {% if item.due_date %}
+                                            <i class="bi bi-calendar"></i> Срок: {{ item.due_date|date:"d.m.Y" }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Продукция НИР -->
+            {% if current_type == 'all' or current_type == 'product' %}
+            <div class="mb-4">
+                <h5>Научная продукция</h5>
+                {% for item in items %}
+                    {% if item.type == 'product' %}
+                    <div class="card mb-3 product-card {% if item.due_date_warning and not item.is_completed %}border-warning{% elif item.is_overdue %}border-danger{% endif %}">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-1 text-center">
+                                    <i class="bi bi-{% if item.is_completed %}check-circle-fill text-success{% else %}x-circle-fill text-danger{% endif %}" 
+                                       style="font-size: 2rem;"></i>
+                                    {% if not item.is_completed and item.completion_percent %}
+                                        <div class="small text-muted mt-1">{{ item.completion_percent }}%</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
+                                        <span class="badge bg-{{ item.status_color_badge }}">
+                                            {{ item.get_status_display }}
+                                        </span>
+                                        {% if item.due_date_warning and not item.is_completed %}
+                                            <span class="badge bg-warning text-dark">
+                                                ⚠️ Осталось {{ item.days_until_due }} дней
+                                            </span>
+                                        {% endif %}
+                                        {% if item.is_overdue %}
+                                            <span class="badge bg-danger">
+                                                ⏰ Просрочено!
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                    <strong class="fs-5">
+                                        <a href="{% url 'research_product_detail' item.id %}" class="text-decoration-none">
+                                            {{ item.name }}
+                                        </a>
+                                    </strong>
+                                    {% if item.description %}
+                                        <p class="text-muted small mb-2">{{ item.description|truncatechars:150 }}</p>
+                                    {% endif %}
+                                    
+                                    {% if item.substage %}
+                                    <div class="alert alert-light py-2 mb-2 small border-start border-3 border-primary">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <i class="bi bi-diagram-3 text-primary"></i> 
+                                                <strong>Подэтап:</strong> 
+                                                <span class="badge bg-secondary">{{ item.substage.number }}</span>
+                                                {{ item.substage.title }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                <i class="bi bi-calendar-range text-primary"></i> 
+                                                <strong>Сроки подэтапа:</strong>
+                                                {% if item.substage.start_date %}
+                                                    {{ item.substage.start_date|date:"d.m.Y" }}
+                                                {% else %}
+                                                    ?
+                                                {% endif %}
+                                                -
+                                                <span class="{% if item.due_date_warning and not item.is_completed %}text-warning fw-bold{% elif item.is_overdue %}text-danger fw-bold{% endif %}">
+                                                    {% if item.substage.end_date %}
+                                                        {{ item.substage.end_date|date:"d.m.Y" }}
+                                                    {% else %}
+                                                        ?
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <div class="small text-muted">
+                                        {% if item.research_task %}
+                                            <i class="bi bi-mortarboard"></i> 
+                                            <strong>НИР:</strong> 
+                                            <a href="{% url 'research_task_detail' item.research_task.id %}">
+                                                {{ item.research_task.title|truncatechars:60 }}
+                                            </a>
+                                        {% endif %}
+                                        {% if item.responsible and item.responsible.id == employee.id %}
+                                            <span class="badge bg-success ms-2">Ответственный</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <div class="btn-group-vertical w-100">
+                                        <a href="{% url 'product_assign_performers' item.id %}" 
+                                           class="btn btn-sm btn-outline-primary mb-1">
+                                            <i class="bi bi-people"></i> Исполнители
+                                        </a>
+                                        {% if not item.is_completed %}
+                                        <button type="button" class="btn btn-sm btn-outline-success" 
+                                                onclick="updateProductStatus({{ item.id }}, 'completed')">
+                                            <i class="bi bi-check-lg"></i> Завершить
+                                        </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% empty %}
+                    {% if current_type == 'product' or current_type == 'all' %}
+                        <p class="text-muted text-center py-3">Нет назначенной научной продукции</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Кнопки действий -->
+    <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'employee_list' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> К списку
+        </a>
+        <div>
+            <a href="{% url 'employee_update' employee.id %}" class="btn btn-primary">
+                <i class="bi bi-pencil"></i> Редактировать
+            </a>
+            <a href="{% url 'employee_toggle_active' employee.id %}" class="btn btn-warning">
+                <i class="bi bi-power"></i> 
+                {{ employee.is_active|yesno:"Деактивировать,Активировать" }}
+            </a>
+            <a href="{% url 'employee_delete' employee.id %}" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Удалить
+            </a>
+        </div>
+    </div>
+    
+    <div class="card-footer text-muted small mt-3">
+        <div class="d-flex justify-content-between">
+            <span>Создано: {{ employee.created_date|date:"d.m.Y H:i" }}</span>
+            <span>Обновлено: {{ employee.updated_date|date:"d.m.Y H:i" }}</span>
+        </div>
+        {% if employee.created_by %}
+            <div>Создал: {{ employee.created_by.username }}</div>
+        {% endif %}
+    </div>
 </div>
+
+{% block extra_js %}
+<!-- Правильные CDN для Frappe Gantt -->
+<script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
+
+<style>
+    /* Базовые стили */
+    .gantt .bar-label {
+        font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        fill: #fff !important;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.3) !important;
+    }
+    .gantt .grid-background {
+        fill: #f8f9fa;
+    }
+    .gantt .grid-header {
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+    }
+    .gantt-tooltip {
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
+        font-size: 12px !important;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        min-width: 250px;
+    }
+    .gantt .bar {
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+    .gantt .bar:hover {
+        opacity: 0.85;
+    }
+    #ganttChartContainer {
+        min-height: 400px;
+        width: 100%;
+        overflow-x: auto;
+    }
+</style>
+
+<script>
+    function updateProductStatus(productId, status) {
+        fetch(`/research/product/${productId}/status/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `status=${status}`
+        }).then(response => {
+            if (response.ok) {
+                location.reload();
+            }
+        });
+    }
+    
+    // Функция для применения цветов к полосам
+    function applyColorsToBars(ganttData) {
+        const bars = document.querySelectorAll('.gantt .bar rect');
+        console.log("Найдено полос для раскраски:", bars.length);
+        
+        bars.forEach((bar, index) => {
+            if (ganttData[index] && ganttData[index].color) {
+                bar.style.fill = ganttData[index].color;
+                console.log(`Полоса ${index}: установлен цвет ${ganttData[index].color}`);
+            }
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Загрузка Ганта...");
+        
+        const ganttData = {{ gantt_data|safe }};
+        console.log("Количество задач:", ganttData.length);
+        console.log("Данные с цветами:", ganttData);
+        
+        if (ganttData && ganttData.length > 0 && typeof Gantt !== 'undefined') {
+            try {
+                const container = document.getElementById('ganttChartContainer');
+                container.innerHTML = '';
+                
+                // Формируем задачи
+                const tasks = ganttData.map(task => ({
+                    name: task.substage_number ? `[${task.substage_number}] ${task.name.substring(0, 35)}` : task.name.substring(0, 45),
+                    start: task.start,
+                    end: task.end,
+                    progress: 0
+                }));
+                
+                console.log("Задачи для Ганта:", tasks);
+                
+                // Создаем Гант
+                const gantt = new Gantt("#ganttChartContainer", tasks, {
+                    on_click: function(task) {
+                        const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
+                        const product = ganttData.find(p => p.name === productName || p.name.includes(productName));
+                        if (product && product.id) {
+                            window.location.href = `/research/product/${product.id}/`;
+                        }
+                    },
+                    bar_height: 45,
+                    bar_corner_radius: 4,
+                    arrow_curve: 5,
+                    padding: 20,
+                    view_mode: 'Month',
+                    date_format: 'YYYY-MM-DD',
+                    custom_popup_html: function(task) {
+                        const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
+                        const product = ganttData.find(p => p.name === productName || p.name.includes(productName));
+                        return `
+                            <div class="gantt-tooltip">
+                                <strong>${product ? product.name : task.name}</strong><br>
+                                ${product && product.substage_number ? `<strong>Подэтап:</strong> ${product.substage_number}<br>` : ''}
+                                ${product && product.research_task_title ? `<strong>НИР:</strong> ${product.research_task_title}<br>` : ''}
+                                <strong>Начало:</strong> ${task.start}<br>
+                                <strong>Окончание:</strong> ${task.end}<br>
+                                ${product && product.status === 'completed' ? '✅ Выполнено' : 
+                                  product && product.is_overdue ? '⚠️ Просрочено' : 
+                                  product && product.due_date_warning ? '⏰ Скоро срок' : '🔄 В работе'}
+                            </div>
+                        `;
+                    }
+                });
+                
+                // Применяем цвета после рендеринга с небольшой задержкой
+                setTimeout(function() {
+                    applyColorsToBars(ganttData);
+                }, 100);
+                
+                // Также применяем цвета при изменении размера окна
+                window.addEventListener('resize', function() {
+                    setTimeout(function() {
+                        applyColorsToBars(ganttData);
+                    }, 100);
+                });
+                
+                console.log("Гант успешно создан");
+            } catch(e) {
+                console.error("Ошибка при создании Ганта:", e);
+                document.getElementById('ganttChartContainer').innerHTML = 
+                    '<div class="alert alert-danger text-center py-5">Ошибка: ' + e.message + '</div>';
+            }
+        } else {
+            document.getElementById('ganttChartContainer').innerHTML = 
+                '<div class="alert alert-info text-center py-5">' +
+                '<i class="bi bi-info-circle fs-1"></i><br>' +
+                'Нет данных для отображения в диаграмме Ганта' +
+                '</div>';
+        }
+    });
+</script>
+{% endblock %}
 {% endblock %}

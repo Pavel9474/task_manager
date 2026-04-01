@@ -341,6 +341,24 @@ def employee_detail(request, employee_id):
         employee = get_object_or_404(Employee, id=employee_id)
         print(f"=== Найден сотрудник: {employee.full_name} ===")
         
+        # Получаем параметры фильтрации для Ганта
+        gantt_year = request.GET.get('year')
+        gantt_start = request.GET.get('start_date')
+        gantt_end = request.GET.get('end_date')
+        
+        # Определяем период для Ганта
+        if gantt_year and gantt_year.isdigit():
+            year = int(gantt_year)
+            start_date = date(year, 1, 1)
+            end_date = date(year, 12, 31)
+        elif gantt_start and gantt_end:
+            start_date = datetime.strptime(gantt_start, '%Y-%m-%d').date()
+            end_date = datetime.strptime(gantt_end, '%Y-%m-%d').date()
+        else:
+            # По умолчанию - текущий год
+            current_year = timezone.now().year
+            start_date = date(current_year, 1, 1)
+            end_date = date(current_year, 12, 31)
         # Штатные позиции
         staff_positions = employee.staff_positions.filter(is_active=True)
         org_structure = employee.get_organization_structure()
@@ -464,37 +482,44 @@ def employee_detail(request, employee_id):
         # ===== 6. Продукция =====
         # Собираем ID продукции через исполнителя и ответственного
         product_ids = set()
-
+        
         # Продукция где сотрудник исполнитель
         performer_product_ids = ResearchProduct.objects.filter(
             product_performers__employee=employee
         ).values_list('id', flat=True)
         product_ids.update(performer_product_ids)
-
+        
         # Продукция где сотрудник ответственный
         responsible_product_ids = ResearchProduct.objects.filter(
             responsible=employee
         ).values_list('id', flat=True)
         product_ids.update(responsible_product_ids)
-
+        
         # Получаем все продукты по ID с оптимизацией
         all_products = ResearchProduct.objects.filter(
             id__in=product_ids
         ).select_related(
             'research_task', 'research_stage', 'research_substage', 'responsible'
         )
-
+        
         print(f"\n=== ОТЛАДКА ПРОДУКЦИИ ===")
         print(f"Продукция как исполнитель: {len(performer_product_ids)}")
         print(f"Продукция как ответственный: {len(responsible_product_ids)}")
         print(f"Всего продукции: {all_products.count()}")
-
-        # Импортируем timedelta для расчета дней до срока
-        from datetime import timedelta
-
+        
+        # Подготовка данных для диаграммы Ганта
+        gantt_data = []
+        
+        # Словарь для хранения цветов НИР
+        research_task_colors = {}
+        color_palette = [
+            '#0d6efd', '#198754', '#dc3545', '#fd7e14', '#6f42c1',
+            '#d63384', '#20c997', '#0dcaf0', '#ffc107', '#6610f2',
+            '#009688', '#9c27b0', '#ff9800', '#795548', '#607d8b'
+        ]
+        color_index = 0
+        
         for product in all_products:
-            sort_date = product.planned_end if product.planned_end else product.created_date
-            
             # Получаем связанные объекты
             research_substage = product.research_substage
             research_stage = product.research_stage
@@ -506,6 +531,9 @@ def employee_detail(request, employee_id):
             
             # Получаем информацию о подэтапе
             substage_info = None
+            substage_start = None
+            substage_end = None
+            
             if research_substage:
                 substage_info = {
                     'id': research_substage.id,
@@ -514,6 +542,16 @@ def employee_detail(request, employee_id):
                     'start_date': research_substage.start_date,
                     'end_date': research_substage.end_date,
                 }
+                # Срок продукции = срок подэтапа
+                substage_start = research_substage.start_date
+                substage_end = research_substage.end_date
+            
+            # Используем сроки подэтапа как основные
+            planned_start = substage_start or product.planned_start
+            planned_end = substage_end or product.planned_end
+            
+            # Сортировочная дата
+            sort_date = planned_end if planned_end else product.created_date
             
             # Вычисляем статус выполнения и цвет
             today = timezone.now().date()
@@ -522,12 +560,20 @@ def employee_detail(request, employee_id):
             # Проверяем, осталось ли менее 2 месяцев до срока
             days_until_due = None
             due_date_warning = False
-            if product.planned_end and not is_completed:
-                days_until_due = (product.planned_end - today).days
-                due_date_warning = days_until_due <= 60  # 2 месяца = примерно 60 дней
+            if planned_end and not is_completed:
+                days_until_due = (planned_end - today).days
+                due_date_warning = days_until_due <= 60
             
             # Цвет индикатора выполнения
             status_color = 'success' if is_completed else 'danger'
+            
+            # Назначаем цвет для НИР (для Ганта)
+            research_task_color = '#6c757d'  # серый по умолчанию
+            if research_task:
+                if research_task.id not in research_task_colors:
+                    research_task_colors[research_task.id] = color_palette[color_index % len(color_palette)]
+                    color_index += 1
+                research_task_color = research_task_colors[research_task.id]
             
             items.append({
                 'type': 'product',
@@ -537,15 +583,15 @@ def employee_detail(request, employee_id):
                 'status': product.status,
                 'is_completed': is_completed,
                 'status_color': status_color,
-                'due_date': product.planned_end,
+                'due_date': planned_end,
                 'due_date_warning': due_date_warning,
                 'days_until_due': days_until_due,
-                'planned_start': product.planned_start,
-                'planned_end': product.planned_end,
+                'planned_start': planned_start,
+                'planned_end': planned_end,
                 'sort_date': sort_date,
                 'is_overdue': product.is_overdue,
                 'responsible': product.responsible,
-                'substage': substage_info,  # Теперь содержит полную информацию о подэтапе
+                'substage': substage_info,
                 'stage': research_stage,
                 'research_task': research_task,
                 'get_status_display': product.get_status_display(),
@@ -558,7 +604,36 @@ def employee_detail(request, employee_id):
                 }.get(product.status, 'secondary'),
                 'completion_percent': product.completion_percent,
             })
+            
+            # Добавляем в данные для Ганта
+            if planned_start and planned_end:
+                # Проверяем, попадает ли продукция в выбранный период
+                if planned_end >= start_date and planned_start <= end_date:
+                    gantt_data.append({
+                        'id': product.id,
+                        'name': product.name,
+                        'start': planned_start.isoformat(),
+                        'end': planned_end.isoformat(),
+                        'status': product.status,
+                        'color': research_task_color,
+                        'completion': product.completion_percent,
+                        'is_overdue': product.is_overdue,
+                        'due_date_warning': due_date_warning,
+                        'substage_number': research_substage.substage_number if research_substage else None,
+                        'research_task_title': research_task.title if research_task else None,
+                        'research_task_color': research_task_color,
+                    })
         
+        # Формируем список уникальных НИР для легенды
+        research_tasks_list = []
+        for rt_id, color in research_task_colors.items():
+            rt = ResearchTask.objects.filter(id=rt_id).first()
+            if rt:
+                research_tasks_list.append({
+                    'id': rt.id,
+                    'title': rt.title,
+                    'color': color
+                })
         # Фильтрация по типу
         if item_type != 'all':
             items = [item for item in items if item['type'] == item_type]
@@ -576,6 +651,17 @@ def employee_detail(request, employee_id):
         
         items.sort(key=sort_key)
         
+        # Создаем список доступных годов для фильтра
+        available_years = set()
+        for product in all_products:
+            if product.planned_start:
+                available_years.add(product.planned_start.year)
+            if product.planned_end:
+                available_years.add(product.planned_end.year)
+        available_years = sorted(list(available_years))
+        if not available_years:
+            available_years = [timezone.now().year]
+        
         # Статистика
         context = {
             'employee': employee,
@@ -590,10 +676,18 @@ def employee_detail(request, employee_id):
             'research_stages_count': len([i for i in items if i['type'] == 'research_stage']),
             'research_substages_count': len([i for i in items if i['type'] == 'research_substage']),
             'overdue_count': len([i for i in items if i.get('is_overdue')]),
+            # Данные для Ганта
+            'gantt_data': json.dumps(gantt_data),
+            'gantt_year': int(gantt_year) if gantt_year and gantt_year.isdigit() else timezone.now().year,
+            'gantt_start_date': start_date.isoformat(),
+            'gantt_end_date': end_date.isoformat(),
+            'available_years': available_years,
+            'research_tasks_list': research_tasks_list,
         }
         
         print(f"\n=== СТАТИСТИКА ===")
         print(f"products_count в контексте: {context['products_count']}")
+        print(f"gantt_data count: {len(gantt_data)}")
         
         return render(request, 'tasks/employee_detail.html', context)
         
@@ -603,7 +697,7 @@ def employee_detail(request, employee_id):
         traceback.print_exc()
         messages.error(request, f'Ошибка при загрузке данных: {str(e)}')
         return redirect('employee_list')
-   
+    
 @login_required
 def employee_create(request):
     """Создание нового сотрудника"""

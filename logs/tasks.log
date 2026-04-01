@@ -8492,3 +8492,277 @@ INFO 2026-03-31 15:55:48,999 middleware 17288 14432 📤 GET /employee/307/ - 20
 DEBUG 2026-03-31 15:55:49,052 middleware 17288 18348 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 INFO 2026-03-31 15:55:49,063 middleware 17288 18348 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.015 сек
 ERROR 2026-03-31 15:55:49,064 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 11:45:17,105 middleware 18316 3040 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 11:45:17,269 middleware 18316 3040 📤 GET /employee/307/ - 200 - Время: 0.169 сек
+DEBUG 2026-04-01 11:45:41,866 middleware 18316 3040 📨 GET / - Пользователь: pavel2
+INFO 2026-04-01 11:45:41,917 middleware 18316 3040 📤 GET / - 200 - Время: 0.054 сек
+DEBUG 2026-04-01 11:45:43,723 middleware 18316 3040 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 11:45:43,879 middleware 18316 3040 📤 GET /research/15/ - 200 - Время: 0.158 сек
+DEBUG 2026-04-01 11:45:51,187 middleware 18316 3040 📨 GET /product/1588/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 11:45:51,439 middleware 18316 3040 📤 GET /product/1588/assign-performers/ - 200 - Время: 0.255 сек
+DEBUG 2026-04-01 11:46:00,146 middleware 18316 3040 📨 POST /product/1588/assign-performers/ - Пользователь: pavel2
+ERROR 2026-04-01 11:46:00,395 middleware 18316 3040 💥 Исключение в POST /product/1588/assign-performers/: 'ResearchProduct' object has no attribute 'subtask'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 80, in product_assign_performers
+    if product.subtask and product.subtask.task:
+       ^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'subtask'
+INFO 2026-04-01 11:46:00,450 middleware 18316 3040 📤 POST /product/1588/assign-performers/ - 500 - Время: 0.307 сек
+ERROR 2026-04-01 11:46:00,451 middleware 18316 3040 ❌ Ошибка 500: POST /product/1588/assign-performers/ - Пользователь: pavel2
+DEBUG 2026-04-01 11:52:56,665 middleware 7076 3524 📨 POST /product/1588/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 11:52:56,950 middleware 7076 3524 📤 POST /product/1588/assign-performers/ - 302 - Время: 0.289 сек
+DEBUG 2026-04-01 11:52:56,960 middleware 7076 3524 📨 GET /research/substage/215/ - Пользователь: pavel2
+INFO 2026-04-01 11:52:57,008 middleware 7076 3524 📤 GET /research/substage/215/ - 200 - Время: 0.051 сек
+DEBUG 2026-04-01 11:53:17,440 middleware 7076 3524 📨 GET /research/stage/42/ - Пользователь: pavel2
+INFO 2026-04-01 11:53:17,442 middleware 7076 3524 📤 GET /research/stage/42/ - 200 - Время: 0.005 сек
+DEBUG 2026-04-01 11:53:22,527 middleware 7076 3524 📨 GET / - Пользователь: pavel2
+INFO 2026-04-01 11:53:22,569 middleware 7076 3524 📤 GET / - 200 - Время: 0.045 сек
+DEBUG 2026-04-01 11:53:23,888 middleware 7076 3524 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 11:53:24,024 middleware 7076 3524 📤 GET /research/15/ - 200 - Время: 0.138 сек
+DEBUG 2026-04-01 11:53:51,086 middleware 7076 3524 📨 GET /product/1584/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 11:53:51,310 middleware 7076 3524 📤 GET /product/1584/assign-performers/ - 200 - Время: 0.227 сек
+DEBUG 2026-04-01 11:53:56,979 middleware 7076 3524 📨 POST /product/1584/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 11:53:57,179 middleware 7076 3524 📤 POST /product/1584/assign-performers/ - 302 - Время: 0.203 сек
+DEBUG 2026-04-01 11:53:57,188 middleware 7076 3524 📨 GET /research/substage/215/ - Пользователь: pavel2
+INFO 2026-04-01 11:53:57,207 middleware 7076 3524 📤 GET /research/substage/215/ - 200 - Время: 0.023 сек
+DEBUG 2026-04-01 11:54:03,062 middleware 7076 3524 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 11:54:03,197 middleware 7076 3524 📤 GET /research/15/ - 200 - Время: 0.137 сек
+DEBUG 2026-04-01 11:54:13,066 middleware 7076 3524 📨 GET /product/1593/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 11:54:13,284 middleware 7076 3524 📤 GET /product/1593/assign-performers/ - 200 - Время: 0.220 сек
+DEBUG 2026-04-01 11:54:20,396 middleware 7076 3524 📨 POST /product/1593/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 11:54:20,611 middleware 7076 3524 📤 POST /product/1593/assign-performers/ - 302 - Время: 0.218 сек
+DEBUG 2026-04-01 11:54:20,620 middleware 7076 3524 📨 GET /research/substage/216/ - Пользователь: pavel2
+INFO 2026-04-01 11:54:20,637 middleware 7076 3524 📤 GET /research/substage/216/ - 200 - Время: 0.021 сек
+DEBUG 2026-04-01 15:16:43,897 middleware 7076 5492 📨 GET /research/substage/216/ - Пользователь: pavel2
+INFO 2026-04-01 15:16:43,993 middleware 7076 5492 📤 GET /research/substage/216/ - 200 - Время: 0.178 сек
+DEBUG 2026-04-01 15:19:28,714 middleware 13140 12824 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 15:19:29,004 middleware 13140 12824 📤 GET /employees/ - 200 - Время: 0.295 сек
+DEBUG 2026-04-01 15:19:31,041 middleware 13140 12824 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 15:19:31,086 middleware 13140 12824 📤 GET /employee/307/ - 200 - Время: 0.049 сек
+DEBUG 2026-04-01 15:19:55,154 middleware 13140 12824 📨 GET /research/products/1593/ - Пользователь: pavel2
+ERROR 2026-04-01 15:19:55,155 middleware 13140 12824 💥 Исключение в GET /research/products/1593/: research_product_detail() got an unexpected keyword argument 'pk'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+INFO 2026-04-01 15:19:55,237 middleware 13140 12824 📤 GET /research/products/1593/ - 500 - Время: 0.085 сек
+ERROR 2026-04-01 15:19:55,237 middleware 13140 12824 ❌ Ошибка 500: GET /research/products/1593/ - Пользователь: pavel2
+DEBUG 2026-04-01 15:20:07,008 middleware 13140 12824 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:07,189 middleware 13140 12824 📤 GET /research/15/ - 200 - Время: 0.184 сек
+DEBUG 2026-04-01 15:20:20,937 middleware 13140 12824 📨 GET / - Пользователь: pavel2
+INFO 2026-04-01 15:20:21,004 middleware 13140 12824 📤 GET / - 200 - Время: 0.070 сек
+DEBUG 2026-04-01 15:20:22,655 middleware 13140 12824 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:22,796 middleware 13140 12824 📤 GET /research/15/ - 200 - Время: 0.143 сек
+DEBUG 2026-04-01 15:20:34,025 middleware 13140 12824 📨 GET /product/1587/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:34,290 middleware 13140 12824 📤 GET /product/1587/assign-performers/ - 200 - Время: 0.269 сек
+DEBUG 2026-04-01 15:20:44,004 middleware 13140 12824 📨 POST /product/1587/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:44,232 middleware 13140 12824 📤 POST /product/1587/assign-performers/ - 302 - Время: 0.231 сек
+DEBUG 2026-04-01 15:20:44,240 middleware 13140 12824 📨 GET /research/substage/215/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:44,258 middleware 13140 12824 📤 GET /research/substage/215/ - 200 - Время: 0.021 сек
+DEBUG 2026-04-01 15:20:51,056 middleware 13140 12824 📨 GET / - Пользователь: pavel2
+INFO 2026-04-01 15:20:51,087 middleware 13140 12824 📤 GET / - 200 - Время: 0.034 сек
+DEBUG 2026-04-01 15:20:52,736 middleware 13140 12824 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:52,891 middleware 13140 12824 📤 GET /research/15/ - 200 - Время: 0.157 сек
+DEBUG 2026-04-01 15:20:57,424 middleware 13140 12824 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:57,618 middleware 13140 12824 📤 GET /employees/ - 200 - Время: 0.197 сек
+DEBUG 2026-04-01 15:20:59,160 middleware 13140 12824 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 15:20:59,192 middleware 13140 12824 📤 GET /employee/307/ - 200 - Время: 0.036 сек
+DEBUG 2026-04-01 16:00:27,625 middleware 11504 8912 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:00:27,757 middleware 11504 8912 📤 GET /employee/307/ - 200 - Время: 0.136 сек
+DEBUG 2026-04-01 16:00:38,394 middleware 11504 8912 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:00:38,435 middleware 11504 8912 📤 GET /employee/307/ - 200 - Время: 0.046 сек
+DEBUG 2026-04-01 16:01:06,220 middleware 11504 8912 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:01:06,260 middleware 11504 8912 📤 GET /employee/307/ - 200 - Время: 0.043 сек
+DEBUG 2026-04-01 16:01:59,932 middleware 11504 8912 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:01:59,950 middleware 11504 8912 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-04-01 16:01:59,951 middleware 11504 8912 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:24:40,572 middleware 4848 13628 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:40,593 middleware 4848 13628 📤 GET /employee/307/ - 302 - Время: 0.025 сек
+DEBUG 2026-04-01 16:24:40,605 middleware 4848 13628 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:40,877 middleware 4848 13628 📤 GET /employees/ - 200 - Время: 0.277 сек
+DEBUG 2026-04-01 16:24:40,943 middleware 4848 17064 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:24:40,961 middleware 4848 17064 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-04-01 16:24:40,962 middleware 4848 17064 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:24:42,818 middleware 4848 11196 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:42,824 middleware 4848 11196 📤 GET /employee/307/ - 302 - Время: 0.010 сек
+DEBUG 2026-04-01 16:24:42,836 middleware 4848 11196 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:43,085 middleware 4848 11196 📤 GET /employees/ - 200 - Время: 0.254 сек
+DEBUG 2026-04-01 16:24:43,154 middleware 4848 17064 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:24:43,164 middleware 4848 17064 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.016 сек
+ERROR 2026-04-01 16:24:43,165 middleware 4848 17064 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:24:44,551 middleware 4848 17064 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:44,555 middleware 4848 17064 📤 GET /employee/307/ - 302 - Время: 0.008 сек
+DEBUG 2026-04-01 16:24:44,566 middleware 4848 17064 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:44,757 middleware 4848 17064 📤 GET /employees/ - 200 - Время: 0.196 сек
+DEBUG 2026-04-01 16:24:44,814 middleware 4848 17064 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:24:44,824 middleware 4848 17064 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.013 сек
+ERROR 2026-04-01 16:24:44,824 middleware 4848 17064 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:24:53,275 middleware 17404 11496 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:53,308 middleware 17404 11496 📤 GET /employee/307/ - 302 - Время: 0.038 сек
+DEBUG 2026-04-01 16:24:53,323 middleware 17404 11496 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:53,558 middleware 17404 11496 📤 GET /employees/ - 200 - Время: 0.239 сек
+DEBUG 2026-04-01 16:24:53,614 middleware 17404 2192 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:24:53,635 middleware 17404 2192 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-04-01 16:24:53,637 middleware 17404 2192 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:24:58,472 middleware 17404 11496 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:58,475 middleware 17404 11496 📤 GET /employee/307/ - 302 - Время: 0.006 сек
+DEBUG 2026-04-01 16:24:58,486 middleware 17404 11496 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:24:58,655 middleware 17404 11496 📤 GET /employees/ - 200 - Время: 0.173 сек
+DEBUG 2026-04-01 16:25:00,213 middleware 17404 11496 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:00,217 middleware 17404 11496 📤 GET /employee/307/ - 302 - Время: 0.006 сек
+DEBUG 2026-04-01 16:25:00,225 middleware 17404 11496 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:00,431 middleware 17404 11496 📤 GET /employees/ - 200 - Время: 0.209 сек
+DEBUG 2026-04-01 16:25:01,863 middleware 17404 11496 📨 GET /employee/295/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:01,868 middleware 17404 11496 📤 GET /employee/295/ - 302 - Время: 0.007 сек
+DEBUG 2026-04-01 16:25:01,877 middleware 17404 11496 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:02,051 middleware 17404 11496 📤 GET /employees/ - 200 - Время: 0.177 сек
+DEBUG 2026-04-01 16:25:02,920 middleware 17404 11496 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:02,923 middleware 17404 11496 📤 GET /employee/307/ - 302 - Время: 0.006 сек
+DEBUG 2026-04-01 16:25:02,935 middleware 17404 11496 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:03,108 middleware 17404 11496 📤 GET /employees/ - 200 - Время: 0.178 сек
+DEBUG 2026-04-01 16:25:36,373 middleware 5944 5096 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:36,458 middleware 5944 5096 📤 GET /employee/307/ - 302 - Время: 0.089 сек
+DEBUG 2026-04-01 16:25:36,469 middleware 5944 5096 📨 GET /employees/ - Пользователь: pavel2
+DEBUG 2026-04-01 16:25:36,598 middleware 5944 12340 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:36,607 middleware 5944 12340 📤 GET /employee/307/ - 302 - Время: 0.013 сек
+DEBUG 2026-04-01 16:25:36,618 middleware 5944 12340 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:36,826 middleware 5944 5096 📤 GET /employees/ - 200 - Время: 0.362 сек
+INFO 2026-04-01 16:25:36,870 middleware 5944 12340 📤 GET /employees/ - 200 - Время: 0.257 сек
+DEBUG 2026-04-01 16:25:41,581 middleware 5944 12340 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:41,585 middleware 5944 12340 📤 GET /employee/307/ - 302 - Время: 0.006 сек
+DEBUG 2026-04-01 16:25:41,593 middleware 5944 12340 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:41,770 middleware 5944 12340 📤 GET /employees/ - 200 - Время: 0.179 сек
+DEBUG 2026-04-01 16:25:45,327 middleware 5944 12340 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:45,331 middleware 5944 12340 📤 GET /employee/307/ - 302 - Время: 0.008 сек
+DEBUG 2026-04-01 16:25:45,345 middleware 5944 12340 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:45,536 middleware 5944 12340 📤 GET /employees/ - 200 - Время: 0.196 сек
+DEBUG 2026-04-01 16:25:49,300 middleware 5944 12340 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:49,476 middleware 5944 12340 📤 GET /employees/ - 200 - Время: 0.179 сек
+DEBUG 2026-04-01 16:25:49,823 middleware 5944 12340 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-01 16:25:49,833 middleware 5944 12340 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-01 16:25:49,834 middleware 5944 12340 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-01 16:25:52,336 middleware 5944 12340 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:52,339 middleware 5944 12340 📤 GET /employee/307/ - 302 - Время: 0.006 сек
+DEBUG 2026-04-01 16:25:52,349 middleware 5944 12340 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:52,547 middleware 5944 12340 📤 GET /employees/ - 200 - Время: 0.202 сек
+DEBUG 2026-04-01 16:25:53,133 middleware 5944 12340 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:53,136 middleware 5944 12340 📤 GET /employee/307/ - 302 - Время: 0.006 сек
+DEBUG 2026-04-01 16:25:53,144 middleware 5944 12340 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:25:53,311 middleware 5944 12340 📤 GET /employees/ - 200 - Время: 0.170 сек
+DEBUG 2026-04-01 16:27:05,882 middleware 16976 17404 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:27:05,904 middleware 16976 17404 📤 GET /employee/307/ - 302 - Время: 0.026 сек
+DEBUG 2026-04-01 16:27:05,913 middleware 16976 17404 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:27:06,138 middleware 16976 17404 📤 GET /employees/ - 200 - Время: 0.229 сек
+DEBUG 2026-04-01 16:28:39,424 middleware 4960 15352 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:28:39,541 middleware 4960 15352 📤 GET /employee/307/ - 200 - Время: 0.120 сек
+DEBUG 2026-04-01 16:28:48,342 middleware 4960 15352 📨 GET /research/products/1587/ - Пользователь: pavel2
+ERROR 2026-04-01 16:28:48,343 middleware 4960 15352 💥 Исключение в GET /research/products/1587/: research_product_detail() got an unexpected keyword argument 'pk'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+INFO 2026-04-01 16:28:48,384 middleware 4960 15352 📤 GET /research/products/1587/ - 500 - Время: 0.045 сек
+ERROR 2026-04-01 16:28:48,384 middleware 4960 15352 ❌ Ошибка 500: GET /research/products/1587/ - Пользователь: pavel2
+DEBUG 2026-04-01 16:33:02,562 middleware 4960 15352 📨 GET / - Пользователь: pavel2
+INFO 2026-04-01 16:33:02,625 middleware 4960 15352 📤 GET / - 200 - Время: 0.066 сек
+DEBUG 2026-04-01 16:33:04,257 middleware 4960 15352 📨 GET /research/15/ - Пользователь: pavel2
+INFO 2026-04-01 16:33:04,411 middleware 4960 15352 📤 GET /research/15/ - 200 - Время: 0.157 сек
+DEBUG 2026-04-01 16:45:48,545 middleware 9272 12696 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-01 16:45:48,789 middleware 9272 12696 📤 GET /employees/ - 200 - Время: 0.248 сек
+DEBUG 2026-04-01 16:45:50,146 middleware 9272 12696 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:45:50,203 middleware 9272 12696 📤 GET /employee/307/ - 200 - Время: 0.060 сек
+DEBUG 2026-04-01 16:45:54,144 middleware 9272 12696 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:45:54,184 middleware 9272 12696 📤 GET /employee/307/ - 200 - Время: 0.042 сек
+DEBUG 2026-04-01 16:45:54,564 middleware 9272 12696 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-01 16:45:54,579 middleware 9272 12696 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-01 16:45:54,579 middleware 9272 12696 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-01 16:45:55,080 middleware 9272 12696 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:45:55,120 middleware 9272 12696 📤 GET /employee/307/ - 200 - Время: 0.042 сек
+DEBUG 2026-04-01 16:45:55,411 middleware 9272 13788 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-01 16:45:55,425 middleware 9272 13788 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-04-01 16:45:55,425 middleware 9272 13788 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-01 16:45:58,253 middleware 9272 13788 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:45:58,268 middleware 9272 13788 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-01 16:45:58,269 middleware 9272 13788 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:48:07,561 middleware 9272 13788 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:48:07,621 middleware 9272 13788 📤 GET /employee/307/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-01 16:48:07,687 middleware 9272 12696 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 16:48:07,703 middleware 9272 12696 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-01 16:48:07,703 middleware 9272 12696 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 16:48:29,609 middleware 9272 12696 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-01 16:48:29,623 middleware 9272 12696 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-01 16:48:29,623 middleware 9272 12696 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-01 16:48:49,927 middleware 9272 12696 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 16:48:49,969 middleware 9272 12696 📤 GET /employee/307/ - 200 - Время: 0.045 сек
+DEBUG 2026-04-01 17:11:01,864 middleware 15552 12404 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:11:01,983 middleware 15552 12404 📤 GET /employee/307/ - 200 - Время: 0.123 сек
+DEBUG 2026-04-01 17:11:12,846 middleware 15552 12404 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:11:12,891 middleware 15552 12404 📤 GET /employee/307/ - 200 - Время: 0.049 сек
+DEBUG 2026-04-01 17:11:15,858 middleware 15552 12404 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:11:15,903 middleware 15552 12404 📤 GET /employee/307/ - 200 - Время: 0.048 сек
+DEBUG 2026-04-01 17:12:54,280 middleware 15552 12404 📨 GET /research/product/1587/ - Пользователь: pavel2
+ERROR 2026-04-01 17:12:54,286 middleware 15552 12404 💥 Исключение в GET /research/product/1587/: Unknown field(s) (subtask) specified for ResearchProduct
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+INFO 2026-04-01 17:12:54,342 middleware 15552 12404 📤 GET /research/product/1587/ - 500 - Время: 0.066 сек
+ERROR 2026-04-01 17:12:54,342 middleware 15552 12404 ❌ Ошибка 500: GET /research/product/1587/ - Пользователь: pavel2
+DEBUG 2026-04-01 17:18:11,416 middleware 15552 10476 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:18:11,470 middleware 15552 10476 📤 GET /employee/307/ - 200 - Время: 0.057 сек
+DEBUG 2026-04-01 17:18:30,409 middleware 15552 10476 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:18:30,457 middleware 15552 10476 📤 GET /employee/307/ - 200 - Время: 0.051 сек
+DEBUG 2026-04-01 17:19:58,954 middleware 15552 10476 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:19:58,968 middleware 15552 10476 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.017 сек
+ERROR 2026-04-01 17:19:58,969 middleware 15552 10476 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 17:26:28,773 middleware 15552 11480 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:26:28,834 middleware 15552 11480 📤 GET /employee/307/ - 200 - Время: 0.066 сек
+DEBUG 2026-04-01 17:26:28,921 middleware 15552 7932 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:26:28,934 middleware 15552 7932 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.018 сек
+ERROR 2026-04-01 17:26:28,935 middleware 15552 7932 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 17:26:30,255 middleware 15552 17076 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-01 17:26:30,265 middleware 15552 17076 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-01 17:26:30,268 middleware 15552 17076 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-01 17:26:36,845 middleware 15552 17076 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:26:36,893 middleware 15552 17076 📤 GET /employee/307/ - 200 - Время: 0.051 сек
+DEBUG 2026-04-01 17:26:36,948 middleware 15552 17076 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:26:36,959 middleware 15552 17076 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.016 сек
+ERROR 2026-04-01 17:26:36,960 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 17:26:47,928 middleware 15552 17076 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:26:47,985 middleware 15552 17076 📤 GET /employee/307/ - 200 - Время: 0.061 сек
+DEBUG 2026-04-01 17:26:48,049 middleware 15552 11480 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:26:48,059 middleware 15552 11480 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.015 сек
+ERROR 2026-04-01 17:26:48,059 middleware 15552 11480 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 17:27:31,625 middleware 15552 11480 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:27:31,666 middleware 15552 11480 📤 GET /employee/307/ - 200 - Время: 0.044 сек
+DEBUG 2026-04-01 17:27:31,729 middleware 15552 17076 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:27:31,743 middleware 15552 17076 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-01 17:27:31,744 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 17:30:52,723 middleware 15552 17076 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:30:52,762 middleware 15552 17076 📤 GET /employee/307/ - 200 - Время: 0.043 сек
+DEBUG 2026-04-01 17:30:52,829 middleware 15552 11480 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:30:52,846 middleware 15552 11480 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-04-01 17:30:52,848 middleware 15552 11480 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-01 17:32:27,336 middleware 15552 11480 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-01 17:32:27,376 middleware 15552 11480 📤 GET /employee/307/ - 200 - Время: 0.044 сек
+DEBUG 2026-04-01 17:32:27,437 middleware 15552 17076 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-01 17:32:27,452 middleware 15552 17076 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-01 17:32:27,453 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2

@@ -261,3 +261,54 @@ a:hover {
         display: none !important;
     }
 }
+/* Стили для продукции */
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Подсветка сроков */
+.due-date-warning {
+    background-color: #fff3cd !important;
+    border-left: 4px solid #ffc107 !important;
+}
+
+.due-date-overdue {
+    background-color: #f8d7da !important;
+    border-left: 4px solid #dc3545 !important;
+}
+
+/* Прогресс бар */
+.progress {
+    height: 6px;
+    border-radius: 3px;
+}
+
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Индикаторы статуса */
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.status-success {
+    background-color: #28a745;
+}
+
+.status-danger {
+    background-color: #dc3545;
+}
+
+.status-warning {
+    background-color: #ffc107;
+}

@@ -8551,3 +8551,246 @@ WARNING 2026-03-31 15:55:49,065 log 17288 18348 Not Found: /.well-known/appspeci
 WARNING 2026-03-31 15:55:49,067 log 17288 18348 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1799
 INFO 2026-03-31 16:04:45,626 autoreload 17288 1456 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
 INFO 2026-03-31 16:04:46,420 autoreload 9936 2848 Watching for file changes with StatReloader
+INFO 2026-04-01 11:45:12,317 autoreload 18316 16076 Watching for file changes with StatReloader
+INFO 2026-04-01 11:45:17,273 log 18316 3040 "GET /employee/307/ HTTP/1.1" 200 4335
+INFO 2026-04-01 11:45:17,312 log 18316 2956 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-04-01 11:45:17,373 log 18316 3040 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 11:45:41,919 log 18316 3040 "GET / HTTP/1.1" 200 5257
+INFO 2026-04-01 11:45:41,946 log 18316 3040 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-01 11:45:43,881 log 18316 3040 "GET /research/15/ HTTP/1.1" 200 13066
+INFO 2026-04-01 11:45:51,442 log 18316 3040 "GET /product/1588/assign-performers/ HTTP/1.1" 200 15791
+INFO 2026-04-01 11:45:51,473 log 18316 3040 "GET /static/css/style.css HTTP/1.1" 304 0
+ERROR 2026-04-01 11:46:00,448 log 18316 3040 Internal Server Error: /product/1588/assign-performers/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 80, in product_assign_performers
+    if product.subtask and product.subtask.task:
+       ^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'subtask'
+ERROR 2026-04-01 11:46:00,453 log 18316 3040 "POST /product/1588/assign-performers/ HTTP/1.1" 500 12997
+INFO 2026-04-01 11:47:42,512 autoreload 18316 16076 E:\code\task_manager\tasks\views\product_views.py changed, reloading.
+INFO 2026-04-01 11:47:43,464 autoreload 508 2860 Watching for file changes with StatReloader
+INFO 2026-04-01 11:49:22,817 autoreload 508 2860 E:\code\task_manager\tasks\models.py changed, reloading.
+INFO 2026-04-01 11:49:23,560 autoreload 17320 17780 Watching for file changes with StatReloader
+INFO 2026-04-01 11:52:49,434 autoreload 17320 17780 E:\code\task_manager\tasks\models.py changed, reloading.
+INFO 2026-04-01 11:52:50,074 autoreload 7076 16732 Watching for file changes with StatReloader
+INFO 2026-04-01 11:52:56,953 log 7076 3524 "POST /product/1588/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-04-01 11:52:57,009 log 7076 3524 "GET /research/substage/215/ HTTP/1.1" 200 2822
+INFO 2026-04-01 11:52:57,037 log 7076 3524 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-01 11:53:17,443 log 7076 3524 "GET /research/stage/42/ HTTP/1.1" 200 0
+INFO 2026-04-01 11:53:22,571 log 7076 3524 "GET / HTTP/1.1" 200 5253
+INFO 2026-04-01 11:53:24,026 log 7076 3524 "GET /research/15/ HTTP/1.1" 200 13179
+INFO 2026-04-01 11:53:51,313 log 7076 3524 "GET /product/1584/assign-performers/ HTTP/1.1" 200 15644
+INFO 2026-04-01 11:53:51,345 log 7076 3524 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-01 11:53:57,180 log 7076 3524 "POST /product/1584/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-04-01 11:53:57,208 log 7076 3524 "GET /research/substage/215/ HTTP/1.1" 200 2872
+INFO 2026-04-01 11:54:03,199 log 7076 3524 "GET /research/15/ HTTP/1.1" 200 13135
+INFO 2026-04-01 11:54:13,287 log 7076 3524 "GET /product/1593/assign-performers/ HTTP/1.1" 200 15658
+INFO 2026-04-01 11:54:20,612 log 7076 3524 "POST /product/1593/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-04-01 11:54:20,638 log 7076 3524 "GET /research/substage/216/ HTTP/1.1" 200 2900
+INFO 2026-04-01 15:16:44,000 log 7076 5492 "GET /research/substage/216/ HTTP/1.1" 200 2864
+INFO 2026-04-01 15:16:44,153 log 7076 5492 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 15:16:44,163 log 7076 3576 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-01 15:19:22,139 autoreload 13140 6688 Watching for file changes with StatReloader
+INFO 2026-04-01 15:19:29,007 log 13140 12824 "GET /employees/ HTTP/1.1" 200 4029
+INFO 2026-04-01 15:19:31,088 log 13140 12824 "GET /employee/307/ HTTP/1.1" 200 6473
+ERROR 2026-04-01 15:19:55,221 log 13140 12824 Internal Server Error: /research/products/1593/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-01 15:19:55,239 log 13140 12824 "GET /research/products/1593/ HTTP/1.1" 500 12160
+INFO 2026-04-01 15:20:07,191 log 13140 12824 "GET /research/15/ HTTP/1.1" 200 13192
+INFO 2026-04-01 15:20:21,005 log 13140 12824 "GET / HTTP/1.1" 200 5211
+INFO 2026-04-01 15:20:22,799 log 13140 12824 "GET /research/15/ HTTP/1.1" 200 13195
+INFO 2026-04-01 15:20:34,294 log 13140 12824 "GET /product/1587/assign-performers/ HTTP/1.1" 200 15609
+INFO 2026-04-01 15:20:44,233 log 13140 12824 "POST /product/1587/assign-performers/ HTTP/1.1" 302 0
+INFO 2026-04-01 15:20:44,260 log 13140 12824 "GET /research/substage/215/ HTTP/1.1" 200 2925
+INFO 2026-04-01 15:20:51,088 log 13140 12824 "GET / HTTP/1.1" 200 5259
+INFO 2026-04-01 15:20:52,894 log 13140 12824 "GET /research/15/ HTTP/1.1" 200 13191
+INFO 2026-04-01 15:20:57,620 log 13140 12824 "GET /employees/ HTTP/1.1" 200 4010
+INFO 2026-04-01 15:20:59,194 log 13140 12824 "GET /employee/307/ HTTP/1.1" 200 6645
+INFO 2026-04-01 16:00:22,084 autoreload 11504 12792 Watching for file changes with StatReloader
+INFO 2026-04-01 16:00:27,760 log 11504 8912 "GET /employee/307/ HTTP/1.1" 200 7793
+INFO 2026-04-01 16:00:27,794 log 11504 8912 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-01 16:00:38,436 log 11504 8912 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 7816
+INFO 2026-04-01 16:01:06,261 log 11504 8912 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 7781
+WARNING 2026-04-01 16:01:59,952 log 11504 8912 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:01:59,953 log 11504 8912 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1838
+INFO 2026-04-01 16:24:35,271 autoreload 11504 12792 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 16:24:36,077 autoreload 4848 18256 Watching for file changes with StatReloader
+INFO 2026-04-01 16:24:40,595 log 4848 13628 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 302 0
+INFO 2026-04-01 16:24:40,878 log 4848 13628 "GET /employees/ HTTP/1.1" 200 4147
+WARNING 2026-04-01 16:24:40,965 log 4848 17064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:24:40,966 log 4848 17064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1815
+INFO 2026-04-01 16:24:41,018 log 4848 13628 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 16:24:41,026 log 4848 11196 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-01 16:24:42,825 log 4848 11196 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:24:43,087 log 4848 11196 "GET /employees/ HTTP/1.1" 200 4152
+INFO 2026-04-01 16:24:43,146 log 4848 11196 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 16:24:43,147 log 4848 13628 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 16:24:43,171 log 4848 17064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:24:43,172 log 4848 17064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1828
+INFO 2026-04-01 16:24:44,556 log 4848 17064 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:24:44,758 log 4848 17064 "GET /employees/ HTTP/1.1" 200 4190
+INFO 2026-04-01 16:24:44,808 log 4848 13628 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-01 16:24:44,808 log 4848 17064 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-01 16:24:44,825 log 4848 17064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:24:44,825 log 4848 17064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1786
+INFO 2026-04-01 16:24:50,301 autoreload 17404 1056 Watching for file changes with StatReloader
+INFO 2026-04-01 16:24:53,311 log 17404 11496 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:24:53,560 log 17404 11496 "GET /employees/ HTTP/1.1" 200 4180
+WARNING 2026-04-01 16:24:53,641 log 17404 2192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:24:53,642 log 17404 2192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1863
+INFO 2026-04-01 16:24:53,684 log 17404 12576 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-01 16:24:53,698 log 17404 11496 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 16:24:58,477 log 17404 11496 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:24:58,656 log 17404 11496 "GET /employees/ HTTP/1.1" 200 4119
+INFO 2026-04-01 16:25:00,218 log 17404 11496 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:00,433 log 17404 11496 "GET /employees/ HTTP/1.1" 200 4152
+INFO 2026-04-01 16:25:01,869 log 17404 11496 "GET /employee/295/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:02,052 log 17404 11496 "GET /employees/ HTTP/1.1" 200 4134
+INFO 2026-04-01 16:25:02,924 log 17404 11496 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:03,109 log 17404 11496 "GET /employees/ HTTP/1.1" 200 4135
+INFO 2026-04-01 16:25:34,781 autoreload 17404 1056 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 16:25:35,715 autoreload 5944 12336 Watching for file changes with StatReloader
+INFO 2026-04-01 16:25:36,461 log 5944 5096 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:36,609 log 5944 12340 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:36,834 basehttp 5944 5096 - Broken pipe from ('127.0.0.1', 63270)
+INFO 2026-04-01 16:25:36,872 log 5944 12340 "GET /employees/ HTTP/1.1" 200 4138
+INFO 2026-04-01 16:25:41,586 log 5944 12340 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:41,771 log 5944 12340 "GET /employees/ HTTP/1.1" 200 4161
+INFO 2026-04-01 16:25:45,332 log 5944 12340 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:45,538 log 5944 12340 "GET /employees/ HTTP/1.1" 200 4173
+INFO 2026-04-01 16:25:49,477 log 5944 12340 "GET /employees/ HTTP/1.1" 200 4026
+INFO 2026-04-01 16:25:49,558 log 5944 17312 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-01 16:25:49,562 log 5944 12340 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-01 16:25:49,835 log 5944 12340 Not Found: /favicon.ico
+WARNING 2026-04-01 16:25:49,835 log 5944 12340 "GET /favicon.ico HTTP/1.1" 404 1843
+INFO 2026-04-01 16:25:52,341 log 5944 12340 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:52,548 log 5944 12340 "GET /employees/ HTTP/1.1" 200 4152
+INFO 2026-04-01 16:25:53,137 log 5944 12340 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:25:53,312 log 5944 12340 "GET /employees/ HTTP/1.1" 200 4156
+INFO 2026-04-01 16:27:01,096 autoreload 5944 12336 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 16:27:01,861 autoreload 16976 13248 Watching for file changes with StatReloader
+INFO 2026-04-01 16:27:05,906 log 16976 17404 "GET /employee/307/ HTTP/1.1" 302 0
+INFO 2026-04-01 16:27:06,140 log 16976 17404 "GET /employees/ HTTP/1.1" 200 4105
+INFO 2026-04-01 16:27:55,814 autoreload 16976 13248 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 16:27:56,539 autoreload 5116 17476 Watching for file changes with StatReloader
+INFO 2026-04-01 16:28:33,980 autoreload 5116 17476 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 16:28:34,764 autoreload 4960 16904 Watching for file changes with StatReloader
+INFO 2026-04-01 16:28:39,543 log 4960 15352 "GET /employee/307/ HTTP/1.1" 200 8228
+ERROR 2026-04-01 16:28:48,381 log 4960 15352 Internal Server Error: /research/products/1587/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-01 16:28:48,386 log 4960 15352 "GET /research/products/1587/ HTTP/1.1" 500 12182
+INFO 2026-04-01 16:33:02,626 log 4960 15352 "GET / HTTP/1.1" 200 5232
+INFO 2026-04-01 16:33:04,414 log 4960 15352 "GET /research/15/ HTTP/1.1" 200 13164
+INFO 2026-04-01 16:45:41,592 autoreload 9272 18300 Watching for file changes with StatReloader
+INFO 2026-04-01 16:45:48,791 log 9272 12696 "GET /employees/ HTTP/1.1" 200 3973
+INFO 2026-04-01 16:45:50,205 log 9272 12696 "GET /employee/307/ HTTP/1.1" 200 7767
+INFO 2026-04-01 16:45:54,186 log 9272 12696 "GET /employee/307/ HTTP/1.1" 200 7760
+INFO 2026-04-01 16:45:54,273 log 9272 13788 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-01 16:45:54,275 log 9272 12696 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-01 16:45:54,580 log 9272 12696 Not Found: /favicon.ico
+WARNING 2026-04-01 16:45:54,581 log 9272 12696 "GET /favicon.ico HTTP/1.1" 404 1788
+INFO 2026-04-01 16:45:55,121 log 9272 12696 "GET /employee/307/ HTTP/1.1" 200 7830
+INFO 2026-04-01 16:45:55,155 log 9272 12696 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 16:45:55,157 log 9272 13788 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 16:45:55,426 log 9272 13788 Not Found: /favicon.ico
+WARNING 2026-04-01 16:45:55,427 log 9272 13788 "GET /favicon.ico HTTP/1.1" 404 1765
+WARNING 2026-04-01 16:45:58,270 log 9272 13788 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:45:58,271 log 9272 13788 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1866
+INFO 2026-04-01 16:48:07,622 log 9272 13788 "GET /employee/307/ HTTP/1.1" 200 7820
+INFO 2026-04-01 16:48:07,655 log 9272 13788 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 16:48:07,656 log 9272 12696 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 16:48:07,705 log 9272 12696 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 16:48:07,705 log 9272 12696 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1841
+WARNING 2026-04-01 16:48:29,624 log 9272 12696 Not Found: /favicon.ico
+WARNING 2026-04-01 16:48:29,625 log 9272 12696 "GET /favicon.ico HTTP/1.1" 404 1848
+INFO 2026-04-01 16:48:49,971 log 9272 12696 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 7776
+INFO 2026-04-01 17:03:07,088 autoreload 9272 18300 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 17:03:07,890 autoreload 9956 4180 Watching for file changes with StatReloader
+INFO 2026-04-01 17:06:21,741 autoreload 9956 4180 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 17:06:22,529 autoreload 10032 5160 Watching for file changes with StatReloader
+INFO 2026-04-01 17:07:33,241 autoreload 10032 5160 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 17:07:34,008 autoreload 12584 5760 Watching for file changes with StatReloader
+INFO 2026-04-01 17:07:53,433 autoreload 12584 5760 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 17:07:54,251 autoreload 16952 7916 Watching for file changes with StatReloader
+INFO 2026-04-01 17:09:55,902 autoreload 16952 7916 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 17:09:56,704 autoreload 3312 11304 Watching for file changes with StatReloader
+INFO 2026-04-01 17:10:57,687 autoreload 3312 11304 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-01 17:10:58,399 autoreload 15552 18036 Watching for file changes with StatReloader
+INFO 2026-04-01 17:11:01,986 log 15552 12404 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 8940
+INFO 2026-04-01 17:11:12,894 log 15552 12404 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 8934
+INFO 2026-04-01 17:11:15,905 log 15552 12404 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 8892
+ERROR 2026-04-01 17:12:54,338 log 15552 12404 Internal Server Error: /research/product/1587/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-01 17:12:54,344 log 15552 12404 "GET /research/product/1587/ HTTP/1.1" 500 15455
+INFO 2026-04-01 17:18:11,472 log 15552 10476 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9272
+INFO 2026-04-01 17:18:30,459 log 15552 10476 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9333
+INFO 2026-04-01 17:18:30,499 log 15552 10476 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-04-01 17:19:58,970 log 15552 10476 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:19:58,971 log 15552 10476 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1881
+INFO 2026-04-01 17:26:28,836 log 15552 11480 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9598
+WARNING 2026-04-01 17:26:28,936 log 15552 7932 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:26:28,938 log 15552 7932 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1816
+INFO 2026-04-01 17:26:28,943 log 15552 11480 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 17:26:28,960 log 15552 17076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 17:26:30,268 log 15552 17076 Not Found: /favicon.ico
+WARNING 2026-04-01 17:26:30,269 log 15552 17076 "GET /favicon.ico HTTP/1.1" 404 1837
+INFO 2026-04-01 17:26:36,895 log 15552 17076 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9586
+INFO 2026-04-01 17:26:36,925 log 15552 17076 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 17:26:36,926 log 15552 11480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 17:26:36,964 log 15552 17076 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:26:36,965 log 15552 17076 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+INFO 2026-04-01 17:26:47,987 log 15552 17076 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9591
+INFO 2026-04-01 17:26:48,034 log 15552 17076 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 17:26:48,036 log 15552 11480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 17:26:48,060 log 15552 11480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:26:48,061 log 15552 11480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+INFO 2026-04-01 17:27:31,668 log 15552 11480 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9580
+INFO 2026-04-01 17:27:31,707 log 15552 11480 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 17:27:31,710 log 15552 17076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 17:27:31,746 log 15552 17076 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:27:31,747 log 15552 17076 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1832
+INFO 2026-04-01 17:30:52,764 log 15552 17076 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9597
+INFO 2026-04-01 17:30:52,806 log 15552 17076 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 17:30:52,810 log 15552 11480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 17:30:52,849 log 15552 11480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:30:52,850 log 15552 11480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1860
+INFO 2026-04-01 17:32:27,379 log 15552 11480 "GET /employee/307/?type=all&year=2026&start_date=2026-01-01&end_date=2026-12-31 HTTP/1.1" 200 9555
+INFO 2026-04-01 17:32:27,418 log 15552 11480 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-01 17:32:27,421 log 15552 17076 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-01 17:32:27,454 log 15552 17076 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-01 17:32:27,455 log 15552 17076 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1869

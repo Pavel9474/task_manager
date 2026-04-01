@@ -529,63 +529,6 @@ class ResearchSubstage(models.Model):
         if not self.responsible and self.stage.responsible:
             self.responsible = self.stage.responsible
 
-
-# Затем ResearchProduct (зависит от ResearchSubstage)
-class ResearchProduct(models.Model):
-    """Научно-техническая продукция (результаты)"""
-    substage = models.ForeignKey(
-        ResearchSubstage,  # ResearchSubstage уже определен
-        on_delete=models.CASCADE,
-        related_name='products',
-        verbose_name='Подэтап'
-    )
-    name = models.CharField('Наименование продукции', max_length=500)
-    description = models.TextField('Описание', blank=True)
-    due_date = models.DateField('Срок представления', null=True, blank=True)
-    
-    # Исполнители
-    performers = models.ManyToManyField(
-        'Employee',  # Используем строку
-        verbose_name='Исполнители',
-        related_name='research_products',
-        blank=True
-    )
-    responsible = models.ForeignKey(
-        'Employee',  # Используем строку
-        on_delete=models.SET_NULL,
-        verbose_name='Ответственный',
-        related_name='responsible_products',
-        null=True,
-        blank=True
-    )
-    
-    STATUS_CHOICES = [
-        ('pending', 'Ожидает'),
-        ('in_progress', 'В работе'),
-        ('completed', 'Выполнено'),
-        ('delayed', 'Задержка')
-    ]
-    status = models.CharField(
-        'Статус',
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='pending'
-    )
-    
-    class Meta:
-        verbose_name = 'Продукция'
-        verbose_name_plural = 'Продукция'
-    
-    def __str__(self):
-        return self.name
-    
-    def inherit_performers_from_substage(self):
-        """Наследовать исполнителей от подэтапа"""
-        if not self.performers.exists() and self.substage.performers.exists():
-            self.performers.set(self.substage.performers.all())
-        if not self.responsible and self.substage.responsible:
-            self.responsible = self.substage.responsible
-
 class Department(models.Model):
     """Структурное подразделение (отдел, лаборатория, группа)"""
     name = models.CharField('Название', max_length=255)

@@ -77,9 +77,16 @@ def product_assign_performers(request, product_id):
         
         messages.success(request, 'Исполнители назначены')
         
-        if product.subtask and product.subtask.task:
-            return redirect('subtask_list', task_id=product.subtask.task.id)
-        return redirect('task_list')
+        # Исправленная часть - убираем обращение к subtask
+        # Перенаправляем на страницу подэтапа или НИР
+        if product.research_substage:
+            return redirect('research_substage_detail', substage_id=product.research_substage.id)
+        elif product.research_stage:
+            return redirect('research_stage_detail', stage_id=product.research_stage.id)
+        elif product.research_task:
+            return redirect('research_task_detail', task_id=product.research_task.id)
+        else:
+            return redirect('research_task_list')
     
     # Получаем параметры фильтрации
     department_id = request.GET.get('department')

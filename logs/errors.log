@@ -6085,3 +6085,65 @@ ERROR 2026-03-31 15:54:34,306 middleware 17288 18348 ❌ Ошибка 404: GET /
 ERROR 2026-03-31 15:54:36,664 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-03-31 15:55:47,787 middleware 17288 14432 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-03-31 15:55:49,064 middleware 17288 18348 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 11:46:00,395 middleware 18316 3040 💥 Исключение в POST /product/1588/assign-performers/: 'ResearchProduct' object has no attribute 'subtask'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 80, in product_assign_performers
+    if product.subtask and product.subtask.task:
+       ^^^^^^^^^^^^^^^
+AttributeError: 'ResearchProduct' object has no attribute 'subtask'
+ERROR 2026-04-01 11:46:00,451 middleware 18316 3040 ❌ Ошибка 500: POST /product/1588/assign-performers/ - Пользователь: pavel2
+ERROR 2026-04-01 15:19:55,155 middleware 13140 12824 💥 Исключение в GET /research/products/1593/: research_product_detail() got an unexpected keyword argument 'pk'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-01 15:19:55,237 middleware 13140 12824 ❌ Ошибка 500: GET /research/products/1593/ - Пользователь: pavel2
+ERROR 2026-04-01 16:01:59,951 middleware 11504 8912 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:24:40,962 middleware 4848 17064 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:24:43,165 middleware 4848 17064 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:24:44,824 middleware 4848 17064 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:24:53,637 middleware 17404 2192 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:25:49,834 middleware 5944 12340 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-01 16:28:48,343 middleware 4960 15352 💥 Исключение в GET /research/products/1587/: research_product_detail() got an unexpected keyword argument 'pk'
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-01 16:28:48,384 middleware 4960 15352 ❌ Ошибка 500: GET /research/products/1587/ - Пользователь: pavel2
+ERROR 2026-04-01 16:45:54,579 middleware 9272 12696 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-01 16:45:55,425 middleware 9272 13788 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-01 16:45:58,269 middleware 9272 13788 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:48:07,703 middleware 9272 12696 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 16:48:29,623 middleware 9272 12696 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-01 17:12:54,286 middleware 15552 12404 💥 Исключение в GET /research/product/1587/: Unknown field(s) (subtask) specified for ResearchProduct
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-01 17:12:54,342 middleware 15552 12404 ❌ Ошибка 500: GET /research/product/1587/ - Пользователь: pavel2
+ERROR 2026-04-01 17:19:58,969 middleware 15552 10476 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 17:26:28,935 middleware 15552 7932 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 17:26:30,268 middleware 15552 17076 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-01 17:26:36,960 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 17:26:48,059 middleware 15552 11480 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 17:27:31,744 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 17:30:52,848 middleware 15552 11480 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-01 17:32:27,453 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
