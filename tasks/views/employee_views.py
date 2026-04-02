@@ -506,9 +506,16 @@ def employee_detail(request, employee_id):
         print(f"Продукция как исполнитель: {len(performer_product_ids)}")
         print(f"Продукция как ответственный: {len(responsible_product_ids)}")
         print(f"Всего продукции: {all_products.count()}")
+        print(f"Date range for Gantt: {start_date} to {end_date}")
+        for p in all_products:
+            print(f"  Product {p.id}: planned_start={p.planned_start}, planned_end={p.planned_end}, substage={p.research_substage_id}")
         
         # Подготовка данных для диаграммы Ганта
         gantt_data = []
+        today = timezone.now().date()
+        
+        # Собираем все даты окончания для определения ближайших к сегодня
+        all_end_dates = []
         
         # Словарь для хранения цветов НИР
         research_task_colors = {}
@@ -606,23 +613,71 @@ def employee_detail(request, employee_id):
             })
             
             # Добавляем в данные для Ганта
-            if planned_start and planned_end:
-                # Проверяем, попадает ли продукция в выбранный период
-                if planned_end >= start_date and planned_start <= end_date:
-                    gantt_data.append({
-                        'id': product.id,
-                        'name': product.name,
-                        'start': planned_start.isoformat(),
-                        'end': planned_end.isoformat(),
-                        'status': product.status,
-                        'color': research_task_color,
-                        'completion': product.completion_percent,
-                        'is_overdue': product.is_overdue,
-                        'due_date_warning': due_date_warning,
-                        'substage_number': research_substage.substage_number if research_substage else None,
-                        'research_task_title': research_task.title if research_task else None,
-                        'research_task_color': research_task_color,
-                    })
+            # Используем даты подэтапа, продукции или значения по умолчанию
+            gantt_start = planned_start
+            gantt_end = planned_end
+            
+            # Если не хватает одной из дат, пробуем получить из подэтапа
+            if (not gantt_start or not gantt_end) and research_substage:
+                gantt_start = gantt_start or research_substage.start_date
+                gantt_end = gantt_end or research_substage.end_date
+            
+            # Если всё ещё не хватает дат, пробуем этап
+            if (not gantt_start or not gantt_end) and research_stage:
+                gantt_start = gantt_start or research_stage.start_date
+                gantt_end = gantt_end or research_stage.end_date
+            
+            # Если всё ещё не хватает дат, пробуем НИР
+            if (not gantt_start or not gantt_end) and research_task:
+                gantt_start = gantt_start or research_task.start_date
+                gantt_end = gantt_end or research_task.end_date
+            
+            # Если всё ещё нет дат, используем текущий год как запасной вариант
+            if not gantt_start or not gantt_end:
+                current_year = timezone.now().year
+                gantt_start = gantt_start or date(current_year, 1, 1)
+                gantt_end = gantt_end or date(current_year, 12, 31)
+            
+            # DEBUG: Print what dates we're using
+            print(f"Product {product.id}: gantt_start={gantt_start}, gantt_end={gantt_end}")
+            
+            # Проверяем, попадает ли продукция в выбранный период
+            if gantt_end >= start_date and gantt_start <= end_date:
+                # Считаем разницу в днях от сегодня (для определения ближайших)
+                days_diff = abs((gantt_end - today).days)
+                all_end_dates.append({
+                    'product_id': product.id,
+                    'days_diff': days_diff,
+                    'end_date': gantt_end
+                })
+                
+                gantt_data.append({
+                    'id': product.id,
+                    'name': product.name,
+                    'start': gantt_start.isoformat(),
+                    'end': gantt_end.isoformat(),
+                    'status': product.status,
+                    'color': research_task_color,
+                    'completion': product.completion_percent,
+                    'is_overdue': product.is_overdue,
+                    'due_date_warning': due_date_warning,
+                    'substage_number': research_substage.substage_number if research_substage else None,
+                    'research_task_title': research_task.title if research_task else None,
+                    'research_task_color': research_task_color,
+                    'days_to_end': days_diff,
+                })
+        
+        # Определяем ближайшие к сегодня даты (минимальная разница в днях)
+        closest_product_ids = set()
+        if all_end_dates:
+            min_days = min(item['days_diff'] for item in all_end_dates)
+            # Находим все продукты с минимальной разницей (может быть несколько)
+            closest_product_ids = {item['product_id'] for item in all_end_dates if item['days_diff'] == min_days}
+            print(f"Ближайшие продукты (мин. дней: {min_days}): {closest_product_ids}")
+        
+        # Помечаем ближайшие продукты в gantt_data
+        for item in gantt_data:
+            item['is_closest'] = item['id'] in closest_product_ids
         
         # Формируем список уникальных НИР для легенды
         research_tasks_list = []
@@ -683,11 +738,16 @@ def employee_detail(request, employee_id):
             'gantt_end_date': end_date.isoformat(),
             'available_years': available_years,
             'research_tasks_list': research_tasks_list,
+            # Сегодняшняя дата для отображения линии
+            'today_date': today.isoformat(),
         }
         
         print(f"\n=== СТАТИСТИКА ===")
         print(f"products_count в контексте: {context['products_count']}")
         print(f"gantt_data count: {len(gantt_data)}")
+        print(f"gantt_data sample: {gantt_data[:2] if gantt_data else 'EMPTY'}")
+        print(f"start_date: {start_date}, end_date: {end_date}")
+        print(f"today_date: {context['today_date']}")
         
         return render(request, 'tasks/employee_detail.html', context)
         
