@@ -6147,3 +6147,13 @@ ERROR 2026-04-01 17:26:48,059 middleware 15552 11480 ❌ Ошибка 404: GET /
 ERROR 2026-04-01 17:27:31,744 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-04-01 17:30:52,848 middleware 15552 11480 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-04-01 17:32:27,453 middleware 15552 17076 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 09:28:22,974 middleware 8916 9880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-02 09:29:47,159 middleware 8916 16868 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:29:11,131 middleware 8916 14568 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:33:59,495 middleware 8916 13100 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:38:26,736 middleware 8916 15472 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:39:20,100 middleware 8916 15472 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:40:35,708 middleware 8916 13100 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:43:21,936 middleware 8916 13100 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:44:10,156 middleware 8916 15472 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-02 10:55:40,519 middleware 8916 2748 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
