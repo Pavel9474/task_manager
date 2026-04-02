@@ -323,7 +323,6 @@
                     <i class="bi bi-calendar-day"></i> Сегодня
                 </button>
             </div>
-            
             <div class="card">
                 <div class="card-body">
                     <div id="ganttChartContainer" style="height: 500px; width: 100%;"></div>
@@ -832,7 +831,7 @@
 </style>
 
 <script>
-    // Global variable for today's date - use server date or fallback to browser date
+    // Global variable for today's date
     const SERVER_TODAY = '{{ today_date }}';
     const TODAY_DATE = SERVER_TODAY || (function() {
         const d = new Date();
@@ -840,8 +839,9 @@
                String(d.getMonth() + 1).padStart(2, '0') + '-' + 
                String(d.getDate()).padStart(2, '0');
     })();
-    console.log('TODAY_DATE initialized:', TODAY_DATE, '(server:', SERVER_TODAY, ')');
+    
     const GANTT_DATA = {{ gantt_data|safe }};
+    let currentGantt = null;
     
     function updateProductStatus(productId, status) {
         fetch(`/research/product/${productId}/status/`, {
@@ -852,596 +852,213 @@
             },
             body: `status=${status}`
         }).then(response => {
-            if (response.ok) {
-                location.reload();
-            }
+            if (response.ok) location.reload();
         });
     }
     
-    // Функция для применения цветов к полосам
-    function applyColorsToBars(ganttData) {
-        console.log("Применение цветов... ganttData length:", ganttData.length);
+    // Применение цветов к полосам
+    function applyColors() {
+        if (!GANTT_DATA || GANTT_DATA.length === 0) return;
         
-        // Добавляем динамические стили для каждого бара
-        let dynamicStyles = document.getElementById('gantt-dynamic-styles');
-        if (!dynamicStyles) {
-            dynamicStyles = document.createElement('style');
-            dynamicStyles.id = 'gantt-dynamic-styles';
-            document.head.appendChild(dynamicStyles);
-        }
-        
-        let css = '';
-        ganttData.forEach((task, index) => {
+        GANTT_DATA.forEach((task, index) => {
             if (task.color) {
-                css += `.gantt .bar-color-${index} .bar { fill: ${task.color} !important; }\n`;
-                css += `.gantt .bar-color-${index} rect.bar { fill: ${task.color} !important; }\n`;
-            }
-        });
-        dynamicStyles.textContent = css;
-        console.log("Динамические стили добавлены:", css);
-        
-        // Также пробуем напрямую установить цвета для уже созданных элементов
-        ganttData.forEach((task, index) => {
-            if (task.color) {
-                const barGroup = document.querySelector(`.gantt .bar-color-${index}`);
-                if (barGroup) {
-                    const bars = barGroup.querySelectorAll('.bar, rect');
-                    bars.forEach(bar => {
-                        bar.style.fill = task.color;
-                        bar.setAttribute('fill', task.color);
-                    });
-                    console.log(`Цвет установлен для bar-color-${index}: ${task.color}`);
+                const bars = document.querySelectorAll(`.gantt .bar-color-${index} .bar, .gantt .bar-color-${index} rect.bar`);
+                bars.forEach(bar => {
+                    bar.style.fill = task.color;
+                    bar.setAttribute('fill', task.color);
+                });
+                
+                // Также пробуем найти по индексу
+                const allBars = document.querySelectorAll('.gantt .bar rect');
+                if (allBars[index] && allBars[index].classList.contains('bar')) {
+                    allBars[index].style.fill = task.color;
+                    allBars[index].setAttribute('fill', task.color);
                 }
             }
         });
+        
+        console.log('Colors applied');
     }
     
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("Загрузка Ганта...");
+    // Отрисовка линии сегодня
+    function drawTodayLine() {
+        const oldLine = document.querySelector('.today-line-group');
+        if (oldLine) oldLine.remove();
         
-        const ganttData = GANTT_DATA;
-        console.log("Количество задач:", ganttData.length);
-        console.log("Данные с цветами:", ganttData);
-        
-        // DEBUG: Show raw data in page
-        if (ganttData.length === 0) {
-            document.getElementById('ganttChartContainer').innerHTML = 
-                '<div class="alert alert-warning text-center py-5">' +
-                '<i class="bi bi-exclamation-triangle fs-1"></i><br>' +
-                '<strong>Debug:</strong> gantt_data is empty array<br>' +
-                'Check Django console for details' +
-                '</div>';
+        const svg = document.querySelector('.gantt svg');
+        if (!svg) {
+            console.log('No SVG found');
             return;
         }
         
-        // DEBUG: Show data summary
-        console.log("Gantt data summary:");
-        ganttData.forEach((item, i) => {
-            console.log(`  ${i}: ${item.name} (${item.start} - ${item.end}) closest=${item.is_closest}`);
+        // Ищем текст с сегодняшней датой
+        const todayStr = TODAY_DATE.split('-').reverse().join('.');
+        const allTexts = svg.querySelectorAll('text');
+        let todayX = null;
+        
+        for (let text of allTexts) {
+            const content = text.textContent;
+            if (content.includes(todayStr) || content.includes(TODAY_DATE)) {
+                const x = parseFloat(text.getAttribute('x'));
+                if (!isNaN(x) && x > 0) {
+                    todayX = x;
+                    break;
+                }
+            }
+        }
+        
+        // Если не нашли, ищем по гриду
+        if (!todayX) {
+            const dates = svg.querySelectorAll('.dates text, .grid-header text');
+            for (let date of dates) {
+                const content = date.textContent;
+                if (content.includes(todayStr)) {
+                    todayX = parseFloat(date.getAttribute('x'));
+                    break;
+                }
+            }
+        }
+        
+        if (todayX) {
+            const svgHeight = svg.getBoundingClientRect().height;
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.setAttribute('class', 'today-line-group');
+            
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', todayX);
+            line.setAttribute('y1', 40);
+            line.setAttribute('x2', todayX);
+            line.setAttribute('y2', svgHeight - 30);
+            line.setAttribute('stroke', '#dc3545');
+            line.setAttribute('stroke-width', '2');
+            line.setAttribute('stroke-dasharray', '6,4');
+            
+            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            label.setAttribute('x', todayX + 5);
+            label.setAttribute('y', 55);
+            label.setAttribute('fill', '#dc3545');
+            label.setAttribute('font-size', '11');
+            label.setAttribute('font-weight', 'bold');
+            label.textContent = 'Сегодня';
+            
+            group.appendChild(line);
+            group.appendChild(label);
+            svg.appendChild(group);
+            
+            console.log('Today line drawn at x=' + todayX);
+            return todayX;
+        }
+        
+        console.log('Could not find today position');
+        return null;
+    }
+    
+    // Создание Ганта
+    function createGantt(viewMode = 'Month') {
+        if (!GANTT_DATA || GANTT_DATA.length === 0) {
+            document.getElementById('ganttChartContainer').innerHTML = 
+                '<div class="alert alert-info text-center py-5">Нет данных для отображения</div>';
+            return;
+        }
+        
+        const container = document.getElementById('ganttChartContainer');
+        container.innerHTML = '';
+        
+        const tasks = GANTT_DATA.map((task, index) => ({
+            id: `task-${task.id || index}`,
+            name: task.substage_number ? `[${task.substage_number}] ${task.name.substring(0, 35)}` : task.name.substring(0, 45),
+            start: task.start,
+            end: task.end,
+            progress: task.completion || 0,
+            custom_class: `bar-color-${index} ${task.is_closest ? 'bar-closest' : ''}`
+        }));
+        
+        currentGantt = new Gantt("#ganttChartContainer", tasks, {
+            on_click: function(task) {
+                const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
+                const product = GANTT_DATA.find(p => p.name === productName || p.name.includes(productName));
+                if (product && product.id) {
+                    window.location.href = `/research/product/${product.id}/`;
+                }
+            },
+            bar_height: 35,
+            bar_corner_radius: 3,
+            arrow_curve: 5,
+            padding: 18,
+            view_mode: viewMode,
+            date_format: 'YYYY-MM-DD',
+            language: 'ru'
         });
         
-        // Check closest products
-        const closestProducts = ganttData.filter(item => item.is_closest);
-        console.log(`Found ${closestProducts.length} closest products:`, closestProducts);
-        
-        if (ganttData && ganttData.length > 0 && typeof Gantt !== 'undefined') {
-            try {
-                const container = document.getElementById('ganttChartContainer');
-                container.innerHTML = '';
-                
-                // Формируем задачи с уникальными ID и цветами
-                const tasks = ganttData.map((task, index) => ({
-                    id: `task-${task.id || index}`,
-                    name: task.substage_number ? `[${task.substage_number}] ${task.name.substring(0, 35)}` : task.name.substring(0, 45),
-                    start: task.start,
-                    end: task.end,
-                    progress: task.completion || 0,
-                    custom_class: `bar-color-${index} ${task.is_closest ? 'bar-closest' : ''}`
-                }));
-                
-                console.log("Задачи для Ганта:", tasks);
-                console.log("Первый элемент:", tasks[0]);
-                
-                // Check which tasks have bar-closest class
-                const closestTasks = tasks.filter(t => t.custom_class.includes('bar-closest'));
-                console.log(`Tasks with bar-closest class: ${closestTasks.length}`, closestTasks);
-                
-                // Создаем Гант и сохраняем ссылку глобально
-                window.ganttChart = new Gantt("#ganttChartContainer", tasks, {
-                    on_click: function(task) {
-                        console.log("Клик по задаче:", task);
-                        const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
-                        const product = ganttData.find(p => p.name === productName || p.name.includes(productName));
-                        if (product && product.id) {
-                            window.location.href = `/research/product/${product.id}/`;
-                        }
-                    },
-                    bar_height: 35,
-                    bar_corner_radius: 3,
-                    arrow_curve: 5,
-                    padding: 18,
-                    view_mode: 'Month',
-                    date_format: 'YYYY-MM-DD',
-                    language: 'ru',
-                    today_button: true,
-                    scroll_to: 'today',
-                    custom_popup_html: function(task) {
-                        const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
-                        const product = ganttData.find(p => p.name === productName || p.name.includes(productName));
-                        return `
-                            <div class="gantt-tooltip">
-                                <strong>${product ? product.name : task.name}</strong><br>
-                                ${product && product.substage_number ? `<strong>Подэтап:</strong> ${product.substage_number}<br>` : ''}
-                                ${product && product.research_task_title ? `<strong>НИР:</strong> ${product.research_task_title}<br>` : ''}
-                                <strong>Начало:</strong> ${task.start}<br>
-                                <strong>Окончание:</strong> ${task.end}<br>
-                                ${product && product.status === 'completed' ? '✅ Выполнено' : 
-                                  product && product.is_overdue ? '⚠️ Просрочено' : 
-                                  product && product.due_date_warning ? '⏰ Скоро срок' : '🔄 В работе'}
-                            </div>
-                        `;
-                    }
-                });
-                
-                // Применяем цвета и линию сегодня после рендеринга с небольшой задержкой
-                setTimeout(function() {
-                    applyColorsToBars(ganttData);
-                    drawTodayLine();
-                }, 100);
-                
-                // Также применяем цвета и линию при изменении размера окна
-                window.addEventListener('resize', function() {
-                    setTimeout(function() {
-                        applyColorsToBars(ganttData);
-                        drawTodayLine();
-                    }, 100);
-                });
-                
-                console.log("Гант успешно создан");
-                
-                // DEBUG: Check if bars are actually rendered
-                setTimeout(function() {
-                    const bars = document.querySelectorAll('.gantt .bar');
-                    const barGroups = document.querySelectorAll('.gantt .bar-group');
-                    const closestBars = document.querySelectorAll('.gantt .bar-closest, .gantt .bar-group.bar-closest');
-                    const svg = document.querySelector('.gantt svg');
-                    console.log("DEBUG SVG:", svg ? `width=${svg.getAttribute('width')}, height=${svg.getAttribute('height')}` : 'NO SVG');
-                    console.log("DEBUG Bars:", bars.length, "BarGroups:", barGroups.length, "Closest bars:", closestBars.length);
-                    
-                    // Ensure SVG has proper width for scrolling
-                    if (svg) {
-                        const svgWidth = svg.getAttribute('width');
-                        if (svgWidth) {
-                            svg.style.width = svgWidth + 'px';
-                            svg.style.maxWidth = 'none';
-                            svg.style.minWidth = svgWidth + 'px';
-                            console.log('Set SVG style.width to:', svgWidth + 'px');
-                            
-                            // Also set the gantt container width
-                            const ganttContainer = document.querySelector('#ganttChartContainer .gantt');
-                            if (ganttContainer) {
-                                ganttContainer.style.width = svgWidth + 'px';
-                                ganttContainer.style.minWidth = svgWidth + 'px';
-                                console.log('Set gantt container width to:', svgWidth + 'px');
-                            }
-                        }
-                    }
-                    
-                    // Check bar group classes
-                    for (let i = 0; i < barGroups.length; i++) {
-                        const group = barGroups[i];
-                        if (group && group.classList) {
-                            try {
-                                console.log(`BarGroup ${i} classes:`, group.classList.toString());
-                            } catch(e) {
-                                console.log(`BarGroup ${i} has no classes`);
-                            }
-                        }
-                    }
-                    
-                    if (bars.length > 0) {
-                        const firstBar = bars[0];
-                        const rect = firstBar.getBoundingClientRect();
-                        console.log("First bar rect:", rect);
-                        
-                        // Force bars to be visible with inline styles
-                        for (let idx = 0; idx < bars.length; idx++) {
-                            const bar = bars[idx];
-                            bar.style.fill = ganttData[idx]?.color || '#0d6efd';
-                            bar.style.opacity = '1';
-                            bar.style.visibility = 'visible';
-                        }
-                    }
-                    
-                    // Apply closest styling manually if needed
-                    for (let i = 0; i < closestBars.length; i++) {
-                        const bar = closestBars[i];
-                        const innerBar = bar.querySelector('.bar');
-                        if (innerBar) {
-                            innerBar.style.stroke = '#dc3545';
-                            innerBar.style.strokeWidth = '4px';
-                        }
-                    }
-                }, 500);
-                
-            } catch(e) {
-                console.error("Ошибка при создании Ганта:", e);
-                document.getElementById('ganttChartContainer').innerHTML = 
-                    '<div class="alert alert-danger text-center py-5">Ошибка: ' + e.message + '</div>';
-            }
-        } else {
-            document.getElementById('ganttChartContainer').innerHTML = 
-                '<div class="alert alert-info text-center py-5">' +
-                '<i class="bi bi-info-circle fs-1"></i><br>' +
-                'Нет данных для отображения в диаграмме Ганта' +
-                '</div>';
-        }
-    });
+        // Применяем цвета и рисуем линию после рендеринга
+        setTimeout(() => {
+            applyColors();
+            drawTodayLine();
+        }, 300);
+    }
     
-    // Функция для переключения вида Ганта
+    // Переключение вида
     function changeView(mode) {
-        if (window.ganttChart) {
-            window.ganttChart.change_view_mode(mode);
+        if (currentGantt) {
+            currentGantt.change_view_mode(mode);
             
             // Обновляем активную кнопку
             document.querySelectorAll('.btn-group .btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             
-            // Переприменяем цвета и линию сегодня после смены вида
-            setTimeout(function() {
-                const ganttData = GANTT_DATA;
-                applyColorsToBars(ganttData);
+            // Перерисовываем цвета и линию
+            setTimeout(() => {
+                applyColors();
                 drawTodayLine();
-            }, 200);
+            }, 400);
         }
     }
     
-    // Функция для получения X координаты даты на основе SVG структуры frappe-gantt
-    function getDateX(dateStr) {
-        if (!dateStr) {
-            console.log('getDateX: dateStr is empty');
-            return null;
-        }
-        console.log('getDateX called for:', dateStr);
-        
-        // Parse the target date using local timezone helper
-        const targetDate = parseLocalDate(dateStr);
-        
-        // Get the SVG element - try multiple selectors
-        let svg = document.querySelector('.gantt svg');
-        if (!svg) svg = document.querySelector('#ganttChartContainer svg');
-        if (!svg) svg = document.querySelector('#ganttChartContainer')?.querySelector('svg');
-        
-        if (!svg) {
-            console.log('No SVG found');
-            return null;
-        }
-        
-        // Calculate position directly from gantt data
-        const ganttData = GANTT_DATA;
-        if (!ganttData || ganttData.length === 0) {
-            console.log('No gantt data available');
-            return null;
-        }
-        
-        // Find min and max dates from gantt data
-        let minDate = null;
-        let maxDate = null;
-        
-        ganttData.forEach(task => {
-            const start = parseLocalDate(task.start);
-            const end = parseLocalDate(task.end);
-            if (!minDate || start < minDate) minDate = start;
-            if (!maxDate || end > maxDate) maxDate = end;
-        });
-        
-        if (!minDate || !maxDate) {
-            console.log('Could not determine date range');
-            return null;
-        }
-        
-        // Calculate position based on date proportion
-        const totalDays = (maxDate - minDate) / (1000 * 60 * 60 * 24);
-        const daysFromStart = (targetDate - minDate) / (1000 * 60 * 60 * 24);
-        
-        // Get the SVG width
-        const svgWidth = parseFloat(svg.getAttribute('width')) || svg.getBoundingClientRect().width;
-        
-        // Find the left offset - this is where the timeline STARTS in the SVG
-        // The grid-background typically spans the full timeline area
-        let leftOffset = 0;
-        
-        // First, try to get it from the gantt object directly
-        let ganttStartDate = null;
-        let ganttEndDate = null;
-        if (window.ganttChart) {
-            console.log('Gantt options:', window.ganttChart.options);
-            console.log('Gantt gantt_start:', window.ganttChart.gantt_start);
-            console.log('Gantt gantt_end:', window.ganttChart.gantt_end);
-            if (window.ganttChart.gantt_start) {
-                ganttStartDate = new Date(window.ganttChart.gantt_start);
-            }
-            if (window.ganttChart.gantt_end) {
-                ganttEndDate = new Date(window.ganttChart.gantt_end);
-            }
-        }
-        
-        // Use gantt's internal dates if available, otherwise fall back to data dates
-        const timelineStartDate = ganttStartDate || minDate;
-        const timelineEndDate = ganttEndDate || maxDate;
-        console.log('Timeline dates:', formatLocalDate(timelineStartDate), 'to', formatLocalDate(timelineEndDate));
-        
-        const gridBackground = svg.querySelector('.grid-background');
-        if (gridBackground) {
-            leftOffset = parseFloat(gridBackground.getAttribute('x')) || 0;
-            console.log('Found grid-background, x:', leftOffset);
-        }
-        
-        // Debug: Check header texts to understand the timeline structure
-        const headerTexts = svg.querySelectorAll('.grid-header text');
-        console.log('Header texts found:', headerTexts.length);
-        if (headerTexts.length > 0) {
-            for (let i = 0; i < Math.min(5, headerTexts.length); i++) {
-                const t = headerTexts[i];
-                console.log(`Header ${i}: "${t.textContent}" x=${t.getAttribute('x')}`);
-            }
-        }
-        
-        // Debug: Check the dates class which shows month boundaries
-        const datesTexts = svg.querySelectorAll('.dates text');
-        console.log('Dates texts found:', datesTexts.length);
-        if (datesTexts.length > 0) {
-            for (let i = 0; i < Math.min(5, datesTexts.length); i++) {
-                const t = datesTexts[i];
-                console.log(`Date ${i}: "${t.textContent}" x=${t.getAttribute('x')}`);
-            }
-        }
-        
-        // Debug: Try to find ALL text elements in the SVG header area
-        const allTexts = svg.querySelectorAll('text');
-        console.log('All text elements found:', allTexts.length);
-        if (allTexts.length > 0) {
-            for (let i = 0; i < Math.min(10, allTexts.length); i++) {
-                const t = allTexts[i];
-                console.log(`Text ${i}: "${t.textContent}" x=${t.getAttribute('x')} y=${t.getAttribute('y')}`);
-            }
-        }
-        
-        // Debug: Find grid lines (vertical lines in the timeline)
-        const gridLines = svg.querySelectorAll('line');
-        console.log('Line elements found:', gridLines.length);
-        if (gridLines.length > 0) {
-            for (let i = 0; i < Math.min(5, gridLines.length); i++) {
-                const line = gridLines[i];
-                console.log(`Line ${i}: x1=${line.getAttribute('x1')} x2=${line.getAttribute('x2')} class=${line.getAttribute('class')}`);
-            }
-        }
-        
-        // The key insight: grid-background x=0 means timeline starts at x=0
-        // We do NOT use bar positions because bars are positioned based on their OWN start dates,
-        // not the timeline start. A bar starting in July would have a large x value.
-        
-        console.log('Timeline left offset:', leftOffset);
-        
-        // Calculate position based on the GANTT TIMELINE dates (not data dates)
-        // The gantt chart displays a timeline that may extend beyond the data
-        const timelineTotalDays = (timelineEndDate - timelineStartDate) / (1000 * 60 * 60 * 24);
-        const timelineDaysFromStart = (targetDate - timelineStartDate) / (1000 * 60 * 60 * 24);
-        
-        console.log('Timeline total days:', timelineTotalDays, 'Days from timeline start:', timelineDaysFromStart);
-        
-        // Calculate X position proportionally based on timeline
-        const chartWidth = svgWidth - leftOffset;
-        const xPosition = leftOffset + (timelineDaysFromStart / timelineTotalDays) * chartWidth;
-        
-        console.log('Calculated X position:', xPosition, 'daysFromStart:', daysFromStart, 'totalDays:', totalDays, 'chartWidth:', chartWidth);
-        return xPosition;
-    }
-    
-    // Helper function to parse YYYY-MM-DD string to local midnight date (avoiding timezone issues)
-    function parseLocalDate(dateStr) {
-        const parts = dateStr.split('-');
-        return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
-    }
-    
-    // Helper function to format date as YYYY-MM-DD in local timezone
-    function formatLocalDate(date) {
-        return date.getFullYear() + '-' + 
-               String(date.getMonth() + 1).padStart(2, '0') + '-' + 
-               String(date.getDate()).padStart(2, '0');
-    }
-    
-    // Функция для прокрутки к сегодняшней дате
+    // Прокрутка к сегодня
     function scrollToToday() {
-        const today = TODAY_DATE;
-        console.log('Scrolling to today:', today);
-        
         const container = document.getElementById('ganttChartContainer');
-        if (!container) {
-            console.log('No container found');
-            return;
-        }
+        if (!container) return;
         
-        // Get gantt data to calculate date range
-        const ganttData = GANTT_DATA;
-        if (!ganttData || ganttData.length === 0) {
-            console.log('No gantt data available');
-            return;
-        }
+        // Сначала перерисовываем линию, чтобы получить актуальную позицию
+        const todayX = drawTodayLine();
         
-        // Find min and max dates from gantt data (for fallback)
-        let minDate = null;
-        let maxDate = null;
-        
-        ganttData.forEach(task => {
-            const start = parseLocalDate(task.start);
-            const end = parseLocalDate(task.end);
-            if (!minDate || start < minDate) minDate = start;
-            if (!maxDate || end > maxDate) maxDate = end;
-        });
-        
-        if (!minDate || !maxDate) {
-            console.log('Could not determine date range');
-            return;
-        }
-        
-        // Parse today's date
-        const todayDate = parseLocalDate(today);
-        
-        // Get the gantt chart's internal timeline dates (these define the actual SVG timeline)
-        let ganttStartDate = null;
-        let ganttEndDate = null;
-        let columnWidth = 120; // default from gantt options
-        if (window.ganttChart) {
-            if (window.ganttChart.gantt_start) {
-                ganttStartDate = new Date(window.ganttChart.gantt_start);
-            }
-            if (window.ganttChart.gantt_end) {
-                ganttEndDate = new Date(window.ganttChart.gantt_end);
-            }
-            if (window.ganttChart.options && window.ganttChart.options.column_width) {
-                columnWidth = window.ganttChart.options.column_width;
-            }
-        }
-        
-        // Use gantt's internal dates if available, otherwise fall back to data dates
-        const timelineStartDate = ganttStartDate || minDate;
-        const timelineEndDate = ganttEndDate || maxDate;
-        
-        console.log('Column width:', columnWidth);
-        
-        // Debug: log date info
-        console.log('Data date range:', formatLocalDate(minDate), 'to', formatLocalDate(maxDate));
-        console.log('Timeline date range:', formatLocalDate(timelineStartDate), 'to', formatLocalDate(timelineEndDate));
-        console.log('Today:', formatLocalDate(todayDate));
-        
-        // Calculate position based on TIMELINE dates (not data dates)
-        // Frappe Gantt uses a column-based layout where each column = one time unit
-        // In Month view, each column = 1 month
-        
-        // Calculate months from timeline start to today
-        const monthsFromStart = (todayDate.getFullYear() - timelineStartDate.getFullYear()) * 12 + 
-                                (todayDate.getMonth() - timelineStartDate.getMonth());
-        
-        // Add partial month based on day of month
-        const dayOfMonth = todayDate.getDate();
-        const daysInMonth = new Date(todayDate.getFullYear(), todayDate.getMonth() + 1, 0).getDate();
-        const partialMonth = (dayOfMonth - 1) / daysInMonth;
-        
-        const totalMonths = monthsFromStart + partialMonth;
-        
-        console.log('Months from timeline start:', monthsFromStart, 'Partial month:', partialMonth, 'Total:', totalMonths);
-        
-        // Calculate X position based on column width
-        // The first month (January) starts at x=60 based on the text positions we saw
-        const firstMonthOffset = 60; // Where "Январь" text is positioned
-        const todayX = firstMonthOffset + (totalMonths * columnWidth);
-        
-        console.log('Today X:', todayX, 'Column width:', columnWidth);
-        
-        // Use Frappe Gantt's built-in scroll_current method if available
-        if (window.ganttChart) {
-            console.log('Gantt methods:', Object.keys(window.ganttChart));
-            if (typeof window.ganttChart.scroll_current === 'function') {
-                window.ganttChart.scroll_current();
-                console.log('Used Frappe Gantt scroll_current()');
-            } else if (typeof window.ganttChart.update_options === 'function') {
-                // Try updating options to trigger scroll
-                window.ganttChart.update_options({ scroll_to: 'today' });
-                console.log('Used update_options to scroll to today');
-            } else {
-                console.log('No scroll method found on gantt chart');
+        if (todayX) {
+            const scrollPos = todayX - (container.clientWidth / 2);
+            container.scrollTo({
+                left: Math.max(0, scrollPos),
+                behavior: 'smooth'
+            });
+            console.log('Scrolled to x=' + scrollPos);
+            
+            // Подсветка линии
+            const todayLine = document.querySelector('.today-line');
+            if (todayLine) {
+                todayLine.setAttribute('stroke', '#ff0000');
+                todayLine.setAttribute('stroke-width', '4');
+                setTimeout(() => {
+                    if (todayLine) {
+                        todayLine.setAttribute('stroke', '#dc3545');
+                        todayLine.setAttribute('stroke-width', '2');
+                    }
+                }, 1000);
             }
         } else {
-            // Fallback to manual scroll calculation
-            const scrollPos = todayX - (container.clientWidth / 2);
-            
-            console.log('Container scrollWidth:', container.scrollWidth, 'clientWidth:', container.clientWidth);
-            console.log('Scroll position calculated:', scrollPos, 'Final:', Math.max(0, scrollPos));
-            
-            // Only scroll if there's something to scroll
-            if (container.scrollWidth > container.clientWidth) {
-                container.scrollTo({ 
-                    left: Math.max(0, scrollPos), 
-                    behavior: 'smooth' 
-                });
-                console.log('Scrolled to position:', Math.max(0, scrollPos));
-            } else {
-                console.log('No scrolling needed - content fits in viewport');
+            // Если не нашли линию, пробуем через встроенную функцию
+            if (currentGantt && typeof currentGantt.scroll_current === 'function') {
+                currentGantt.scroll_current();
             }
         }
-        
-        // Always draw the today line as visual indicator
-        drawTodayLine();
     }
     
-    // Функция для отрисовки линии сегодняшней даты
-    function drawTodayLine() {
-        const today = TODAY_DATE;
-        
-        // Try multiple selectors to find the SVG
-        let svg = document.querySelector('.gantt svg');
-        if (!svg) {
-            svg = document.querySelector('#ganttChartContainer svg');
-        }
-        if (!svg) {
-            svg = document.querySelector('#ganttChartContainer').querySelector('svg');
-        }
-        
-        if (!svg) {
-            console.log('No SVG found for today line');
-            // Debug: log what's in the container
-            const container = document.getElementById('ganttChartContainer');
-            console.log('Container innerHTML preview:', container ? container.innerHTML.substring(0, 500) : 'no container');
-            console.log('Container children:', container ? container.children.length : 0);
-            return;
-        }
-        
-        // Удаляем старую линию если есть
-        const oldLine = svg.querySelector('.today-line-group');
-        if (oldLine) oldLine.remove();
-        
-        // Получаем координаты для сегодня
-        const todayX = getDateX(today);
-        if (!todayX) {
-            console.log('Could not find X position for today');
-            return;
-        }
-        
-        // Создаем группу для линии
-        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        group.setAttribute('class', 'today-line-group');
-        
-        // Получаем высоту SVG
-        const svgHeight = parseInt(svg.getAttribute('height')) || 500;
-        
-        // Создаем линию
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', todayX);
-        line.setAttribute('y1', 50); // Начинаем ниже заголовка
-        line.setAttribute('x2', todayX);
-        line.setAttribute('y2', svgHeight);
-        line.setAttribute('class', 'today-line');
-        
-        // Создаем метку
-        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        label.setAttribute('x', todayX + 5);
-        label.setAttribute('y', 65);
-        label.setAttribute('class', 'today-label');
-        label.textContent = 'Сегодня';
-        
-        group.appendChild(line);
-        group.appendChild(label);
-        svg.appendChild(group);
-        
-        console.log('Today line drawn at x=' + todayX);
-        
-        // Flash the line for visual feedback
-        group.style.opacity = '0';
-        setTimeout(() => { group.style.transition = 'opacity 0.3s'; group.style.opacity = '1'; }, 50);
-    }
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Initializing Gantt with', GANTT_DATA.length, 'tasks');
+        createGantt('Month');
+    });
 </script>
 {% endblock %}
 {% endblock %}

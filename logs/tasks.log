@@ -9453,3 +9453,133 @@ INFO 2026-04-02 14:51:19,767 middleware 16704 6100 📤 GET /employee/307/ - 200
 DEBUG 2026-04-02 14:51:19,829 middleware 16704 6100 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 INFO 2026-04-02 14:51:19,845 middleware 16704 6100 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
 ERROR 2026-04-02 14:51:19,846 middleware 16704 6100 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 14:53:33,937 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:53:34,067 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.135 сек
+DEBUG 2026-04-02 14:53:43,571 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:53:43,621 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.053 сек
+DEBUG 2026-04-02 14:53:50,226 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:53:50,284 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-02 14:54:10,691 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:54:10,740 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.052 сек
+DEBUG 2026-04-02 14:54:13,106 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:54:13,168 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.065 сек
+DEBUG 2026-04-02 14:54:30,412 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:54:30,461 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.054 сек
+DEBUG 2026-04-02 14:54:34,889 middleware 1168 12180 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:54:34,951 middleware 1168 12180 📤 GET /employee/307/ - 200 - Время: 0.065 сек
+DEBUG 2026-04-02 14:54:35,442 middleware 1168 18916 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 14:54:35,452 middleware 1168 18916 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-02 14:54:35,452 middleware 1168 18916 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 14:54:44,857 middleware 1168 18916 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:54:44,916 middleware 1168 18916 📤 GET /employee/307/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-02 14:54:45,421 middleware 1168 18916 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 14:54:45,434 middleware 1168 18916 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-02 14:54:45,435 middleware 1168 18916 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 14:54:47,779 middleware 1168 18916 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 14:54:47,839 middleware 1168 18916 📤 GET /employee/307/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-02 14:54:48,344 middleware 1168 12180 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 14:54:48,354 middleware 1168 12180 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-02 14:54:48,354 middleware 1168 12180 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 16:45:36,885 middleware 1168 19164 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 16:45:37,013 middleware 1168 19164 📤 GET /employee/307/ - 200 - Время: 0.176 сек
+DEBUG 2026-04-02 16:45:46,924 middleware 1168 19164 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 16:45:46,939 middleware 1168 19164 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-02 16:45:46,940 middleware 1168 19164 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 16:45:50,000 middleware 1168 19164 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 16:45:50,053 middleware 1168 19164 📤 GET /employee/307/ - 200 - Время: 0.057 сек
+DEBUG 2026-04-02 16:45:50,124 middleware 1168 19164 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 16:45:50,140 middleware 1168 19164 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.020 сек
+ERROR 2026-04-02 16:45:50,141 middleware 1168 19164 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 16:45:50,617 middleware 1168 19164 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 16:45:50,632 middleware 1168 19164 📤 GET /favicon.ico - 404 - Время: 0.020 сек
+ERROR 2026-04-02 16:45:50,633 middleware 1168 19164 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 16:49:19,339 middleware 1168 19164 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 16:49:19,421 middleware 1168 19164 📤 GET /employee/307/ - 200 - Время: 0.085 сек
+DEBUG 2026-04-02 16:49:19,490 middleware 1168 20188 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 16:49:19,504 middleware 1168 20188 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-02 16:49:19,504 middleware 1168 20188 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 16:49:19,909 middleware 1168 20188 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 16:49:19,920 middleware 1168 20188 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-04-02 16:49:19,921 middleware 1168 20188 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 16:55:40,471 middleware 1168 2960 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 16:55:40,535 middleware 1168 2960 📤 GET /employee/307/ - 200 - Время: 0.069 сек
+DEBUG 2026-04-02 16:55:40,595 middleware 1168 17252 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 16:55:40,609 middleware 1168 17252 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-02 16:55:40,610 middleware 1168 17252 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 16:55:41,229 middleware 1168 17252 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 16:55:41,243 middleware 1168 17252 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-02 16:55:41,243 middleware 1168 17252 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 16:58:08,614 middleware 1168 17252 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 16:58:08,658 middleware 1168 17252 📤 GET /employee/307/ - 200 - Время: 0.048 сек
+DEBUG 2026-04-02 16:58:08,724 middleware 1168 18512 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 16:58:08,739 middleware 1168 18512 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.020 сек
+ERROR 2026-04-02 16:58:08,740 middleware 1168 18512 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:00:18,502 middleware 1168 16176 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:00:18,570 middleware 1168 16176 📤 GET /employee/307/ - 200 - Время: 0.072 сек
+DEBUG 2026-04-02 17:00:18,627 middleware 1168 16616 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:00:18,644 middleware 1168 16616 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-04-02 17:00:18,645 middleware 1168 16616 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:00:19,033 middleware 1168 16616 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:00:19,054 middleware 1168 16616 📤 GET /favicon.ico - 404 - Время: 0.025 сек
+ERROR 2026-04-02 17:00:19,054 middleware 1168 16616 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:00:36,532 middleware 1168 16616 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:00:36,577 middleware 1168 16616 📤 GET /employee/307/ - 200 - Время: 0.047 сек
+DEBUG 2026-04-02 17:00:36,638 middleware 1168 16616 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:00:36,653 middleware 1168 16616 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-04-02 17:00:36,654 middleware 1168 16616 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:00:37,036 middleware 1168 16616 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:00:37,050 middleware 1168 16616 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-02 17:00:37,050 middleware 1168 16616 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:01:38,213 middleware 5852 15256 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:01:38,357 middleware 5852 15256 📤 GET /employee/307/ - 200 - Время: 0.149 сек
+DEBUG 2026-04-02 17:01:38,424 middleware 5852 15256 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:01:38,444 middleware 5852 15256 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.028 сек
+ERROR 2026-04-02 17:01:38,445 middleware 5852 15256 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:01:39,094 middleware 5852 19220 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:01:39,110 middleware 5852 19220 📤 GET /favicon.ico - 404 - Время: 0.020 сек
+ERROR 2026-04-02 17:01:39,110 middleware 5852 19220 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:05:54,163 middleware 13280 7472 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:05:54,286 middleware 13280 7472 📤 GET /employee/307/ - 200 - Время: 0.129 сек
+DEBUG 2026-04-02 17:05:54,347 middleware 13280 7472 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:05:54,365 middleware 13280 7472 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.025 сек
+ERROR 2026-04-02 17:05:54,367 middleware 13280 7472 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:05:54,854 middleware 13280 12108 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:05:54,868 middleware 13280 12108 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-02 17:05:54,868 middleware 13280 12108 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:06:27,267 middleware 13280 12108 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:06:27,315 middleware 13280 12108 📤 GET /employee/307/ - 200 - Время: 0.051 сек
+DEBUG 2026-04-02 17:06:27,370 middleware 13280 12108 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:06:27,389 middleware 13280 12108 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-04-02 17:06:27,390 middleware 13280 12108 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:06:27,833 middleware 13280 12108 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:06:27,849 middleware 13280 12108 📤 GET /favicon.ico - 404 - Время: 0.019 сек
+ERROR 2026-04-02 17:06:27,850 middleware 13280 12108 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:07:32,752 middleware 13280 12108 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:07:32,805 middleware 13280 12108 📤 GET /employee/307/ - 200 - Время: 0.057 сек
+DEBUG 2026-04-02 17:07:33,241 middleware 13280 12108 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:07:33,251 middleware 13280 12108 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-02 17:07:33,252 middleware 13280 12108 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:07:44,291 middleware 13280 12108 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:07:44,337 middleware 13280 12108 📤 GET /employee/307/ - 200 - Время: 0.048 сек
+DEBUG 2026-04-02 17:07:44,395 middleware 13280 16860 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:07:44,407 middleware 13280 16860 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.017 сек
+ERROR 2026-04-02 17:07:44,408 middleware 13280 16860 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:07:44,752 middleware 13280 16860 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:07:44,784 middleware 13280 16860 📤 GET /favicon.ico - 404 - Время: 0.037 сек
+ERROR 2026-04-02 17:07:44,786 middleware 13280 16860 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:13:33,179 middleware 13280 12220 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:13:33,243 middleware 13280 12220 📤 GET /employee/307/ - 200 - Время: 0.067 сек
+DEBUG 2026-04-02 17:13:33,317 middleware 13280 7584 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:13:33,333 middleware 13280 7584 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-04-02 17:13:33,334 middleware 13280 7584 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:13:33,731 middleware 13280 7584 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:13:33,751 middleware 13280 7584 📤 GET /favicon.ico - 404 - Время: 0.024 сек
+ERROR 2026-04-02 17:13:33,752 middleware 13280 7584 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-02 17:17:18,366 middleware 13280 7584 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-02 17:17:18,472 middleware 13280 7584 📤 GET /employee/307/ - 200 - Время: 0.111 сек
+DEBUG 2026-04-02 17:17:18,537 middleware 13280 7584 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-02 17:17:18,552 middleware 13280 7584 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-02 17:17:18,554 middleware 13280 7584 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-02 17:17:18,981 middleware 13280 12220 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-02 17:17:18,997 middleware 13280 12220 📤 GET /favicon.ico - 404 - Время: 0.020 сек
+ERROR 2026-04-02 17:17:18,998 middleware 13280 12220 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
