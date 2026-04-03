@@ -6330,3 +6330,185 @@ ERROR 2026-04-02 17:13:33,334 middleware 13280 7584 ❌ Ошибка 404: GET /.
 ERROR 2026-04-02 17:13:33,752 middleware 13280 7584 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
 ERROR 2026-04-02 17:17:18,554 middleware 13280 7584 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-04-02 17:17:18,998 middleware 13280 12220 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:14:59,363 middleware 11940 9716 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:19:15,796 middleware 11940 16760 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:19:20,547 middleware 11940 9716 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:19:21,015 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:19:27,230 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:19:53,475 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:19:55,757 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:19:56,046 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:20:22,182 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:20:22,506 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:22:42,706 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:22:43,053 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:23:29,421 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:23:29,746 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:25:56,738 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:25:56,990 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:28:04,809 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:28:05,194 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:28:21,905 middleware 11940 19124 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:28:22,190 middleware 11940 19124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:42:35,115 middleware 11940 18656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:42:35,497 middleware 11940 18656 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:49:45,224 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:49:45,579 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:49:58,354 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:49:58,625 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:50:02,211 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:50:02,455 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:54:30,764 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:54:36,950 middleware 11940 17584 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:54:37,312 middleware 11940 17584 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 09:56:34,995 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 09:56:35,637 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:01:29,987 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:01:52,583 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:03:33,315 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:03:36,667 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:03:37,473 middleware 11940 17544 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:04:11,150 middleware 11940 17544 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:04:32,991 middleware 11940 7964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:06:26,727 middleware 11940 7964 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:06:27,058 middleware 11940 7964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:06:41,045 middleware 11940 7964 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:06:43,425 middleware 11940 7964 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:06:43,712 middleware 11940 7964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:07:08,962 middleware 11940 7964 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:07:09,817 middleware 11940 7964 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:14:47,129 middleware 11940 19536 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:14:47,928 middleware 11940 19536 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:15:41,178 middleware 11940 19536 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:15:41,985 middleware 11940 19536 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:15:43,797 middleware 11940 19536 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:15:44,490 middleware 11940 19536 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:22:41,467 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:22:43,753 middleware 11940 19880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:22:49,579 middleware 11940 19880 💥 Исключение в GET /research/product/1593/: Unknown field(s) (subtask) specified for ResearchProduct
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 10:22:49,703 middleware 11940 19880 ❌ Ошибка 500: GET /research/product/1593/ - Пользователь: pavel2
+ERROR 2026-04-03 10:22:49,772 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:22:52,491 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:22:52,544 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:23:05,556 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:23:07,050 middleware 11940 19880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:23:12,740 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:23:30,292 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:23:31,557 middleware 11940 19880 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:28:23,045 middleware 11940 19880 💥 Исключение в GET /research/product/1593/: Unknown field(s) (subtask) specified for ResearchProduct
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 10:28:23,092 middleware 11940 19880 ❌ Ошибка 500: GET /research/product/1593/ - Пользователь: pavel2
+ERROR 2026-04-03 10:30:45,940 middleware 11940 19880 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:30:49,234 middleware 11940 15444 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:30:51,712 middleware 11940 17724 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:35:48,918 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:35:51,934 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:36:07,404 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:36:08,424 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:36:18,761 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:36:19,605 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:36:48,157 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:36:55,876 middleware 11940 10324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:36:59,849 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:37:00,707 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:39:29,332 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:39:30,381 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:42:27,145 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:42:28,198 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:42:55,548 middleware 11940 15864 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:42:56,412 middleware 11940 15864 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:43:07,494 middleware 11940 10324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:43:08,376 middleware 11940 10324 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:43:28,787 middleware 11940 10324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:43:29,590 middleware 11940 10324 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:47:56,990 middleware 11940 10324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:47:59,671 middleware 11940 10324 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:49:08,902 middleware 11940 10324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:49:10,409 middleware 11940 10324 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:52:42,163 middleware 11940 10324 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:52:43,826 middleware 11940 10324 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:53:21,382 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:53:22,250 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:54:21,305 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:54:22,363 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:54:35,835 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:54:36,682 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:55:23,548 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:55:24,478 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:55:31,996 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:55:32,861 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:56:17,270 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:56:18,258 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:56:23,059 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:56:23,878 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:58:47,803 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:58:49,024 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 10:59:23,775 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 10:59:24,677 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 11:01:28,574 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 11:01:29,526 middleware 11940 11392 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-03 11:02:02,424 middleware 11940 11392 💥 Исключение в GET /research/product/1588/: Unknown field(s) (subtask) specified for ResearchProduct
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 11:02:02,472 middleware 11940 11392 ❌ Ошибка 500: GET /research/product/1588/ - Пользователь: pavel2
+ERROR 2026-04-03 11:02:02,536 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 11:02:19,726 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 11:02:19,774 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 11:02:51,783 middleware 11940 11392 💥 Исключение в GET /research/product/1588/: Unknown field(s) (subtask) specified for ResearchProduct
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 11:02:51,833 middleware 11940 11392 ❌ Ошибка 500: GET /research/product/1588/ - Пользователь: pavel2
+ERROR 2026-04-03 11:02:51,899 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 11:02:53,804 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-03 11:02:53,864 middleware 11940 11392 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2

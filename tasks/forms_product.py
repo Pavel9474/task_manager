@@ -12,7 +12,7 @@ class ResearchProductForm(forms.ModelForm):
         model = ResearchProduct
         fields = [
             'name', 'product_type', 'description',
-            'research_task', 'research_stage', 'research_substage', 'subtask',
+            'research_task', 'research_stage', 'research_substage',
             'planned_start', 'planned_end', 'due_date',
             'status', 'notes'
         ]

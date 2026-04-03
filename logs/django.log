@@ -9543,3 +9543,485 @@ INFO 2026-04-02 17:17:18,555 log 13280 16596 "GET /static/css/style.css HTTP/1.1
 WARNING 2026-04-02 17:17:18,556 log 13280 7584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1865
 WARNING 2026-04-02 17:17:18,999 log 13280 12220 Not Found: /favicon.ico
 WARNING 2026-04-02 17:17:18,999 log 13280 12220 "GET /favicon.ico HTTP/1.1" 404 1834
+INFO 2026-04-03 09:14:45,167 autoreload 11940 15692 Watching for file changes with StatReloader
+WARNING 2026-04-03 09:14:59,378 log 11940 9716 Not Found: /favicon.ico
+WARNING 2026-04-03 09:14:59,379 log 11940 9716 "GET /favicon.ico HTTP/1.1" 404 1805
+INFO 2026-04-03 09:19:15,750 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 304 0
+WARNING 2026-04-03 09:19:15,797 log 11940 16760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:19:15,798 log 11940 16760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1837
+INFO 2026-04-03 09:19:16,044 log 11940 9716 "GET /employee/307/?type=all HTTP/1.1" 200 11408
+INFO 2026-04-03 09:19:20,489 log 11940 9716 "GET /employee/307/?type=all HTTP/1.1" 200 11388
+WARNING 2026-04-03 09:19:20,549 log 11940 9716 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:19:20,550 log 11940 9716 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+INFO 2026-04-03 09:19:20,630 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:19:20,640 log 11940 19124 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:19:21,016 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:19:21,017 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1820
+INFO 2026-04-03 09:19:27,169 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 11386
+WARNING 2026-04-03 09:19:27,232 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 09:19:27,232 log 11940 9716 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 09:19:27,232 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 09:19:27,233 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1819
+INFO 2026-04-03 09:19:53,410 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 11368
+INFO 2026-04-03 09:19:53,455 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:19:53,459 log 11940 9716 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:19:53,476 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:19:53,477 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1814
+INFO 2026-04-03 09:19:55,696 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 11397
+INFO 2026-04-03 09:19:55,737 log 11940 9716 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:19:55,742 log 11940 16760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:19:55,758 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:19:55,758 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+WARNING 2026-04-03 09:19:56,048 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:19:56,048 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1775
+INFO 2026-04-03 09:20:22,121 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 11386
+INFO 2026-04-03 09:20:22,161 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:20:22,165 log 11940 9716 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:20:22,183 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:20:22,184 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1816
+WARNING 2026-04-03 09:20:22,507 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:20:22,508 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1781
+INFO 2026-04-03 09:22:42,651 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 12156
+WARNING 2026-04-03 09:22:42,707 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 09:22:42,708 log 11940 16760 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 09:22:42,708 log 11940 9716 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 09:22:42,709 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1882
+WARNING 2026-04-03 09:22:43,056 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:22:43,058 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1832
+INFO 2026-04-03 09:23:29,332 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 12169
+INFO 2026-04-03 09:23:29,371 log 11940 9716 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 09:23:29,372 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 09:23:29,424 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:23:29,434 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1821
+WARNING 2026-04-03 09:23:29,747 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:23:29,748 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1852
+INFO 2026-04-03 09:25:56,675 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 12221
+INFO 2026-04-03 09:25:56,723 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:25:56,738 log 11940 9716 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:25:56,739 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:25:56,741 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1810
+WARNING 2026-04-03 09:25:56,991 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:25:56,992 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1840
+INFO 2026-04-03 09:28:04,746 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 11593
+INFO 2026-04-03 09:28:04,791 log 11940 9716 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:28:04,810 log 11940 16760 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:28:04,810 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:28:04,811 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+WARNING 2026-04-03 09:28:05,197 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:28:05,198 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1796
+INFO 2026-04-03 09:28:21,832 log 11940 19124 "GET /employee/307/?type=all HTTP/1.1" 200 11649
+INFO 2026-04-03 09:28:21,882 log 11940 9716 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 09:28:21,884 log 11940 16760 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 09:28:21,905 log 11940 19124 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:28:21,906 log 11940 19124 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1786
+WARNING 2026-04-03 09:28:22,191 log 11940 19124 Not Found: /favicon.ico
+WARNING 2026-04-03 09:28:22,192 log 11940 19124 "GET /favicon.ico HTTP/1.1" 404 1802
+INFO 2026-04-03 09:42:35,023 log 11940 19288 "GET /employee/307/?type=all HTTP/1.1" 200 11571
+INFO 2026-04-03 09:42:35,092 log 11940 19288 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:42:35,099 log 11940 6012 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:42:35,117 log 11940 18656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:42:35,117 log 11940 18656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1882
+WARNING 2026-04-03 09:42:35,498 log 11940 18656 Not Found: /favicon.ico
+WARNING 2026-04-03 09:42:35,498 log 11940 18656 "GET /favicon.ico HTTP/1.1" 404 1808
+INFO 2026-04-03 09:49:45,157 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10812
+INFO 2026-04-03 09:49:45,209 log 11940 17584 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:49:45,225 log 11940 10480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:49:45,226 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:49:45,227 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1869
+WARNING 2026-04-03 09:49:45,580 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 09:49:45,581 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1795
+INFO 2026-04-03 09:49:58,286 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10744
+INFO 2026-04-03 09:49:58,338 log 11940 10480 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:49:58,338 log 11940 17584 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:49:58,355 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:49:58,356 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+WARNING 2026-04-03 09:49:58,626 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 09:49:58,627 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1828
+INFO 2026-04-03 09:50:02,128 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10794
+INFO 2026-04-03 09:50:02,178 log 11940 17584 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:50:02,181 log 11940 10480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:50:02,211 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:50:02,212 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1814
+WARNING 2026-04-03 09:50:02,457 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 09:50:02,458 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1778
+INFO 2026-04-03 09:54:30,328 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10809
+INFO 2026-04-03 09:54:30,374 log 11940 17544 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:54:30,485 log 11940 17544 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:54:30,765 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 09:54:30,766 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1817
+INFO 2026-04-03 09:54:36,882 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10813
+INFO 2026-04-03 09:54:36,923 log 11940 17544 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:54:36,930 log 11940 10480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:54:36,952 log 11940 17584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:54:36,952 log 11940 17584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1802
+WARNING 2026-04-03 09:54:37,314 log 11940 17584 Not Found: /favicon.ico
+WARNING 2026-04-03 09:54:37,314 log 11940 17584 "GET /favicon.ico HTTP/1.1" 404 1812
+INFO 2026-04-03 09:56:34,930 log 11940 17584 "GET /employee/307/?type=all HTTP/1.1" 200 10798
+INFO 2026-04-03 09:56:34,975 log 11940 17584 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 09:56:34,977 log 11940 10480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 09:56:34,996 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 09:56:34,997 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1845
+WARNING 2026-04-03 09:56:35,639 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 09:56:35,640 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1839
+INFO 2026-04-03 10:01:29,925 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10762
+INFO 2026-04-03 10:01:29,966 log 11940 10480 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:01:29,971 log 11940 17584 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:01:29,989 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:01:29,989 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+WARNING 2026-04-03 10:01:52,584 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 10:01:52,585 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1847
+INFO 2026-04-03 10:03:32,169 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10467
+INFO 2026-04-03 10:03:32,215 log 11940 17544 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:03:32,396 log 11940 17544 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:03:33,316 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 10:03:33,317 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1804
+INFO 2026-04-03 10:03:36,595 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10471
+INFO 2026-04-03 10:03:36,649 log 11940 17584 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:03:36,650 log 11940 10480 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:03:36,668 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:03:36,669 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1797
+WARNING 2026-04-03 10:03:37,474 log 11940 17544 Not Found: /favicon.ico
+WARNING 2026-04-03 10:03:37,475 log 11940 17544 "GET /favicon.ico HTTP/1.1" 404 1855
+INFO 2026-04-03 10:04:11,080 log 11940 17544 "GET /employee/307/?type=all HTTP/1.1" 200 10473
+INFO 2026-04-03 10:04:11,131 log 11940 10480 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:04:11,132 log 11940 17584 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:04:11,151 log 11940 17544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:04:11,152 log 11940 17544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1862
+WARNING 2026-04-03 10:04:32,992 log 11940 7964 Not Found: /favicon.ico
+WARNING 2026-04-03 10:04:32,993 log 11940 7964 "GET /favicon.ico HTTP/1.1" 404 1824
+INFO 2026-04-03 10:06:26,663 log 11940 7964 "GET /employee/307/?type=all HTTP/1.1" 200 10669
+INFO 2026-04-03 10:06:26,711 log 11940 10960 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:06:26,727 log 11940 14096 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:06:26,728 log 11940 7964 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:06:26,729 log 11940 7964 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1828
+WARNING 2026-04-03 10:06:27,059 log 11940 7964 Not Found: /favicon.ico
+WARNING 2026-04-03 10:06:27,060 log 11940 7964 "GET /favicon.ico HTTP/1.1" 404 1825
+INFO 2026-04-03 10:06:40,983 log 11940 7964 "GET /employee/307/?type=all HTTP/1.1" 200 10643
+INFO 2026-04-03 10:06:41,045 log 11940 14096 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:06:41,047 log 11940 10960 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:06:41,047 log 11940 7964 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:06:41,049 log 11940 7964 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1792
+INFO 2026-04-03 10:06:43,318 log 11940 7964 "GET /employee/307/?type=all HTTP/1.1" 200 10691
+INFO 2026-04-03 10:06:43,410 log 11940 10960 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:06:43,412 log 11940 14096 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:06:43,427 log 11940 7964 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:06:43,427 log 11940 7964 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+WARNING 2026-04-03 10:06:43,713 log 11940 7964 Not Found: /favicon.ico
+WARNING 2026-04-03 10:06:43,713 log 11940 7964 "GET /favicon.ico HTTP/1.1" 404 1847
+INFO 2026-04-03 10:07:08,901 log 11940 7964 "GET /employee/307/?type=all HTTP/1.1" 200 10669
+WARNING 2026-04-03 10:07:08,964 log 11940 7964 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 10:07:08,964 log 11940 10960 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:07:08,964 log 11940 14096 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:07:08,965 log 11940 7964 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+WARNING 2026-04-03 10:07:09,819 log 11940 7964 Not Found: /favicon.ico
+WARNING 2026-04-03 10:07:09,820 log 11940 7964 "GET /favicon.ico HTTP/1.1" 404 1785
+INFO 2026-04-03 10:14:47,065 log 11940 12940 "GET /employee/307/?type=all HTTP/1.1" 200 10684
+INFO 2026-04-03 10:14:47,109 log 11940 12940 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:14:47,117 log 11940 13004 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:14:47,130 log 11940 19536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:14:47,131 log 11940 19536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1800
+WARNING 2026-04-03 10:14:47,929 log 11940 19536 Not Found: /favicon.ico
+WARNING 2026-04-03 10:14:47,930 log 11940 19536 "GET /favicon.ico HTTP/1.1" 404 1829
+INFO 2026-04-03 10:15:41,116 log 11940 19536 "GET /employee/307/?type=all HTTP/1.1" 200 10686
+INFO 2026-04-03 10:15:41,161 log 11940 13004 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:15:41,164 log 11940 12940 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:15:41,179 log 11940 19536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:15:41,180 log 11940 19536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1870
+WARNING 2026-04-03 10:15:41,986 log 11940 19536 Not Found: /favicon.ico
+WARNING 2026-04-03 10:15:41,987 log 11940 19536 "GET /favicon.ico HTTP/1.1" 404 1806
+INFO 2026-04-03 10:15:43,732 log 11940 19536 "GET /employee/307/?type=all HTTP/1.1" 200 10677
+INFO 2026-04-03 10:15:43,779 log 11940 12940 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:15:43,779 log 11940 13004 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:15:43,798 log 11940 19536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:15:43,799 log 11940 19536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1847
+WARNING 2026-04-03 10:15:44,492 log 11940 19536 Not Found: /favicon.ico
+WARNING 2026-04-03 10:15:44,493 log 11940 19536 "GET /favicon.ico HTTP/1.1" 404 1793
+INFO 2026-04-03 10:22:41,393 log 11940 20164 "GET /employee/307/?type=all HTTP/1.1" 200 9738
+INFO 2026-04-03 10:22:41,431 log 11940 20164 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:22:41,434 log 11940 19880 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:22:41,468 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:22:41,468 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1805
+WARNING 2026-04-03 10:22:43,754 log 11940 19880 Not Found: /favicon.ico
+WARNING 2026-04-03 10:22:43,755 log 11940 19880 "GET /favicon.ico HTTP/1.1" 404 1806
+ERROR 2026-04-03 10:22:49,696 log 11940 19880 Internal Server Error: /research/product/1593/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 10:22:49,706 log 11940 19880 "GET /research/product/1593/ HTTP/1.1" 500 15722
+WARNING 2026-04-03 10:22:49,773 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:22:49,774 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1817
+WARNING 2026-04-03 10:22:52,492 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:22:52,492 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1797
+WARNING 2026-04-03 10:22:52,545 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:22:52,546 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1818
+INFO 2026-04-03 10:23:05,489 log 11940 19880 "GET /employee/307/?type=all HTTP/1.1" 200 9783
+INFO 2026-04-03 10:23:05,525 log 11940 19880 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:23:05,534 log 11940 20164 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:23:05,557 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:23:05,558 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1811
+WARNING 2026-04-03 10:23:07,050 log 11940 19880 Not Found: /favicon.ico
+WARNING 2026-04-03 10:23:07,051 log 11940 19880 "GET /favicon.ico HTTP/1.1" 404 1771
+INFO 2026-04-03 10:23:12,672 log 11940 19880 "GET /employee/307/?type=all HTTP/1.1" 200 9738
+INFO 2026-04-03 10:23:12,720 log 11940 20164 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:23:12,741 log 11940 16424 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:23:12,741 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:23:12,742 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1854
+INFO 2026-04-03 10:23:30,218 log 11940 19880 "GET /employee/307/?type=all HTTP/1.1" 200 9791
+INFO 2026-04-03 10:23:30,271 log 11940 16424 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:23:30,293 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 10:23:30,294 log 11940 20164 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:23:30,295 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1787
+WARNING 2026-04-03 10:23:31,558 log 11940 19880 Not Found: /favicon.ico
+WARNING 2026-04-03 10:23:31,559 log 11940 19880 "GET /favicon.ico HTTP/1.1" 404 1822
+ERROR 2026-04-03 10:28:23,087 log 11940 19880 Internal Server Error: /research/product/1593/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 10:28:23,094 log 11940 19880 "GET /research/product/1593/ HTTP/1.1" 500 15724
+WARNING 2026-04-03 10:30:45,941 log 11940 19880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:30:45,943 log 11940 19880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1852
+INFO 2026-04-03 10:30:49,164 log 11940 19880 "GET /employee/307/?type=all HTTP/1.1" 200 9867
+INFO 2026-04-03 10:30:49,209 log 11940 19880 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:30:49,236 log 11940 15444 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:30:49,236 log 11940 15444 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1804
+INFO 2026-04-03 10:30:49,237 log 11940 17724 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:30:51,713 log 11940 17724 Not Found: /favicon.ico
+WARNING 2026-04-03 10:30:51,714 log 11940 17724 "GET /favicon.ico HTTP/1.1" 404 1834
+INFO 2026-04-03 10:35:48,815 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10092
+INFO 2026-04-03 10:35:48,866 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:35:48,918 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:35:48,920 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:35:48,920 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1800
+WARNING 2026-04-03 10:35:51,935 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:35:51,936 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1847
+INFO 2026-04-03 10:36:07,336 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10145
+INFO 2026-04-03 10:36:07,385 log 11940 11392 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:36:07,403 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:36:07,405 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:36:07,406 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1848
+WARNING 2026-04-03 10:36:08,425 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:36:08,426 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1799
+INFO 2026-04-03 10:36:18,687 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10099
+INFO 2026-04-03 10:36:18,742 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:36:18,742 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:36:18,762 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:36:18,763 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1877
+WARNING 2026-04-03 10:36:19,606 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:36:19,607 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1798
+INFO 2026-04-03 10:36:48,095 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10093
+INFO 2026-04-03 10:36:48,142 log 11940 11392 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:36:48,158 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:36:48,159 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1850
+INFO 2026-04-03 10:36:48,159 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:36:55,812 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10078
+INFO 2026-04-03 10:36:55,857 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:36:55,876 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:36:55,878 log 11940 10324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:36:55,878 log 11940 10324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1856
+INFO 2026-04-03 10:36:59,780 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10139
+INFO 2026-04-03 10:36:59,832 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:36:59,832 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:36:59,850 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:36:59,851 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1862
+WARNING 2026-04-03 10:37:00,708 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:37:00,709 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1801
+INFO 2026-04-03 10:39:29,257 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10314
+INFO 2026-04-03 10:39:29,307 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:39:29,308 log 11940 11392 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:39:29,333 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:39:29,334 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1822
+WARNING 2026-04-03 10:39:30,382 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:39:30,383 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1775
+INFO 2026-04-03 10:42:27,073 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10355
+WARNING 2026-04-03 10:42:27,146 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 10:42:27,147 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:42:27,147 log 11940 11392 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:42:27,148 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1846
+WARNING 2026-04-03 10:42:28,199 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:42:28,200 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1761
+INFO 2026-04-03 10:42:55,471 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10421
+INFO 2026-04-03 10:42:55,548 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:42:55,548 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:42:55,550 log 11940 15864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:42:55,551 log 11940 15864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+WARNING 2026-04-03 10:42:56,413 log 11940 15864 Not Found: /favicon.ico
+WARNING 2026-04-03 10:42:56,414 log 11940 15864 "GET /favicon.ico HTTP/1.1" 404 1773
+INFO 2026-04-03 10:43:07,417 log 11940 15864 "GET /employee/307/?type=all HTTP/1.1" 200 10437
+INFO 2026-04-03 10:43:07,469 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:43:07,475 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:43:07,495 log 11940 10324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:43:07,496 log 11940 10324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1789
+WARNING 2026-04-03 10:43:08,377 log 11940 10324 Not Found: /favicon.ico
+WARNING 2026-04-03 10:43:08,378 log 11940 10324 "GET /favicon.ico HTTP/1.1" 404 1825
+INFO 2026-04-03 10:43:28,706 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10496
+INFO 2026-04-03 10:43:28,768 log 11940 11392 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:43:28,768 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:43:28,788 log 11940 10324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:43:28,789 log 11940 10324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1833
+WARNING 2026-04-03 10:43:29,591 log 11940 10324 Not Found: /favicon.ico
+WARNING 2026-04-03 10:43:29,592 log 11940 10324 "GET /favicon.ico HTTP/1.1" 404 1771
+INFO 2026-04-03 10:47:56,907 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10512
+INFO 2026-04-03 10:47:56,984 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:47:56,985 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:47:56,994 log 11940 10324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:47:56,996 log 11940 10324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1808
+WARNING 2026-04-03 10:47:59,673 log 11940 10324 Not Found: /favicon.ico
+WARNING 2026-04-03 10:47:59,673 log 11940 10324 "GET /favicon.ico HTTP/1.1" 404 1827
+INFO 2026-04-03 10:49:08,828 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10444
+INFO 2026-04-03 10:49:08,882 log 11940 11392 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:49:08,884 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:49:08,903 log 11940 10324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:49:08,904 log 11940 10324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1861
+WARNING 2026-04-03 10:49:10,410 log 11940 10324 Not Found: /favicon.ico
+WARNING 2026-04-03 10:49:10,411 log 11940 10324 "GET /favicon.ico HTTP/1.1" 404 1765
+INFO 2026-04-03 10:52:42,092 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10578
+WARNING 2026-04-03 10:52:42,164 log 11940 10324 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 10:52:42,164 log 11940 11392 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:52:42,164 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:52:42,165 log 11940 10324 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1786
+WARNING 2026-04-03 10:52:43,835 log 11940 10324 Not Found: /favicon.ico
+WARNING 2026-04-03 10:52:43,837 log 11940 10324 "GET /favicon.ico HTTP/1.1" 404 1827
+INFO 2026-04-03 10:53:21,303 log 11940 10324 "GET /employee/307/?type=all HTTP/1.1" 200 10528
+INFO 2026-04-03 10:53:21,362 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:53:21,362 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:53:21,383 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:53:21,384 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1871
+WARNING 2026-04-03 10:53:22,252 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:53:22,253 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1788
+INFO 2026-04-03 10:54:21,223 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10567
+INFO 2026-04-03 10:54:21,278 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:54:21,281 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:54:21,306 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:54:21,307 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1825
+WARNING 2026-04-03 10:54:22,364 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:54:22,365 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1789
+INFO 2026-04-03 10:54:35,770 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10639
+INFO 2026-04-03 10:54:35,817 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:54:35,820 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:54:35,836 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:54:35,837 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1820
+WARNING 2026-04-03 10:54:36,683 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:54:36,684 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1841
+INFO 2026-04-03 10:55:23,469 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10628
+INFO 2026-04-03 10:55:23,529 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:55:23,532 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:55:23,549 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:55:23,550 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1822
+WARNING 2026-04-03 10:55:24,479 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:55:24,480 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1759
+INFO 2026-04-03 10:55:31,928 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10698
+INFO 2026-04-03 10:55:31,977 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:55:31,979 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:55:31,997 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:55:31,998 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1841
+WARNING 2026-04-03 10:55:32,862 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:55:32,863 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1759
+INFO 2026-04-03 10:56:17,193 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10770
+INFO 2026-04-03 10:56:17,253 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 10:56:17,253 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 10:56:17,271 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:56:17,272 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1873
+WARNING 2026-04-03 10:56:18,259 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:56:18,260 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1831
+INFO 2026-04-03 10:56:22,987 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10824
+WARNING 2026-04-03 10:56:23,060 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 10:56:23,061 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:56:23,061 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:56:23,062 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1812
+WARNING 2026-04-03 10:56:23,880 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:56:23,880 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1759
+INFO 2026-04-03 10:58:47,727 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10805
+INFO 2026-04-03 10:58:47,786 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:58:47,804 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:58:47,806 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 10:58:47,807 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1797
+WARNING 2026-04-03 10:58:49,025 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:58:49,026 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1845
+INFO 2026-04-03 10:59:23,706 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10763
+WARNING 2026-04-03 10:59:23,777 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 10:59:23,777 log 11940 15864 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 10:59:23,778 log 11940 10324 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 10:59:23,778 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1879
+WARNING 2026-04-03 10:59:24,678 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 10:59:24,679 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1848
+INFO 2026-04-03 11:01:28,488 log 11940 11392 "GET /employee/307/?type=all HTTP/1.1" 200 10796
+INFO 2026-04-03 11:01:28,552 log 11940 15864 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 11:01:28,556 log 11940 10324 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 11:01:28,575 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:01:28,576 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1878
+WARNING 2026-04-03 11:01:29,527 log 11940 11392 Not Found: /favicon.ico
+WARNING 2026-04-03 11:01:29,528 log 11940 11392 "GET /favicon.ico HTTP/1.1" 404 1797
+ERROR 2026-04-03 11:02:02,468 log 11940 11392 Internal Server Error: /research/product/1588/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 11:02:02,474 log 11940 11392 "GET /research/product/1588/ HTTP/1.1" 500 15711
+WARNING 2026-04-03 11:02:02,537 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:02:02,538 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1802
+WARNING 2026-04-03 11:02:19,728 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:02:19,728 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1856
+WARNING 2026-04-03 11:02:19,775 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:02:19,776 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1797
+ERROR 2026-04-03 11:02:51,829 log 11940 11392 Internal Server Error: /research/product/1588/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 18, in research_product_detail
+    from ..forms_product import ProductPerformerForm
+  File "E:\code\task_manager\tasks\forms_product.py", line 8, in <module>
+    class ResearchProductForm(forms.ModelForm):
+    ...<44 lines>...
+            return cleaned_data
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\forms\models.py", line 336, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (subtask) specified for ResearchProduct
+ERROR 2026-04-03 11:02:51,836 log 11940 11392 "GET /research/product/1588/ HTTP/1.1" 500 15645
+WARNING 2026-04-03 11:02:51,901 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:02:51,901 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1847
+WARNING 2026-04-03 11:02:53,805 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:02:53,806 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1828
+WARNING 2026-04-03 11:02:53,866 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:02:53,869 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1845

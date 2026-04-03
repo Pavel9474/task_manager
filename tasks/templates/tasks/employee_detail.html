@@ -724,109 +724,108 @@
 
 {% block extra_js %}
 <!-- Frappe Gantt CDN -->
-<link rel="stylesheet" href="https://unpkg.com/frappe-gantt@0.6.1/dist/frappe-gantt.css">
-<script src="https://unpkg.com/frappe-gantt@0.6.1/dist/frappe-gantt.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
+<script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
 
 <style>
-    /* Базовые стили */
+    /* Gantt chart container - enlarged height, no vertical scroll */
+    #ganttChartContainer {
+        height: 650px;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    /* Basic bar styles - ensure visible fill */
+    .gantt .bar {
+        cursor: pointer;
+        fill: #0d6efd !important;
+    }
+    .gantt .bar:hover {
+        opacity: 0.85;
+    }
+    
+    /* Bar label - larger font */
     .gantt .bar-label {
-        font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif !important;
-        font-size: 11px !important;
-        font-weight: 500 !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-size: 14px !important;
         fill: #fff !important;
-        text-shadow: 1px 1px 1px rgba(0,0,0,0.3) !important;
+        font-weight: 500;
     }
-    .gantt .grid-background {
-        fill: #f8f9fa;
-    }
+    
+    /* Grid header - larger font */
     .gantt .grid-header {
-        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
-        font-size: 12px !important;
-        font-weight: 600 !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-size: 14px !important;
+        font-weight: 600;
     }
+    
+    /* Month/year labels - larger */
+    .gantt .tick {
+        font-size: 13px !important;
+    }
+    
+    /* Hide arrows */
+    .gantt .arrow {
+        display: none;
+    }
+    
+    /* Tooltip */
     .gantt-tooltip {
-        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
-        font-size: 12px !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-size: 13px;
         background: #fff;
         border: 1px solid #ddd;
         border-radius: 6px;
         padding: 10px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        min-width: 250px;
     }
-    .gantt .bar {
-        cursor: pointer;
-        transition: opacity 0.2s;
+    
+    /* Ensure SVG takes full height */
+    .gantt-container {
+        height: 100% !important;
     }
-    .gantt .bar:hover {
-        opacity: 0.85;
+    
+    .gantt {
+        height: 100% !important;
     }
-    .gantt .bar-group {
-        cursor: pointer;
-    }
-    .gantt .bar-group:hover .bar {
-        opacity: 0.85;
-    }
-    .gantt .bar-default {
-        fill: #6c757d !important;
-    }
-    #ganttChartContainer {
-        min-height: 400px;
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
-    #ganttChartContainer .gantt {
-        width: max-content !important;
-        min-width: 100%;
-    }
-    #ganttChartContainer svg {
-        width: auto !important;
-        min-width: 100%;
-        max-width: none !important;
-    }
-    /* Скрываем стрелки зависимостей */
-    .gantt .arrow {
-        display: none;
-    }
-    /* Принудительно показываем бары */
-    .gantt .bar {
-        fill-opacity: 1 !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-    .gantt .bar-group {
-        display: block !important;
-        visibility: visible !important;
-    }
-    /* Увеличиваем высоту строк для лучшей видимости */
-    .gantt .grid-row {
-        height: 50px !important;
-    }
-    .gantt .bar-wrapper {
-        height: 40px !important;
-    }
-    /* Стиль для ближайших к сегодня продуктов - красная рамка */
+    
+    /* Red highlight for closest products - only target the bar rect, not the wrapper */
     .gantt .bar-closest .bar,
-    .gantt .bar-group.bar-closest .bar {
-        stroke: #dc3545 !important;
+    .gantt .bar-group.bar-closest-group .bar {
+        stroke: #ff0000 !important;
         stroke-width: 4px !important;
-        stroke-opacity: 1 !important;
     }
-    .gantt .bar-closest,
-    .gantt .bar-group.bar-closest {
-        filter: drop-shadow(0 0 5px rgba(220, 53, 69, 0.7)) !important;
+    
+    /* Ensure bar-wrapper does NOT apply fill to children */
+    .gantt .bar-closest {
+        fill: none !important;
     }
-    /* Линия сегодняшней даты */
-    .gantt .today-line {
-        stroke: #dc3545 !important;
-        stroke-width: 2px !important;
-        stroke-dasharray: 5, 5;
+    
+    /* All bar labels have black text - target both text and bar-label classes */
+    .gantt .bar-label,
+    .gantt .bar-wrapper text,
+    .gantt text.bar-label {
+        fill: #000 !important;
+        font-weight: 500 !important;
     }
-    .gantt .today-label {
+    
+    /* Highlighted (closest) bars have bold black text */
+    .gantt .bar-group:has(.bar-closest) .bar-label,
+    .gantt .bar-closest-group .bar-label,
+    .gantt .bar-group.bar-closest-group .bar-label {
+        fill: #000 !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Ensure bar-closest class only affects the bar rect, not text */
+    .gantt .bar-closest {
         fill: #dc3545 !important;
-        font-weight: bold !important;
-        font-size: 12px !important;
+    }
+    
+    /* Force black text on all bar text elements */
+    .gantt svg text {
+        fill: #000 !important;
     }
 </style>
 
@@ -842,6 +841,7 @@
     
     const GANTT_DATA = {{ gantt_data|safe }};
     let currentGantt = null;
+    let currentViewMode = 'Month';
     
     function updateProductStatus(productId, status) {
         fetch(`/research/product/${productId}/status/`, {
@@ -856,105 +856,94 @@
         });
     }
     
-    // Применение цветов к полосам
+    // Scroll to today's date
+    function scrollToToday() {
+        if (!currentGantt) return;
+        
+        const ganttContainer = document.querySelector('#ganttChartContainer .gantt');
+        if (!ganttContainer) return;
+        
+        // Find today's line or calculate position
+        const todayLine = document.querySelector('.gantt .today-line, .gantt .current-date-line');
+        if (todayLine) {
+            const x = parseFloat(todayLine.getAttribute('x1') || todayLine.getAttribute('x'));
+            if (!isNaN(x)) {
+                const container = document.getElementById('ganttChartContainer');
+                const containerWidth = container.clientWidth;
+                container.scrollLeft = Math.max(0, x - containerWidth / 2);
+            }
+        }
+    }
+    
+    // Apply custom colors to bars
     function applyColors() {
         if (!GANTT_DATA || GANTT_DATA.length === 0) return;
         
-        GANTT_DATA.forEach((task, index) => {
-            if (task.color) {
-                const bars = document.querySelectorAll(`.gantt .bar-color-${index} .bar, .gantt .bar-color-${index} rect.bar`);
-                bars.forEach(bar => {
-                    bar.style.fill = task.color;
-                    bar.setAttribute('fill', task.color);
-                });
-                
-                // Также пробуем найти по индексу
-                const allBars = document.querySelectorAll('.gantt .bar rect');
-                if (allBars[index] && allBars[index].classList.contains('bar')) {
-                    allBars[index].style.fill = task.color;
-                    allBars[index].setAttribute('fill', task.color);
-                }
+        // Get all bar groups (each group contains bar + label)
+        const barGroups = document.querySelectorAll('.gantt .bar-group');
+        
+        barGroups.forEach((group, index) => {
+            const bar = group.querySelector('.bar');
+            const label = group.querySelector('.bar-label');
+            
+            // Match by index - Frappe Gantt renders in task array order
+            const task = GANTT_DATA[index];
+            if (!task || !bar) return;
+            
+            // Apply red highlight for closest product
+            if (task.is_closest) {
+                bar.setAttribute('fill', '#dc3545');
+                bar.style.fill = '#dc3545';
+                // Add class to parent group for label styling
+                group.classList.add('bar-closest-group');
+            } else if (task.color) {
+                bar.setAttribute('fill', task.color);
+                bar.style.fill = task.color;
             }
         });
         
-        console.log('Colors applied');
+        // Force ALL bar labels to black text (multiple attempts with increasing delays)
+        [100, 300, 600].forEach(delay => {
+            setTimeout(() => {
+                // Target all possible text elements in the Gantt
+                const selectors = [
+                    '.gantt .bar-label',
+                    '.gantt text',
+                    '.gantt .bar-wrapper text',
+                    '.gantt svg text',
+                    '.gantt .bar-group text'
+                ];
+                selectors.forEach(selector => {
+                    document.querySelectorAll(selector).forEach(el => {
+                        el.style.fill = '#000000';
+                        el.setAttribute('fill', '#000000');
+                        el.style.color = '#000000';
+                    });
+                });
+            }, delay);
+        });
     }
     
-    // Отрисовка линии сегодня
-    function drawTodayLine() {
-        const oldLine = document.querySelector('.today-line-group');
-        if (oldLine) oldLine.remove();
+    // Re-apply colors when Gantt is visible (after scroll)
+    let ganttObserver = null;
+    function setupVisibilityObserver() {
+        const container = document.getElementById('ganttChartContainer');
+        if (!container || ganttObserver) return;
         
-        const svg = document.querySelector('.gantt svg');
-        if (!svg) {
-            console.log('No SVG found');
-            return;
-        }
-        
-        // Ищем текст с сегодняшней датой
-        const todayStr = TODAY_DATE.split('-').reverse().join('.');
-        const allTexts = svg.querySelectorAll('text');
-        let todayX = null;
-        
-        for (let text of allTexts) {
-            const content = text.textContent;
-            if (content.includes(todayStr) || content.includes(TODAY_DATE)) {
-                const x = parseFloat(text.getAttribute('x'));
-                if (!isNaN(x) && x > 0) {
-                    todayX = x;
-                    break;
+        ganttObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Re-apply colors when Gantt becomes visible
+                    setTimeout(applyColors, 50);
                 }
-            }
-        }
+            });
+        }, { threshold: 0.1 });
         
-        // Если не нашли, ищем по гриду
-        if (!todayX) {
-            const dates = svg.querySelectorAll('.dates text, .grid-header text');
-            for (let date of dates) {
-                const content = date.textContent;
-                if (content.includes(todayStr)) {
-                    todayX = parseFloat(date.getAttribute('x'));
-                    break;
-                }
-            }
-        }
-        
-        if (todayX) {
-            const svgHeight = svg.getBoundingClientRect().height;
-            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            group.setAttribute('class', 'today-line-group');
-            
-            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            line.setAttribute('x1', todayX);
-            line.setAttribute('y1', 40);
-            line.setAttribute('x2', todayX);
-            line.setAttribute('y2', svgHeight - 30);
-            line.setAttribute('stroke', '#dc3545');
-            line.setAttribute('stroke-width', '2');
-            line.setAttribute('stroke-dasharray', '6,4');
-            
-            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            label.setAttribute('x', todayX + 5);
-            label.setAttribute('y', 55);
-            label.setAttribute('fill', '#dc3545');
-            label.setAttribute('font-size', '11');
-            label.setAttribute('font-weight', 'bold');
-            label.textContent = 'Сегодня';
-            
-            group.appendChild(line);
-            group.appendChild(label);
-            svg.appendChild(group);
-            
-            console.log('Today line drawn at x=' + todayX);
-            return todayX;
-        }
-        
-        console.log('Could not find today position');
-        return null;
+        ganttObserver.observe(container);
     }
     
-    // Создание Ганта
-    function createGantt(viewMode = 'Month') {
+    // Initialize Gantt chart
+    function initGantt() {
         if (!GANTT_DATA || GANTT_DATA.length === 0) {
             document.getElementById('ganttChartContainer').innerHTML = 
                 '<div class="alert alert-info text-center py-5">Нет данных для отображения</div>';
@@ -964,15 +953,19 @@
         const container = document.getElementById('ganttChartContainer');
         container.innerHTML = '';
         
+        // Prepare tasks for Frappe Gantt
         const tasks = GANTT_DATA.map((task, index) => ({
             id: `task-${task.id || index}`,
             name: task.substage_number ? `[${task.substage_number}] ${task.name.substring(0, 35)}` : task.name.substring(0, 45),
             start: task.start,
             end: task.end,
             progress: task.completion || 0,
-            custom_class: `bar-color-${index} ${task.is_closest ? 'bar-closest' : ''}`
+            custom_class: task.is_closest ? 'bar-closest' : `bar-color-${index}`
         }));
         
+        console.log('Creating Gantt with tasks:', tasks);
+        
+        // Create Gantt chart with enlarged options
         currentGantt = new Gantt("#ganttChartContainer", tasks, {
             on_click: function(task) {
                 const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
@@ -981,83 +974,51 @@
                     window.location.href = `/research/product/${product.id}/`;
                 }
             },
-            bar_height: 35,
-            bar_corner_radius: 3,
-            arrow_curve: 5,
-            padding: 18,
-            view_mode: viewMode,
+            bar_height: 45,
+            bar_corner_radius: 4,
+            padding: 25,
+            view_mode: currentViewMode,
             date_format: 'YYYY-MM-DD',
             language: 'ru'
         });
         
-        // Применяем цвета и рисуем линию после рендеринга
+        // Apply colors after render
         setTimeout(() => {
             applyColors();
-            drawTodayLine();
-        }, 300);
+            scrollToToday();
+        }, 100);
     }
-    
-    // Переключение вида
+           
+    // Change view mode
     function changeView(mode) {
+        currentViewMode = mode;
         if (currentGantt) {
             currentGantt.change_view_mode(mode);
-            
-            // Обновляем активную кнопку
-            document.querySelectorAll('.btn-group .btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            if (event && event.target) {
-                event.target.classList.add('active');
-            }
-            
-            // Перерисовываем цвета и линию
-            setTimeout(() => {
-                applyColors();
-                drawTodayLine();
-            }, 400);
+            setTimeout(applyColors, 100);
+        }
+        
+        document.querySelectorAll('.btn-group .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        if (event && event.target) {
+            event.target.classList.add('active');
         }
     }
     
-    // Прокрутка к сегодня
-    function scrollToToday() {
-        const container = document.getElementById('ganttChartContainer');
-        if (!container) return;
-        
-        // Сначала перерисовываем линию, чтобы получить актуальную позицию
-        const todayX = drawTodayLine();
-        
-        if (todayX) {
-            const scrollPos = todayX - (container.clientWidth / 2);
-            container.scrollTo({
-                left: Math.max(0, scrollPos),
-                behavior: 'smooth'
-            });
-            console.log('Scrolled to x=' + scrollPos);
-            
-            // Подсветка линии
-            const todayLine = document.querySelector('.today-line');
-            if (todayLine) {
-                todayLine.setAttribute('stroke', '#ff0000');
-                todayLine.setAttribute('stroke-width', '4');
-                setTimeout(() => {
-                    if (todayLine) {
-                        todayLine.setAttribute('stroke', '#dc3545');
-                        todayLine.setAttribute('stroke-width', '2');
-                    }
-                }, 1000);
-            }
-        } else {
-            // Если не нашли линию, пробуем через встроенную функцию
-            if (currentGantt && typeof currentGantt.scroll_current === 'function') {
-                currentGantt.scroll_current();
-            }
-        }
-    }
-    
-    // Инициализация
+    // Initialize on page load
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Initializing Gantt with', GANTT_DATA.length, 'tasks');
-        createGantt('Month');
+        console.log('Initializing Gantt with data:', GANTT_DATA);
+        initGantt();
+        setupVisibilityObserver();
+        
+        // Re-apply colors on scroll (for when Gantt re-enters viewport)
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                applyColors();
+            }, 100);
+        });
     });
 </script>
 {% endblock %}
