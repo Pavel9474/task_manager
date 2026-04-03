@@ -78,38 +78,6 @@
 
 {% block content %}
 <div class="container-fluid">
-    <!-- Вкладки для переключения типов -->
-    <ul class="nav nav-tabs mb-4">
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'all' %}active{% endif %}" 
-               href="?type=all">Все ({{ tasks_count|add:subtasks_count|add:products_count|add:research_tasks_count|add:research_stages_count|add:research_substages_count }})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'task' %}active{% endif %}" 
-               href="?type=task">Задачи ({{ tasks_count }})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'subtask' %}active{% endif %}" 
-               href="?type=subtask">Подзадачи ({{ subtasks_count }})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'research_task' %}active{% endif %}" 
-               href="?type=research_task">НИР ({{ research_tasks_count }})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'research_stage' %}active{% endif %}" 
-               href="?type=research_stage">Этапы НИР ({{ research_stages_count }})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'research_substage' %}active{% endif %}" 
-               href="?type=research_substage">Подэтапы НИР ({{ research_substages_count }})</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if current_type == 'product' %}active{% endif %}" 
-               href="?type=product">Продукция ({{ products_count }})</a>
-        </li>
-    </ul>
-
     <!-- Основная информация о сотруднике -->
     <div class="card mb-4">
         <div class="card-header">
@@ -276,41 +244,6 @@
             </button>
         </h5>
         <div class="collapse show" id="ganttChart">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <form method="get" class="row g-3">
-                        <input type="hidden" name="type" value="{{ current_type }}">
-                        <div class="col-md-3">
-                            <label class="form-label">Год</label>
-                            <select name="year" class="form-select" onchange="this.form.submit()">
-                                <option value="">Все годы</option>
-                                {% for year in available_years %}
-                                    <option value="{{ year }}" {% if gantt_year == year %}selected{% endif %}>
-                                        {{ year }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">С</label>
-                            <input type="date" name="start_date" class="form-control" value="{{ gantt_start_date }}">
-                        </div>
-                        <div class="col-md-3">
-                            <label class="form-label">По</label>
-                            <input type="date" name="end_date" class="form-control" value="{{ gantt_end_date }}">
-                        </div>
-                        <div class="col-md-3 d-flex align-items-end">
-                            <button type="submit" class="btn btn-primary w-100 me-2">
-                                <i class="bi bi-search"></i> Применить
-                            </button>
-                            <a href="?type={{ current_type }}" class="btn btn-secondary w-100">
-                                <i class="bi bi-arrow-repeat"></i> Сбросить
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
             <!-- Кнопки переключения вида и навигации -->
             <div class="mb-2 d-flex justify-content-between align-items-center">
                 <div class="btn-group" role="group">
@@ -319,9 +252,6 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm active" onclick="changeView('Month')" id="btn-month">Месяц</button>
                     <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeView('Year')">Год</button>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm" onclick="scrollToToday()">
-                    <i class="bi bi-calendar-day"></i> Сегодня
-                </button>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -346,7 +276,7 @@
                         <div class="col-md-4 col-lg-3 mb-2">
                             <div class="d-flex align-items-center">
                                 <div style="width: 20px; height: 20px; background-color: {{ rt.color }}; border-radius: 3px; margin-right: 8px;"></div>
-                                <small>{{ rt.title|truncatechars:40 }}</small>
+                                <small>{% if rt.tz_number %}{{ rt.tz_number }} - {% endif %}{{ rt.title|truncatechars:35 }}</small>
                             </div>
                         </div>
                         {% endfor %}
@@ -1094,7 +1024,6 @@
             view_mode: currentViewMode,
             popup_trigger: 'click'
         });
-        
         // Remove Frappe Gantt's built-in tooltip
         const existingPopup = document.querySelector('.gantt-popup, .popup-wrapper');
         if (existingPopup) existingPopup.remove();
@@ -1104,6 +1033,16 @@
             applyColors();
             scrollToToday();
         }, 100);
+        // Change Frappe Gantt's Today button text to Russian
+        [200, 500, 1000].forEach(delay => {
+            setTimeout(() => {
+                const todayBtn = document.querySelector('.gantt-today-button, .today-button');
+                if (todayBtn && !todayBtn.dataset.translated) {
+                    todayBtn.innerHTML = 'Сегодня';
+                    todayBtn.dataset.translated = 'true';
+                }
+            }, delay);
+        });
     }
            
     // Change view mode
@@ -1111,7 +1050,15 @@
         currentViewMode = mode;
         if (currentGantt) {
             currentGantt.change_view_mode(mode);
-            setTimeout(applyColors, 100);
+            setTimeout(() => {
+                applyColors();
+                // Re-translate Today button after view change
+                const todayBtn = document.querySelector('.gantt-today-button, .today-button');
+                if (todayBtn) {
+                    todayBtn.innerHTML = 'Сегодня';
+                    todayBtn.dataset.translated = 'true';
+                }
+            }, 300);
         }
         
         document.querySelectorAll('.btn-group .btn').forEach(btn => {
@@ -1134,6 +1081,12 @@
             if (!ticking) {
                 requestAnimationFrame(() => {
                     applyColors();
+                    // Re-translate Today button after scroll
+                    const todayBtn = document.querySelector('.gantt-today-button, .today-button');
+                    if (todayBtn && !todayBtn.dataset.translated) {
+                        todayBtn.innerHTML = 'Сегодня';
+                        todayBtn.dataset.translated = 'true';
+                    }
                     ticking = false;
                 });
                 ticking = true;

@@ -77,8 +77,8 @@ def product_assign_performers(request, product_id):
         
         messages.success(request, 'Исполнители назначены')
         
-        if product.subtask and product.subtask.task:
-            return redirect('subtask_list', task_id=product.subtask.task.id)
+        if product.research_substage and product.research_stage:
+            return redirect('subtask_list', task_id=product.research_stage.id)
         return redirect('task_list')
     
     # Получаем параметры фильтрации

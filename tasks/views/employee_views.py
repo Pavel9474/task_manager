@@ -690,6 +690,7 @@ def employee_detail(request, employee_id):
                 research_tasks_list.append({
                     'id': rt.id,
                     'title': rt.title,
+                    'tz_number': rt.tz_number,
                     'color': color
                 })
         # Фильтрация по типу
