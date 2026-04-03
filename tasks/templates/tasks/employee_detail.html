@@ -325,8 +325,13 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <div id="ganttChartContainer" style="height: 500px; width: 100%;"></div>
+                    <div id="ganttChartContainer" style="height: 650px; width: 100%;"></div>
                 </div>
+            </div>
+            
+            <!-- Product popup -->
+            <div id="ganttPopup">
+                <div id="ganttPopupContent"></div>
             </div>
             
             <!-- Легенда цветов -->
@@ -770,6 +775,13 @@
         display: none;
     }
     
+    /* Hide Frappe Gantt's built-in popup */
+    .gantt-popup,
+    .popup-wrapper,
+    .gantt .popup {
+        display: none !important;
+    }
+    
     /* Tooltip */
     .gantt-tooltip {
         font-family: 'Segoe UI', 'Roboto', sans-serif;
@@ -827,6 +839,44 @@
     .gantt svg text {
         fill: #000 !important;
     }
+    
+    /* Product popup styles */
+    #ganttPopup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        z-index: 10000;
+        min-width: 350px;
+        max-width: 500px;
+    }
+    #ganttPopupContent {
+        padding: 20px;
+    }
+    .popup-product-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #0d6efd;
+    }
+    .popup-row {
+        display: flex;
+        margin-bottom: 8px;
+    }
+    .popup-label {
+        font-weight: 500;
+        color: #666;
+        min-width: 110px;
+    }
+    .popup-value {
+        color: #333;
+    }
 </style>
 
 <script>
@@ -872,6 +922,51 @@
                 const containerWidth = container.clientWidth;
                 container.scrollLeft = Math.max(0, x - containerWidth / 2);
             }
+        }
+    }
+    
+    // Show product popup
+    function showProductPopup(product) {
+        const popup = document.getElementById('ganttPopup');
+        const popupContent = document.getElementById('ganttPopupContent');
+            
+        if (!popup || !popupContent) return;
+            
+        let html = `<div class="popup-product-name">${product.name}</div>`;
+            
+        if (product.substage_number && product.substage_title) {
+            html += `<div class="popup-row"><span class="popup-label">Подэтап:</span> <span class="popup-value">${product.substage_number} - ${product.substage_title}</span></div>`;
+        }
+            
+        if (product.stage_number && product.stage_name) {
+            html += `<div class="popup-row"><span class="popup-label">Этап:</span> <span class="popup-value">${product.stage_number} - ${product.stage_name}</span></div>`;
+        }
+            
+        if (product.research_task_title) {
+            html += `<div class="popup-row"><span class="popup-label">НИР:</span> <span class="popup-value">${product.research_task_title}</span></div>`;
+        }
+            
+        html += `<div class="popup-row"><span class="popup-label">Период:</span> <span class="popup-value">${product.start} — ${product.end}</span></div>`;
+            
+        if (product.days_to_end !== undefined) {
+            const daysText = product.days_to_end === 0 ? 'сегодня' : `${product.days_to_end} дн.`;
+            html += `<div class="popup-row"><span class="popup-label">До окончания:</span> <span class="popup-value">${daysText}</span></div>`;
+        }
+            
+        popupContent.innerHTML = html;
+        popup.style.display = 'block';
+            
+        // Close on click outside
+        setTimeout(() => {
+            document.addEventListener('click', closePopupOnClickOutside);
+        }, 10);
+    }
+        
+    function closePopupOnClickOutside(e) {
+        const popup = document.getElementById('ganttPopup');
+        if (!popup.contains(e.target)) {
+            popup.style.display = 'none';
+            document.removeEventListener('click', closePopupOnClickOutside);
         }
     }
     
@@ -970,17 +1065,26 @@
             on_click: function(task) {
                 const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
                 const product = GANTT_DATA.find(p => p.name === productName || p.name.includes(productName));
-                if (product && product.id) {
-                    window.location.href = `/research/product/${product.id}/`;
+                if (product) {
+                    showProductPopup(product);
                 }
+                return false; // Prevent default tooltip
+            },
+            on_hover: function() {
+                return false; // Disable default hover tooltip
             },
             bar_height: 45,
             bar_corner_radius: 4,
             padding: 25,
             view_mode: currentViewMode,
             date_format: 'YYYY-MM-DD',
-            language: 'ru'
+            language: 'ru',
+            popup_trigger: 'click' // Disable auto popup
         });
+        
+        // Remove Frappe Gantt's built-in tooltip
+        const existingPopup = document.querySelector('.gantt-popup, .popup-wrapper');
+        if (existingPopup) existingPopup.remove();
         
         // Apply colors after render
         setTimeout(() => {

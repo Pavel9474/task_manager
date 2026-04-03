@@ -10025,3 +10025,107 @@ WARNING 2026-04-03 11:02:53,805 log 11940 11392 Not Found: /.well-known/appspeci
 WARNING 2026-04-03 11:02:53,806 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1828
 WARNING 2026-04-03 11:02:53,866 log 11940 11392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2026-04-03 11:02:53,869 log 11940 11392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1845
+INFO 2026-04-03 11:05:58,271 autoreload 15124 13284 Watching for file changes with StatReloader
+INFO 2026-04-03 11:06:03,140 log 15124 2552 "GET /employee/307/?type=all HTTP/1.1" 200 10812
+WARNING 2026-04-03 11:06:03,223 log 15124 2552 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:06:03,224 log 15124 2552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1803
+INFO 2026-04-03 11:06:03,272 log 15124 12764 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 11:06:03,281 log 15124 4140 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 11:06:04,259 log 15124 4140 Not Found: /favicon.ico
+WARNING 2026-04-03 11:06:04,260 log 15124 4140 "GET /favicon.ico HTTP/1.1" 404 1788
+ERROR 2026-04-03 11:06:05,660 log 15124 4140 Internal Server Error: /research/product/1588/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 26, in research_product_detail
+    return render(request, 'tasks/research_product_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'research_product_edit' not found. 'research_product_edit' is not a valid view function or pattern name.
+ERROR 2026-04-03 11:06:05,670 log 15124 4140 "GET /research/product/1588/ HTTP/1.1" 500 20674
+WARNING 2026-04-03 11:06:05,734 log 15124 4140 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:06:05,735 log 15124 4140 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1816
+WARNING 2026-04-03 11:06:14,832 log 15124 4140 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:06:14,833 log 15124 4140 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+WARNING 2026-04-03 11:06:14,891 log 15124 4140 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:06:14,892 log 15124 4140 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1836
+INFO 2026-04-03 11:11:09,745 autoreload 15124 13284 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-03 11:11:10,625 autoreload 15304 804 Watching for file changes with StatReloader
+INFO 2026-04-03 11:11:18,304 autoreload 15304 804 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-03 11:11:19,232 autoreload 15412 13192 Watching for file changes with StatReloader
+INFO 2026-04-03 11:19:12,908 log 15412 19500 "GET /employee/307/?type=all HTTP/1.1" 200 15497
+WARNING 2026-04-03 11:19:12,988 log 15412 19668 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:19:12,989 log 15412 19668 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1856
+INFO 2026-04-03 11:19:13,034 log 15412 19500 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 11:19:13,040 log 15412 14304 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 11:19:14,125 log 15412 14304 Not Found: /favicon.ico
+WARNING 2026-04-03 11:19:14,129 log 15412 14304 "GET /favicon.ico HTTP/1.1" 404 1853
+INFO 2026-04-03 11:19:43,444 log 15412 14304 "GET /employee/307/?type=all HTTP/1.1" 200 15447
+INFO 2026-04-03 11:19:43,506 log 15412 19500 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 11:19:43,506 log 15412 19668 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 11:19:43,528 log 15412 14304 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:19:43,529 log 15412 14304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1796
+WARNING 2026-04-03 11:19:44,437 log 15412 14304 Not Found: /favicon.ico
+WARNING 2026-04-03 11:19:44,438 log 15412 14304 "GET /favicon.ico HTTP/1.1" 404 1787
+INFO 2026-04-03 11:26:35,331 log 15412 7464 "GET /employee/307/?type=all HTTP/1.1" 200 12303
+INFO 2026-04-03 11:26:35,393 log 15412 18988 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 11:26:35,420 log 15412 7464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-03 11:26:35,421 log 15412 7464 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1880
+INFO 2026-04-03 11:26:35,421 log 15412 17624 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 11:26:36,357 log 15412 17624 Not Found: /favicon.ico
+WARNING 2026-04-03 11:26:36,358 log 15412 17624 "GET /favicon.ico HTTP/1.1" 404 1822
+INFO 2026-04-03 11:30:08,494 log 15412 17624 "GET /employee/307/?type=all HTTP/1.1" 200 15833
+WARNING 2026-04-03 11:30:08,565 log 15412 17624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 11:30:08,566 log 15412 7464 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 11:30:08,567 log 15412 18988 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 11:30:08,567 log 15412 17624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1811
+WARNING 2026-04-03 11:30:11,730 log 15412 18988 Not Found: /favicon.ico
+WARNING 2026-04-03 11:30:11,731 log 15412 18988 "GET /favicon.ico HTTP/1.1" 404 1818
