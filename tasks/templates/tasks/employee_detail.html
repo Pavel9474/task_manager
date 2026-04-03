@@ -817,7 +817,8 @@
     /* All bar labels have black text - target both text and bar-label classes */
     .gantt .bar-label,
     .gantt .bar-wrapper text,
-    .gantt text.bar-label {
+    .gantt text.bar-label,
+    .gantt svg text {
         fill: #000 !important;
         font-weight: 500 !important;
     }
@@ -833,11 +834,6 @@
     /* Ensure bar-closest class only affects the bar rect, not text */
     .gantt .bar-closest {
         fill: #dc3545 !important;
-    }
-    
-    /* Force black text on all bar text elements */
-    .gantt svg text {
-        fill: #000 !important;
     }
     
     /* Product popup styles */
@@ -880,6 +876,31 @@
 </style>
 
 <script>
+    // ==================== КОНСТАНТЫ ====================
+    const COLORS = {
+        CLOSEST: '#dc3545',      // Красный для ближайших продуктов
+        DEFAULT: '#0d6efd',      // Синий по умолчанию
+        TEXT: '#000000'          // Черный для текста
+    };
+    
+    const GANTT_OPTIONS = {
+        bar_height: 45,
+        bar_corner_radius: 4,
+        padding: 25,
+        date_format: 'YYYY-MM-DD',
+        language: 'ru'
+    };
+    
+    const TEXT_SELECTORS = [
+        '.gantt .bar-label',
+        '.gantt text',
+        '.gantt .bar-wrapper text',
+        '.gantt svg text',
+        '.gantt .bar-group text'
+    ];
+    
+    const COLOR_DELAYS = [100, 300, 600];
+    
     // Global variable for today's date
     const SERVER_TODAY = '{{ today_date }}';
     const TODAY_DATE = SERVER_TODAY || (function() {
@@ -892,6 +913,8 @@
     const GANTT_DATA = {{ gantt_data|safe }};
     let currentGantt = null;
     let currentViewMode = 'Month';
+    
+    // ==================== ФУНКЦИИ ====================
     
     function updateProductStatus(productId, status) {
         fetch(`/research/product/${productId}/status/`, {
@@ -910,18 +933,20 @@
     function scrollToToday() {
         if (!currentGantt) return;
         
-        const ganttContainer = document.querySelector('#ganttChartContainer .gantt');
-        if (!ganttContainer) return;
+        const container = document.getElementById('ganttChartContainer');
+        const todayStr = TODAY_DATE.split('-').reverse().join('.');
         
-        // Find today's line or calculate position
-        const todayLine = document.querySelector('.gantt .today-line, .gantt .current-date-line');
-        if (todayLine) {
-            const x = parseFloat(todayLine.getAttribute('x1') || todayLine.getAttribute('x'));
+        // Ищем текст с сегодняшней датой
+        const todayText = [...document.querySelectorAll('.gantt .grid-header text, .gantt .tick text')]
+            .find(t => t.textContent.includes(todayStr));
+        
+        if (todayText) {
+            const x = parseFloat(todayText.getAttribute('x'));
             if (!isNaN(x)) {
-                const container = document.getElementById('ganttChartContainer');
-                const containerWidth = container.clientWidth;
-                container.scrollLeft = Math.max(0, x - containerWidth / 2);
+                container.scrollLeft = Math.max(0, x - container.clientWidth / 2);
             }
+        } else if (currentGantt.scroll_current) {
+            currentGantt.scroll_current();
         }
     }
     
@@ -979,7 +1004,6 @@
         
         barGroups.forEach((group, index) => {
             const bar = group.querySelector('.bar');
-            const label = group.querySelector('.bar-label');
             
             // Match by index - Frappe Gantt renders in task array order
             const task = GANTT_DATA[index];
@@ -987,9 +1011,8 @@
             
             // Apply red highlight for closest product
             if (task.is_closest) {
-                bar.setAttribute('fill', '#dc3545');
-                bar.style.fill = '#dc3545';
-                // Add class to parent group for label styling
+                bar.setAttribute('fill', COLORS.CLOSEST);
+                bar.style.fill = COLORS.CLOSEST;
                 group.classList.add('bar-closest-group');
             } else if (task.color) {
                 bar.setAttribute('fill', task.color);
@@ -997,22 +1020,14 @@
             }
         });
         
-        // Force ALL bar labels to black text (multiple attempts with increasing delays)
-        [100, 300, 600].forEach(delay => {
+        // Force ALL bar labels to black text
+        COLOR_DELAYS.forEach(delay => {
             setTimeout(() => {
-                // Target all possible text elements in the Gantt
-                const selectors = [
-                    '.gantt .bar-label',
-                    '.gantt text',
-                    '.gantt .bar-wrapper text',
-                    '.gantt svg text',
-                    '.gantt .bar-group text'
-                ];
-                selectors.forEach(selector => {
+                TEXT_SELECTORS.forEach(selector => {
                     document.querySelectorAll(selector).forEach(el => {
-                        el.style.fill = '#000000';
-                        el.setAttribute('fill', '#000000');
-                        el.style.color = '#000000';
+                        el.style.fill = COLORS.TEXT;
+                        el.setAttribute('fill', COLORS.TEXT);
+                        el.style.color = COLORS.TEXT;
                     });
                 });
             }, delay);
@@ -1025,11 +1040,13 @@
         const container = document.getElementById('ganttChartContainer');
         if (!container || ganttObserver) return;
         
+        let isFirstIntersection = true;
         ganttObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Re-apply colors when Gantt becomes visible
+                if (entry.isIntersecting && isFirstIntersection) {
+                    isFirstIntersection = false;
                     setTimeout(applyColors, 50);
+                    setTimeout(() => { ganttObserver?.disconnect(); }, 100);
                 }
             });
         }, { threshold: 0.1 });
@@ -1073,13 +1090,9 @@
             on_hover: function() {
                 return false; // Disable default hover tooltip
             },
-            bar_height: 45,
-            bar_corner_radius: 4,
-            padding: 25,
+            ...GANTT_OPTIONS,
             view_mode: currentViewMode,
-            date_format: 'YYYY-MM-DD',
-            language: 'ru',
-            popup_trigger: 'click' // Disable auto popup
+            popup_trigger: 'click'
         });
         
         // Remove Frappe Gantt's built-in tooltip
@@ -1115,13 +1128,16 @@
         initGantt();
         setupVisibilityObserver();
         
-        // Re-apply colors on scroll (for when Gantt re-enters viewport)
-        let scrollTimeout;
-        window.addEventListener('scroll', function() {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(function() {
-                applyColors();
-            }, 100);
+        // Re-apply colors on scroll (throttled with requestAnimationFrame)
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    applyColors();
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
     });
 </script>

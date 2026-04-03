@@ -15,11 +15,11 @@
 
 ## Update Summary
 **Changes Made**
-- Added comprehensive Gantt chart visualization component with Frappe Gantt integration
-- Enhanced DOM query optimization with intersection observer for dynamic color application
-- Implemented scrollToToday() function for automatic timeline navigation
-- Improved bar group styling with bar-closest-group class for highlighted tasks
-- Added advanced event handling for scroll-based color re-application
+- Added comprehensive popup system implementation with showProductPopup() and closePopupOnClickOutside() functions
+- Enhanced Gantt chart JavaScript components with popup integration for product information display
+- Integrated popup functionality with Frappe Gantt click events for enhanced user interaction
+- Added popup styling and CSS classes for modal-like product information display
+- Implemented click-outside detection for popup closure with proper event handling
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -28,22 +28,24 @@
 4. [Architecture Overview](#architecture-overview)
 5. [Detailed Component Analysis](#detailed-component-analysis)
 6. [Gantt Chart Visualization System](#gantt-chart-visualization-system)
-7. [Dependency Analysis](#dependency-analysis)
-8. [Performance Considerations](#performance-considerations)
-9. [Troubleshooting Guide](#troubleshooting-guide)
-10. [Conclusion](#conclusion)
+7. [Popup System Implementation](#popup-system-implementation)
+8. [Dependency Analysis](#dependency-analysis)
+9. [Performance Considerations](#performance-considerations)
+10. [Troubleshooting Guide](#troubleshooting-guide)
+11. [Conclusion](#conclusion)
 
 ## Introduction
-This document explains the JavaScript components and frontend interactivity for the task manager's organizational structure page and Gantt chart visualization system. It covers the global utilities, DOM manipulation patterns, event handling, AJAX interactions, interactive tree visualization, and the advanced Gantt chart implementation with Frappe Gantt library. It also documents how jQuery and Bootstrap are integrated, how notifications and error handling work, and how to extend the system with additional components.
+This document explains the JavaScript components and frontend interactivity for the task manager's organizational structure page and Gantt chart visualization system. It covers the global utilities, DOM manipulation patterns, event handling, AJAX interactions, interactive tree visualization, advanced Gantt chart implementation with Frappe Gantt library, and the newly implemented popup system for product information display. It also documents how jQuery and Bootstrap are integrated, how notifications and error handling work, and how to extend the system with additional components.
 
 ## Project Structure
 The frontend is organized around multiple JavaScript modules:
 - Global utilities and helpers shared across the project
 - Organization-specific tree navigation, filtering, and UI controls
 - Advanced Gantt chart visualization with Frappe Gantt integration
+- Popup system for displaying detailed product information
 - Intersection observer-based DOM optimization for dynamic content loading
 
-These scripts integrate with Django templates and Bootstrap to deliver interactive experiences with sophisticated timeline visualization capabilities.
+These scripts integrate with Django templates and Bootstrap to deliver interactive experiences with sophisticated timeline visualization capabilities and enhanced user interaction features.
 
 ```mermaid
 graph TB
@@ -67,6 +69,7 @@ OC --> CSS_STYLE
 OT --> JS_ORG
 TN --> JS_ORG
 ED --> JS_MAIN
+ED --> GANTT_POPUP["Popup System"]
 BH --> JS_MAIN
 BH --> CSS_STYLE
 ```
@@ -75,7 +78,7 @@ BH --> CSS_STYLE
 - [organization_chart.html:1-131](file://tasks/templates/tasks/organization_chart.html#L1-L131)
 - [organization_tree.html:1-55](file://tasks/templates/tasks/partials/organization_tree.html#L1-L55)
 - [tree_node.html:1-57](file://tasks/templates/tasks/partials/tree_node.html#L1-L57)
-- [employee_detail.html:1-1113](file://tasks/templates/tasks/employee_detail.html#L1-L1113)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [base.html:1-118](file://tasks/templates/base.html#L1-L118)
 - [main.js:1-174](file://static/js/main.js#L1-L174)
 - [organization.js:1-179](file://static/js/organization.js#L1-L179)
@@ -86,7 +89,7 @@ BH --> CSS_STYLE
 - [organization_chart.html:1-131](file://tasks/templates/tasks/organization_chart.html#L1-L131)
 - [organization_tree.html:1-55](file://tasks/templates/tasks/partials/organization_tree.html#L1-L55)
 - [tree_node.html:1-57](file://tasks/templates/tasks/partials/tree_node.html#L1-L57)
-- [employee_detail.html:1-1113](file://tasks/templates/tasks/employee_detail.html#L1-L1113)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [base.html:1-118](file://tasks/templates/base.html#L1-L118)
 - [main.js:1-174](file://static/js/main.js#L1-L174)
 - [organization.js:1-179](file://static/js/organization.js#L1-L179)
@@ -96,7 +99,8 @@ BH --> CSS_STYLE
 ## Core Components
 - Global utilities module (DOM helpers, date utilities, notification system, AJAX helpers)
 - Organization tree module (tree navigation, block toggles, staff lists, search/filter)
-- Advanced Gantt chart module (timeline visualization, color management, scroll navigation)
+- Advanced Gantt chart module (timeline visualization, color management, scroll navigation, popup integration)
+- Popup system module (product information display, click-outside detection, modal styling)
 - Template integrations (organization chart page, tree partials, base layout, employee detail page)
 
 Key responsibilities:
@@ -105,22 +109,24 @@ Key responsibilities:
 - Coordinate Bootstrap and jQuery integration via the base template
 - Deliver user feedback through a centralized notification system
 - Implement sophisticated timeline visualization with Frappe Gantt
+- Integrate popup system for detailed product information display
 - Optimize DOM queries using intersection observers for performance
 
 **Section sources**
 - [main.js:6-174](file://static/js/main.js#L6-L174)
 - [organization.js:6-179](file://static/js/organization.js#L6-L179)
-- [employee_detail.html:730-1113](file://tasks/templates/tasks/employee_detail.html#L730-L1113)
+- [employee_detail.html:928-971](file://tasks/templates/tasks/employee_detail.html#L928-L971)
 - [base.html:113-116](file://tasks/templates/base.html#L113-L116)
 
 ## Architecture Overview
-The system follows a modular pattern with enhanced Gantt chart capabilities:
+The system follows a modular pattern with enhanced Gantt chart capabilities and integrated popup system:
 - Templates define UI and bind to global JavaScript objects
 - Global utilities provide cross-cutting concerns (AJAX, notifications)
 - Organization module encapsulates tree-specific logic
-- Gantt module handles advanced timeline visualization with Frappe Gantt
+- Gantt module handles advanced timeline visualization with Frappe Gantt and popup integration
+- Popup module manages product information display with click-outside detection
 - Intersection observer optimizes DOM queries for performance
-- Styles define responsive layouts and animations
+- Styles define responsive layouts, animations, and popup modal appearance
 
 ```mermaid
 graph TB
@@ -130,6 +136,7 @@ PART_TN["tree_node.html<br/>Recursive node rendering"]
 UTILS["main.js<br/>DomUtils, DateUtils, Notify, Ajax"]
 ORG["organization.js<br/>OrgTree, MainBlocks, Staff, Search"]
 GANTT["employee_detail.html<br/>Frappe Gantt, scrollToToday, Intersection Observer"]
+POPUP["Popup System<br/>showProductPopup(), closePopupOnClickOutside()"]
 BOOT["Bootstrap CSS/JS"]
 JQ["jQuery"]
 TPL --> ORG
@@ -137,6 +144,7 @@ TPL --> UTILS
 PART_OT --> ORG
 PART_TN --> ORG
 ED --> GANTT
+ED --> POPUP
 ED --> UTILS
 TPL --> BOOT
 TPL --> JQ
@@ -147,7 +155,7 @@ UTILS --> BOOT
 - [organization_chart.html:1-131](file://tasks/templates/tasks/organization_chart.html#L1-L131)
 - [organization_tree.html:1-55](file://tasks/templates/tasks/partials/organization_tree.html#L1-L55)
 - [tree_node.html:1-57](file://tasks/templates/tasks/partials/tree_node.html#L1-L57)
-- [employee_detail.html:1-1113](file://tasks/templates/tasks/employee_detail.html#L1-L1113)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [main.js:1-174](file://static/js/main.js#L1-L174)
 - [organization.js:1-179](file://static/js/organization.js#L1-L179)
 - [base.html:113-116](file://tasks/templates/base.html#L113-L116)
@@ -261,21 +269,22 @@ window --> Search
 - Base template loads Bootstrap CSS/JS and jQuery, and injects global main.js
 - Organization chart page defines control buttons, search box, and containers for tree sections
 - Tree partials render recursive nodes and attach click handlers bound to OrgTree and Staff
-- Employee detail page integrates Frappe Gantt for timeline visualization
+- Employee detail page integrates Frappe Gantt for timeline visualization and popup system
 
 Key integration points:
 - Control buttons call OrgTree.expandAll()/collapseAll()
 - Search input delegates to Search.performSearch()
 - Node cards call OrgTree.toggleNode()
 - Staff toggles call Staff.showDepartmentStaff()/showLabStaff()
-- Gantt chart initialization uses Frappe Gantt library
+- Gantt chart initialization uses Frappe Gantt library with popup integration
+- Popup system displays product information on Gantt bar clicks
 
 **Section sources**
 - [base.html:113-116](file://tasks/templates/base.html#L113-L116)
 - [organization_chart.html:65-125](file://tasks/templates/tasks/organization_chart.html#L65-L125)
 - [organization_tree.html:5-50](file://tasks/templates/tasks/partials/organization_tree.html#L5-L50)
 - [tree_node.html:9-47](file://tasks/templates/tasks/partials/tree_node.html#L9-L47)
-- [employee_detail.html:730-1113](file://tasks/templates/tasks/employee_detail.html#L730-L1113)
+- [employee_detail.html:730-1129](file://tasks/templates/tasks/employee_detail.html#L730-L1129)
 
 ### Event Handling Mechanisms
 - DOMContentLoaded initializes Search and hides containers
@@ -283,17 +292,21 @@ Key integration points:
 - Keyboard events on search input trigger filtering logic
 - No explicit event delegation is used; handlers are attached directly to interactive elements
 - Intersection observer handles visibility-based DOM optimizations
+- Popup system implements click-outside detection for modal behavior
+- Gantt chart click events trigger popup display with product information
 
 Best practices observed:
 - Keep event handlers minimal and delegate to module functions
 - Use template-driven onclick attributes for quick bindings
 - Initialize only after DOM is ready
 - Implement intersection observer for performance optimization
+- Use proper event cleanup to prevent memory leaks
 
 **Section sources**
 - [organization.js:157-173](file://static/js/organization.js#L157-L173)
 - [organization_chart.html:84-93](file://tasks/templates/tasks/organization_chart.html#L84-L93)
-- [employee_detail.html:1016-1031](file://tasks/templates/tasks/employee_detail.html#L1016-L1031)
+- [employee_detail.html:965-971](file://tasks/templates/tasks/employee_detail.html#L965-L971)
+- [employee_detail.html:1064-1072](file://tasks/templates/tasks/employee_detail.html#L1064-L1072)
 
 ### AJAX Interactions and CSRF Handling
 - Ajax.get/post/postForm provide unified async request patterns
@@ -315,10 +328,12 @@ Common usage patterns:
 - Add/remove CSS classes for state changes
 - Append notifications to a dedicated container
 - Optimize DOM queries using querySelectorAll with intersection observer
+- Implement modal-like popup behavior with proper z-index management
 
 **Section sources**
 - [main.js:6-29](file://static/js/main.js#L6-L29)
 - [organization.js:10-27](file://static/js/organization.js#L10-L27)
+- [employee_detail.html:843-880](file://tasks/templates/tasks/employee_detail.html#L843-L880)
 
 ### Interactive Filtering System
 - Live search filters tree nodes by name
@@ -360,6 +375,7 @@ HideNode --> End
 - Bootstrap CSS/JS and Bootstrap Icons are loaded globally
 - jQuery is included for compatibility and potential third-party plugins
 - Notifications leverage Bootstrap alert classes and icons
+- Popup system uses Bootstrap-inspired styling with custom modal behavior
 
 **Section sources**
 - [base.html:10-23](file://tasks/templates/base.html#L10-L23)
@@ -368,7 +384,7 @@ HideNode --> End
 
 ## Gantt Chart Visualization System
 
-**Updated** Enhanced with comprehensive Frappe Gantt integration, intersection observer optimization, and advanced timeline features
+**Updated** Enhanced with comprehensive Frappe Gantt integration, intersection observer optimization, popup system integration, and advanced timeline features
 
 The Gantt chart system provides sophisticated timeline visualization for research projects and tasks with the following capabilities:
 
@@ -379,6 +395,8 @@ The Gantt chart system provides sophisticated timeline visualization for researc
 - **Scroll Navigation**: Automatic positioning to today's date
 - **Responsive Design**: Adaptive timeline that works across different screen sizes
 - **View Mode Switching**: Multiple timeline perspectives (Day, Week, Month)
+- **Popup Integration**: Detailed product information display on task click
+- **Enhanced User Interaction**: Custom tooltips and modal-like popup behavior
 
 ### Implementation Details
 
@@ -388,13 +406,24 @@ The system integrates with the Frappe Gantt library for professional timeline vi
 ```javascript
 // Initialize Gantt chart with enhanced configuration
 currentGantt = new Gantt("#ganttChartContainer", tasks, {
-    on_click: function(task) { ... },
+    on_click: function(task) { 
+        const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
+        const product = GANTT_DATA.find(p => p.name === productName || p.name.includes(productName));
+        if (product) {
+            showProductPopup(product);
+        }
+        return false; // Prevent default tooltip
+    },
+    on_hover: function() {
+        return false; // Disable default hover tooltip
+    },
     bar_height: 45,
     bar_corner_radius: 4,
     padding: 25,
     view_mode: currentViewMode,
     date_format: 'YYYY-MM-DD',
-    language: 'ru'
+    language: 'ru',
+    popup_trigger: 'click' // Disable auto popup
 });
 ```
 
@@ -524,17 +553,181 @@ The Gantt system is integrated into the employee detail template with comprehens
 ```
 
 **Section sources**
-- [employee_detail.html:730-1113](file://tasks/templates/tasks/employee_detail.html#L730-L1113)
+- [employee_detail.html:730-1129](file://tasks/templates/tasks/employee_detail.html#L730-L1129)
 - [employee_detail.html:799-835](file://tasks/templates/tasks/employee_detail.html#L799-L835)
-- [employee_detail.html:902-1078](file://tasks/templates/tasks/employee_detail.html#L902-L1078)
+- [employee_detail.html:902-1094](file://tasks/templates/tasks/employee_detail.html#L902-L1094)
+
+## Popup System Implementation
+
+**New** Comprehensive popup system for displaying detailed product information with modal-like behavior
+
+The popup system provides an enhanced user experience for displaying detailed information about research products and tasks:
+
+### Core Features
+- **Modal-like Display**: Centered popup with shadow and rounded corners
+- **Structured Information**: Organized product details with labels and values
+- **Click-outside Detection**: Automatic popup closure when clicking outside content
+- **Event Cleanup**: Proper event listener management to prevent memory leaks
+- **Responsive Design**: Adapts to different screen sizes and content lengths
+- **Integration with Gantt**: Triggered by Gantt bar clicks for seamless workflow
+
+### Implementation Details
+
+#### Popup Display Function
+The `showProductPopup()` function creates and displays the popup with product information:
+
+```javascript
+function showProductPopup(product) {
+    const popup = document.getElementById('ganttPopup');
+    const popupContent = document.getElementById('ganttPopupContent');
+        
+    if (!popup || !popupContent) return;
+    
+    let html = `<div class="popup-product-name">${product.name}</div>`;
+    
+    if (product.substage_number && product.substage_title) {
+        html += `<div class="popup-row"><span class="popup-label">Подэтап:</span> <span class="popup-value">${product.substage_number} - ${product.substage_title}</span></div>`;
+    }
+    
+    if (product.stage_number && product.stage_name) {
+        html += `<div class="popup-row"><span class="popup-label">Этап:</span> <span class="popup-value">${product.stage_number} - ${product.stage_name}</span></div>`;
+    }
+    
+    if (product.research_task_title) {
+        html += `<div class="popup-row"><span class="popup-label">НИР:</span> <span class="popup-value">${product.research_task_title}</span></div>`;
+    }
+    
+    html += `<div class="popup-row"><span class="popup-label">Период:</span> <span class="popup-value">${product.start} — ${product.end}</span></div>`;
+    
+    if (product.days_to_end !== undefined) {
+        const daysText = product.days_to_end === 0 ? 'сегодня' : `${product.days_to_end} дн.`;
+        html += `<div class="popup-row"><span class="popup-label">До окончания:</span> <span class="popup-value">${daysText}</span></div>`;
+    }
+    
+    popupContent.innerHTML = html;
+    popup.style.display = 'block';
+    
+    // Close on click outside
+    setTimeout(() => {
+        document.addEventListener('click', closePopupOnClickOutside);
+    }, 10);
+}
+```
+
+#### Click-outside Detection
+The `closePopupOnClickOutside()` function handles popup closure when clicking outside the popup content:
+
+```javascript
+function closePopupOnClickOutside(e) {
+    const popup = document.getElementById('ganttPopup');
+    if (!popup.contains(e.target)) {
+        popup.style.display = 'none';
+        document.removeEventListener('click', closePopupOnClickOutside);
+    }
+}
+```
+
+#### Popup Styling and Structure
+The popup system uses Bootstrap-inspired styling with custom modal behavior:
+
+```css
+/* Product popup styles */
+#ganttPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    z-index: 10000;
+    min-width: 350px;
+    max-width: 500px;
+}
+#ganttPopupContent {
+    padding: 20px;
+}
+.popup-product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0d6efd;
+}
+.popup-row {
+    display: flex;
+    margin-bottom: 8px;
+}
+.popup-label {
+    font-weight: 500;
+    color: #666;
+    min-width: 110px;
+}
+.popup-value {
+    color: #333;
+}
+```
+
+#### Integration with Gantt Events
+The popup system integrates seamlessly with Gantt chart click events:
+
+```javascript
+on_click: function(task) {
+    const productName = task.name.replace(/^\[\d+\.\d+\]\s*/, '');
+    const product = GANTT_DATA.find(p => p.name === productName || p.name.includes(productName));
+    if (product) {
+        showProductPopup(product);
+    }
+    return false; // Prevent default tooltip
+}
+```
+
+### Advanced Event Handling
+The popup system implements sophisticated event handling for optimal user experience:
+
+```javascript
+// Initialize popup system with proper event management
+document.addEventListener('DOMContentLoaded', function() {
+    // Popup initialization and event setup
+    setupPopupEvents();
+    
+    // Ensure proper cleanup on page unload
+    window.addEventListener('beforeunload', function() {
+        const popup = document.getElementById('ganttPopup');
+        if (popup) {
+            popup.style.display = 'none';
+        }
+        document.removeEventListener('click', closePopupOnClickOutside);
+    });
+});
+```
+
+### Template Integration
+The popup system is integrated into the employee detail template with proper HTML structure:
+
+```html
+<!-- Popup container -->
+<div id="ganttPopup">
+    <div id="ganttPopupContent"></div>
+</div>
+```
+
+**Section sources**
+- [employee_detail.html:928-971](file://tasks/templates/tasks/employee_detail.html#L928-L971)
+- [employee_detail.html:843-880](file://tasks/templates/tasks/employee_detail.html#L843-L880)
+- [employee_detail.html:1064-1072](file://tasks/templates/tasks/employee_detail.html#L1064-L1072)
 
 ## Dependency Analysis
 - Templates depend on organization.js and main.js for interactivity
 - organization.js depends on DomUtils for DOM operations
 - main.js provides Ajax and Notify used across pages
 - employee_detail.html depends on Frappe Gantt library for timeline visualization
-- Stylesheets define responsive behavior and animations
+- employee_detail.html includes popup system for product information display
+- Stylesheets define responsive behavior, animations, and popup modal appearance
 - Intersection observer optimizes DOM query performance
+- Popup system depends on Gantt chart data and event handling
 
 ```mermaid
 graph LR
@@ -545,10 +738,13 @@ OT["organization_tree.html"] --> JS_ORG
 TN["tree_node.html"] --> JS_ORG
 ED["employee_detail.html"] --> GANTT_LIB["Frappe Gantt Library"]
 ED --> JS_MAIN
+ED --> POPUP_SYS["Popup System"]
 JS_ORG --> DOMU["DomUtils (main.js)"]
 JS_MAIN --> BOOT["Bootstrap & Icons"]
 JS_MAIN --> JQ["jQuery"]
 GANTT_LIB --> INTERSECT_OBS["Intersection Observer"]
+POPUP_SYS --> BOOT
+POPUP_SYS --> GANTT_LIB
 ```
 
 **Diagram sources**
@@ -556,7 +752,7 @@ GANTT_LIB --> INTERSECT_OBS["Intersection Observer"]
 - [organization_chart.html:1-131](file://tasks/templates/tasks/organization_chart.html#L1-L131)
 - [organization_tree.html:1-55](file://tasks/templates/tasks/partials/organization_tree.html#L1-L55)
 - [tree_node.html:1-57](file://tasks/templates/tasks/partials/tree_node.html#L1-L57)
-- [employee_detail.html:730-1113](file://tasks/templates/tasks/employee_detail.html#L730-L1113)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [main.js:1-174](file://static/js/main.js#L1-L174)
 - [organization.js:1-179](file://static/js/organization.js#L1-L179)
 - [organization.css:1-591](file://static/css/organization.css#L1-L591)
@@ -566,7 +762,7 @@ GANTT_LIB --> INTERSECT_OBS["Intersection Observer"]
 - [organization_chart.html:1-131](file://tasks/templates/tasks/organization_chart.html#L1-L131)
 - [organization_tree.html:1-55](file://tasks/templates/tasks/partials/organization_tree.html#L1-L55)
 - [tree_node.html:1-57](file://tasks/templates/tasks/partials/tree_node.html#L1-L57)
-- [employee_detail.html:730-1113](file://tasks/templates/tasks/employee_detail.html#L730-L1113)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [main.js:1-174](file://static/js/main.js#L1-L174)
 - [organization.js:1-179](file://static/js/organization.js#L1-L179)
 - [organization.css:1-591](file://static/css/organization.css#L1-L591)
@@ -580,6 +776,8 @@ GANTT_LIB --> INTERSECT_OBS["Intersection Observer"]
 - **Intersection observer optimization**: Use intersection observer to defer DOM operations until elements become visible
 - **Scroll-based optimization**: Re-apply colors only when Gantt chart re-enters viewport
 - **Query optimization**: Cache DOM queries and reuse them across functions
+- **Event cleanup**: Properly remove event listeners to prevent memory leaks in popup system
+- **Popup optimization**: Use setTimeout for delayed event attachment to prevent immediate click handling
 
 ## Troubleshooting Guide
 Common issues and resolutions:
@@ -591,12 +789,16 @@ Common issues and resolutions:
 - **Scroll to today not working**: ensure today's line element exists in the Gantt chart DOM
 - **Color application failing**: check that bar groups have the correct structure and task data matches indices
 - **Intersection observer not triggering**: verify container element exists and observer is properly configured
+- **Popup not appearing**: ensure popup elements exist in the DOM and have correct IDs
+- **Popup not closing**: verify click-outside detection is properly attached and event listeners are cleaned up
+- **Popup content empty**: check that product data is properly formatted and accessible in GANTT_DATA
 
 **Section sources**
 - [main.js:154-168](file://static/js/main.js#L154-L168)
 - [main.js:138-151](file://static/js/main.js#L138-L151)
 - [organization.js:157-173](file://static/js/organization.js#L157-L173)
-- [employee_detail.html:902-1078](file://tasks/templates/tasks/employee_detail.html#L902-L1078)
+- [employee_detail.html:928-971](file://tasks/templates/tasks/employee_detail.html#L928-L971)
+- [employee_detail.html:1064-1072](file://tasks/templates/tasks/employee_detail.html#L1064-L1072)
 
 ## Conclusion
-The JavaScript components provide a clean separation of concerns with enhanced Gantt chart capabilities: global utilities handle cross-cutting needs, while the organization module encapsulates tree-specific behavior. The new Gantt chart system delivers sophisticated timeline visualization using Frappe Gantt with advanced features like intersection observer optimization, dynamic color application, and automatic scroll positioning. The integration with Django templates and Bootstrap delivers a responsive, interactive experience with professional timeline visualization. Extending the system involves adding new modules alongside existing patterns, leveraging the global utilities for AJAX and notifications, following the established DOM manipulation and event handling conventions, and utilizing the intersection observer pattern for performance optimization.
+The JavaScript components provide a clean separation of concerns with enhanced Gantt chart capabilities and integrated popup system: global utilities handle cross-cutting needs, while the organization module encapsulates tree-specific behavior. The new Gantt chart system delivers sophisticated timeline visualization using Frappe Gantt with advanced features like intersection observer optimization, dynamic color application, automatic scroll positioning, and popup integration for detailed product information display. The popup system provides modal-like behavior for displaying structured product information with proper click-outside detection and event cleanup. The integration with Django templates and Bootstrap delivers a responsive, interactive experience with professional timeline visualization and enhanced user interaction capabilities. Extending the system involves adding new modules alongside existing patterns, leveraging the global utilities for AJAX and notifications, following the established DOM manipulation and event handling conventions, utilizing the intersection observer pattern for performance optimization, and implementing proper event cleanup for popup systems.

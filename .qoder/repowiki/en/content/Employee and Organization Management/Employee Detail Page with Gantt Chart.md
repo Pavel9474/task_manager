@@ -16,12 +16,15 @@
 
 ## Update Summary
 **Changes Made**
-- Enhanced Gantt chart color mapping system with improved research task color assignment
+- Enhanced Gantt chart with comprehensive popup functionality for product information display
+- Increased container height from 500px to 650px for better visualization
+- Improved research stage/substage information display with stage numbers and timeline calculations
+- Added detailed popup system showing stage numbers, research task details, and timeline information
+- Enhanced color mapping system with improved research task color assignment
 - Added automatic today positioning functionality with scrollToToday() method
 - Implemented better text visibility controls with forced black text application
 - Optimized JavaScript performance with intersection observer and scroll event debouncing
 - Added accessibility features and streamlined form processing
-- Improved tooltip functionality and popup management
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -30,16 +33,17 @@
 4. [Architecture Overview](#architecture-overview)
 5. [Detailed Component Analysis](#detailed-component-analysis)
 6. [Enhanced Gantt Chart Implementation](#enhanced-gantt-chart-implementation)
-7. [Dependency Analysis](#dependency-analysis)
-8. [Performance Considerations](#performance-considerations)
-9. [Troubleshooting Guide](#troubleshooting-guide)
-10. [Conclusion](#conclusion)
+7. [Popup System Implementation](#popup-system-implementation)
+8. [Dependency Analysis](#dependency-analysis)
+9. [Performance Considerations](#performance-considerations)
+10. [Troubleshooting Guide](#troubleshooting-guide)
+11. [Conclusion](#conclusion)
 
 ## Introduction
 
 The Employee Detail Page with Gantt Chart is a comprehensive feature within the Task Manager application that provides detailed insights into an employee's work activities and research projects. This feature combines traditional employee information display with advanced timeline visualization through the Frappe Gantt library, enabling managers and stakeholders to understand resource allocation, project timelines, and individual productivity patterns.
 
-The system integrates seamlessly with Django's MVC architecture, utilizing custom models for research projects, employee management, and organizational structure. The Gantt chart functionality allows users to visualize research product timelines, task deadlines, and project milestones in an interactive calendar interface with enhanced color mapping and automatic positioning capabilities.
+The system integrates seamlessly with Django's MVC architecture, utilizing custom models for research projects, employee management, and organizational structure. The Gantt chart functionality allows users to visualize research product timelines, task deadlines, and project milestones in an interactive calendar interface with enhanced color mapping, automatic positioning capabilities, and comprehensive popup functionality for detailed information display.
 
 ## Project Structure
 
@@ -70,12 +74,12 @@ G --> H
 ```
 
 **Diagram sources**
-- [employee_detail.html:1-1000](file://tasks/templates/tasks/employee_detail.html#L1-L1000)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [employee_views.py:1-1076](file://tasks/views/employee_views.py#L1-L1076)
 - [models.py:1-858](file://tasks/models.py#L1-L858)
 
 **Section sources**
-- [employee_detail.html:1-1000](file://tasks/templates/tasks/employee_detail.html#L1-L1000)
+- [employee_detail.html:1-1129](file://tasks/templates/tasks/employee_detail.html#L1-L1129)
 - [employee_views.py:1-1076](file://tasks/views/employee_views.py#L1-L1076)
 - [models.py:1-858](file://tasks/models.py#L1-L858)
 
@@ -101,6 +105,17 @@ The Gantt chart functionality leverages the Frappe Gantt library for interactive
 - **Enhanced Tooltip System**: Detailed product information popup with comprehensive data
 - **Performance Optimizations**: Intersection observer and scroll event debouncing
 - **Accessibility Features**: Better contrast ratios and screen reader compatibility
+- **Enlarged Container Height**: Increased from 500px to 650px for better visualization
+
+### Popup System Implementation
+
+The enhanced popup system provides comprehensive product information display:
+
+- **Stage Number Display**: Shows research stage numbers and titles
+- **Research Task Details**: Displays research task information with color coding
+- **Timeline Calculations**: Shows product periods and days remaining
+- **Responsive Design**: Mobile-friendly popup with proper styling
+- **Click Outside Detection**: Automatic popup closure when clicking outside
 
 ### Data Model Integration
 
@@ -127,6 +142,7 @@ participant View as "employee_detail View"
 participant Models as "Research Models"
 participant Template as "employee_detail.html"
 participant Gantt as "Enhanced Frappe Gantt"
+participant Popup as "Product Popup System"
 Client->>View : GET /employee/<id>/
 View->>Models : Query employee data
 Models-->>View : Employee information
@@ -134,7 +150,8 @@ View->>Models : Fetch research products
 Models-->>View : Product timeline data
 View->>Template : Render context data
 Template->>Gantt : Initialize chart with enhanced features
-Gantt-->>Client : Interactive timeline with automatic positioning
+Gantt->>Popup : Handle click events
+Popup->>Client : Display detailed product information
 Client->>Gantt : User interaction
 Gantt->>View : Data requests
 View->>Models : Additional queries
@@ -146,7 +163,7 @@ View-->>Client : Dynamic updates with improved performance
 - [employee_views.py:335-760](file://tasks/views/employee_views.py#L335-L760)
 - [employee_detail.html:842-998](file://tasks/templates/tasks/employee_detail.html#L842-L998)
 
-The architecture ensures loose coupling between components while maintaining efficient data flow and user interaction patterns with enhanced performance optimizations.
+The architecture ensures loose coupling between components while maintaining efficient data flow and user interaction patterns with enhanced performance optimizations and comprehensive popup functionality.
 
 ## Detailed Component Analysis
 
@@ -177,7 +194,7 @@ N --> O[Optimize for Performance]
 **Diagram sources**
 - [employee_views.py:335-760](file://tasks/views/employee_views.py#L335-L760)
 
-The data processing pipeline handles multiple data sources including regular tasks, subtasks, and research products, ensuring comprehensive coverage of employee activities with enhanced color mapping and automatic positioning capabilities.
+The data processing pipeline handles multiple data sources including regular tasks, subtasks, and research products, ensuring comprehensive coverage of employee activities with enhanced color mapping, automatic positioning capabilities, and improved research stage/substage information display.
 
 ### Enhanced Gantt Chart Data Transformation
 
@@ -237,14 +254,15 @@ participant User as "User Interaction"
 participant JS as "Enhanced Gantt JavaScript"
 participant Server as "Django Backend"
 participant Chart as "Gantt Component"
+participant Popup as "Popup System"
 User->>JS : Change View Mode
 JS->>Chart : Update View Settings
 Chart->>Server : Request Data
 Server-->>Chart : Return Enhanced Gantt Data
 Chart->>User : Render New View with Automatic Positioning
 User->>JS : Click Task Bar
-JS->>Chart : Show Product Popup
-Chart->>User : Display Detailed Information
+JS->>Popup : Show Product Popup
+Popup->>User : Display Detailed Information
 User->>JS : Filter by Date Range
 JS->>Server : Apply Filters
 Server-->>Chart : Updated Timeline
@@ -283,7 +301,8 @@ I --> J[Enhanced Frappe Gantt]
 J --> K[Automatic Today Positioning]
 K --> L[Improved Color Mapping]
 L --> M[Enhanced Text Visibility]
-end
+M --> N[Comprehensive Popup System]
+N --> O[Stage/Substage Information Display]
 ```
 
 **Diagram sources**
@@ -336,6 +355,42 @@ The enhanced implementation includes improved form processing:
 - [employee_detail.html:875-1113](file://tasks/templates/tasks/employee_detail.html#L875-L1113)
 - [employee_views.py:514-760](file://tasks/views/employee_views.py#L514-L760)
 
+## Popup System Implementation
+
+### Comprehensive Product Information Display
+
+The enhanced popup system provides detailed product information with stage numbers and timeline calculations:
+
+- **Stage Number Display**: Shows research stage numbers and titles in popup content
+- **Research Task Details**: Displays research task information with color coding
+- **Timeline Information**: Shows product periods and days remaining until completion
+- **Responsive Design**: Mobile-friendly popup with proper styling and positioning
+- **Click Outside Detection**: Automatic popup closure when clicking outside the popup area
+
+### Popup Styling and Behavior
+
+The popup system includes comprehensive styling and behavior:
+
+- **Centered Positioning**: Fixed positioning with transform centering for perfect alignment
+- **Shadow Effects**: Subtle shadow effects for depth perception
+- **Responsive Width**: Minimum and maximum width constraints for different screen sizes
+- **Border Radius**: Rounded corners for modern appearance
+- **Content Organization**: Structured layout with labels and values for easy scanning
+
+### Integration with Gantt Chart
+
+The popup system integrates seamlessly with the Gantt chart:
+
+- **Click Event Handling**: Custom click handlers prevent default tooltips and show popup
+- **Data Mapping**: Direct mapping between Gantt tasks and popup content
+- **Styling Synchronization**: Popup content reflects current task status and colors
+- **Event Delegation**: Efficient event handling with proper cleanup
+
+**Section sources**
+- [employee_detail.html:332-335](file://tasks/templates/tasks/employee_detail.html#L332-L335)
+- [employee_detail.html:843-880](file://tasks/templates/tasks/employee_detail.html#L843-L880)
+- [employee_detail.html:928-971](file://tasks/templates/tasks/employee_detail.html#L928-L971)
+
 ## Dependency Analysis
 
 The Employee Detail Page feature exhibits well-managed dependencies that support maintainability and scalability with enhanced performance:
@@ -378,7 +433,7 @@ K --> M
 - [employee_detail.html:726-729](file://tasks/templates/tasks/employee_detail.html#L726-L729)
 - [urls.py:1-100](file://tasks/urls.py#L1-L100)
 
-The dependency structure demonstrates clear separation of concerns with minimal circular dependencies and well-defined interfaces between components, enhanced with modern browser APIs for optimal performance.
+The dependency structure demonstrates clear separation of concerns with minimal circular dependencies and well-defined interfaces between components, enhanced with modern browser APIs for optimal performance and comprehensive popup functionality.
 
 **Section sources**
 - [urls.py:1-100](file://tasks/urls.py#L1-L100)
@@ -411,6 +466,13 @@ The Employee Detail Page implementation incorporates several performance optimiz
 - **DOM Query Optimization**: Cached DOM queries to prevent repeated lookups
 - **Asynchronous Operations**: Non-blocking operations for better user experience
 - **Memory Leak Prevention**: Proper cleanup of event listeners and observers
+- **Popup Performance**: Optimized popup creation and destruction for smooth user experience
+
+### Popup System Performance
+- **Conditional Rendering**: Popups only created when needed
+- **Event Cleanup**: Proper removal of event listeners when popups close
+- **CSS Transitions**: Hardware-accelerated animations for smooth popup appearance
+- **Minimal DOM Manipulation**: Efficient popup content updates
 
 ## Troubleshooting Guide
 
@@ -440,6 +502,13 @@ The Employee Detail Page implementation incorporates several performance optimiz
 - Verify intersection observer is properly initialized and running
 - Ensure proper cleanup of event listeners and observers
 
+**Popup System Issues**
+- Verify popup container elements exist in the DOM
+- Check for proper event listener initialization
+- Ensure popup content is properly formatted and escaped
+- Verify click outside detection works correctly
+- Check for CSS conflicts affecting popup positioning
+
 **Streamlined Form Processing Errors**
 - Validate CSRF token handling in AJAX requests
 - Check for proper event listener initialization
@@ -454,8 +523,8 @@ The Employee Detail Page implementation incorporates several performance optimiz
 
 The Employee Detail Page with Enhanced Gantt Chart represents a sophisticated integration of Django's web framework capabilities with modern visualization technologies and performance optimizations. The implementation successfully balances functional completeness with enhanced performance efficiency, providing users with powerful tools for workforce management and project oversight.
 
-Key achievements include seamless integration with existing research management systems, robust data processing pipelines with advanced color mapping, intelligent automatic positioning capabilities, and enhanced user interface elements with improved accessibility. The modular architecture supports future enhancements while maintaining backward compatibility and system stability.
+Key achievements include seamless integration with existing research management systems, robust data processing pipelines with advanced color mapping, intelligent automatic positioning capabilities, comprehensive popup system for detailed information display, and enhanced user interface elements with improved accessibility. The modular architecture supports future enhancements while maintaining backward compatibility and system stability.
 
-The feature demonstrates best practices in Django application development, including proper separation of concerns, efficient data modeling, and user-centric interface design. The enhanced Gantt chart functionality specifically showcases how modern browser APIs and performance optimization techniques can be effectively integrated to enhance user experience without compromising system performance.
+The feature demonstrates best practices in Django application development, including proper separation of concerns, efficient data modeling, and user-centric interface design. The enhanced Gantt chart functionality specifically showcases how modern browser APIs, performance optimization techniques, and comprehensive popup systems can be effectively integrated to enhance user experience without compromising system performance.
 
-The implementation successfully addresses the update requirements by introducing improved color mapping systems, automatic today positioning, better text visibility controls, optimized JavaScript performance, enhanced accessibility features, and streamlined form processing mechanisms.
+The implementation successfully addresses the update requirements by introducing enhanced popup functionality with comprehensive product information display, increased container height from 500px to 650px, improved research stage/substage information display, sophisticated color mapping systems, automatic today positioning, better text visibility controls, optimized JavaScript performance, enhanced accessibility features, and streamlined form processing mechanisms.
