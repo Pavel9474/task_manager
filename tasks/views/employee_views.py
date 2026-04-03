@@ -53,7 +53,36 @@ def employee_list(request):
     paginator = Paginator(employees, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    
+    for employee in page_obj:
+        research_tasks_dict = {}
+        
+        # Получаем все продукты через ProductPerformer
+        for pp in employee.product_performers.select_related(
+            'product__research_task',
+            'product__research_stage__research_task',
+            'product__research_substage__stage__research_task'
+        ):
+            product = pp.product
+            research_task = None
+            
+            # Определяем НИР по цепочке: продукция -> подэтап -> этап -> НИР
+            if product.research_task:
+                research_task = product.research_task
+            elif product.research_stage:
+                research_task = product.research_stage.research_task
+            elif product.research_substage:
+                research_task = product.research_substage.stage.research_task
+            
+            # Добавляем в словарь, если НИР найдена и ещё не добавлена
+            if research_task and research_task.id not in research_tasks_dict:
+                # Используем шифр (tz_number) или название
+                display_name = research_task.tz_number if research_task.tz_number else research_task.title
+                research_tasks_dict[research_task.id] = display_name
+        
+        # Сохраняем данные о НИР для сотрудника
+        employee.research_task_count = len(research_tasks_dict)
+        employee.research_task_list = list(research_tasks_dict.values())
+        employee.research_task_display = ', '.join(research_tasks_dict.values()) if research_tasks_dict else '—'
     # Получаем текущую дату для расчетов
     today = timezone.now().date()
     
@@ -328,6 +357,8 @@ def employee_list(request):
         'employee_research_products': employee_research_products,
         'gantt_data_json': json.dumps(gantt_data),
         'today': today.isoformat(),
+        'employee_research_count': {emp.id: emp.research_task_count for emp in page_obj},
+        'employee_research_display': {emp.id: emp.research_task_display for emp in page_obj}
     }
     return render(request, 'tasks/employee_list.html', context)
 

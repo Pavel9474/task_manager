@@ -10623,3 +10623,20 @@ ERROR 2026-04-03 15:33:38,327 middleware 18204 4724 ❌ Ошибка 404: GET /.
 DEBUG 2026-04-03 15:33:38,372 middleware 18204 4724 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 INFO 2026-04-03 15:33:38,389 middleware 18204 4724 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
 ERROR 2026-04-03 15:33:38,389 middleware 18204 4724 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-03 15:36:49,657 middleware 13132 17520 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-03 15:36:49,973 middleware 13132 17520 📤 GET /employees/ - 200 - Время: 0.321 сек
+DEBUG 2026-04-03 15:36:50,069 middleware 13132 2060 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-03 15:36:50,142 middleware 13132 2060 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.079 сек
+ERROR 2026-04-03 15:36:50,142 middleware 13132 2060 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-03 15:54:29,420 middleware 13132 8824 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-03 15:54:29,484 middleware 13132 8824 📤 GET /employee/307/ - 200 - Время: 0.071 сек
+DEBUG 2026-04-03 15:54:29,525 middleware 13132 8824 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-03 15:54:29,541 middleware 13132 8824 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-04-03 15:54:29,543 middleware 13132 8824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-03 15:54:55,864 middleware 13132 15612 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-03 15:54:55,910 middleware 13132 15612 📤 GET /employee/307/ - 200 - Время: 0.050 сек
+DEBUG 2026-04-03 15:54:55,950 middleware 13132 15612 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-03 15:54:55,973 middleware 13132 15612 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.029 сек
+ERROR 2026-04-03 15:54:55,973 middleware 13132 15612 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-03 16:26:29,554 middleware 2460 12812 📨 GET /employees/ - Пользователь: pavel2
+INFO 2026-04-03 16:26:29,860 middleware 2460 12812 📤 GET /employees/ - 200 - Время: 0.310 сек

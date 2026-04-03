@@ -10485,3 +10485,28 @@ WARNING 2026-04-03 15:33:38,328 log 18204 4724 Not Found: /.well-known/appspecif
 WARNING 2026-04-03 15:33:38,329 log 18204 4724 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1864
 WARNING 2026-04-03 15:33:38,391 log 18204 4724 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2026-04-03 15:33:38,392 log 18204 4724 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1859
+INFO 2026-04-03 15:36:44,953 autoreload 13132 5560 Watching for file changes with StatReloader
+INFO 2026-04-03 15:36:49,976 log 13132 17520 "GET /employees/ HTTP/1.1" 200 3951
+WARNING 2026-04-03 15:36:50,144 log 13132 2060 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 15:36:50,145 log 13132 17520 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 15:36:50,147 log 13132 2060 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1834
+INFO 2026-04-03 15:36:50,167 log 13132 14096 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 15:54:29,486 log 13132 8824 "GET /employee/307/ HTTP/1.1" 200 16291
+WARNING 2026-04-03 15:54:29,545 log 13132 8824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 15:54:29,546 log 13132 21808 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-03 15:54:29,546 log 13132 8824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+INFO 2026-04-03 15:54:29,549 log 13132 15612 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-03 15:54:55,912 log 13132 15612 "GET /employee/307/ HTTP/1.1" 200 16257
+WARNING 2026-04-03 15:54:55,975 log 13132 15612 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-03 15:54:55,975 log 13132 8824 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-03 15:54:55,975 log 13132 21808 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-03 15:54:55,976 log 13132 15612 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1878
+INFO 2026-04-03 16:21:09,541 autoreload 13132 5560 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-03 16:21:10,581 autoreload 14624 20948 Watching for file changes with StatReloader
+INFO 2026-04-03 16:21:27,945 autoreload 14624 20948 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-03 16:21:28,714 autoreload 21352 21724 Watching for file changes with StatReloader
+INFO 2026-04-03 16:21:44,962 autoreload 21352 21724 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-03 16:21:45,636 autoreload 15436 9796 Watching for file changes with StatReloader
+INFO 2026-04-03 16:22:30,242 autoreload 15436 9796 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
+INFO 2026-04-03 16:22:31,051 autoreload 2460 20080 Watching for file changes with StatReloader
+INFO 2026-04-03 16:26:29,862 log 2460 12812 "GET /employees/ HTTP/1.1" 200 4325
