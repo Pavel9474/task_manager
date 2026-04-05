@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from datetime import date
+
 
 
 class Meta:
@@ -582,7 +584,91 @@ class Department(models.Model):
             self.level = 0
             self.full_path = self.name
         super().save(*args, **kwargs)
-
+    
+    def get_employees(self):
+        """Все сотрудники подразделения (включая дочерние)"""
+        departments = [self] + list(self.children.all())
+        return Employee.objects.filter(staff_positions__department__in=departments).distinct()
+    
+    def get_research_tasks(self):
+        """Все НИР, в которых задействовано подразделение"""
+        employees = self.get_employees()
+        return ResearchTask.objects.filter(
+            stages__substages__products__product_performers__employee__in=employees
+        ).distinct()
+    
+    def get_products(self, research_task=None):
+        """Продукция подразделения (опционально по НИР)"""
+        employees = self.get_employees()
+        qs = ResearchProduct.objects.filter(product_performers__employee__in=employees)
+        if research_task:
+            qs = qs.filter(research_task=research_task)
+        return qs.distinct()
+   
+    def get_all_children_ids(self):
+        """Получить ID всех дочерних подразделений (рекурсивно)"""
+        ids = [self.id]
+        for child in self.children.all():
+            ids.extend(child.get_all_children_ids())
+        return ids
+    
+    def get_employees(self, include_children=True):
+        """Получить всех сотрудников подразделения (включая дочерние)"""
+        if include_children:
+            dept_ids = self.get_all_children_ids()
+        else:
+            dept_ids = [self.id]
+        
+        return Employee.objects.filter(
+            staff_positions__department_id__in=dept_ids,
+            staff_positions__is_active=True,
+            is_active=True
+        ).distinct()
+    
+    def get_research_tasks(self, include_children=True):
+        """Получить все НИР, в которых задействовано подразделение"""
+        employees = self.get_employees(include_children)
+        return ResearchTask.objects.filter(
+            stages__substages__products__product_performers__employee__in=employees
+        ).distinct()
+    
+    def get_products(self, include_children=True, research_task=None):
+        """Получить продукцию подразделения"""
+        employees = self.get_employees(include_children)
+        qs = ResearchProduct.objects.filter(
+            product_performers__employee__in=employees
+        ).distinct()
+        
+        if research_task:
+            qs = qs.filter(research_task=research_task)
+        
+        return qs
+    
+    def get_stats(self, include_children=True):
+        """Получить статистику подразделения"""
+        employees = self.get_employees(include_children)
+        products = self.get_products(include_children)
+        
+        return {
+            'employees_count': employees.count(),
+            'research_tasks_count': self.get_research_tasks(include_children).count(),
+            'products_count': products.count(),
+            'products_completed': products.filter(status='completed').count(),
+            'products_in_progress': products.filter(status='in_progress').count(),
+            'products_overdue': products.filter(
+                status__in=['pending', 'in_progress'],
+                planned_end__lt=date.today()
+            ).count(),
+        }
+    def get_ancestors(self):
+        """Получить всех родителей (включая себя)"""
+        ancestors = []
+        current = self
+        while current:
+            ancestors.insert(0, current)
+            current = current.parent
+        return ancestors
+    
 
 class Position(models.Model):
     """Должность"""

@@ -6683,3 +6683,117 @@ ERROR 2026-04-03 15:33:38,389 middleware 18204 4724 ❌ Ошибка 404: GET /.
 ERROR 2026-04-03 15:36:50,142 middleware 13132 2060 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-04-03 15:54:29,543 middleware 13132 8824 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
 ERROR 2026-04-03 15:54:55,973 middleware 13132 15612 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+ERROR 2026-04-05 12:15:54,016 middleware 2072 10912 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+ERROR 2026-04-05 18:33:36,711 middleware 12060 11776 💥 Исключение в GET /department-stats/: Template: E:\taskmanager\tasks\templates\tasks\partials\dept_tree.html, 'tasks_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'tasks_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 234, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\partials\dept_tree.html, 'tasks_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-05 18:33:36,794 middleware 12060 11776 ❌ Ошибка 500: GET /department-stats/ - Пользователь: pavel2

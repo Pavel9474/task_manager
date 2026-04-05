@@ -10510,3 +10510,156 @@ INFO 2026-04-03 16:21:45,636 autoreload 15436 9796 Watching for file changes wit
 INFO 2026-04-03 16:22:30,242 autoreload 15436 9796 E:\code\task_manager\tasks\views\employee_views.py changed, reloading.
 INFO 2026-04-03 16:22:31,051 autoreload 2460 20080 Watching for file changes with StatReloader
 INFO 2026-04-03 16:26:29,862 log 2460 12812 "GET /employees/ HTTP/1.1" 200 4325
+INFO 2026-04-05 12:15:50,118 autoreload 2072 9876 Watching for file changes with StatReloader
+INFO 2026-04-05 12:15:53,710 log 2072 10616 "GET / HTTP/1.1" 200 5260
+INFO 2026-04-05 12:15:53,852 log 2072 10916 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2026-04-05 12:15:53,890 log 2072 10912 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-05 12:15:54,017 log 2072 10912 Not Found: /favicon.ico
+WARNING 2026-04-05 12:15:54,017 log 2072 10912 "GET /favicon.ico HTTP/1.1" 404 1797
+INFO 2026-04-05 12:15:58,286 log 2072 11224 "GET /employees/ HTTP/1.1" 200 4331
+INFO 2026-04-05 12:15:58,308 log 2072 11224 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-05 12:16:00,408 log 2072 11224 "GET /employee/307/ HTTP/1.1" 200 16198
+INFO 2026-04-05 12:17:00,753 log 2072 11224 "GET / HTTP/1.1" 200 5216
+INFO 2026-04-05 12:17:00,771 log 2072 11224 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-05 12:17:12,647 log 2072 11224 "GET /employees/ HTTP/1.1" 200 4394
+INFO 2026-04-05 12:17:12,663 log 2072 11224 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-05 12:17:16,584 log 2072 11224 "GET /employee/277/ HTTP/1.1" 200 10783
+INFO 2026-04-05 12:17:55,742 log 2072 11224 "GET /org-chart/ HTTP/1.1" 200 6768
+INFO 2026-04-05 12:17:55,760 log 2072 11224 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-05 12:17:55,761 log 2072 7968 "GET /static/css/organization.css HTTP/1.1" 200 12144
+INFO 2026-04-05 12:17:55,761 log 2072 3640 "GET /static/js/organization.js HTTP/1.1" 200 6080
+INFO 2026-04-05 12:18:23,108 log 2072 3640 "GET /org-chart/ HTTP/1.1" 200 6757
+INFO 2026-04-05 12:18:23,124 log 2072 3640 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-05 12:18:33,445 log 2072 3640 "GET /statistics/ HTTP/1.1" 200 2472
+INFO 2026-04-05 12:18:42,243 log 2072 3640 "GET / HTTP/1.1" 200 5266
+INFO 2026-04-05 12:18:42,262 log 2072 3640 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-05 12:18:50,125 log 2072 3640 "GET /employees/ HTTP/1.1" 200 4374
+INFO 2026-04-05 12:19:00,274 log 2072 3640 "GET /statistics/ HTTP/1.1" 200 2483
+INFO 2026-04-05 12:35:11,932 autoreload 2072 9876 E:\taskmanager\tasks\models.py changed, reloading.
+INFO 2026-04-05 12:35:12,406 autoreload 3916 8252 Watching for file changes with StatReloader
+INFO 2026-04-05 18:11:42,350 autoreload 3916 8252 E:\taskmanager\tasks\models.py changed, reloading.
+INFO 2026-04-05 18:11:42,952 autoreload 2844 10880 Watching for file changes with StatReloader
+INFO 2026-04-05 18:18:04,896 autoreload 2844 10880 E:\taskmanager\tasks\models.py changed, reloading.
+INFO 2026-04-05 18:18:05,403 autoreload 13008 6212 Watching for file changes with StatReloader
+INFO 2026-04-05 18:20:58,787 autoreload 13008 6212 E:\taskmanager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-05 18:20:59,358 autoreload 2424 10244 Watching for file changes with StatReloader
+INFO 2026-04-05 18:21:27,509 autoreload 2424 10244 E:\taskmanager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-05 18:21:28,032 autoreload 11396 12776 Watching for file changes with StatReloader
+INFO 2026-04-05 18:21:39,953 autoreload 11396 12776 E:\taskmanager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-05 18:21:40,443 autoreload 11052 11632 Watching for file changes with StatReloader
+INFO 2026-04-05 18:21:51,334 autoreload 11052 11632 E:\taskmanager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-05 18:21:51,854 autoreload 6744 6872 Watching for file changes with StatReloader
+INFO 2026-04-05 18:23:44,475 autoreload 6744 6872 E:\taskmanager\tasks\urls.py changed, reloading.
+INFO 2026-04-05 18:23:44,977 autoreload 8024 7948 Watching for file changes with StatReloader
+INFO 2026-04-05 18:24:03,982 autoreload 8024 7948 E:\taskmanager\tasks\urls.py changed, reloading.
+INFO 2026-04-05 18:24:04,493 autoreload 2416 12708 Watching for file changes with StatReloader
+INFO 2026-04-05 18:29:16,053 autoreload 2416 12708 E:\taskmanager\tasks\models.py changed, reloading.
+INFO 2026-04-05 18:29:16,555 autoreload 12364 11276 Watching for file changes with StatReloader
+INFO 2026-04-05 18:31:01,459 autoreload 12364 11276 E:\taskmanager\tasks\models.py changed, reloading.
+INFO 2026-04-05 18:31:01,911 autoreload 12060 11084 Watching for file changes with StatReloader
+INFO 2026-04-05 18:33:29,408 log 12060 11776 "GET / HTTP/1.1" 200 5223
+INFO 2026-04-05 18:33:29,432 log 12060 11776 "GET /static/css/style.css HTTP/1.1" 304 0
+ERROR 2026-04-05 18:33:36,789 log 12060 11776 Internal Server Error: /department-stats/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'tasks_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 234, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\partials\dept_tree.html, 'tasks_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-05 18:33:36,797 log 12060 11776 "GET /department-stats/ HTTP/1.1" 500 25507

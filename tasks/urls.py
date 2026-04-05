@@ -1,5 +1,5 @@
 # tasks/urls.py
-
+from .views.dashboard_views import department_stats
 from django.urls import path
 from .views import (
     # Задачи
@@ -97,4 +97,6 @@ urlpatterns = [
     path('research/products/<int:pk>/status/', views_product.update_product_status, name='update_product_status'),
     path('product/<int:product_id>/assign-performers/', product_assign_performers, name='product_assign_performers'),
     path('create-external-employee/', create_external_employee, name='create_external_employee'),
+    path('department-stats/', department_stats, name='department_stats'),
+    path('department-stats/<int:dept_id>/', department_stats, name='department_stats_detail'),
 ]

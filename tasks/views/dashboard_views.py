@@ -6,6 +6,9 @@ from ..models import Task, Employee, Department, StaffPosition
 from django.db.models import Prefetch, Count
 from django.db.models import Q
 import logging
+from django.shortcuts import render, get_object_or_404
+from datetime import date
+import json
 
 from django.core.cache import cache
 
@@ -141,3 +144,91 @@ def team_dashboard(request):
         'recent_assignments': recent_assignments,
     }
     return render(request, 'tasks/team_dashboard.html', context)
+
+@login_required
+def department_stats(request, dept_id=None):
+    """Статистика по подразделению"""
+    
+    # Дерево подразделений для навигации
+    root_departments = Department.objects.filter(parent__isnull=True).order_by('name')
+    
+    # Текущее подразделение
+    if dept_id:
+        current_dept = get_object_or_404(Department, id=dept_id)
+    else:
+        current_dept = root_departments.first()
+    
+    # Параметры фильтрации
+    include_children = request.GET.get('include_children', 'on') == 'on'
+    research_task_id = request.GET.get('research_task')
+    
+    # Получаем данные
+    employees = current_dept.get_employees(include_children)
+    research_tasks = current_dept.get_research_tasks(include_children)
+    products = current_dept.get_products(include_children, research_task_id)
+    
+    # Статистика
+    stats = current_dept.get_stats(include_children)
+    
+    # Детальная информация по продукции (для таблицы)
+    products_detail = []
+    for product in products.select_related('research_task', 'research_substage', 'responsible'):
+        # Находим ответственного из этого подразделения
+        responsible_from_dept = product.responsible if product.responsible in employees else None
+        
+        products_detail.append({
+            'id': product.id,
+            'name': product.name,
+            'research_task': product.research_task,
+            'research_substage': product.research_substage,
+            'planned_start': product.planned_start,
+            'planned_end': product.planned_end,
+            'status': product.status,
+            'status_display': product.get_status_display(),
+            'completion_percent': product.completion_percent,
+            'responsible': responsible_from_dept,
+            'is_overdue': product.is_overdue,
+        })
+    
+    # Сортируем по дате окончания
+    products_detail.sort(key=lambda x: x['planned_end'] if x['planned_end'] else date.max)
+    
+    # Данные для Ганта
+    gantt_data = []
+    for product in products_detail:
+        if product['planned_start'] and product['planned_end']:
+            gantt_data.append({
+                'id': product['id'],
+                'name': product['name'][:50],
+                'start': product['planned_start'].isoformat(),
+                'end': product['planned_end'].isoformat(),
+                'research_task_title': product['research_task'].title if product['research_task'] else None,
+                'status': product['status'],
+                'is_overdue': product['is_overdue'],
+            })
+    
+    # Список доступных НИР для фильтра
+    research_tasks_list = []
+    for rt in research_tasks:
+        research_tasks_list.append({
+            'id': rt.id,
+            'title': rt.title,
+            'tz_number': rt.tz_number,
+            'products_count': products.filter(research_task=rt).count(),
+        })
+    
+    context = {
+        'current_dept': current_dept,
+        'root_departments': root_departments,
+        'employees': employees[:100],  # Ограничиваем для производительности
+        'research_tasks': research_tasks,
+        'products': products_detail,
+        'stats': stats,
+        'gantt_data': json.dumps(gantt_data),
+        'include_children': include_children,
+        'selected_research_task': int(research_task_id) if research_task_id else None,
+        'research_tasks_list': research_tasks_list,
+        'today': date.today().isoformat(),
+    }
+    
+    return render(request, 'tasks/department_stats.html', context)

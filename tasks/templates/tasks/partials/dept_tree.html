@@ -1,0 +1,17 @@
+{% load tasks_extras %}
+
+<ul class="dept-tree">
+    {% for dept in departments %}
+        <li>
+            <a href="{% url 'department_stats_detail' dept.id %}" 
+               class="{% if current_dept.id == dept.id %}active{% endif %}">
+                <i class="bi bi-folder{% if dept.children.count %}-fill{% endif %}"></i>
+                {{ dept.name }}
+                <span class="badge bg-secondary float-end">{{ dept.get_stats.employees_count }}</span>
+            </a>
+            {% if dept.children.count %}
+                {% include 'tasks/partials/dept_tree.html' with departments=dept.children.all current_dept=current_dept %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
