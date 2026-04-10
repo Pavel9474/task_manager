@@ -150,7 +150,7 @@ def department_stats(request, dept_id=None):
     """Статистика по подразделению"""
     
     # Дерево подразделений для навигации
-    root_departments = Department.objects.filter(parent__isnull=True).order_by('name')
+    root_departments = Department.objects.filter(parent__isnull=True).prefetch_related('children').order_by('name')
     
     # Текущее подразделение
     if dept_id:
@@ -170,42 +170,50 @@ def department_stats(request, dept_id=None):
     # Статистика
     stats = current_dept.get_stats(include_children)
     
-    # Детальная информация по продукции (для таблицы)
+    # Детальная информация по продукции
     products_detail = []
-    for product in products.select_related('research_task', 'research_substage', 'responsible'):
-        # Находим ответственного из этого подразделения
-        responsible_from_dept = product.responsible if product.responsible in employees else None
+    for product in products.select_related(
+        'research_task', 
+        'research_stage', 
+        'research_substage', 
+        'responsible'
+    ):
+        # Определяем НИР по цепочке
+        research_task = product.research_task
+        if not research_task and product.research_stage:
+            research_task = product.research_stage.research_task
+        if not research_task and product.research_substage:
+            research_task = product.research_substage.stage.research_task
+        
+        # Определяем даты
+        planned_start = product.planned_start
+        planned_end = product.planned_end
+        
+        if product.research_substage:
+            if product.research_substage.start_date and not planned_start:
+                planned_start = product.research_substage.start_date
+            if product.research_substage.end_date and not planned_end:
+                planned_end = product.research_substage.end_date
+        
+        is_overdue = False
+        if planned_end and product.status not in ['completed', 'cancelled']:
+            is_overdue = date.today() > planned_end
         
         products_detail.append({
             'id': product.id,
             'name': product.name,
-            'research_task': product.research_task,
-            'research_substage': product.research_substage,
-            'planned_start': product.planned_start,
-            'planned_end': product.planned_end,
+            'research_task': research_task,
+            'planned_start': planned_start,
+            'planned_end': planned_end,
             'status': product.status,
             'status_display': product.get_status_display(),
             'completion_percent': product.completion_percent,
-            'responsible': responsible_from_dept,
-            'is_overdue': product.is_overdue,
+            'responsible': product.responsible,
+            'is_overdue': is_overdue,
         })
     
     # Сортируем по дате окончания
     products_detail.sort(key=lambda x: x['planned_end'] if x['planned_end'] else date.max)
-    
-    # Данные для Ганта
-    gantt_data = []
-    for product in products_detail:
-        if product['planned_start'] and product['planned_end']:
-            gantt_data.append({
-                'id': product['id'],
-                'name': product['name'][:50],
-                'start': product['planned_start'].isoformat(),
-                'end': product['planned_end'].isoformat(),
-                'research_task_title': product['research_task'].title if product['research_task'] else None,
-                'status': product['status'],
-                'is_overdue': product['is_overdue'],
-            })
     
     # Список доступных НИР для фильтра
     research_tasks_list = []
@@ -219,12 +227,11 @@ def department_stats(request, dept_id=None):
     
     context = {
         'current_dept': current_dept,
-        'root_departments': root_departments,
-        'employees': employees[:100],  # Ограничиваем для производительности
+        'root_departments': root_departments,  # ВАЖНО: передаем корневые подразделения
+        'employees': employees[:100],
         'research_tasks': research_tasks,
         'products': products_detail,
         'stats': stats,
-        'gantt_data': json.dumps(gantt_data),
         'include_children': include_children,
         'selected_research_task': int(research_task_id) if research_task_id else None,
         'research_tasks_list': research_tasks_list,

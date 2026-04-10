@@ -1,17 +1,63 @@
-{% load tasks_extras %}
+<div class="dept-search mb-3">
+    <input type="text" id="deptSearch" class="form-control form-control-sm" 
+           placeholder="🔍 Поиск подразделения...">
+    <div id="searchDebug" class="small text-muted mt-1"></div>
+</div>
 
-<ul class="dept-tree">
-    {% for dept in departments %}
-        <li>
-            <a href="{% url 'department_stats_detail' dept.id %}" 
-               class="{% if current_dept.id == dept.id %}active{% endif %}">
-                <i class="bi bi-folder{% if dept.children.count %}-fill{% endif %}"></i>
-                {{ dept.name }}
-                <span class="badge bg-secondary float-end">{{ dept.get_stats.employees_count }}</span>
-            </a>
-            {% if dept.children.count %}
-                {% include 'tasks/partials/dept_tree.html' with departments=dept.children.all current_dept=current_dept %}
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+<div class="dept-tree-container" style="max-height: 500px; overflow-y: auto;">
+    <ul class="dept-tree" id="deptTree">
+        {% for dept in departments %}
+            <li class="dept-item" data-id="{{ dept.id }}" data-name="{{ dept.name|lower }}">
+                <div class="dept-item-content">
+                    <a href="{% url 'department_stats_detail' dept.id %}?include_children={{ include_children|default:'on' }}" 
+                       class="dept-name {% if current_dept.id == dept.id %}active{% endif %}">
+                        <i class="bi bi-folder"></i>
+                        {{ dept.name }}
+                        <span class="badge bg-secondary float-end">{{ dept.get_stats.employees_count }}</span>
+                    </a>
+                </div>
+            </li>
+        {% empty %}
+            <li class="text-muted">Нет подразделений</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    // Поиск по подразделениям
+    const searchInput = document.getElementById('deptSearch');
+    const debugDiv = document.getElementById('searchDebug');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            const allItems = document.querySelectorAll('#deptTree .dept-item');
+            
+            debugDiv.innerHTML = `Поиск: "${searchTerm}" | Элементов: ${allItems.length}`;
+            
+            let found = 0;
+            allItems.forEach(item => {
+                const deptName = item.getAttribute('data-name') || '';
+                if (searchTerm === '' || deptName.includes(searchTerm)) {
+                    item.style.display = '';
+                    if (deptName.includes(searchTerm) && searchTerm !== '') {
+                        found++;
+                        const link = item.querySelector('.dept-name');
+                        if (link) link.style.backgroundColor = '#fff3cd';
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            debugDiv.innerHTML += ` | Найдено: ${found}`;
+        });
+    }
+    
+    // Вывод всех названий в консоль
+    setTimeout(() => {
+        console.log('=== Подразделения для поиска ===');
+        document.querySelectorAll('#deptTree .dept-item').forEach(item => {
+            console.log(item.getAttribute('data-name'));
+        });
+    }, 500);
+</script>

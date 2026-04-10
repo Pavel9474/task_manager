@@ -10663,3 +10663,500 @@ static
 task_extras
 tz
 ERROR 2026-04-05 18:33:36,797 log 12060 11776 "GET /department-stats/ HTTP/1.1" 500 25507
+INFO 2026-04-11 01:46:20,519 autoreload 10448 9892 Watching for file changes with StatReloader
+INFO 2026-04-11 01:46:23,435 log 10448 5936 "GET / HTTP/1.1" 200 5225
+INFO 2026-04-11 01:46:23,463 log 10448 5936 "GET /static/css/style.css HTTP/1.1" 304 0
+INFO 2026-04-11 01:46:23,463 log 10448 2388 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2026-04-11 01:46:23,595 log 10448 2388 Not Found: /favicon.ico
+WARNING 2026-04-11 01:46:23,596 log 10448 2388 "GET /favicon.ico HTTP/1.1" 404 1860
+ERROR 2026-04-11 01:47:16,712 log 10448 2388 Internal Server Error: /department-stats/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'tasks_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 234, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\partials\dept_tree.html, 'tasks_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-11 01:47:16,722 log 10448 2388 "GET /department-stats/ HTTP/1.1" 500 25523
+INFO 2026-04-11 01:48:08,035 autoreload 10448 9892 E:\taskmanager\tasks\templatetags\task_extras.py changed, reloading.
+INFO 2026-04-11 01:48:08,926 autoreload 12096 11248 Watching for file changes with StatReloader
+INFO 2026-04-11 01:48:15,841 log 12096 11260 "GET /department-stats/ HTTP/1.1" 200 4727
+INFO 2026-04-11 01:48:33,043 log 12096 11260 "GET /department-stats/123/ HTTP/1.1" 200 4682
+INFO 2026-04-11 01:48:49,385 log 12096 11260 "GET /department-stats/115/ HTTP/1.1" 200 4692
+INFO 2026-04-11 01:49:02,457 log 12096 11260 "GET /department-stats/157/ HTTP/1.1" 200 5224
+INFO 2026-04-11 01:49:19,219 log 12096 11260 "GET /product/1587/assign-performers/ HTTP/1.1" 200 15629
+INFO 2026-04-11 01:49:58,876 log 12096 2572 "GET /department-stats/157/?include_children=on&research_task=15 HTTP/1.1" 200 4736
+INFO 2026-04-11 01:50:03,622 log 12096 2572 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5176
+INFO 2026-04-11 01:51:11,970 log 12096 2572 "GET /product/1587/assign-performers/ HTTP/1.1" 200 15698
+INFO 2026-04-11 02:01:28,681 autoreload 8736 7068 Watching for file changes with StatReloader
+INFO 2026-04-11 02:01:36,649 log 8736 11764 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5209
+INFO 2026-04-11 02:01:41,024 log 8736 11764 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5159
+INFO 2026-04-11 02:01:44,879 log 8736 11764 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5176
+INFO 2026-04-11 02:01:44,996 log 8736 11764 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-11 02:01:44,996 log 8736 2308 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-11 02:01:45,439 log 8736 2308 Not Found: /favicon.ico
+WARNING 2026-04-11 02:01:45,439 log 8736 2308 "GET /favicon.ico HTTP/1.1" 404 1868
+INFO 2026-04-11 02:03:26,971 autoreload 8736 7068 E:\taskmanager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-11 02:03:27,642 autoreload 11504 2580 Watching for file changes with StatReloader
+INFO 2026-04-11 02:03:33,193 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5350
+INFO 2026-04-11 02:05:29,953 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5498
+INFO 2026-04-11 02:05:36,180 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5517
+ERROR 2026-04-11 02:06:31,417 log 11504 11628 Internal Server Error: /research/products/1563/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-11 02:06:31,423 log 11504 11628 "GET /research/products/1563/ HTTP/1.1" 500 12622
+INFO 2026-04-11 02:08:34,409 log 11504 11628 "GET /department-stats/149/ HTTP/1.1" 200 5706
+INFO 2026-04-11 02:11:00,362 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5533
+INFO 2026-04-11 02:11:04,996 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5486
+INFO 2026-04-11 02:11:08,918 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 5515
+INFO 2026-04-11 02:11:09,024 log 11504 7156 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-11 02:11:09,028 log 11504 11628 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-11 02:11:09,423 log 11504 11628 Not Found: /favicon.ico
+WARNING 2026-04-11 02:11:09,424 log 11504 11628 "GET /favicon.ico HTTP/1.1" 404 1862
+ERROR 2026-04-11 02:15:36,009 log 11504 11628 Internal Server Error: /department-stats/157/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 234, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 277, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+ERROR 2026-04-11 02:15:36,020 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 500 31086
+ERROR 2026-04-11 02:15:37,624 log 11504 11628 Internal Server Error: /department-stats/157/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 234, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 277, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+ERROR 2026-04-11 02:15:37,635 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 500 31138
+ERROR 2026-04-11 02:15:39,221 log 11504 11628 Internal Server Error: /department-stats/157/
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 234, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 277, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+ERROR 2026-04-11 02:15:39,232 log 11504 11628 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 500 31111
+WARNING 2026-04-11 02:15:39,340 log 11504 11628 Not Found: /favicon.ico
+WARNING 2026-04-11 02:15:39,341 log 11504 11628 "GET /favicon.ico HTTP/1.1" 404 1785
+INFO 2026-04-11 02:17:03,403 log 11504 10736 "GET /department-stats/157/?include_children=on&research_task= HTTP/1.1" 200 7224
+INFO 2026-04-11 02:17:13,906 log 11504 10736 "GET /department-stats/202/?include_children=True HTTP/1.1" 200 6388
+INFO 2026-04-11 02:17:19,072 log 11504 10736 "GET /department-stats/145/?include_children=on HTTP/1.1" 200 6455
+INFO 2026-04-11 02:17:25,506 log 11504 10736 "GET /department-stats/145/?include_children=True HTTP/1.1" 200 6457
+INFO 2026-04-11 02:21:02,953 log 11504 10736 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 7175
+INFO 2026-04-11 02:23:19,522 log 11504 10736 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 7255
+INFO 2026-04-11 02:23:28,273 log 11504 10736 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 7224
+INFO 2026-04-11 02:23:28,312 log 11504 10736 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-11 02:23:28,314 log 11504 7640 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-11 02:23:28,753 log 11504 7640 Not Found: /favicon.ico
+WARNING 2026-04-11 02:23:28,754 log 11504 7640 "GET /favicon.ico HTTP/1.1" 404 1843
+INFO 2026-04-11 02:29:31,275 log 11504 10700 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 7640
+INFO 2026-04-11 02:30:08,434 log 11504 10700 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 7710
+INFO 2026-04-11 02:30:12,619 log 11504 10700 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 7720
+INFO 2026-04-11 02:32:49,070 log 11504 10700 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 8467
+INFO 2026-04-11 02:33:13,560 log 11504 10700 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 8493
+INFO 2026-04-11 02:33:13,609 log 11504 10700 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-11 02:33:13,610 log 11504 1532 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-11 02:33:13,990 log 11504 1532 Not Found: /favicon.ico
+WARNING 2026-04-11 02:33:13,991 log 11504 1532 "GET /favicon.ico HTTP/1.1" 404 1871
+INFO 2026-04-11 02:33:24,903 autoreload 8256 7808 Watching for file changes with StatReloader
+INFO 2026-04-11 02:33:30,221 log 8256 7048 "GET /department-stats/157/?include_children=on HTTP/1.1" 200 8470
+INFO 2026-04-11 02:33:30,329 log 8256 7048 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-11 02:33:30,334 log 8256 11592 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-11 02:33:30,439 log 8256 11592 Not Found: /favicon.ico
+WARNING 2026-04-11 02:33:30,440 log 8256 11592 "GET /favicon.ico HTTP/1.1" 404 1791
+INFO 2026-04-11 02:37:03,425 autoreload 8324 1640 Watching for file changes with StatReloader
+WARNING 2026-04-11 02:37:08,813 log 8324 1356 Not Found: /department-stats/157/
+WARNING 2026-04-11 02:37:08,814 log 8324 1356 "GET /department-stats/157/?include_children=on HTTP/1.1" 404 1865
+WARNING 2026-04-11 02:37:08,890 log 8324 1356 Not Found: /favicon.ico
+WARNING 2026-04-11 02:37:08,891 log 8324 1356 "GET /favicon.ico HTTP/1.1" 404 1808
+WARNING 2026-04-11 02:37:11,764 log 8324 1356 Not Found: /department-stats/157/
+WARNING 2026-04-11 02:37:11,765 log 8324 1356 "GET /department-stats/157/?include_children=on HTTP/1.1" 404 1894
+WARNING 2026-04-11 02:37:11,815 log 8324 1356 Not Found: /favicon.ico
+WARNING 2026-04-11 02:37:11,816 log 8324 1356 "GET /favicon.ico HTTP/1.1" 404 1816
+WARNING 2026-04-11 02:37:12,848 log 8324 1356 Not Found: /department-stats/157/
+WARNING 2026-04-11 02:37:12,849 log 8324 1356 "GET /department-stats/157/?include_children=on HTTP/1.1" 404 1912
+INFO 2026-04-11 02:37:19,155 log 8324 1356 "GET / HTTP/1.1" 200 5258
+INFO 2026-04-11 02:37:26,228 log 8324 1356 "GET /org-chart/ HTTP/1.1" 200 4208
+INFO 2026-04-11 02:37:26,268 log 8324 1356 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-11 02:37:26,268 log 8324 3656 "GET /static/js/organization.js HTTP/1.1" 304 0
+INFO 2026-04-11 02:37:52,978 log 8324 3656 "GET /department-stats/ HTTP/1.1" 200 5898
+WARNING 2026-04-11 02:39:14,272 log 8324 3656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:39:14,273 log 8324 3656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1900
+INFO 2026-04-11 02:41:30,078 log 8324 3656 "GET /department-stats/ HTTP/1.1" 200 1418
+WARNING 2026-04-11 02:41:30,140 log 8324 3656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:41:30,141 log 8324 3656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1839
+WARNING 2026-04-11 02:41:30,203 log 8324 3656 Not Found: /favicon.ico
+WARNING 2026-04-11 02:41:30,204 log 8324 3656 "GET /favicon.ico HTTP/1.1" 404 1790
+INFO 2026-04-11 02:42:38,711 log 8324 3656 "GET /department-stats/ HTTP/1.1" 200 1456
+WARNING 2026-04-11 02:42:38,777 log 8324 3656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:42:38,778 log 8324 3656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1829
+WARNING 2026-04-11 02:42:38,837 log 8324 3656 Not Found: /favicon.ico
+WARNING 2026-04-11 02:42:38,837 log 8324 3656 "GET /favicon.ico HTTP/1.1" 404 1835
+INFO 2026-04-11 02:42:39,986 log 8324 3656 "GET /department-stats/ HTTP/1.1" 200 1366
+WARNING 2026-04-11 02:42:40,038 log 8324 3656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:42:40,039 log 8324 3656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1874
+WARNING 2026-04-11 02:42:40,099 log 8324 3656 Not Found: /favicon.ico
+WARNING 2026-04-11 02:42:40,100 log 8324 3656 "GET /favicon.ico HTTP/1.1" 404 1814
+INFO 2026-04-11 02:42:41,001 log 8324 3656 "GET /department-stats/ HTTP/1.1" 200 1434
+WARNING 2026-04-11 02:42:41,070 log 8324 3656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:42:41,070 log 8324 3656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1882
+WARNING 2026-04-11 02:42:41,131 log 8324 3656 Not Found: /favicon.ico
+WARNING 2026-04-11 02:42:41,132 log 8324 3656 "GET /favicon.ico HTTP/1.1" 404 1845
+WARNING 2026-04-11 02:43:01,597 log 8324 3656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:43:01,598 log 8324 3656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+INFO 2026-04-11 02:51:14,358 autoreload 1804 7564 Watching for file changes with StatReloader
+INFO 2026-04-11 02:51:18,870 log 1804 10356 "GET /department-stats/ HTTP/1.1" 200 1151
+WARNING 2026-04-11 02:51:18,929 log 1804 10356 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:51:18,929 log 1804 10356 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1887
+INFO 2026-04-11 02:51:36,474 log 1804 10356 "GET /department-stats/ HTTP/1.1" 200 1167
+WARNING 2026-04-11 02:51:36,537 log 1804 10356 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:51:36,538 log 1804 10356 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1851
+WARNING 2026-04-11 02:51:36,596 log 1804 10356 Not Found: /favicon.ico
+WARNING 2026-04-11 02:51:36,597 log 1804 10356 "GET /favicon.ico HTTP/1.1" 404 1849
+INFO 2026-04-11 02:51:38,050 log 1804 10356 "GET /department-stats/ HTTP/1.1" 200 1161
+WARNING 2026-04-11 02:51:38,104 log 1804 10356 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:51:38,105 log 1804 10356 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1847
+WARNING 2026-04-11 02:51:38,170 log 1804 10356 Not Found: /favicon.ico
+WARNING 2026-04-11 02:51:38,171 log 1804 10356 "GET /favicon.ico HTTP/1.1" 404 1793
+INFO 2026-04-11 02:52:47,331 log 1804 10356 "GET /department-stats/ HTTP/1.1" 200 1154
+WARNING 2026-04-11 02:52:47,391 log 1804 10356 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-11 02:52:47,392 log 1804 10356 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1828

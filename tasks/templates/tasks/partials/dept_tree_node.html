@@ -1,0 +1,27 @@
+{% load task_extras %}
+<li class="dept-item" data-id="{{ dept.id }}">
+    <div class="dept-item-content">
+        {% if dept.children.all %}
+            <span class="dept-toggle collapsed" data-target="dept-{{ dept.id }}">
+                <i class="bi bi-chevron-right"></i>
+            </span>
+        {% else %}
+            <span class="dept-toggle-placeholder"></span>
+        {% endif %}
+        
+        <a href="{% url 'department_stats_detail' dept.id %}?include_children={{ include_children|default:'on' }}" 
+           class="dept-name {% if current_dept.id == dept.id %}active{% endif %}">
+            <i class="bi bi-folder{% if dept.children.all %}-fill{% endif %}"></i>
+            <span class="dept-name-text">{{ dept.name }}</span>
+            <span class="badge bg-secondary float-end">{{ dept.get_stats.employees_count }}</span>
+        </a>
+    </div>
+    
+    {% if dept.children.all %}
+        <ul class="dept-nested" id="dept-{{ dept.id }}" style="display: none;">
+            {% for child in dept.children.all %}
+                {% include 'tasks/partials/dept_tree_node.html' with dept=child current_dept=current_dept %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

@@ -1,3 +1,4 @@
+# tasks/templatetags/task_extras.py
 from django import template
 
 register = template.Library()
@@ -5,4 +6,8 @@ register = template.Library()
 @register.filter
 def get_item(dictionary, key):
     """Получить элемент из словаря по ключу"""
-    return dictionary.get(key) if dictionary else None
+    if dictionary is None:
+        return None
+    return dictionary.get(key)
+
+# Добавьте другие фильтры по необходимости

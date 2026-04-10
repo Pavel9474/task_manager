@@ -10784,3 +10784,634 @@ task_extras
 tz
 INFO 2026-04-05 18:33:36,794 middleware 12060 11776 📤 GET /department-stats/ - 500 - Время: 0.111 сек
 ERROR 2026-04-05 18:33:36,794 middleware 12060 11776 ❌ Ошибка 500: GET /department-stats/ - Пользователь: pavel2
+DEBUG 2026-04-11 01:46:23,338 middleware 10448 5936 📨 GET / - Пользователь: pavel2
+INFO 2026-04-11 01:46:23,432 middleware 10448 5936 📤 GET / - 200 - Время: 0.098 сек
+DEBUG 2026-04-11 01:46:23,586 middleware 10448 2388 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 01:46:23,594 middleware 10448 2388 📤 GET /favicon.ico - 404 - Время: 0.010 сек
+ERROR 2026-04-11 01:46:23,594 middleware 10448 2388 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 01:47:16,571 middleware 10448 2388 📨 GET /department-stats/ - Пользователь: pavel2
+ERROR 2026-04-11 01:47:16,599 middleware 10448 2388 💥 Исключение в GET /department-stats/: Template: E:\taskmanager\tasks\templates\tasks\partials\dept_tree.html, 'tasks_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'tasks_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 234, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\taskmanager\tasks\templates\tasks\partials\dept_tree.html, 'tasks_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-11 01:47:16,718 middleware 10448 2388 📤 GET /department-stats/ - 500 - Время: 0.150 сек
+ERROR 2026-04-11 01:47:16,718 middleware 10448 2388 ❌ Ошибка 500: GET /department-stats/ - Пользователь: pavel2
+DEBUG 2026-04-11 01:48:13,874 middleware 12096 11260 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 01:48:15,838 middleware 12096 11260 📤 GET /department-stats/ - 200 - Время: 1.970 сек
+DEBUG 2026-04-11 01:48:31,387 middleware 12096 11260 📨 GET /department-stats/123/ - Пользователь: pavel2
+INFO 2026-04-11 01:48:33,041 middleware 12096 11260 📤 GET /department-stats/123/ - 200 - Время: 1.657 сек
+DEBUG 2026-04-11 01:48:47,755 middleware 12096 11260 📨 GET /department-stats/115/ - Пользователь: pavel2
+INFO 2026-04-11 01:48:49,384 middleware 12096 11260 📤 GET /department-stats/115/ - 200 - Время: 1.633 сек
+DEBUG 2026-04-11 01:49:00,773 middleware 12096 11260 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 01:49:02,455 middleware 12096 11260 📤 GET /department-stats/157/ - 200 - Время: 1.685 сек
+DEBUG 2026-04-11 01:49:18,971 middleware 12096 11260 📨 GET /product/1587/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-11 01:49:19,216 middleware 12096 11260 📤 GET /product/1587/assign-performers/ - 200 - Время: 0.250 сек
+DEBUG 2026-04-11 01:49:57,203 middleware 12096 2572 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 01:49:58,874 middleware 12096 2572 📤 GET /department-stats/157/ - 200 - Время: 1.674 сек
+DEBUG 2026-04-11 01:50:01,920 middleware 12096 2572 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 01:50:03,610 middleware 12096 2572 📤 GET /department-stats/157/ - 200 - Время: 1.694 сек
+DEBUG 2026-04-11 01:51:11,749 middleware 12096 2572 📨 GET /product/1587/assign-performers/ - Пользователь: pavel2
+INFO 2026-04-11 01:51:11,966 middleware 12096 2572 📤 GET /product/1587/assign-performers/ - 200 - Время: 0.221 сек
+DEBUG 2026-04-11 02:01:34,801 middleware 8736 11764 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:01:36,647 middleware 8736 11764 📤 GET /department-stats/157/ - 200 - Время: 1.852 сек
+DEBUG 2026-04-11 02:01:39,335 middleware 8736 11764 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:01:41,022 middleware 8736 11764 📤 GET /department-stats/157/ - 200 - Время: 1.690 сек
+DEBUG 2026-04-11 02:01:43,142 middleware 8736 11764 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:01:44,877 middleware 8736 11764 📤 GET /department-stats/157/ - 200 - Время: 1.739 сек
+DEBUG 2026-04-11 02:01:45,427 middleware 8736 2308 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:01:45,437 middleware 8736 2308 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-11 02:01:45,437 middleware 8736 2308 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:03:31,373 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:03:33,190 middleware 11504 11628 📤 GET /department-stats/157/ - 200 - Время: 1.823 сек
+DEBUG 2026-04-11 02:05:28,310 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:05:29,951 middleware 11504 11628 📤 GET /department-stats/157/ - 200 - Время: 1.645 сек
+DEBUG 2026-04-11 02:05:34,488 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:05:36,178 middleware 11504 11628 📤 GET /department-stats/157/ - 200 - Время: 1.693 сек
+DEBUG 2026-04-11 02:06:31,372 middleware 11504 11628 📨 GET /research/products/1563/ - Пользователь: pavel2
+ERROR 2026-04-11 02:06:31,373 middleware 11504 11628 💥 Исключение в GET /research/products/1563/: research_product_detail() got an unexpected keyword argument 'pk'
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+INFO 2026-04-11 02:06:31,419 middleware 11504 11628 📤 GET /research/products/1563/ - 500 - Время: 0.050 сек
+ERROR 2026-04-11 02:06:31,420 middleware 11504 11628 ❌ Ошибка 500: GET /research/products/1563/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:08:32,711 middleware 11504 11628 📨 GET /department-stats/149/ - Пользователь: pavel2
+INFO 2026-04-11 02:08:34,408 middleware 11504 11628 📤 GET /department-stats/149/ - 200 - Время: 1.700 сек
+DEBUG 2026-04-11 02:10:58,664 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:11:00,360 middleware 11504 11628 📤 GET /department-stats/157/ - 200 - Время: 1.700 сек
+DEBUG 2026-04-11 02:11:03,250 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:11:04,994 middleware 11504 11628 📤 GET /department-stats/157/ - 200 - Время: 1.748 сек
+DEBUG 2026-04-11 02:11:07,200 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:11:08,916 middleware 11504 11628 📤 GET /department-stats/157/ - 200 - Время: 1.720 сек
+DEBUG 2026-04-11 02:11:09,413 middleware 11504 11628 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:11:09,421 middleware 11504 11628 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-11 02:11:09,421 middleware 11504 11628 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:15:35,849 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+ERROR 2026-04-11 02:15:35,899 middleware 11504 11628 💥 Исключение в GET /department-stats/157/: tasks/partials/dept_tree_node.html
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 234, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 277, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+INFO 2026-04-11 02:15:36,015 middleware 11504 11628 📤 GET /department-stats/157/ - 500 - Время: 0.171 сек
+ERROR 2026-04-11 02:15:36,016 middleware 11504 11628 ❌ Ошибка 500: GET /department-stats/157/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:15:37,479 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+ERROR 2026-04-11 02:15:37,519 middleware 11504 11628 💥 Исключение в GET /department-stats/157/: tasks/partials/dept_tree_node.html
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 234, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 277, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+INFO 2026-04-11 02:15:37,629 middleware 11504 11628 📤 GET /department-stats/157/ - 500 - Время: 0.153 сек
+ERROR 2026-04-11 02:15:37,629 middleware 11504 11628 ❌ Ошибка 500: GET /department-stats/157/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:15:39,078 middleware 11504 11628 📨 GET /department-stats/157/ - Пользователь: pavel2
+ERROR 2026-04-11 02:15:39,119 middleware 11504 11628 💥 Исключение в GET /department-stats/157/: tasks/partials/dept_tree_node.html
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 211, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 234, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 277, in department_stats
+    return render(request, 'tasks/department_stats.html', context)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 109, in render
+    reraise(exc, self.backend)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: tasks/partials/dept_tree_node.html
+INFO 2026-04-11 02:15:39,227 middleware 11504 11628 📤 GET /department-stats/157/ - 500 - Время: 0.153 сек
+ERROR 2026-04-11 02:15:39,228 middleware 11504 11628 ❌ Ошибка 500: GET /department-stats/157/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:15:39,331 middleware 11504 11628 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:15:39,339 middleware 11504 11628 📤 GET /favicon.ico - 404 - Время: 0.011 сек
+ERROR 2026-04-11 02:15:39,340 middleware 11504 11628 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:17:01,501 middleware 11504 10736 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:17:03,401 middleware 11504 10736 📤 GET /department-stats/157/ - 200 - Время: 1.904 сек
+DEBUG 2026-04-11 02:17:12,029 middleware 11504 10736 📨 GET /department-stats/202/ - Пользователь: pavel2
+INFO 2026-04-11 02:17:13,904 middleware 11504 10736 📤 GET /department-stats/202/ - 200 - Время: 1.879 сек
+DEBUG 2026-04-11 02:17:17,148 middleware 11504 10736 📨 GET /department-stats/145/ - Пользователь: pavel2
+INFO 2026-04-11 02:17:19,070 middleware 11504 10736 📤 GET /department-stats/145/ - 200 - Время: 1.925 сек
+DEBUG 2026-04-11 02:17:23,617 middleware 11504 10736 📨 GET /department-stats/145/ - Пользователь: pavel2
+INFO 2026-04-11 02:17:25,504 middleware 11504 10736 📤 GET /department-stats/145/ - 200 - Время: 1.891 сек
+DEBUG 2026-04-11 02:21:01,047 middleware 11504 10736 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:21:02,952 middleware 11504 10736 📤 GET /department-stats/157/ - 200 - Время: 1.909 сек
+DEBUG 2026-04-11 02:23:17,591 middleware 11504 10736 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:23:19,520 middleware 11504 10736 📤 GET /department-stats/157/ - 200 - Время: 1.933 сек
+DEBUG 2026-04-11 02:23:26,362 middleware 11504 10736 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:23:28,271 middleware 11504 10736 📤 GET /department-stats/157/ - 200 - Время: 1.913 сек
+DEBUG 2026-04-11 02:23:28,743 middleware 11504 7640 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:23:28,751 middleware 11504 7640 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-04-11 02:23:28,752 middleware 11504 7640 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:29:29,344 middleware 11504 10700 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:29:31,273 middleware 11504 10700 📤 GET /department-stats/157/ - 200 - Время: 1.937 сек
+DEBUG 2026-04-11 02:30:06,514 middleware 11504 10700 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:30:08,432 middleware 11504 10700 📤 GET /department-stats/157/ - 200 - Время: 1.921 сек
+DEBUG 2026-04-11 02:30:10,560 middleware 11504 10700 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:30:12,616 middleware 11504 10700 📤 GET /department-stats/157/ - 200 - Время: 2.061 сек
+DEBUG 2026-04-11 02:32:47,436 middleware 11504 10700 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:32:49,067 middleware 11504 10700 📤 GET /department-stats/157/ - 200 - Время: 1.637 сек
+DEBUG 2026-04-11 02:33:11,975 middleware 11504 10700 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:33:13,558 middleware 11504 10700 📤 GET /department-stats/157/ - 200 - Время: 1.587 сек
+DEBUG 2026-04-11 02:33:13,977 middleware 11504 1532 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:33:13,988 middleware 11504 1532 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-11 02:33:13,989 middleware 11504 1532 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:33:28,512 middleware 8256 7048 📨 GET /department-stats/157/ - Пользователь: pavel2
+INFO 2026-04-11 02:33:30,218 middleware 8256 7048 📤 GET /department-stats/157/ - 200 - Время: 1.709 сек
+DEBUG 2026-04-11 02:33:30,429 middleware 8256 11592 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:33:30,437 middleware 8256 11592 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-11 02:33:30,438 middleware 8256 11592 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:37:08,790 middleware 8324 1356 📨 GET /department-stats/157/ - Пользователь: pavel2
+ERROR 2026-04-11 02:37:08,795 middleware 8324 1356 💥 Исключение в GET /department-stats/157/: No Department matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Department.DoesNotExist: Department matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 157, in department_stats
+    current_dept = get_object_or_404(Department, id=dept_id)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Department matches the given query.
+INFO 2026-04-11 02:37:08,811 middleware 8324 1356 📤 GET /department-stats/157/ - 404 - Время: 0.027 сек
+ERROR 2026-04-11 02:37:08,811 middleware 8324 1356 ❌ Ошибка 404: GET /department-stats/157/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:37:08,880 middleware 8324 1356 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:37:08,889 middleware 8324 1356 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-11 02:37:08,889 middleware 8324 1356 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:37:11,750 middleware 8324 1356 📨 GET /department-stats/157/ - Пользователь: pavel2
+ERROR 2026-04-11 02:37:11,752 middleware 8324 1356 💥 Исключение в GET /department-stats/157/: No Department matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Department.DoesNotExist: Department matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 157, in department_stats
+    current_dept = get_object_or_404(Department, id=dept_id)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Department matches the given query.
+INFO 2026-04-11 02:37:11,763 middleware 8324 1356 📤 GET /department-stats/157/ - 404 - Время: 0.017 сек
+ERROR 2026-04-11 02:37:11,763 middleware 8324 1356 ❌ Ошибка 404: GET /department-stats/157/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:37:11,806 middleware 8324 1356 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:37:11,814 middleware 8324 1356 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-11 02:37:11,814 middleware 8324 1356 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:37:12,836 middleware 8324 1356 📨 GET /department-stats/157/ - Пользователь: pavel2
+ERROR 2026-04-11 02:37:12,838 middleware 8324 1356 💥 Исключение в GET /department-stats/157/: No Department matches the given query.
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\db\models\query.py", line 639, in get
+    raise self.model.DoesNotExist(
+        "%s matching query does not exist." % self.model._meta.object_name
+    )
+tasks.models.Department.DoesNotExist: Department matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\taskmanager\tasks\views\dashboard_views.py", line 157, in department_stats
+    current_dept = get_object_or_404(Department, id=dept_id)
+  File "C:\Users\Pavel\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 92, in get_object_or_404
+    raise Http404(
+        "No %s matches the given query." % queryset.model._meta.object_name
+    )
+django.http.response.Http404: No Department matches the given query.
+INFO 2026-04-11 02:37:12,847 middleware 8324 1356 📤 GET /department-stats/157/ - 404 - Время: 0.015 сек
+ERROR 2026-04-11 02:37:12,847 middleware 8324 1356 ❌ Ошибка 404: GET /department-stats/157/ - Пользователь: pavel2
+DEBUG 2026-04-11 02:37:19,076 middleware 8324 1356 📨 GET / - Пользователь: pavel2
+INFO 2026-04-11 02:37:19,153 middleware 8324 1356 📤 GET / - 200 - Время: 0.079 сек
+DEBUG 2026-04-11 02:37:26,153 middleware 8324 1356 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-11 02:37:26,227 middleware 8324 1356 📤 GET /org-chart/ - 200 - Время: 0.077 сек
+DEBUG 2026-04-11 02:37:52,483 middleware 8324 3656 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:37:52,976 middleware 8324 3656 📤 GET /department-stats/ - 200 - Время: 0.496 сек
+DEBUG 2026-04-11 02:39:14,262 middleware 8324 3656 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:39:14,271 middleware 8324 3656 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.012 сек
+ERROR 2026-04-11 02:39:14,271 middleware 8324 3656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:41:30,053 middleware 8324 3656 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:41:30,077 middleware 8324 3656 📤 GET /department-stats/ - 200 - Время: 0.028 сек
+DEBUG 2026-04-11 02:41:30,125 middleware 8324 3656 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:41:30,138 middleware 8324 3656 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.020 сек
+ERROR 2026-04-11 02:41:30,139 middleware 8324 3656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:41:30,192 middleware 8324 3656 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:41:30,202 middleware 8324 3656 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-11 02:41:30,202 middleware 8324 3656 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:42:38,688 middleware 8324 3656 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:42:38,710 middleware 8324 3656 📤 GET /department-stats/ - 200 - Время: 0.024 сек
+DEBUG 2026-04-11 02:42:38,757 middleware 8324 3656 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:42:38,775 middleware 8324 3656 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-04-11 02:42:38,775 middleware 8324 3656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:42:38,821 middleware 8324 3656 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:42:38,835 middleware 8324 3656 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-11 02:42:38,835 middleware 8324 3656 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:42:39,966 middleware 8324 3656 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:42:39,984 middleware 8324 3656 📤 GET /department-stats/ - 200 - Время: 0.022 сек
+DEBUG 2026-04-11 02:42:40,026 middleware 8324 3656 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:42:40,037 middleware 8324 3656 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.014 сек
+ERROR 2026-04-11 02:42:40,037 middleware 8324 3656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:42:40,087 middleware 8324 3656 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:42:40,097 middleware 8324 3656 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-11 02:42:40,098 middleware 8324 3656 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:42:40,981 middleware 8324 3656 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:42:41,000 middleware 8324 3656 📤 GET /department-stats/ - 200 - Время: 0.022 сек
+DEBUG 2026-04-11 02:42:41,051 middleware 8324 3656 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:42:41,068 middleware 8324 3656 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-04-11 02:42:41,069 middleware 8324 3656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:42:41,117 middleware 8324 3656 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:42:41,130 middleware 8324 3656 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-04-11 02:42:41,131 middleware 8324 3656 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:43:01,582 middleware 8324 3656 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:43:01,596 middleware 8324 3656 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.016 сек
+ERROR 2026-04-11 02:43:01,596 middleware 8324 3656 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:51:18,839 middleware 1804 10356 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:51:18,868 middleware 1804 10356 📤 GET /department-stats/ - 200 - Время: 0.035 сек
+DEBUG 2026-04-11 02:51:18,915 middleware 1804 10356 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:51:18,927 middleware 1804 10356 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.016 сек
+ERROR 2026-04-11 02:51:18,927 middleware 1804 10356 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:51:36,453 middleware 1804 10356 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:51:36,473 middleware 1804 10356 📤 GET /department-stats/ - 200 - Время: 0.023 сек
+DEBUG 2026-04-11 02:51:36,519 middleware 1804 10356 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:51:36,536 middleware 1804 10356 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.025 сек
+ERROR 2026-04-11 02:51:36,536 middleware 1804 10356 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:51:36,585 middleware 1804 10356 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:51:36,595 middleware 1804 10356 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-11 02:51:36,595 middleware 1804 10356 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:51:38,032 middleware 1804 10356 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:51:38,049 middleware 1804 10356 📤 GET /department-stats/ - 200 - Время: 0.020 сек
+DEBUG 2026-04-11 02:51:38,091 middleware 1804 10356 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:51:38,103 middleware 1804 10356 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-04-11 02:51:38,103 middleware 1804 10356 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-11 02:51:38,157 middleware 1804 10356 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-11 02:51:38,169 middleware 1804 10356 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-11 02:51:38,170 middleware 1804 10356 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-11 02:52:47,315 middleware 1804 10356 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-11 02:52:47,330 middleware 1804 10356 📤 GET /department-stats/ - 200 - Время: 0.019 сек
+DEBUG 2026-04-11 02:52:47,379 middleware 1804 10356 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-11 02:52:47,390 middleware 1804 10356 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.016 сек
+ERROR 2026-04-11 02:52:47,390 middleware 1804 10356 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
