@@ -1,7 +1,6 @@
 <div class="dept-search mb-3">
     <input type="text" id="deptSearch" class="form-control form-control-sm" 
            placeholder="🔍 Поиск подразделения...">
-    <div id="searchDebug" class="small text-muted mt-1"></div>
 </div>
 
 <div class="dept-tree-container" style="max-height: 500px; overflow-y: auto;">
@@ -9,55 +8,184 @@
         {% for dept in departments %}
             <li class="dept-item" data-id="{{ dept.id }}" data-name="{{ dept.name|lower }}">
                 <div class="dept-item-content">
+                    {% if dept.children.all %}
+                        <span class="dept-toggle collapsed" data-target="dept-{{ dept.id }}">
+                            <i class="bi bi-chevron-right"></i>
+                        </span>
+                    {% else %}
+                        <span class="dept-toggle-placeholder"></span>
+                    {% endif %}
+                    
                     <a href="{% url 'department_stats_detail' dept.id %}?include_children={{ include_children|default:'on' }}" 
                        class="dept-name {% if current_dept.id == dept.id %}active{% endif %}">
-                        <i class="bi bi-folder"></i>
+                        <i class="bi bi-folder{% if dept.children.all %}-fill{% endif %}"></i>
                         {{ dept.name }}
                         <span class="badge bg-secondary float-end">{{ dept.get_stats.employees_count }}</span>
                     </a>
                 </div>
+                
+                {% if dept.children.all %}
+                    <ul class="dept-nested" id="dept-{{ dept.id }}" style="display: none; padding-left: 20px;">
+                        {% for child in dept.children.all %}
+                            <li class="dept-item" data-id="{{ child.id }}" data-name="{{ child.name|lower }}">
+                                <div class="dept-item-content">
+                                    {% if child.children.all %}
+                                        <span class="dept-toggle collapsed" data-target="dept-{{ child.id }}">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </span>
+                                    {% else %}
+                                        <span class="dept-toggle-placeholder"></span>
+                                    {% endif %}
+                                    
+                                    <a href="{% url 'department_stats_detail' child.id %}?include_children={{ include_children|default:'on' }}" 
+                                       class="dept-name {% if current_dept.id == child.id %}active{% endif %}">
+                                        <i class="bi bi-folder{% if child.children.all %}-fill{% endif %}"></i>
+                                        {{ child.name }}
+                                        <span class="badge bg-secondary float-end">{{ child.get_stats.employees_count }}</span>
+                                    </a>
+                                </div>
+                                
+                                {% if child.children.all %}
+                                    <ul class="dept-nested" id="dept-{{ child.id }}" style="display: none; padding-left: 20px;">
+                                        {% for grandchild in child.children.all %}
+                                            <li class="dept-item" data-id="{{ grandchild.id }}" data-name="{{ grandchild.name|lower }}">
+                                                <div class="dept-item-content">
+                                                    <span class="dept-toggle-placeholder"></span>
+                                                    <a href="{% url 'department_stats_detail' grandchild.id %}?include_children={{ include_children|default:'on' }}" 
+                                                       class="dept-name {% if current_dept.id == grandchild.id %}active{% endif %}">
+                                                        <i class="bi bi-folder"></i>
+                                                        {{ grandchild.name }}
+                                                        <span class="badge bg-secondary float-end">{{ grandchild.get_stats.employees_count }}</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </li>
-        {% empty %}
-            <li class="text-muted">Нет подразделений</li>
         {% endfor %}
     </ul>
 </div>
 
 <script>
-    // Поиск по подразделениям
-    const searchInput = document.getElementById('deptSearch');
-    const debugDiv = document.getElementById('searchDebug');
+    // Переключение вложенных списков
+    document.querySelectorAll('.dept-toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var targetId = this.getAttribute('data-target');
+            var nestedUl = document.getElementById(targetId);
+            if (nestedUl) {
+                if (nestedUl.style.display === 'none') {
+                    nestedUl.style.display = '';
+                    this.classList.remove('collapsed');
+                    this.classList.add('expanded');
+                } else {
+                    nestedUl.style.display = 'none';
+                    this.classList.remove('expanded');
+                    this.classList.add('collapsed');
+                }
+            }
+        });
+    });
     
+    // Поиск по подразделениям
+    var searchInput = document.getElementById('deptSearch');
     if (searchInput) {
         searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            const allItems = document.querySelectorAll('#deptTree .dept-item');
+            var searchTerm = e.target.value.toLowerCase().trim();
+            var allItems = document.querySelectorAll('#deptTree .dept-item');
+            var allNested = document.querySelectorAll('.dept-nested');
             
-            debugDiv.innerHTML = `Поиск: "${searchTerm}" | Элементов: ${allItems.length}`;
-            
-            let found = 0;
-            allItems.forEach(item => {
-                const deptName = item.getAttribute('data-name') || '';
-                if (searchTerm === '' || deptName.includes(searchTerm)) {
+            if (searchTerm === '') {
+                // Сброс - показываем всё, но сворачиваем
+                allItems.forEach(function(item) {
                     item.style.display = '';
-                    if (deptName.includes(searchTerm) && searchTerm !== '') {
-                        found++;
-                        const link = item.querySelector('.dept-name');
-                        if (link) link.style.backgroundColor = '#fff3cd';
+                });
+                allNested.forEach(function(nested) {
+                    nested.style.display = 'none';
+                });
+                document.querySelectorAll('.dept-toggle').forEach(function(toggle) {
+                    toggle.classList.remove('expanded');
+                    toggle.classList.add('collapsed');
+                });
+                document.querySelectorAll('.dept-name').forEach(function(link) {
+                    link.style.backgroundColor = '';
+                    link.style.fontWeight = '';
+                });
+                return;
+            }
+            
+            // РАСКРЫВАЕМ ВСЕ вложенные списки
+            allNested.forEach(function(nested) {
+                nested.style.display = '';
+            });
+            document.querySelectorAll('.dept-toggle').forEach(function(toggle) {
+                toggle.classList.remove('collapsed');
+                toggle.classList.add('expanded');
+            });
+            
+            // Ищем и показываем только совпадающие
+            var foundAny = false;
+            var matchedItems = [];
+            
+            allItems.forEach(function(item) {
+                var deptName = item.getAttribute('data-name') || '';
+                var link = item.querySelector('.dept-name');
+                
+                if (deptName.includes(searchTerm)) {
+                    matchedItems.push(item);
+                    foundAny = true;
+                    if (link) {
+                        link.style.backgroundColor = '#fff3cd';
+                        link.style.fontWeight = 'bold';
                     }
                 } else {
-                    item.style.display = 'none';
+                    if (link) {
+                        link.style.backgroundColor = '';
+                        link.style.fontWeight = '';
+                    }
                 }
             });
-            debugDiv.innerHTML += ` | Найдено: ${found}`;
+            
+            // Показываем совпавшие элементы и всех их родителей
+            allItems.forEach(function(item) {
+                item.style.display = 'none';
+            });
+            
+            matchedItems.forEach(function(item) {
+                item.style.display = '';
+                // Показываем всех родителей (вложенные ul -> li -> ul -> li ...)
+                var parent = item.parentElement;
+                while (parent) {
+                    if (parent.classList && parent.classList.contains('dept-item')) {
+                        parent.style.display = '';
+                    }
+                    if (parent.classList && parent.classList.contains('dept-nested')) {
+                        parent.style.display = '';
+                    }
+                    parent = parent.parentElement;
+                }
+            });
+            
+            // Если ничего не найдено, показываем сообщение
+            if (!foundAny) {
+                var debugDiv = document.getElementById('searchDebug');
+                if (!debugDiv) {
+                    var div = document.createElement('div');
+                    div.id = 'searchDebug';
+                    div.className = 'text-muted small mt-2';
+                    document.querySelector('.dept-search').appendChild(div);
+                }
+                document.getElementById('searchDebug').innerHTML = 'Ничего не найдено для "' + searchTerm + '"';
+            } else {
+                var debugDiv = document.getElementById('searchDebug');
+                if (debugDiv) debugDiv.innerHTML = '';
+            }
         });
     }
-    
-    // Вывод всех названий в консоль
-    setTimeout(() => {
-        console.log('=== Подразделения для поиска ===');
-        document.querySelectorAll('#deptTree .dept-item').forEach(item => {
-            console.log(item.getAttribute('data-name'));
-        });
-    }, 500);
 </script>

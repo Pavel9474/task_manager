@@ -156,7 +156,16 @@ def department_stats(request, dept_id=None):
     if dept_id:
         current_dept = get_object_or_404(Department, id=dept_id)
     else:
+        # Если ID не указан, берем первый корневой элемент
         current_dept = root_departments.first()
+        if not current_dept:
+            # Если нет корневых подразделений, создаем заглушку
+            context = {
+                'root_departments': root_departments,
+                'current_dept': None,
+                'error': 'Нет подразделений в базе данных'
+            }
+            return render(request, 'tasks/department_stats.html', context)
     
     # Параметры фильтрации
     include_children = request.GET.get('include_children', 'on') == 'on'
@@ -227,7 +236,7 @@ def department_stats(request, dept_id=None):
     
     context = {
         'current_dept': current_dept,
-        'root_departments': root_departments,  # ВАЖНО: передаем корневые подразделения
+        'root_departments': root_departments,
         'employees': employees[:100],
         'research_tasks': research_tasks,
         'products': products_detail,
