@@ -220,10 +220,23 @@ def department_stats(request, dept_id=None):
             'responsible': product.responsible,
             'is_overdue': is_overdue,
         })
-    
+
     # Сортируем по дате окончания
     products_detail.sort(key=lambda x: x['planned_end'] if x['planned_end'] else date.max)
-    
+
+    # Данные для Ганта
+    gantt_data = []
+    for product in products_detail:
+        if product['planned_start'] and product['planned_end']:
+            gantt_data.append({
+                'id': product['id'],
+                'name': product['name'][:50],
+                'start': product['planned_start'].isoformat(),
+                'end': product['planned_end'].isoformat(),
+                'completion': product['completion_percent'],
+                'status': product['status'],
+            })
+
     # Список доступных НИР для фильтра
     research_tasks_list = []
     for rt in research_tasks:
@@ -245,6 +258,7 @@ def department_stats(request, dept_id=None):
         'selected_research_task': int(research_task_id) if research_task_id else None,
         'research_tasks_list': research_tasks_list,
         'today': date.today().isoformat(),
+        'gantt_data': json.dumps(gantt_data),
     }
     
     return render(request, 'tasks/department_stats.html', context)

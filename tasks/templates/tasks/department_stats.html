@@ -3,16 +3,128 @@
 
 {% block title %}Статистика подразделений{% endblock %}
 
+{% block extra_css %}
+<style>
+    .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        transition: transform 0.3s;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+    .stat-number {
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .stat-label {
+        font-size: 12px;
+        opacity: 0.9;
+    }
+    .product-table {
+        font-size: 14px;
+    }
+    .product-table td {
+        vertical-align: middle;
+    }
+    .status-badge {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+    .overdue {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    /* Дерево подразделений */
+    .dept-tree {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+    .dept-tree li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .dept-item-content {
+        display: flex;
+        align-items: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .dept-toggle {
+        cursor: pointer;
+        width: 20px;
+        text-align: center;
+        color: #6c757d;
+        transition: transform 0.2s;
+    }
+    .dept-toggle.expanded i {
+        transform: rotate(90deg);
+    }
+    .dept-toggle-placeholder {
+        width: 20px;
+        display: inline-block;
+    }
+    .dept-name {
+        flex: 1;
+        text-decoration: none;
+        padding: 3px 8px;
+        border-radius: 4px;
+        color: #333;
+    }
+    .dept-name:hover {
+        background-color: #f0f0f0;
+    }
+    .dept-name.active {
+        background-color: #e7f1ff;
+        font-weight: bold;
+        color: #0d6efd;
+    }
+    .dept-nested {
+        list-style: none;
+        padding-left: 20px;
+        margin: 0;
+    }
+    .dept-search input {
+        font-size: 13px;
+    }
+    .dept-tree-container {
+        max-height: 500px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background: #fafafa;
+    }
+    .highlight {
+        background-color: #fff3cd !important;
+        font-weight: bold !important;
+    }
+        /* Стили для Ганта */
+    .gantt .bar-label {
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
+        font-size: 11px !important;
+        fill: #fff !important;
+        font-weight: 500 !important;
+    }
+    .gantt .grid-header {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+    }
+    #ganttChartContainer {
+        min-height: 400px;
+        width: 100%;
+        overflow-x: auto;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid">
-    <!-- ОТЛАДКА -->
-    <div class="alert alert-info">
-        <strong>Отладка:</strong><br>
-        root_departments count: {{ root_departments|length }}<br>
-        current_dept: {{ current_dept.name|default:"Нет" }}<br>
-        include_children: {{ include_children }}
-    </div>
-    
     <div class="row">
         <!-- Левая колонка: дерево подразделений -->
         <div class="col-md-3">
@@ -21,21 +133,234 @@
                     <strong><i class="bi bi-diagram-3"></i> Подразделения</strong>
                 </div>
                 <div class="card-body p-2">
-                    {% if root_departments %}
-                        {% include 'tasks/partials/dept_tree.html' with departments=root_departments current_dept=current_dept %}
-                    {% else %}
-                        <div class="text-muted">Нет подразделений</div>
-                    {% endif %}
+                    {% include 'tasks/partials/dept_tree.html' with departments=root_departments current_dept=current_dept %}
                 </div>
             </div>
         </div>
         
         <!-- Правая колонка: статистика -->
         <div class="col-md-9">
-            <div class="alert alert-warning">
-                Временная заглушка - статистика будет здесь
+            <!-- Хлебные крошки -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    {% for ancestor in current_dept.get_ancestors %}
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'department_stats_detail' ancestor.id %}">{{ ancestor.name }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="breadcrumb-item active">{{ current_dept.name }}</li>
+                </ol>
+            </nav>
+            
+            <!-- Фильтры -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form method="get" class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input type="checkbox" name="include_children" id="include_children" 
+                                       class="form-check-input" {% if include_children %}checked{% endif %}
+                                       onchange="this.form.submit()">
+                                <label class="form-check-label" for="include_children">
+                                    Включая дочерние подразделения
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="research_task" class="form-select" onchange="this.form.submit()">
+                                <option value="">Все НИР</option>
+                                {% for rt in research_tasks_list %}
+                                    <option value="{{ rt.id }}" {% if selected_research_task == rt.id %}selected{% endif %}>
+                                        {{ rt.tz_number|default:rt.title|truncatechars:50 }} ({{ rt.products_count }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Карточки статистики -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ stats.employees_count }}</div>
+                        <div class="stat-label">Сотрудников</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="stat-number">{{ stats.research_tasks_count }}</div>
+                        <div class="stat-label">НИР</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="stat-number">{{ stats.products_count }}</div>
+                        <div class="stat-label">Всего продукции</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <div class="stat-number">{{ stats.products_completed }}</div>
+                        <div class="stat-label">Выполнено</div>
+                    </div>
+                </div>
+            </div>
+             <!-- Диаграмма Ганта -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <strong><i class="bi bi-bar-chart-steps"></i> Календарный план продукции</strong>
+                    <button class="btn btn-sm btn-outline-secondary ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#ganttChart">
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="collapse show" id="ganttChart">
+                    <div class="card-body">
+                        <div id="ganttChartContainer" style="height: 500px; width: 100%;"></div>
+                    </div>
+                </div>
+            </div>           
+            <!-- Таблица продукции -->
+            <div class="card">
+                <div class="card-header">
+                    <strong><i class="bi bi-file-text"></i> Продукция подразделения</strong>
+                    <span class="badge bg-secondary ms-2">{{ products|length }}</span>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-sm table-hover product-table">
+                        <thead>
+                            <tr>
+                                <th>Продукция</th>
+                                <th>НИР</th>
+                                <th>Срок</th>
+                                <th>Статус</th>
+                                <th>Прогресс</th>
+                                <th>Ответственный</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                            <tr class="{% if product.is_overdue %}table-danger{% endif %}">
+                                <td>
+                                    <a href="{% url 'research_product_detail' product.id %}">
+                                        {{ product.name|truncatechars:50 }}
+                                    </a>
+                                    {% if product.research_substage %}
+                                        <br><small class="text-muted">
+                                            <i class="bi bi-diagram-3"></i> {{ product.research_substage.substage_number }}
+                                        </small>
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle">
+                                    {% if product.research_task %}
+                                        <span class="badge bg-secondary">{{ product.research_task.tz_number|default:"НИР" }}</span>
+                                        <small class="d-block text-muted">{{ product.research_task.title|truncatechars:35 }}</small>
+                                    {% else %}
+                                        <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle {% if product.is_overdue %}overdue{% endif %}">
+                                    {% if product.planned_end %}
+                                        <strong>{{ product.planned_end|date:"d.m.Y" }}</strong>
+                                        {% if product.is_overdue %}
+                                            <i class="bi bi-exclamation-triangle-fill text-danger" title="Просрочено"></i>
+                                        {% endif %}
+                                        <br><small class="text-muted">
+                                            <i class="bi bi-calendar"></i> 
+                                            Начало: {{ product.planned_start|date:"d.m.Y"|default:"—" }}
+                                        </small>
+                                    {% else %}
+                                        <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge status-badge bg-{% if product.status == 'completed' %}success{% elif product.status == 'in_progress' %}primary{% elif product.status == 'delayed' %}danger{% else %}secondary{% endif %}">
+                                        {{ product.status_display }}
+                                    </span>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress" style="height: 20px; width: 80px;">
+                                        <div class="progress-bar bg-{% if product.status == 'completed' %}success{% else %}primary{% endif %}" 
+                                             style="width: {{ product.completion_percent }}%;">
+                                            {{ product.completion_percent }}%
+                                        </div>
+                                    </div>
+                                 </div>
+                                </td>
+                                <td class="align-middle">
+                                    {% if product.responsible %}
+                                        <a href="{% url 'employee_detail' product.responsible.id %}">
+                                            {{ product.responsible.short_name }}
+                                        </a>
+                                    {% else %}
+                                        <span class="text-muted">—</span>
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle">
+                                    <a href="{% url 'product_assign_performers' product.id %}" 
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-people"></i>
+                                    </a>
+                                </td>
+                             </tr>
+                            {% empty %}
+                             <tr>
+                                <td colspan="7" class="text-center text-muted py-5">
+                                    Нет продукции для отображения
+                                </td>
+                             </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}у
+{% endblock %}
+{% block extra_js %}
+{{ block.super }}
+<!-- Frappe Gantt JS -->
+<!-- Frappe Gantt CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
+<script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
+<script>
+    // Инициализация Ганта для подразделения
+    function initDepartmentGantt() {
+        const ganttData = {{ gantt_data|safe }};
+        
+        if (!ganttData || ganttData.length === 0) {
+            document.getElementById('ganttChartContainer').innerHTML = 
+                '<div class="alert alert-info text-center py-5">Нет данных для отображения</div>';
+            return;
+        }
+        
+        const tasks = ganttData.map((task, index) => ({
+            id: `task-${task.id}`,
+            name: task.name,
+            start: task.start,
+            end: task.end,
+            progress: task.completion || 0,
+            custom_class: task.status === 'completed' ? 'completed' : ''
+        }));
+        
+        new Gantt("#ganttChartContainer", tasks, {
+            on_click: function(task) {
+                window.location.href = `/research/product/${task.id.split('-')[1]}/`;
+            },
+            bar_height: 35,
+            bar_corner_radius: 4,
+            padding: 18,
+            view_mode: 'Month',
+            date_format: 'YYYY-MM-DD',
+            language: 'ru'
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        initDepartmentGantt();
+    });
+</script>
+{% endblock %}

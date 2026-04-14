@@ -11323,3 +11323,538 @@ INFO 2026-04-11 18:49:13,869 log 13884 6392 "GET /static/js/main.js HTTP/1.1" 20
 INFO 2026-04-11 18:49:18,681 log 13884 6392 "GET /department-stats/ HTTP/1.1" 200 5064
 WARNING 2026-04-11 18:49:23,613 log 13884 6392 Not Found: /favicon.ico
 WARNING 2026-04-11 18:49:23,614 log 13884 6392 "GET /favicon.ico HTTP/1.1" 404 1864
+INFO 2026-04-14 12:06:18,910 autoreload 18024 6520 Watching for file changes with StatReloader
+INFO 2026-04-14 12:06:21,851 log 18024 2548 "GET / HTTP/1.1" 302 0
+ERROR 2026-04-14 12:06:21,976 log 18024 2548 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2026-04-14 12:06:21,986 log 18024 2548 "GET /login/?next=/ HTTP/1.1" 500 18538
+WARNING 2026-04-14 12:06:22,305 log 18024 2548 Not Found: /favicon.ico
+WARNING 2026-04-14 12:06:22,305 log 18024 2548 "GET /favicon.ico HTTP/1.1" 404 1848
+INFO 2026-04-14 12:07:58,578 log 18024 2548 "GET /department-stats/ HTTP/1.1" 302 0
+ERROR 2026-04-14 12:07:58,649 log 18024 2548 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2026-04-14 12:07:58,660 log 18024 2548 "GET /login/?next=/department-stats/ HTTP/1.1" 500 18627
+ERROR 2026-04-14 12:08:18,769 log 18024 2548 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2026-04-14 12:08:18,778 log 18024 2548 "GET /login/?next=/department-stats/ HTTP/1.1" 500 18587
+ERROR 2026-04-14 12:08:29,233 log 18024 2548 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 221, in _get_response
+    response = response.render()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 333, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2026-04-14 12:08:29,242 log 18024 2548 "GET /login/ HTTP/1.1" 500 18506
+INFO 2026-04-14 13:11:33,877 autoreload 18024 6520 E:\code\task_manager\taskmanager\urls.py changed, reloading.
+INFO 2026-04-14 13:11:34,892 autoreload 17604 13284 Watching for file changes with StatReloader
+INFO 2026-04-14 13:11:52,042 autoreload 17604 13284 E:\code\task_manager\taskmanager\urls.py changed, reloading.
+INFO 2026-04-14 13:11:52,620 autoreload 15300 12396 Watching for file changes with StatReloader
+INFO 2026-04-14 13:12:03,429 autoreload 15300 12396 E:\code\task_manager\taskmanager\urls.py changed, reloading.
+INFO 2026-04-14 13:12:04,155 autoreload 17516 12520 Watching for file changes with StatReloader
+INFO 2026-04-14 13:12:04,906 log 17516 11128 "GET /login/ HTTP/1.1" 200 1763
+INFO 2026-04-14 13:12:05,027 log 17516 11128 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 13:12:05,027 log 17516 16144 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 13:12:08,120 log 17516 16144 "POST /login/ HTTP/1.1" 302 0
+INFO 2026-04-14 13:12:08,208 log 17516 16144 "GET / HTTP/1.1" 200 5285
+INFO 2026-04-14 13:12:11,548 log 17516 16144 "GET /department-stats/ HTTP/1.1" 200 5054
+INFO 2026-04-14 13:12:23,411 log 17516 16144 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 5008
+INFO 2026-04-14 13:22:02,350 log 17516 13328 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 6360
+INFO 2026-04-14 13:22:05,446 log 17516 13328 "GET /department-stats/111/?include_children=on HTTP/1.1" 200 6312
+INFO 2026-04-14 13:22:13,232 log 17516 13328 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 6294
+INFO 2026-04-14 13:22:19,206 log 17516 13328 "GET /department-stats/123/?include_children=on HTTP/1.1" 200 6401
+INFO 2026-04-14 13:22:29,139 log 17516 13328 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 6336
+INFO 2026-04-14 13:22:37,736 log 17516 13328 "GET /employees/ HTTP/1.1" 200 4352
+INFO 2026-04-14 13:22:39,686 log 17516 13328 "GET /employee/295/ HTTP/1.1" 200 8936
+INFO 2026-04-14 13:22:43,278 log 17516 13328 "GET /employee/307/ HTTP/1.1" 200 16176
+INFO 2026-04-14 13:22:53,302 log 17516 13328 "GET / HTTP/1.1" 200 5271
+INFO 2026-04-14 13:22:55,768 log 17516 13328 "GET /department-stats/ HTTP/1.1" 200 6320
+INFO 2026-04-14 13:22:57,897 log 17516 13328 "GET /department-stats/110/?include_children=True HTTP/1.1" 200 6314
+INFO 2026-04-14 13:23:33,081 log 17516 13328 "GET /department-stats/123/?include_children=on HTTP/1.1" 200 6363
+INFO 2026-04-14 13:23:41,605 log 17516 13328 "GET /department-stats/121/ HTTP/1.1" 200 7005
+INFO 2026-04-14 13:24:38,631 log 17516 13328 "GET /department-stats/113/ HTTP/1.1" 200 7180
+ERROR 2026-04-14 13:24:47,194 log 17516 13328 Internal Server Error: /research/products/1560/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-14 13:24:47,198 log 17516 13328 "GET /research/products/1560/ HTTP/1.1" 500 12190
+INFO 2026-04-14 13:32:01,642 autoreload 17516 12520 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 13:32:02,403 autoreload 14760 11604 Watching for file changes with StatReloader
+ERROR 2026-04-14 13:32:05,872 log 14760 17484 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 240, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:32:05,876 log 14760 17484 "GET /department-stats/113/ HTTP/1.1" 500 14896
+ERROR 2026-04-14 13:32:07,122 log 14760 17484 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 240, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:32:07,126 log 14760 17484 "GET /department-stats/113/ HTTP/1.1" 500 14905
+WARNING 2026-04-14 13:32:07,206 log 14760 17484 Not Found: /favicon.ico
+WARNING 2026-04-14 13:32:07,206 log 14760 17484 "GET /favicon.ico HTTP/1.1" 404 1815
+ERROR 2026-04-14 13:32:27,858 log 14760 17484 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 240, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:32:27,862 log 14760 17484 "GET /department-stats/113/ HTTP/1.1" 500 14924
+WARNING 2026-04-14 13:32:27,939 log 14760 17484 Not Found: /favicon.ico
+WARNING 2026-04-14 13:32:27,939 log 14760 17484 "GET /favicon.ico HTTP/1.1" 404 1793
+ERROR 2026-04-14 13:32:28,714 log 14760 17484 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 240, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:32:28,719 log 14760 17484 "GET /department-stats/113/ HTTP/1.1" 500 14919
+WARNING 2026-04-14 13:32:28,797 log 14760 17484 Not Found: /favicon.ico
+WARNING 2026-04-14 13:32:28,798 log 14760 17484 "GET /favicon.ico HTTP/1.1" 404 1854
+INFO 2026-04-14 13:33:54,539 autoreload 14760 11604 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 13:33:55,255 autoreload 4368 18384 Watching for file changes with StatReloader
+ERROR 2026-04-14 13:33:57,277 log 4368 17280 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:33:57,283 log 4368 17280 "GET /department-stats/113/ HTTP/1.1" 500 14966
+INFO 2026-04-14 13:34:42,994 autoreload 4368 18384 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 13:34:43,701 autoreload 15984 18128 Watching for file changes with StatReloader
+INFO 2026-04-14 13:35:15,872 autoreload 15984 18128 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 13:35:16,569 autoreload 18068 17544 Watching for file changes with StatReloader
+ERROR 2026-04-14 13:35:20,036 log 18068 16436 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:20,040 log 18068 16436 "GET /department-stats/113/ HTTP/1.1" 500 14958
+ERROR 2026-04-14 13:35:21,014 log 18068 16436 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:21,018 log 18068 16436 "GET /department-stats/113/ HTTP/1.1" 500 14968
+ERROR 2026-04-14 13:35:22,280 log 18068 16436 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:22,284 log 18068 16436 "GET /department-stats/113/ HTTP/1.1" 500 14973
+WARNING 2026-04-14 13:35:22,360 log 18068 16436 Not Found: /favicon.ico
+WARNING 2026-04-14 13:35:22,361 log 18068 16436 "GET /favicon.ico HTTP/1.1" 404 1832
+ERROR 2026-04-14 13:35:23,174 log 18068 16436 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:23,179 log 18068 16436 "GET /department-stats/113/ HTTP/1.1" 500 14961
+WARNING 2026-04-14 13:35:23,263 log 18068 16436 Not Found: /favicon.ico
+WARNING 2026-04-14 13:35:23,264 log 18068 16436 "GET /favicon.ico HTTP/1.1" 404 1840
+ERROR 2026-04-14 13:35:30,822 log 18068 16436 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:30,826 log 18068 16436 "GET /department-stats/113/ HTTP/1.1" 500 14949
+WARNING 2026-04-14 13:35:30,905 log 18068 16436 Not Found: /favicon.ico
+WARNING 2026-04-14 13:35:30,906 log 18068 16436 "GET /favicon.ico HTTP/1.1" 404 1821
+INFO 2026-04-14 13:35:34,555 autoreload 14176 11528 Watching for file changes with StatReloader
+ERROR 2026-04-14 13:35:37,083 log 14176 15844 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:37,088 log 14176 15844 "GET /department-stats/113/ HTTP/1.1" 500 14882
+WARNING 2026-04-14 13:35:37,166 log 14176 15844 Not Found: /favicon.ico
+WARNING 2026-04-14 13:35:37,167 log 14176 15844 "GET /favicon.ico HTTP/1.1" 404 1801
+ERROR 2026-04-14 13:35:37,812 log 14176 15844 Internal Server Error: /department-stats/113/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 241, in department_stats
+    context['gantt_data'] = json.dumps(gantt_data)
+    ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+ERROR 2026-04-14 13:35:37,817 log 14176 15844 "GET /department-stats/113/ HTTP/1.1" 500 14940
+WARNING 2026-04-14 13:35:37,903 log 14176 15844 Not Found: /favicon.ico
+WARNING 2026-04-14 13:35:37,903 log 14176 15844 "GET /favicon.ico HTTP/1.1" 404 1808
+INFO 2026-04-14 13:36:27,695 autoreload 14176 11528 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 13:36:28,397 autoreload 16760 6344 Watching for file changes with StatReloader
+INFO 2026-04-14 13:36:29,695 log 16760 11464 "GET /department-stats/113/ HTTP/1.1" 200 8216
+INFO 2026-04-14 13:36:33,746 log 16760 11464 "GET /department-stats/113/ HTTP/1.1" 200 8210
+INFO 2026-04-14 13:36:33,840 log 16760 11464 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 13:36:33,840 log 16760 584 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 13:36:43,672 log 16760 584 "GET /department-stats/113/ HTTP/1.1" 200 8205
+INFO 2026-04-14 13:36:43,708 log 16760 584 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 13:36:43,709 log 16760 11464 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 13:36:50,379 log 16760 11464 Not Found: /favicon.ico
+WARNING 2026-04-14 13:36:50,380 log 16760 11464 "GET /favicon.ico HTTP/1.1" 404 1869
+INFO 2026-04-14 13:39:37,792 log 16760 11464 "GET /department-stats/113/ HTTP/1.1" 200 8329
+INFO 2026-04-14 13:39:43,943 log 16760 11464 "GET /department-stats/113/ HTTP/1.1" 200 8308
+INFO 2026-04-14 13:39:43,977 log 16760 11464 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 13:39:43,979 log 16760 584 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 13:39:44,708 log 16760 584 Not Found: /favicon.ico
+WARNING 2026-04-14 13:39:44,708 log 16760 584 "GET /favicon.ico HTTP/1.1" 404 1830
+INFO 2026-04-14 13:40:21,402 log 16760 584 "GET /department-stats/113/ HTTP/1.1" 200 8391
+INFO 2026-04-14 13:40:24,554 log 16760 584 "GET /department-stats/113/ HTTP/1.1" 200 8386
+INFO 2026-04-14 13:40:24,589 log 16760 584 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 13:40:24,590 log 16760 11464 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 13:40:25,392 log 16760 11464 Not Found: /favicon.ico
+WARNING 2026-04-14 13:40:25,393 log 16760 11464 "GET /favicon.ico HTTP/1.1" 404 1888
+INFO 2026-04-14 13:42:59,620 log 16760 11464 "GET /department-stats/113/ HTTP/1.1" 200 8372
+ERROR 2026-04-14 13:43:32,606 log 16760 11464 Internal Server Error: /research/product/1587/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 26, in research_product_detail
+    return render(request, 'tasks/research_product_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'research_product_edit' not found. 'research_product_edit' is not a valid view function or pattern name.
+ERROR 2026-04-14 13:43:32,616 log 16760 11464 "GET /research/product/1587/ HTTP/1.1" 500 20460
+INFO 2026-04-14 13:48:15,464 log 16760 11464 "GET /employees/ HTTP/1.1" 200 4387
+INFO 2026-04-14 13:48:16,870 log 16760 11464 "GET /employee/307/ HTTP/1.1" 200 16163
+INFO 2026-04-14 13:53:48,943 log 16760 5456 "GET /employees/ HTTP/1.1" 200 4354
+INFO 2026-04-14 13:55:10,889 log 16760 5456 "GET /department-stats/ HTTP/1.1" 200 7138
+INFO 2026-04-14 13:55:22,347 log 16760 5456 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 7165
+INFO 2026-04-14 13:55:24,758 log 16760 5456 "GET /department-stats/121/ HTTP/1.1" 200 8114
