@@ -11858,3 +11858,176 @@ INFO 2026-04-14 13:53:48,943 log 16760 5456 "GET /employees/ HTTP/1.1" 200 4354
 INFO 2026-04-14 13:55:10,889 log 16760 5456 "GET /department-stats/ HTTP/1.1" 200 7138
 INFO 2026-04-14 13:55:22,347 log 16760 5456 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 7165
 INFO 2026-04-14 13:55:24,758 log 16760 5456 "GET /department-stats/121/ HTTP/1.1" 200 8114
+INFO 2026-04-14 14:17:13,737 autoreload 18492 20200 Watching for file changes with StatReloader
+INFO 2026-04-14 14:17:18,063 log 18492 14128 "GET /department-stats/121/ HTTP/1.1" 200 9731
+ERROR 2026-04-14 14:17:22,292 log 18492 14128 Internal Server Error: /research/product/1586/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 26, in research_product_detail
+    return render(request, 'tasks/research_product_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'research_product_edit' not found. 'research_product_edit' is not a valid view function or pattern name.
+ERROR 2026-04-14 14:17:22,365 log 18492 14128 "GET /research/product/1586/ HTTP/1.1" 500 20777
+INFO 2026-04-14 14:19:33,094 log 18492 14128 "GET /department-stats/113/ HTTP/1.1" 200 10067
+INFO 2026-04-14 14:23:24,852 autoreload 18492 20200 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:23:25,649 autoreload 5312 21264 Watching for file changes with StatReloader
+INFO 2026-04-14 14:24:07,869 autoreload 5312 21264 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:24:08,629 autoreload 21080 17264 Watching for file changes with StatReloader
+INFO 2026-04-14 14:24:14,361 log 21080 20616 "GET /department-stats/113/ HTTP/1.1" 200 10533
+ERROR 2026-04-14 14:24:23,651 log 21080 20616 Internal Server Error: /research/product/1587/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\product_views.py", line 26, in research_product_detail
+    return render(request, 'tasks/research_product_detail.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 511, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\urls\resolvers.py", line 842, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'research_product_edit' not found. 'research_product_edit' is not a valid view function or pattern name.
+ERROR 2026-04-14 14:24:23,661 log 21080 20616 "GET /research/product/1587/ HTTP/1.1" 500 20496
+INFO 2026-04-14 14:30:33,654 autoreload 21080 17264 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:30:34,411 autoreload 12256 10708 Watching for file changes with StatReloader
+INFO 2026-04-14 14:32:34,877 autoreload 12256 10708 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:32:35,649 autoreload 15608 20336 Watching for file changes with StatReloader
+INFO 2026-04-14 14:32:39,934 log 15608 19852 "GET /department-stats/113/ HTTP/1.1" 200 11951
+INFO 2026-04-14 14:34:27,213 autoreload 15608 20336 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:34:28,084 autoreload 17516 19896 Watching for file changes with StatReloader
+INFO 2026-04-14 14:38:24,686 autoreload 17516 19896 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:38:25,657 autoreload 20076 19464 Watching for file changes with StatReloader
+INFO 2026-04-14 14:38:27,410 log 20076 17484 "GET /department-stats/113/ HTTP/1.1" 200 12001
+INFO 2026-04-14 14:38:33,092 log 20076 17484 "GET /employee/307/ HTTP/1.1" 200 16213
+INFO 2026-04-14 14:40:55,768 autoreload 20076 19464 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:40:56,554 autoreload 17828 20884 Watching for file changes with StatReloader
+INFO 2026-04-14 14:41:45,497 log 17828 21128 "GET /department-stats/113/ HTTP/1.1" 200 12274
+INFO 2026-04-14 14:44:01,342 autoreload 17828 20884 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:44:02,110 autoreload 15272 11392 Watching for file changes with StatReloader
+INFO 2026-04-14 14:44:31,119 autoreload 15272 11392 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 14:44:31,866 autoreload 10424 10400 Watching for file changes with StatReloader
+INFO 2026-04-14 14:44:50,033 log 10424 13820 "GET /department-stats/113/ HTTP/1.1" 200 12294
+INFO 2026-04-14 14:45:09,185 log 10424 13820 "GET /employee/307/ HTTP/1.1" 200 16146
+INFO 2026-04-14 14:45:31,093 log 10424 13820 "GET / HTTP/1.1" 200 5258
+ERROR 2026-04-14 15:04:31,511 log 10424 9848 Internal Server Error: /research/products/1641/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-14 15:04:31,516 log 10424 9848 "GET /research/products/1641/ HTTP/1.1" 500 12236
+ERROR 2026-04-14 15:04:35,736 log 10424 9848 Internal Server Error: /research/products/1563/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+TypeError: research_product_detail() got an unexpected keyword argument 'pk'
+ERROR 2026-04-14 15:04:35,740 log 10424 9848 "GET /research/products/1563/ HTTP/1.1" 500 12234
+INFO 2026-04-14 15:04:41,745 log 10424 9848 "GET / HTTP/1.1" 200 5244
+INFO 2026-04-14 15:04:44,866 log 10424 9848 "GET /research/15/ HTTP/1.1" 200 13212
+INFO 2026-04-14 15:05:27,943 log 10424 9848 "GET /employees/ HTTP/1.1" 200 4323
+INFO 2026-04-14 15:05:31,360 log 10424 9848 "GET /department-stats/ HTTP/1.1" 200 10191
+INFO 2026-04-14 15:05:33,019 log 10424 9848 "GET / HTTP/1.1" 200 5254
+INFO 2026-04-14 15:05:35,192 log 10424 9848 "GET /org-chart/ HTTP/1.1" 200 4218
+INFO 2026-04-14 15:05:35,350 log 10424 18872 "GET /static/js/organization.js HTTP/1.1" 200 6080
+INFO 2026-04-14 15:05:35,356 log 10424 9848 "GET /static/css/organization.css HTTP/1.1" 200 12144

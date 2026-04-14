@@ -105,20 +105,171 @@
         font-weight: bold !important;
     }
         /* Стили для Ганта */
-    .gantt .bar-label {
-        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
-        font-size: 11px !important;
-        fill: #fff !important;
-        font-weight: 500 !important;
-    }
-    .gantt .grid-header {
-        font-size: 12px !important;
-        font-weight: 600 !important;
-    }
     #ganttChartContainer {
-        min-height: 400px;
+        height: 650px;
         width: 100%;
         overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    /* Basic bar styles - ensure visible fill */
+    .gantt .bar {
+        cursor: pointer;
+        fill: #0d6efd !important;
+    }
+    .gantt .bar:hover {
+        opacity: 0.85;
+    }
+    
+    /* Bar label - larger font */
+    .gantt .bar-label {
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-size: 14px !important;
+        fill: #fff !important;
+        font-weight: 500;
+    }
+    
+    /* Grid header - larger font */
+    .gantt .grid-header {
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-size: 14px !important;
+        font-weight: 600;
+    }
+    
+    /* Month/year labels - larger */
+    .gantt .tick {
+        font-size: 13px !important;
+    }
+    
+    /* Hide arrows */
+    .gantt .arrow {
+        display: none;
+    }
+    
+    /* Hide Frappe Gantt's built-in popup */
+    .gantt-popup,
+    .popup-wrapper,
+    .gantt .popup {
+        display: none !important;
+    }
+    
+    /* Ensure SVG takes full height */
+    .gantt-container {
+        height: 100% !important;
+    }
+    
+    .gantt {
+        height: 100% !important;
+    }
+    
+    /* All bar labels have black text */
+    .gantt .bar-label,
+    .gantt .bar-wrapper text,
+    .gantt text.bar-label,
+    .gantt svg text {
+        fill: #000 !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Red highlight for closest products - only target the bar rect, not the wrapper */
+    .gantt .bar-closest .bar,
+    .gantt .bar-group.bar-closest-group .bar {
+        stroke: #ff0000 !important;
+        stroke-width: 4px !important;
+    }
+    
+    /* Ensure bar-wrapper does NOT apply fill to children */
+    .gantt .bar-closest {
+        fill: none !important;
+    }
+    
+    /* Highlighted (closest) bars have bold black text */
+    .gantt .bar-group:has(.bar-closest) .bar-label,
+    .gantt .bar-closest-group .bar-label,
+    .gantt .bar-group.bar-closest-group .bar-label {
+        fill: #000 !important;
+        font-weight: 700 !important;
+    }
+    
+    /* Ensure bar-closest class only affects the bar rect, not text */
+    .gantt .bar-closest {
+        fill: #dc3545 !important;
+    }
+    
+    /* Product popup styles */
+    #ganttPopup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        z-index: 10000;
+        min-width: 400px;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    #ganttPopupContent {
+        padding: 20px;
+    }
+    .popup-product-name {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #0d6efd;
+    }
+    .popup-row {
+        display: flex;
+        margin-bottom: 8px;
+    }
+    .popup-label {
+        font-weight: 500;
+        color: #666;
+        min-width: 130px;
+    }
+    .popup-value {
+        color: #333;
+    }
+    .performer-item {
+        background: #f8f9fa;
+        padding: 8px 12px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        border-left: 3px solid #0d6efd;
+    }
+    .performer-name {
+        font-weight: 600;
+        color: #333;
+    }
+    .performer-name a {
+        color: #0d6efd;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .performer-name a:hover {
+        color: #0a58ca;
+        text-decoration: underline;
+    }
+    .performer-position {
+        font-size: 13px;
+        color: #666;
+        margin-top: 2px;
+    }
+    .performer-department {
+        font-size: 12px;
+        color: #888;
+        margin-top: 2px;
+        font-style: italic;
+    }
+    .performer-role {
+        font-size: 12px;
+        color: #0d6efd;
+        font-weight: 500;
     }
 </style>
 {% endblock %}
@@ -137,6 +288,12 @@
                 </div>
             </div>
         </div>
+                    
+        <!-- Product popup with performers -->
+        <div id="ganttPopup">
+            <div id="ganttPopupContent"></div>
+        </div>
+                   
         
         <!-- Правая колонка: статистика -->
         <div class="col-md-9">
@@ -207,20 +364,32 @@
                     </div>
                 </div>
             </div>
-             <!-- Диаграмма Ганта -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <strong><i class="bi bi-bar-chart-steps"></i> Календарный план продукции</strong>
+            <!-- Диаграмма Ганта -->
+            <div class="mb-4">
+                <h5>
+                    <i class="bi bi-bar-chart-steps"></i> 
+                    Календарный план продукции
                     <button class="btn btn-sm btn-outline-secondary ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#ganttChart">
                         <i class="bi bi-chevron-down"></i>
                     </button>
-                </div>
+                </h5>
                 <div class="collapse show" id="ganttChart">
-                    <div class="card-body">
-                        <div id="ganttChartContainer" style="height: 500px; width: 100%;"></div>
+                    <!-- Кнопки переключения вида -->
+                    <div class="mb-2 d-flex justify-content-between align-items-center">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeView('Day')">День</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeView('Week')">Неделя</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm active" onclick="changeView('Month')" id="btn-month">Месяц</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeView('Year')">Год</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="ganttChartContainer"></div>
+                        </div>
                     </div>
                 </div>
-            </div>           
+            </div>
             <!-- Таблица продукции -->
             <div class="card">
                 <div class="card-header">
@@ -327,40 +496,255 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css">
 <script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
 <script>
-    // Инициализация Ганта для подразделения
-    function initDepartmentGantt() {
-        const ganttData = {{ gantt_data|safe }};
+    // ==================== КОНСТАНТЫ ====================
+    const COLORS = {
+        CLOSEST: '#dc3545',      // Красный для ближайших продуктов
+        DEFAULT: '#0d6efd',      // Синий по умолчанию
+        TEXT: '#000000'          // Черный для текста
+    };
+    
+    const TEXT_SELECTORS = [
+        '.gantt .bar-label',
+        '.gantt text',
+        '.gantt .bar-wrapper text',
+        '.gantt svg text',
+        '.gantt .bar-group text'
+    ];
+    
+    const COLOR_DELAYS = [100, 300, 600];
+    
+    // Global variables
+    const GANTT_DATA = {{ gantt_data|safe }};
+    let currentGantt = null;
+    let currentViewMode = 'Month';
+    
+    // ==================== ФУНКЦИИ ====================
+    
+    // ==================== ФУНКЦИИ ====================
+    
+    // ==================== ФУНКЦИИ ====================
+    
+    // Scroll to today's date
+    function scrollToToday() {
+        if (!currentGantt) return;
         
-        if (!ganttData || ganttData.length === 0) {
+        const container = document.getElementById('ganttChartContainer');
+        const today = new Date();
+        const todayStr = String(today.getDate()).padStart(2, '0') + '.' + 
+                        String(today.getMonth() + 1).padStart(2, '0') + '.' + 
+                        today.getFullYear();
+        
+        // Search for text with today's date
+        const todayText = [...document.querySelectorAll('.gantt .grid-header text, .gantt .tick text')]
+            .find(t => t.textContent.includes(todayStr));
+        
+        if (todayText) {
+            const x = parseFloat(todayText.getAttribute('x'));
+            if (!isNaN(x)) {
+                container.scrollLeft = Math.max(0, x - container.clientWidth / 2);
+            }
+        } else if (currentGantt.scroll_current) {
+            currentGantt.scroll_current();
+        }
+    }
+    
+    // Show product popup with performers
+    function showProductPopup(product) {
+        const popup = document.getElementById('ganttPopup');
+        const popupContent = document.getElementById('ganttPopupContent');
+            
+        if (!popup || !popupContent) return;
+            
+        let html = `<div class="popup-product-name">${product.name}</div>`;
+            
+        // Show performers
+        if (product.performers && product.performers.length > 0) {
+            html += `<div class="popup-row"><span class="popup-label">Исполнители:</span></div>`;
+            html += `<div style="margin-left: 10px;">`;
+            product.performers.forEach(performer => {
+                html += `<div class="performer-item">`;
+                html += `<div class="performer-name"><a href="/employee/${performer.id}/" target="_blank">${performer.name}</a></div>`;
+                if (performer.position) {
+                    html += `<div class="performer-position">${performer.position}</div>`;
+                }
+                if (performer.department) {
+                    html += `<div class="performer-department"><i class="bi bi-building"></i> ${performer.department}</div>`;
+                }
+                html += `<div class="performer-role">${performer.role}</div>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+        } else {
+            html += `<div class="popup-row"><span class="popup-label">Исполнители:</span> <span class="popup-value text-muted">Не назначены</span></div>`;
+        }
+            
+        // Show period
+        html += `<div class="popup-row" style="margin-top: 15px;"><span class="popup-label">Период:</span> <span class="popup-value">${product.start} — ${product.end}</span></div>`;
+            
+        popupContent.innerHTML = html;
+        popup.style.display = 'block';
+            
+        // Close on click outside
+        setTimeout(() => {
+            document.addEventListener('click', closePopupOnClickOutside);
+        }, 10);
+    }
+        
+    function closePopupOnClickOutside(e) {
+        const popup = document.getElementById('ganttPopup');
+        if (!popup.contains(e.target)) {
+            popup.style.display = 'none';
+            document.removeEventListener('click', closePopupOnClickOutside);
+        }
+    }
+    
+    // Apply custom colors to bars
+    function applyColors() {
+        if (!GANTT_DATA || GANTT_DATA.length === 0) return;
+        
+        // Get all bar groups (each group contains bar + label)
+        const barGroups = document.querySelectorAll('.gantt .bar-group');
+        
+        barGroups.forEach((group, index) => {
+            const bar = group.querySelector('.bar');
+            
+            // Match by index - Frappe Gantt renders in task array order
+            const task = GANTT_DATA[index];
+            if (!task || !bar) return;
+            
+            // Apply red highlight for closest product
+            if (task.is_closest) {
+                bar.setAttribute('fill', COLORS.CLOSEST);
+                bar.style.fill = COLORS.CLOSEST;
+                group.classList.add('bar-closest-group');
+            } else if (task.color) {
+                bar.setAttribute('fill', task.color);
+                bar.style.fill = task.color;
+            }
+        });
+        
+        // Force ALL bar labels to black text
+        COLOR_DELAYS.forEach(delay => {
+            setTimeout(() => {
+                TEXT_SELECTORS.forEach(selector => {
+                    document.querySelectorAll(selector).forEach(el => {
+                        el.style.fill = COLORS.TEXT;
+                        el.setAttribute('fill', COLORS.TEXT);
+                        el.style.color = COLORS.TEXT;
+                    });
+                });
+            }, delay);
+        });
+    }
+    
+    // Change view mode
+    function changeView(mode) {
+        currentViewMode = mode;
+        if (currentGantt) {
+            currentGantt.change_view_mode(mode);
+            setTimeout(() => {
+                applyColors();
+                // Re-translate Today button after view change
+                const todayBtn = document.querySelector('.gantt-today-button, .today-button');
+                if (todayBtn) {
+                    todayBtn.innerHTML = 'Сегодня';
+                    todayBtn.dataset.translated = 'true';
+                }
+            }, 300);
+        }
+        
+        document.querySelectorAll('.btn-group .btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        if (event && event.target) {
+            event.target.classList.add('active');
+        }
+    }
+    
+    // Initialize Gantt chart
+    function initDepartmentGantt() {
+        if (!GANTT_DATA || GANTT_DATA.length === 0) {
             document.getElementById('ganttChartContainer').innerHTML = 
                 '<div class="alert alert-info text-center py-5">Нет данных для отображения</div>';
             return;
         }
         
-        const tasks = ganttData.map((task, index) => ({
-            id: `task-${task.id}`,
-            name: task.name,
+        const container = document.getElementById('ganttChartContainer');
+        container.innerHTML = '';
+        
+        // Prepare tasks for Frappe Gantt
+        const tasks = GANTT_DATA.map((task, index) => ({
+            id: `task-${task.id || index}`,
+            name: task.name.substring(0, 45),
             start: task.start,
             end: task.end,
             progress: task.completion || 0,
-            custom_class: task.status === 'completed' ? 'completed' : ''
+            custom_class: task.is_closest ? 'bar-closest' : `bar-color-${index}`
         }));
         
-        new Gantt("#ganttChartContainer", tasks, {
+        console.log('Creating Gantt with tasks:', tasks);
+        
+        // Create Gantt chart with enhanced options
+        currentGantt = new Gantt("#ganttChartContainer", tasks, {
             on_click: function(task) {
-                window.location.href = `/research/product/${task.id.split('-')[1]}/`;
+                // Find the product data by ID
+                const productId = parseInt(task.id.split('-')[1]);
+                const product = GANTT_DATA.find(p => p.id === productId);
+                if (product) {
+                    showProductPopup(product);
+                }
+                return false; // Prevent default tooltip
             },
-            bar_height: 35,
+            on_hover: function() {
+                return false; // Disable default hover tooltip
+            },
+            bar_height: 45,
             bar_corner_radius: 4,
-            padding: 18,
-            view_mode: 'Month',
+            padding: 25,
             date_format: 'YYYY-MM-DD',
-            language: 'ru'
+            language: 'ru',
+            view_mode: currentViewMode,
+            popup_trigger: 'click'
+        });
+        
+        // Apply colors after render
+        setTimeout(() => {
+            applyColors();
+            scrollToToday();
+        }, 100);
+        
+        // Change Frappe Gantt's Today button text to Russian
+        [200, 500, 1000].forEach(delay => {
+            setTimeout(() => {
+                const todayBtn = document.querySelector('.gantt-today-button, .today-button');
+                if (todayBtn && !todayBtn.dataset.translated) {
+                    todayBtn.innerHTML = 'Сегодня';
+                    todayBtn.dataset.translated = 'true';
+                }
+            }, delay);
         });
     }
     
     document.addEventListener('DOMContentLoaded', function() {
         initDepartmentGantt();
+        
+        // Re-apply colors on scroll (throttled with requestAnimationFrame)
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    applyColors();
+                    // Re-translate Today button after scroll
+                    const todayBtn = document.querySelector('.gantt-today-button, .today-button');
+                    if (todayBtn && !todayBtn.dataset.translated) {
+                        todayBtn.innerHTML = 'Сегодня';
+                        todayBtn.dataset.translated = 'true';
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
     });
 </script>
 {% endblock %}

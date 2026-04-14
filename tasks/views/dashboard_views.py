@@ -186,7 +186,7 @@ def department_stats(request, dept_id=None):
         'research_stage', 
         'research_substage', 
         'responsible'
-    ):
+    ).prefetch_related('product_performers__employee__staff_positions__department'):
         # Определяем НИР по цепочке
         research_task = product.research_task
         if not research_task and product.research_stage:
@@ -208,6 +208,30 @@ def department_stats(request, dept_id=None):
         if planned_end and product.status not in ['completed', 'cancelled']:
             is_overdue = date.today() > planned_end
         
+        # Получаем исполнителей
+        performers = []
+        for pp in product.product_performers.all():
+            # Получаем подразделение сотрудника
+            department = ''
+            
+            # Пробуем сначала активные штатные позиции
+            staff_pos = pp.employee.staff_positions.filter(is_active=True).first()
+            
+            # Если нет активных, пробуем все позиции
+            if not staff_pos:
+                staff_pos = pp.employee.staff_positions.first()
+            
+            if staff_pos and staff_pos.department:
+                department = staff_pos.department.name
+            
+            performers.append({
+                'id': pp.employee.id,
+                'name': pp.employee.full_name,
+                'position': pp.employee.position if pp.employee.position else '',
+                'department': department,
+                'role': pp.get_role_display(),
+            })
+        
         products_detail.append({
             'id': product.id,
             'name': product.name,
@@ -219,6 +243,7 @@ def department_stats(request, dept_id=None):
             'completion_percent': product.completion_percent,
             'responsible': product.responsible,
             'is_overdue': is_overdue,
+            'performers': performers,
         })
 
     # Сортируем по дате окончания
@@ -235,7 +260,30 @@ def department_stats(request, dept_id=None):
                 'end': product['planned_end'].isoformat(),
                 'completion': product['completion_percent'],
                 'status': product['status'],
+                'performers': product['performers'],
             })
+
+    # Вычисляем ближайший продукт (с минимальной разницей до сегодняшней даты)
+    today = date.today()
+    all_end_dates = []
+    for item in gantt_data:
+        end_date = date.fromisoformat(item['end'])
+        if end_date >= today:
+            days_diff = (end_date - today).days
+            all_end_dates.append({
+                'product_id': item['id'],
+                'days_diff': days_diff
+            })
+    
+    # Находим продукты с минимальной разницей
+    closest_product_ids = set()
+    if all_end_dates:
+        min_days = min(item['days_diff'] for item in all_end_dates)
+        closest_product_ids = {item['product_id'] for item in all_end_dates if item['days_diff'] == min_days}
+    
+    # Помечаем ближайшие продукты в gantt_data
+    for item in gantt_data:
+        item['is_closest'] = item['id'] in closest_product_ids
 
     # Список доступных НИР для фильтра
     research_tasks_list = []
