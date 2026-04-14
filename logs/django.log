@@ -12031,3 +12031,1164 @@ INFO 2026-04-14 15:05:33,019 log 10424 9848 "GET / HTTP/1.1" 200 5254
 INFO 2026-04-14 15:05:35,192 log 10424 9848 "GET /org-chart/ HTTP/1.1" 200 4218
 INFO 2026-04-14 15:05:35,350 log 10424 18872 "GET /static/js/organization.js HTTP/1.1" 200 6080
 INFO 2026-04-14 15:05:35,356 log 10424 9848 "GET /static/css/organization.css HTTP/1.1" 200 12144
+INFO 2026-04-14 15:21:22,088 autoreload 21480 21400 Watching for file changes with StatReloader
+INFO 2026-04-14 15:26:36,306 log 21480 20324 "GET /org-chart/ HTTP/1.1" 200 3274
+ERROR 2026-04-14 15:34:44,337 log 21480 19272 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:34:44,357 log 21480 19272 "GET /org-chart/ HTTP/1.1" 500 30584
+ERROR 2026-04-14 15:34:46,236 log 21480 19272 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:34:46,254 log 21480 19272 "GET /org-chart/ HTTP/1.1" 500 30561
+ERROR 2026-04-14 15:34:48,399 log 21480 19272 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:34:48,415 log 21480 19272 "GET /org-chart/ HTTP/1.1" 500 30598
+ERROR 2026-04-14 15:34:53,042 log 21480 19272 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:34:53,057 log 21480 19272 "GET /org-chart/ HTTP/1.1" 500 30496
+ERROR 2026-04-14 15:34:59,137 log 21480 19272 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:34:59,154 log 21480 19272 "GET /org-chart/ HTTP/1.1" 500 30620
+ERROR 2026-04-14 15:37:13,300 log 21480 20324 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:37:13,315 log 21480 20324 "GET /org-chart/ HTTP/1.1" 500 30550
+ERROR 2026-04-14 15:37:14,144 log 21480 20324 Internal Server Error: /org-chart/
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+ERROR 2026-04-14 15:37:14,159 log 21480 20324 "GET /org-chart/ HTTP/1.1" 500 30595
+INFO 2026-04-14 15:38:14,715 autoreload 21480 21400 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 15:38:15,715 autoreload 19776 20884 Watching for file changes with StatReloader
+INFO 2026-04-14 15:38:26,940 autoreload 19776 20884 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 15:38:27,683 autoreload 17012 17028 Watching for file changes with StatReloader
+INFO 2026-04-14 15:38:42,925 autoreload 15832 13896 Watching for file changes with StatReloader
+INFO 2026-04-14 15:38:45,218 log 15832 4396 "GET /org-chart/ HTTP/1.1" 200 3355
+INFO 2026-04-14 15:38:53,342 log 15832 4396 "GET /org-chart/ HTTP/1.1" 200 3425
+INFO 2026-04-14 15:38:53,475 log 15832 18560 "GET /static/css/organization.css HTTP/1.1" 200 14700
+INFO 2026-04-14 15:38:53,485 log 15832 4396 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:38:53,492 log 15832 4932 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 15:38:53,493 log 15832 4968 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 15:38:54,136 log 15832 4968 Not Found: /favicon.ico
+WARNING 2026-04-14 15:38:54,137 log 15832 4968 "GET /favicon.ico HTTP/1.1" 404 1882
+INFO 2026-04-14 15:39:12,606 autoreload 15832 13896 E:\code\task_manager\tasks\views\dashboard_views.py changed, reloading.
+INFO 2026-04-14 15:39:13,481 autoreload 2536 10844 Watching for file changes with StatReloader
+INFO 2026-04-14 15:39:14,829 log 2536 15908 "GET /org-chart/ HTTP/1.1" 200 3341
+INFO 2026-04-14 15:39:15,011 log 2536 15908 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:39:15,021 log 2536 20052 "GET /static/css/organization.css HTTP/1.1" 200 14700
+INFO 2026-04-14 15:39:15,053 log 2536 8136 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 15:39:15,056 log 2536 19996 "GET /static/js/organization.js HTTP/1.1" 200 5596
+WARNING 2026-04-14 15:39:15,173 log 2536 19996 Not Found: /favicon.ico
+WARNING 2026-04-14 15:39:15,174 log 2536 19996 "GET /favicon.ico HTTP/1.1" 404 1852
+INFO 2026-04-14 15:42:05,119 log 2536 19996 "GET /org-chart/ HTTP/1.1" 200 5509
+INFO 2026-04-14 15:42:05,155 log 2536 19996 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 15:42:05,155 log 2536 8136 "GET /static/js/organization.js HTTP/1.1" 304 0
+INFO 2026-04-14 15:42:06,841 log 2536 8136 "GET /org-chart/ HTTP/1.1" 200 5472
+INFO 2026-04-14 15:42:06,885 log 2536 8136 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:42:06,886 log 2536 15908 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 15:42:06,886 log 2536 19996 "GET /static/css/organization.css HTTP/1.1" 200 14700
+INFO 2026-04-14 15:42:06,886 log 2536 20052 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 15:42:07,117 log 2536 19996 Not Found: /favicon.ico
+WARNING 2026-04-14 15:42:07,118 log 2536 19996 "GET /favicon.ico HTTP/1.1" 404 1883
+INFO 2026-04-14 15:43:13,986 log 2536 19996 "GET /org-chart/ HTTP/1.1" 200 5543
+INFO 2026-04-14 15:43:14,026 log 2536 19996 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:43:14,029 log 2536 20052 "GET /static/css/organization.css HTTP/1.1" 200 16922
+INFO 2026-04-14 15:43:14,031 log 2536 8136 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 15:43:14,031 log 2536 15908 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 15:43:14,317 log 2536 15908 Not Found: /favicon.ico
+WARNING 2026-04-14 15:43:14,318 log 2536 15908 "GET /favicon.ico HTTP/1.1" 404 1796
+INFO 2026-04-14 15:43:37,553 log 2536 15908 "GET /org-chart/ HTTP/1.1" 200 5506
+INFO 2026-04-14 15:43:37,596 log 2536 15908 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:43:37,603 log 2536 20052 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 15:43:37,603 log 2536 19996 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 15:43:37,603 log 2536 8136 "GET /static/css/organization.css HTTP/1.1" 200 16922
+WARNING 2026-04-14 15:43:37,859 log 2536 20052 Not Found: /favicon.ico
+WARNING 2026-04-14 15:43:37,860 log 2536 20052 "GET /favicon.ico HTTP/1.1" 404 1797
+INFO 2026-04-14 15:46:32,528 log 2536 20052 "GET /org-chart/ HTTP/1.1" 200 5490
+INFO 2026-04-14 15:46:32,573 log 2536 20052 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:46:32,577 log 2536 8136 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 15:46:32,577 log 2536 15908 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 15:46:32,577 log 2536 19996 "GET /static/css/organization.css HTTP/1.1" 200 17048
+WARNING 2026-04-14 15:46:32,937 log 2536 8136 Not Found: /favicon.ico
+WARNING 2026-04-14 15:46:32,937 log 2536 8136 "GET /favicon.ico HTTP/1.1" 404 1886
+INFO 2026-04-14 15:46:35,438 log 2536 8136 "GET /org-chart/ HTTP/1.1" 200 5527
+INFO 2026-04-14 15:46:35,470 log 2536 8136 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 15:46:37,877 log 2536 8136 "GET /org-chart/ HTTP/1.1" 200 5497
+INFO 2026-04-14 15:46:37,912 log 2536 8136 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 15:46:38,376 log 2536 8136 "GET /org-chart/ HTTP/1.1" 200 5544
+INFO 2026-04-14 15:46:38,422 log 2536 8136 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:46:38,423 log 2536 15908 "GET /static/css/organization.css HTTP/1.1" 200 17048
+INFO 2026-04-14 15:46:38,424 log 2536 19996 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 15:46:38,424 log 2536 20052 "GET /static/js/organization.js HTTP/1.1" 200 5596
+WARNING 2026-04-14 15:46:38,708 log 2536 20052 Not Found: /favicon.ico
+WARNING 2026-04-14 15:46:38,708 log 2536 20052 "GET /favicon.ico HTTP/1.1" 404 1890
+INFO 2026-04-14 15:46:39,394 log 2536 20052 "GET /org-chart/ HTTP/1.1" 200 5513
+INFO 2026-04-14 15:46:39,435 log 2536 20052 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 15:46:39,435 log 2536 15908 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 15:46:39,435 log 2536 19996 "GET /static/css/organization.css HTTP/1.1" 200 17048
+INFO 2026-04-14 15:46:39,437 log 2536 8136 "GET /static/js/organization.js HTTP/1.1" 200 5596
+WARNING 2026-04-14 15:46:39,686 log 2536 8136 Not Found: /favicon.ico
+WARNING 2026-04-14 15:46:39,686 log 2536 8136 "GET /favicon.ico HTTP/1.1" 404 1839
+INFO 2026-04-14 15:46:44,984 log 2536 8136 "GET /employee/265/ HTTP/1.1" 200 7648
+INFO 2026-04-14 16:05:29,626 log 2536 15740 "GET /org-chart/ HTTP/1.1" 200 5568
+INFO 2026-04-14 16:05:29,669 log 2536 18224 "GET /static/js/organization.js HTTP/1.1" 304 0
+INFO 2026-04-14 16:05:29,670 log 2536 15740 "GET /static/css/organization.css HTTP/1.1" 200 17156
+INFO 2026-04-14 16:05:32,565 log 2536 15740 "GET /org-chart/ HTTP/1.1" 200 5494
+INFO 2026-04-14 16:05:32,607 log 2536 18224 "GET /static/css/organization.css HTTP/1.1" 200 17156
+INFO 2026-04-14 16:05:32,607 log 2536 15740 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:05:32,607 log 2536 16012 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:05:32,608 log 2536 19684 "GET /static/js/organization.js HTTP/1.1" 200 5596
+WARNING 2026-04-14 16:05:32,947 log 2536 19684 Not Found: /favicon.ico
+WARNING 2026-04-14 16:05:32,947 log 2536 19684 "GET /favicon.ico HTTP/1.1" 404 1858
+INFO 2026-04-14 16:05:33,511 log 2536 19684 "GET /org-chart/ HTTP/1.1" 200 5566
+INFO 2026-04-14 16:05:33,553 log 2536 19684 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:05:33,554 log 2536 16012 "GET /static/css/organization.css HTTP/1.1" 200 17156
+INFO 2026-04-14 16:05:33,554 log 2536 15740 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 16:05:33,554 log 2536 18224 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 16:05:33,789 log 2536 15740 Not Found: /favicon.ico
+WARNING 2026-04-14 16:05:33,795 log 2536 15740 "GET /favicon.ico HTTP/1.1" 404 1881
+INFO 2026-04-14 16:06:01,298 autoreload 8732 21000 Watching for file changes with StatReloader
+INFO 2026-04-14 16:06:04,905 log 8732 20424 "GET /org-chart/ HTTP/1.1" 200 5571
+INFO 2026-04-14 16:06:04,943 log 8732 20424 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 16:06:07,625 log 8732 20424 "GET /org-chart/ HTTP/1.1" 200 5529
+INFO 2026-04-14 16:06:07,759 log 8732 6396 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:06:07,766 log 8732 2120 "GET /static/css/organization.css HTTP/1.1" 200 17156
+INFO 2026-04-14 16:06:07,767 log 8732 2916 "GET /static/js/organization.js HTTP/1.1" 200 5596
+INFO 2026-04-14 16:06:07,767 log 8732 20424 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 16:06:07,986 log 8732 20424 Not Found: /favicon.ico
+WARNING 2026-04-14 16:06:07,986 log 8732 20424 "GET /favicon.ico HTTP/1.1" 404 1817
+INFO 2026-04-14 16:06:09,132 log 8732 20424 "GET /org-chart/ HTTP/1.1" 200 5534
+INFO 2026-04-14 16:06:09,171 log 8732 20424 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:06:09,176 log 8732 2916 "GET /static/css/organization.css HTTP/1.1" 200 17156
+INFO 2026-04-14 16:06:09,176 log 8732 2120 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:06:09,176 log 8732 6396 "GET /static/js/organization.js HTTP/1.1" 200 5596
+WARNING 2026-04-14 16:06:09,409 log 8732 6396 Not Found: /favicon.ico
+WARNING 2026-04-14 16:06:09,409 log 8732 6396 "GET /favicon.ico HTTP/1.1" 404 1801
+INFO 2026-04-14 16:06:48,225 log 8732 6396 "GET /org-chart/ HTTP/1.1" 200 5488
+INFO 2026-04-14 16:06:48,268 log 8732 6396 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 16:08:20,972 log 8732 6396 "GET /org-chart/ HTTP/1.1" 200 5559
+INFO 2026-04-14 16:08:21,016 log 8732 6396 "GET /static/css/organization.css HTTP/1.1" 200 17176
+INFO 2026-04-14 16:08:22,577 log 8732 6396 "GET /org-chart/ HTTP/1.1" 200 5497
+INFO 2026-04-14 16:08:22,616 log 8732 6396 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 16:12:05,864 log 8732 6396 "GET /org-chart/ HTTP/1.1" 200 5521
+INFO 2026-04-14 16:12:05,905 log 8732 6396 "GET /static/css/organization.css HTTP/1.1" 200 17318
+INFO 2026-04-14 16:12:05,906 log 8732 13964 "GET /static/js/organization.js HTTP/1.1" 200 6526
+INFO 2026-04-14 16:12:07,771 log 8732 13964 "GET /org-chart/ HTTP/1.1" 200 5522
+INFO 2026-04-14 16:12:07,810 log 8732 6396 "GET /static/css/organization.css HTTP/1.1" 200 17318
+INFO 2026-04-14 16:12:07,812 log 8732 19404 "GET /static/js/organization.js HTTP/1.1" 200 6526
+INFO 2026-04-14 16:12:07,820 log 8732 13964 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:12:07,820 log 8732 15272 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 16:12:08,026 log 8732 15272 Not Found: /favicon.ico
+WARNING 2026-04-14 16:12:08,027 log 8732 15272 "GET /favicon.ico HTTP/1.1" 404 1866
+INFO 2026-04-14 16:13:40,566 log 8732 15272 "GET /org-chart/ HTTP/1.1" 200 5528
+INFO 2026-04-14 16:13:40,604 log 8732 15272 "GET /static/css/organization.css HTTP/1.1" 304 0
+INFO 2026-04-14 16:13:40,604 log 8732 13964 "GET /static/js/organization.js HTTP/1.1" 304 0
+INFO 2026-04-14 16:13:49,535 autoreload 17668 19228 Watching for file changes with StatReloader
+INFO 2026-04-14 16:13:52,560 log 17668 20048 "GET /org-chart/ HTTP/1.1" 200 5460
+INFO 2026-04-14 16:13:55,208 log 17668 20048 "GET /org-chart/ HTTP/1.1" 200 5511
+INFO 2026-04-14 16:13:55,337 log 17668 20048 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:13:55,344 log 17668 17376 "GET /static/css/organization.css HTTP/1.1" 200 17318
+INFO 2026-04-14 16:13:55,348 log 17668 9760 "GET /static/js/organization.js HTTP/1.1" 200 6526
+INFO 2026-04-14 16:13:55,351 log 17668 18444 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 16:13:55,484 log 17668 18444 Not Found: /favicon.ico
+WARNING 2026-04-14 16:13:55,485 log 17668 18444 "GET /favicon.ico HTTP/1.1" 404 1808
+INFO 2026-04-14 16:16:12,941 log 17668 18444 "GET /org-chart/ HTTP/1.1" 200 5533
+INFO 2026-04-14 16:16:12,990 log 17668 9760 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:16:12,991 log 17668 20048 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 16:16:12,991 log 17668 17376 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:16:12,991 log 17668 18444 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 16:16:13,285 log 17668 20048 Not Found: /favicon.ico
+WARNING 2026-04-14 16:16:13,286 log 17668 20048 "GET /favicon.ico HTTP/1.1" 404 1864
+WARNING 2026-04-14 16:16:40,200 log 17668 20048 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 16:16:40,201 log 17668 20048 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1848
+INFO 2026-04-14 16:16:44,375 log 17668 20048 "GET /org-chart/ HTTP/1.1" 200 5473
+WARNING 2026-04-14 16:16:44,437 log 17668 20048 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 16:16:44,438 log 17668 20048 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1894
+INFO 2026-04-14 16:16:44,439 log 17668 17376 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:16:44,440 log 17668 18444 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:16:44,441 log 17668 12256 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 16:16:44,440 log 17668 9760 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 16:16:44,741 log 17668 12256 Not Found: /favicon.ico
+WARNING 2026-04-14 16:16:44,744 log 17668 12256 "GET /favicon.ico HTTP/1.1" 404 1883
+INFO 2026-04-14 16:23:25,159 log 17668 560 "GET /org-chart/ HTTP/1.1" 200 5487
+INFO 2026-04-14 16:23:25,205 log 17668 560 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:23:25,209 log 17668 12524 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:23:25,211 log 17668 19000 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 16:23:25,212 log 17668 12640 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 16:23:25,603 log 17668 12640 Not Found: /favicon.ico
+WARNING 2026-04-14 16:23:25,604 log 17668 12640 "GET /favicon.ico HTTP/1.1" 404 1844
+INFO 2026-04-14 16:23:40,779 autoreload 4984 20076 Watching for file changes with StatReloader
+INFO 2026-04-14 16:23:45,685 log 4984 16208 "GET /org-chart/ HTTP/1.1" 200 5477
+INFO 2026-04-14 16:23:45,819 log 4984 18916 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:23:45,823 log 4984 16208 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:23:45,824 log 4984 2928 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:23:45,834 log 4984 16412 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+WARNING 2026-04-14 16:23:46,079 log 4984 16412 Not Found: /favicon.ico
+WARNING 2026-04-14 16:23:46,081 log 4984 16412 "GET /favicon.ico HTTP/1.1" 404 1799
+INFO 2026-04-14 16:23:48,125 log 4984 16412 "GET /org-chart/ HTTP/1.1" 200 5552
+INFO 2026-04-14 16:23:48,172 log 4984 16412 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:23:48,172 log 4984 2928 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:23:48,172 log 4984 16208 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:23:48,173 log 4984 18916 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+WARNING 2026-04-14 16:23:48,407 log 4984 18916 Not Found: /favicon.ico
+WARNING 2026-04-14 16:23:48,407 log 4984 18916 "GET /favicon.ico HTTP/1.1" 404 1885
+WARNING 2026-04-14 16:24:00,892 log 4984 18916 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 16:24:00,892 log 4984 18916 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1911
+INFO 2026-04-14 16:24:03,373 log 4984 18916 "GET /org-chart/ HTTP/1.1" 200 5463
+WARNING 2026-04-14 16:24:03,436 log 4984 18916 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 16:24:03,437 log 4984 18916 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1887
+INFO 2026-04-14 16:24:03,438 log 4984 2928 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:24:03,438 log 4984 16208 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:24:03,438 log 4984 16412 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:24:03,440 log 4984 19388 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+WARNING 2026-04-14 16:24:03,700 log 4984 19388 Not Found: /favicon.ico
+WARNING 2026-04-14 16:24:03,701 log 4984 19388 "GET /favicon.ico HTTP/1.1" 404 1833
+INFO 2026-04-14 16:24:07,370 log 4984 19388 "GET /org-chart/ HTTP/1.1" 200 5551
+WARNING 2026-04-14 16:24:07,433 log 4984 19388 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-14 16:24:07,433 log 4984 16412 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 16:24:07,433 log 4984 18916 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:24:07,434 log 4984 16208 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:24:07,434 log 4984 2928 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 16:24:07,434 log 4984 19388 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+WARNING 2026-04-14 16:24:07,734 log 4984 2928 Not Found: /favicon.ico
+WARNING 2026-04-14 16:24:07,734 log 4984 2928 "GET /favicon.ico HTTP/1.1" 404 1827
+INFO 2026-04-14 16:24:28,558 log 4984 2928 "GET /org-chart/ HTTP/1.1" 200 5493
+INFO 2026-04-14 16:24:28,594 log 4984 2928 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:24:28,607 log 4984 16208 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 16:24:28,607 log 4984 18916 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 16:24:28,608 log 4984 19388 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+WARNING 2026-04-14 16:24:28,903 log 4984 19388 Not Found: /favicon.ico
+WARNING 2026-04-14 16:24:28,904 log 4984 19388 "GET /favicon.ico HTTP/1.1" 404 1846
+INFO 2026-04-14 16:25:25,290 log 4984 19388 "GET /org-chart/ HTTP/1.1" 200 5538
+INFO 2026-04-14 16:25:27,618 log 4984 19388 "GET /org-chart/ HTTP/1.1" 200 5486
+INFO 2026-04-14 16:25:28,256 log 4984 19388 "GET /org-chart/ HTTP/1.1" 200 5496
+INFO 2026-04-14 16:25:28,294 log 4984 19388 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 16:25:28,295 log 4984 18916 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 16:25:28,295 log 4984 2928 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 16:25:28,296 log 4984 16208 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 16:25:28,507 log 4984 16208 Not Found: /favicon.ico
+WARNING 2026-04-14 16:25:28,508 log 4984 16208 "GET /favicon.ico HTTP/1.1" 404 1829
+INFO 2026-04-14 16:27:15,745 log 4984 16208 "GET /department-stats/ HTTP/1.1" 200 10209
+INFO 2026-04-14 16:27:31,402 log 4984 16208 "GET /department-stats/121/?include_children=True HTTP/1.1" 200 10211
+INFO 2026-04-14 16:27:35,598 log 4984 16208 "GET /department-stats/121/ HTTP/1.1" 200 11482
+INFO 2026-04-14 16:27:38,733 log 4984 16208 "GET /department-stats/113/ HTTP/1.1" 200 12305
+INFO 2026-04-14 16:28:27,651 log 4984 16208 "GET /employee/307/ HTTP/1.1" 200 16210
+INFO 2026-04-14 16:29:00,225 log 4984 16208 "GET / HTTP/1.1" 200 5232
+INFO 2026-04-14 17:05:30,353 log 4984 18564 "GET /org-chart/ HTTP/1.1" 200 5530
+INFO 2026-04-14 17:05:30,426 log 4984 16748 "GET /static/js/organization.js?v=2 HTTP/1.1" 304 0
+INFO 2026-04-14 17:05:30,426 log 4984 18564 "GET /static/css/organization.css?v=2 HTTP/1.1" 304 0
+INFO 2026-04-14 17:06:15,657 log 4984 12960 "GET /org-chart/ HTTP/1.1" 200 5476
+INFO 2026-04-14 17:06:15,704 log 4984 12960 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:06:15,715 log 4984 12296 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:06:15,721 log 4984 16484 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:06:15,736 log 4984 2652 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+WARNING 2026-04-14 17:06:16,221 log 4984 2652 Not Found: /favicon.ico
+WARNING 2026-04-14 17:06:16,231 log 4984 2652 "GET /favicon.ico HTTP/1.1" 404 1875
+INFO 2026-04-14 17:09:26,678 log 4984 2652 "GET /org-chart/ HTTP/1.1" 200 5499
+INFO 2026-04-14 17:09:26,716 log 4984 2652 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:09:26,717 log 4984 16484 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:09:26,718 log 4984 12296 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:09:26,718 log 4984 12960 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:09:26,948 log 4984 12960 Not Found: /favicon.ico
+WARNING 2026-04-14 17:09:26,948 log 4984 12960 "GET /favicon.ico HTTP/1.1" 404 1820
+INFO 2026-04-14 17:10:31,423 autoreload 17716 17116 Watching for file changes with StatReloader
+INFO 2026-04-14 17:10:35,310 log 17716 6648 "GET /org-chart/ HTTP/1.1" 200 5509
+INFO 2026-04-14 17:10:35,485 log 17716 18124 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:10:35,485 log 17716 6648 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:10:35,485 log 17716 2412 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:10:35,485 log 17716 12780 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+WARNING 2026-04-14 17:10:35,627 log 17716 2412 Not Found: /favicon.ico
+WARNING 2026-04-14 17:10:35,628 log 17716 2412 "GET /favicon.ico HTTP/1.1" 404 1881
+INFO 2026-04-14 17:11:29,400 log 17716 2412 "GET /org-chart/ HTTP/1.1" 200 5497
+INFO 2026-04-14 17:11:29,436 log 17716 2412 "GET /static/css/organization.css?v=2 HTTP/1.1" 304 0
+INFO 2026-04-14 17:11:30,808 log 17716 2412 "GET /org-chart/ HTTP/1.1" 200 5539
+INFO 2026-04-14 17:11:30,849 log 17716 2412 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:11:30,850 log 17716 18124 "GET /static/css/organization.css?v=2 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:11:30,850 log 17716 12780 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:11:30,851 log 17716 6648 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:11:31,281 log 17716 6648 Not Found: /favicon.ico
+WARNING 2026-04-14 17:11:31,282 log 17716 6648 "GET /favicon.ico HTTP/1.1" 404 1827
+INFO 2026-04-14 17:12:32,481 log 17716 6648 "GET /org-chart/ HTTP/1.1" 200 5557
+INFO 2026-04-14 17:12:32,516 log 17716 6648 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:12:32,516 log 17716 12780 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:12:32,517 log 17716 2412 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:12:32,517 log 17716 18124 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 17:12:32,735 log 17716 18124 Not Found: /favicon.ico
+WARNING 2026-04-14 17:12:32,736 log 17716 18124 "GET /favicon.ico HTTP/1.1" 404 1838
+INFO 2026-04-14 17:12:33,506 log 17716 18124 "GET /org-chart/ HTTP/1.1" 200 5538
+INFO 2026-04-14 17:12:33,543 log 17716 18124 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:12:33,543 log 17716 6648 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:12:33,543 log 17716 12780 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:12:33,544 log 17716 2412 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:12:33,774 log 17716 6648 "GET /org-chart/ HTTP/1.1" 200 5489
+INFO 2026-04-14 17:12:33,821 log 17716 6648 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:12:33,822 log 17716 18124 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:12:33,822 log 17716 12780 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:12:33,822 log 17716 2412 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:12:34,030 log 17716 18124 "GET /org-chart/ HTTP/1.1" 200 5498
+INFO 2026-04-14 17:12:34,073 log 17716 18124 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:12:34,075 log 17716 6648 "GET /static/js/organization.js?v=2 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:12:34,075 log 17716 2412 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:12:34,075 log 17716 12780 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+WARNING 2026-04-14 17:12:34,723 log 17716 6648 Not Found: /favicon.ico
+WARNING 2026-04-14 17:12:34,724 log 17716 6648 "GET /favicon.ico HTTP/1.1" 404 1884
+WARNING 2026-04-14 17:12:38,933 log 17716 6648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:12:38,962 log 17716 6648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1872
+INFO 2026-04-14 17:12:45,461 log 17716 6648 "GET /org-chart/ HTTP/1.1" 200 5490
+INFO 2026-04-14 17:12:45,510 log 17716 6648 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:12:45,511 log 17716 18124 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:12:45,512 log 17716 12780 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:12:45,532 log 17716 8904 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:12:45,534 log 17716 2412 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:12:45,535 log 17716 2412 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1904
+WARNING 2026-04-14 17:12:46,051 log 17716 2412 Not Found: /favicon.ico
+WARNING 2026-04-14 17:12:46,052 log 17716 2412 "GET /favicon.ico HTTP/1.1" 404 1792
+INFO 2026-04-14 17:12:54,715 log 17716 2412 "GET /org-chart/ HTTP/1.1" 200 5516
+INFO 2026-04-14 17:12:54,766 log 17716 8904 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:12:54,766 log 17716 6648 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:12:54,767 log 17716 12780 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:12:54,769 log 17716 18124 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 17:12:54,785 log 17716 2412 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:12:54,786 log 17716 2412 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1877
+WARNING 2026-04-14 17:12:55,390 log 17716 2412 Not Found: /favicon.ico
+WARNING 2026-04-14 17:12:55,390 log 17716 2412 "GET /favicon.ico HTTP/1.1" 404 1850
+INFO 2026-04-14 17:13:24,790 log 17716 2412 "GET /org-chart/ HTTP/1.1" 200 5474
+INFO 2026-04-14 17:13:24,853 log 17716 12780 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:13:24,853 log 17716 6648 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:13:24,854 log 17716 18124 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+INFO 2026-04-14 17:13:24,854 log 17716 8904 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:13:24,856 log 17716 2412 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:13:24,858 log 17716 2412 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+WARNING 2026-04-14 17:13:25,356 log 17716 2412 Not Found: /favicon.ico
+WARNING 2026-04-14 17:13:25,357 log 17716 2412 "GET /favicon.ico HTTP/1.1" 404 1828
+INFO 2026-04-14 17:13:40,354 autoreload 6168 12536 Watching for file changes with StatReloader
+INFO 2026-04-14 17:13:54,833 log 6168 10496 "GET /org-chart/ HTTP/1.1" 200 5527
+INFO 2026-04-14 17:13:54,953 log 6168 10496 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:13:54,959 log 6168 17320 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:13:54,963 log 6168 13248 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:13:54,963 log 6168 16872 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17318
+WARNING 2026-04-14 17:13:55,159 log 6168 13248 Not Found: /favicon.ico
+WARNING 2026-04-14 17:13:55,160 log 6168 13248 "GET /favicon.ico HTTP/1.1" 404 1825
+INFO 2026-04-14 17:15:26,916 log 6168 13248 "GET /static/css/organization.css?v=3 HTTP/1.1" 304 0
+WARNING 2026-04-14 17:15:26,951 log 6168 13248 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:15:26,952 log 6168 13248 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1861
+INFO 2026-04-14 17:20:46,745 log 6168 16340 "GET /org-chart/ HTTP/1.1" 200 5550
+INFO 2026-04-14 17:20:46,797 log 6168 16340 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:20:46,804 log 6168 15492 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17513
+INFO 2026-04-14 17:20:46,819 log 6168 8408 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:20:46,819 log 6168 13416 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:20:46,821 log 6168 10336 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:20:46,823 log 6168 10336 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1848
+WARNING 2026-04-14 17:20:48,165 log 6168 10336 Not Found: /favicon.ico
+WARNING 2026-04-14 17:20:48,166 log 6168 10336 "GET /favicon.ico HTTP/1.1" 404 1877
+INFO 2026-04-14 17:24:33,562 autoreload 20052 5468 Watching for file changes with StatReloader
+INFO 2026-04-14 17:25:19,010 log 20052 21164 "GET /org-chart/ HTTP/1.1" 200 5493
+INFO 2026-04-14 17:25:19,145 log 20052 21164 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:25:19,148 log 20052 5528 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:25:19,149 log 20052 19572 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17535
+INFO 2026-04-14 17:25:19,150 log 20052 18712 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:25:19,617 log 20052 18712 Not Found: /favicon.ico
+WARNING 2026-04-14 17:25:19,618 log 20052 18712 "GET /favicon.ico HTTP/1.1" 404 1865
+INFO 2026-04-14 17:29:51,557 log 20052 18712 "GET /org-chart/ HTTP/1.1" 200 5554
+INFO 2026-04-14 17:29:51,592 log 20052 5528 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:29:51,592 log 20052 18712 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:29:51,593 log 20052 19572 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+INFO 2026-04-14 17:29:51,593 log 20052 21164 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:29:51,900 log 20052 21164 Not Found: /favicon.ico
+WARNING 2026-04-14 17:29:51,900 log 20052 21164 "GET /favicon.ico HTTP/1.1" 404 1885
+INFO 2026-04-14 17:31:44,827 log 20052 21164 "GET /org-chart/ HTTP/1.1" 200 5475
+INFO 2026-04-14 17:31:44,867 log 20052 21164 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:31:44,867 log 20052 5528 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:31:44,867 log 20052 18712 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:31:44,868 log 20052 19572 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+WARNING 2026-04-14 17:31:45,132 log 20052 19572 Not Found: /favicon.ico
+WARNING 2026-04-14 17:31:45,133 log 20052 19572 "GET /favicon.ico HTTP/1.1" 404 1817
+INFO 2026-04-14 17:32:08,877 log 20052 19572 "GET /org-chart/ HTTP/1.1" 200 5492
+INFO 2026-04-14 17:32:08,914 log 20052 5528 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:32:08,914 log 20052 18712 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+INFO 2026-04-14 17:32:08,914 log 20052 19572 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:32:08,914 log 20052 21164 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:32:09,198 log 20052 21164 Not Found: /favicon.ico
+WARNING 2026-04-14 17:32:09,199 log 20052 21164 "GET /favicon.ico HTTP/1.1" 404 1869
+INFO 2026-04-14 17:42:56,771 log 20052 14492 "GET /static/css/organization.css?v=3 HTTP/1.1" 304 0
+WARNING 2026-04-14 17:42:56,824 log 20052 14492 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:42:56,825 log 20052 14492 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1920
+INFO 2026-04-14 17:44:01,904 log 20052 14492 "GET /org-chart/ HTTP/1.1" 200 5478
+INFO 2026-04-14 17:44:01,981 log 20052 15480 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 17:44:01,982 log 20052 14492 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-14 17:44:01,984 log 20052 16936 "GET /static/js/main.js HTTP/1.1" 200 6112
+WARNING 2026-04-14 17:44:01,984 log 20052 14492 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1866
+INFO 2026-04-14 17:44:01,984 log 20052 15508 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+INFO 2026-04-14 17:44:01,986 log 20052 9872 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:44:04,120 log 20052 15508 "GET /org-chart/ HTTP/1.1" 200 5459
+WARNING 2026-04-14 17:44:04,181 log 20052 15508 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-14 17:44:04,179 log 20052 16936 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+INFO 2026-04-14 17:44:04,181 log 20052 14492 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:44:04,182 log 20052 15480 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+INFO 2026-04-14 17:44:04,182 log 20052 9872 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 17:44:04,183 log 20052 15508 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1905
+WARNING 2026-04-14 17:44:04,452 log 20052 15480 Not Found: /favicon.ico
+WARNING 2026-04-14 17:44:04,453 log 20052 15480 "GET /favicon.ico HTTP/1.1" 404 1858
+INFO 2026-04-14 17:44:05,948 log 20052 15480 "GET /org-chart/ HTTP/1.1" 200 5488
+WARNING 2026-04-14 17:44:06,005 log 20052 15480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2026-04-14 17:44:06,006 log 20052 15480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1878
+INFO 2026-04-14 17:44:06,006 log 20052 14492 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:44:06,006 log 20052 9872 "GET /static/css/style.css HTTP/1.1" 200 6866
+INFO 2026-04-14 17:44:06,006 log 20052 15508 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+INFO 2026-04-14 17:44:06,007 log 20052 16936 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:44:06,291 log 20052 9872 Not Found: /favicon.ico
+WARNING 2026-04-14 17:44:06,292 log 20052 9872 "GET /favicon.ico HTTP/1.1" 404 1809
+INFO 2026-04-14 17:48:45,119 log 20052 9872 "GET /org-chart/ HTTP/1.1" 200 5548
+WARNING 2026-04-14 17:48:45,182 log 20052 9872 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2026-04-14 17:48:45,183 log 20052 16936 "GET /static/css/style.css HTTP/1.1" 200 6866
+WARNING 2026-04-14 17:48:45,183 log 20052 9872 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1869
+INFO 2026-04-14 17:48:45,184 log 20052 15508 "GET /static/css/organization.css?v=3 HTTP/1.1" 200 17606
+INFO 2026-04-14 17:48:45,184 log 20052 15480 "GET /static/js/main.js HTTP/1.1" 200 6112
+INFO 2026-04-14 17:48:45,184 log 20052 14492 "GET /static/js/organization.js?v=3 HTTP/1.1" 200 6526
+WARNING 2026-04-14 17:48:45,584 log 20052 14492 Not Found: /favicon.ico
+WARNING 2026-04-14 17:48:45,585 log 20052 14492 "GET /favicon.ico HTTP/1.1" 404 1863

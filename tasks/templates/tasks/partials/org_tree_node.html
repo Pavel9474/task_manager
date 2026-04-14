@@ -1,0 +1,69 @@
+{% load static %}
+<div class="tree-node" data-id="{{ dept.id }}" data-level="{{ level|default:0 }}">
+    <div class="node-card level-{{ level|default:0 }}" onclick="OrgTree.toggleNode('{{ dept.id }}', this)">
+        <div class="node-icon">
+            {% if dept.type == 'directorate' %}
+                <i class="bi bi-stars"></i>
+            {% elif dept.type == 'department' %}
+                <i class="bi bi-building"></i>
+            {% elif dept.type == 'laboratory' %}
+                <i class="bi bi-flask"></i>
+            {% elif dept.type == 'group' %}
+                <i class="bi bi-people"></i>
+            {% elif dept.type == 'service' %}
+                <i class="bi bi-gear"></i>
+            {% elif dept.type == 'division' %}
+                <i class="bi bi-diagram-3"></i>
+            {% else %}
+                <i class="bi bi-folder"></i>
+            {% endif %}
+        </div>
+        <div class="node-name">{{ dept.abbreviated_name|truncatechars:35 }}</div>
+        <div class="node-type">{{ dept.get_type_display }}</div>
+        <div class="node-staff">
+            <i class="bi bi-people"></i> {{ dept.staff_count }}
+        </div>
+        {% if dept.children_list or dept.staff_positions.all %}
+            <div class="node-toggle">
+                <i class="bi bi-chevron-down"></i>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Employee List (separate from children container) -->
+    {% if dept.staff_positions.all %}
+        <div id="employees-{{ dept.id }}" class="employee-list-container" style="display: none;">
+            <div class="employee-list">
+                <div class="employee-list-header">
+                    <i class="bi bi-people-fill"></i>
+                    <span>Сотрудники ({{ dept.staff_positions.count }})</span>
+                </div>
+                {% for sp in dept.staff_positions.all %}
+                    <a href="{% url 'employee_detail' sp.employee.id %}" class="employee-card">
+                        <div class="employee-avatar">
+                            <i class="bi bi-person-circle"></i>
+                        </div>
+                        <div class="employee-info">
+                            <div class="employee-name">{{ sp.employee.short_name }}</div>
+                            <div class="employee-position">{{ sp.position.name }}</div>
+                        </div>
+                        {% if sp.workload != 1 %}
+                            <div class="employee-workload">{{ sp.workload }} ставки</div>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if dept.children_list %}
+        <div id="children-{{ dept.id }}" class="children-container">
+            <!-- Child Departments -->
+            <div class="child-departments">
+                {% for child in dept.children_list %}
+                    {% include 'tasks/partials/org_tree_node.html' with dept=child level=level|add:"1" %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>

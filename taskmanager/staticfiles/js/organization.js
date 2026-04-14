@@ -8,82 +8,78 @@ const OrgTree = {
     
     // Переключить узел
     toggleNode: (nodeId, element) => {
-        const childrenContainer = DomUtils.get(`children-${nodeId}`);
-        const icon = element.querySelector('.toggle-icon i');
+        const treeNode = element.closest('.tree-node');
+        const childrenContainer = document.getElementById(`children-${nodeId}`);
+        const employeeContainer = document.getElementById(`employees-${nodeId}`);
+        const toggleIcon = element.querySelector('.node-toggle i');
         
-        if (!childrenContainer) return;
+        // If no children or employees, return
+        if (!childrenContainer && !employeeContainer) return;
         
         if (OrgTree.expandedNodes.has(nodeId)) {
             // Сворачиваем
-            childrenContainer.style.display = 'none';
-            if (icon) icon.className = 'bi bi-chevron-down';
+            if (childrenContainer) childrenContainer.style.display = 'none';
+            if (employeeContainer) employeeContainer.style.display = 'none';
+            if (toggleIcon) {
+                toggleIcon.className = 'bi bi-chevron-down';
+                element.querySelector('.node-toggle').classList.remove('open');
+            }
             OrgTree.expandedNodes.delete(nodeId);
         } else {
             // Разворачиваем
-            childrenContainer.style.display = 'flex';
-            if (icon) icon.className = 'bi bi-chevron-up';
+            if (childrenContainer) childrenContainer.style.display = 'flex';
+            if (employeeContainer) employeeContainer.style.display = 'block';
+            if (toggleIcon) {
+                toggleIcon.className = 'bi bi-chevron-up';
+                element.querySelector('.node-toggle').classList.add('open');
+            }
             OrgTree.expandedNodes.add(nodeId);
         }
     },
     
     // Развернуть все
     expandAll: () => {
-        DomUtils.queryAll('[id^="children-"]').forEach(container => {
+        document.querySelectorAll('.children-container').forEach(container => {
             container.style.display = 'flex';
         });
-        DomUtils.queryAll('.toggle-icon i').forEach(icon => {
+        document.querySelectorAll('.employee-list-container').forEach(container => {
+            container.style.display = 'block';
+        });
+        document.querySelectorAll('.node-toggle i').forEach(icon => {
             icon.className = 'bi bi-chevron-up';
         });
-        OrgTree.expandedNodes.clear();
+        document.querySelectorAll('.node-toggle').forEach(toggle => {
+            toggle.classList.add('open');
+        });
+        // Добавляем все узлы с детьми в expandedNodes
+        document.querySelectorAll('.tree-node[data-id]').forEach(node => {
+            const nodeId = node.getAttribute('data-id');
+            const childrenContainer = document.getElementById(`children-${nodeId}`);
+            const employeeContainer = document.getElementById(`employees-${nodeId}`);
+            if (childrenContainer || employeeContainer) {
+                OrgTree.expandedNodes.add(nodeId);
+            }
+        });
     },
     
     // Свернуть все
     collapseAll: () => {
-        DomUtils.queryAll('[id^="children-"]').forEach(container => {
+        document.querySelectorAll('.children-container').forEach(container => {
             container.style.display = 'none';
         });
-        DomUtils.queryAll('.toggle-icon i').forEach(icon => {
+        document.querySelectorAll('.employee-list-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        document.querySelectorAll('.node-toggle i').forEach(icon => {
             icon.className = 'bi bi-chevron-down';
+        });
+        document.querySelectorAll('.node-toggle').forEach(toggle => {
+            toggle.classList.remove('open');
         });
         OrgTree.expandedNodes.clear();
     }
 };
 
-// Управление основными блоками
-const MainBlocks = {
-    scienceOpen: false,
-    organizationOpen: false,
-    
-    toggleScience: () => {
-        const container = DomUtils.get('science-container');
-        const icon = DomUtils.query('#science-icon i');
-        
-        MainBlocks.scienceOpen = !MainBlocks.scienceOpen;
-        
-        if (MainBlocks.scienceOpen) {
-            container.style.display = 'block';
-            if (icon) icon.className = 'bi bi-chevron-up';
-        } else {
-            container.style.display = 'none';
-            if (icon) icon.className = 'bi bi-chevron-down';
-        }
-    },
-    
-    toggleOrganization: () => {
-        const container = DomUtils.get('organization-container');
-        const icon = DomUtils.query('#organization-icon i');
-        
-        MainBlocks.organizationOpen = !MainBlocks.organizationOpen;
-        
-        if (MainBlocks.organizationOpen) {
-            container.style.display = 'block';
-            if (icon) icon.className = 'bi bi-chevron-up';
-        } else {
-            container.style.display = 'none';
-            if (icon) icon.className = 'bi bi-chevron-down';
-        }
-    }
-};
 
 // Управление сотрудниками
 const Staff = {
@@ -160,20 +156,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализируем поиск
     Search.init();
     
-    // Скрываем все дочерние контейнеры
-    DomUtils.queryAll('[id^="children-"]').forEach(container => {
+    // Скрываем все дочерние контейнеры и списки сотрудников по умолчанию
+    document.querySelectorAll('.children-container').forEach(container => {
         container.style.display = 'none';
     });
-    
-    DomUtils.queryAll('[id$="-container"]:not([id^="children-"])').forEach(container => {
-        if (container.id !== 'science-container' && container.id !== 'organization-container') {
-            container.style.display = 'none';
-        }
+    document.querySelectorAll('.employee-list-container').forEach(container => {
+        container.style.display = 'none';
     });
 });
 
 // Экспортируем глобальные объекты
 window.OrgTree = OrgTree;
-window.MainBlocks = MainBlocks;
 window.Staff = Staff;
 window.Search = Search;

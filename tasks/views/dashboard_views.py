@@ -13,6 +13,26 @@ import json
 from django.core.cache import cache
 
 logger = logging.getLogger('tasks')
+
+def abbreviate_department_name(name):
+    """
+    Abbreviate long department name words to fit better in the tree nodes.
+    Replaces 'Научно-исследовательский/ая/ое' with 'НИ'
+    """
+    if not name:
+        return name
+    
+    replacements = [
+        ('Научно-исследовательский', 'НИ'),
+        ('Научно-исследовательская', 'НИ'),
+        ('Научно-исследовательское', 'НИ'),
+    ]
+    
+    result = name
+    for old, new in replacements:
+        result = result.replace(old, new)
+    
+    return result
 @login_required
 def organization_chart(request):
     # Пытаемся получить данные из кэша
@@ -50,8 +70,10 @@ def organization_chart(request):
                 ))
     ).order_by('name')
     
-    # Преобразуем в список
+    # Преобразуем в список и применяем сокращения названий
     dept_list = list(departments)
+    for dept in dept_list:
+        dept.abbreviated_name = abbreviate_department_name(dept.name)
     
     # 2. Создаём словарь для быстрого доступа по ID
     dept_dict = {d.id: d for d in dept_list}

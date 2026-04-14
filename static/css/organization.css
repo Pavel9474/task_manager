@@ -7,40 +7,52 @@
     position: relative;
     padding: 40px 20px;
     overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
 }
 
-/* Уровни дерева */
-.tree-level {
+/* Корневой контейнер дерева - Google Style */
+.tree-root {
     display: flex;
-    justify-content: center;
-    position: relative;
-    margin: 30px 0;
-}
-
-.level-1 { margin-bottom: 50px; }
-.level-2 { margin-bottom: 40px; }
-.level-3 { margin-bottom: 30px; }
-.level-4 { margin-bottom: 20px; }
-
-/* Контейнер для узлов одного уровня */
-.nodes-container {
-    display: flex;
-    gap: 60px;
+    flex-direction: row;
+    gap: 40px;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
-    padding: 20px 40px;
+    padding: 20px 0;
 }
 
-/* Линии соединения между уровнями */
-.nodes-container::before {
+.tree-root::before {
     content: '';
     position: absolute;
-    top: -30px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #dadce0, transparent);
+}
+
+/* Контейнер для дочерних узлов */
+.children-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 40px;
+    margin-top: 10px;
+}
+
+/* Вертикальная линия от родителя к детям - Google Style */
+.children-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #dadce0;
+    transform: translateX(-50%);
 }
 
 /* Узел дерева */
@@ -49,137 +61,352 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 220px;
+    min-width: 180px;
+    max-width: 240px;
     transition: all 0.3s;
+}
+
+/* Дочерний контейнер должен быть шире родителя */
+.tree-node > .children-container {
+    width: 100%;
+    min-width: 800px;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: visible;
 }
 
 .tree-node:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Линия к родителю */
-.tree-node::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-    transform: translateX(-50%);
-}
-
-/* Первый уровень (корневые узлы) не имеют линий к родителю */
-.level-1 .tree-node::before {
+/* Вертикальная линия к родителю (для всех кроме корневых) - Google Style */
+.tree-node[data-level="0"]::before {
     display: none;
 }
 
-/* Карточка узла */
+.tree-node:not([data-level="0"])::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #dadce0;
+    transform: translateX(-50%);
+}
+
+/* Горизонтальная линия соединения между sibling узлами - Google Style */
+.children-container > .tree-node:not(:first-child):not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -50%;
+    width: 100%;
+    height: 2px;
+    background: #dadce0;
+}
+
+.children-container > .tree-node:first-child::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background: #dadce0;
+}
+
+.children-container > .tree-node:last-child::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: 50%;
+    width: 50%;
+    height: 2px;
+    background: #dadce0;
+}
+
+/* Карточка узла - Google Material Design Style */
 .node-card {
     background: white;
-    border-radius: var(--border-radius-lg);
-    padding: 20px;
+    border-radius: 12px;
+    padding: 16px;
     width: 100%;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: var(--shadow-md);
-    border: 2px solid transparent;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.node-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(66, 133, 244, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.node-card:active::after {
+    width: 300px;
+    height: 300px;
 }
 
 .node-card:hover {
-    box-shadow: var(--shadow-xl);
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    transform: translateY(-2px);
 }
 
-.node-card.level-1 {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+.node-card:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+/* Стили для разных уровней - Google Colors */
+.node-card.level-0 {
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
     color: white;
 }
 
+.node-card.level-1 {
+    background: #ffffff;
+    border-left: 4px solid #34a853;
+}
+
 .node-card.level-2 {
-    border-color: var(--success-color);
+    background: #ffffff;
+    border-left: 4px solid #fbbc04;
 }
 
 .node-card.level-3 {
-    border-color: var(--warning-color);
+    background: #ffffff;
+    border-left: 4px solid #4285f4;
 }
 
 .node-card.level-4 {
-    border-color: var(--info-color);
+    background: #ffffff;
+    border-left: 4px solid #ea4335;
 }
 
 .node-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.node-card.level-0 .node-icon {
+    opacity: 1;
 }
 
 .node-name {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 6px;
     word-break: break-word;
+    line-height: 1.3;
+    color: #202124;
+    letter-spacing: 0.01em;
+}
+
+.node-card.level-0 .node-name {
+    color: white;
+    font-weight: 600;
 }
 
 .node-type {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin-bottom: 10px;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-bottom: 8px;
+    color: #5f6368;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.node-card.level-0 .node-type {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .node-staff {
-    display: inline-block;
-    background: rgba(0, 0, 0, 0.05);
-    padding: 3px 8px;
-    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f1f3f4;
+    padding: 4px 10px;
+    border-radius: 16px;
     font-size: 0.75rem;
+    font-weight: 500;
+    color: #5f6368;
 }
 
-.level-1 .node-staff {
+.node-card.level-0 .node-staff {
     background: rgba(255, 255, 255, 0.2);
     color: white;
 }
 
 .node-toggle {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    transition: transform 0.3s;
+    margin-top: 8px;
+    font-size: 1rem;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #5f6368;
+}
+
+.node-card.level-0 .node-toggle {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .node-toggle.open {
     transform: rotate(180deg);
 }
 
+.node-card.level-0 .node-toggle:hover {
+    color: white;
+}
+
+/* Контейнер списка сотрудников */
+.employee-list-container {
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+/* Список сотрудников - Google Material Design */
+.employee-list {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 auto 20px;
+    max-width: 800px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.1);
+    width: 100%;
+}
+
+.employee-list-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #dadce0;
+    font-weight: 600;
+    color: #202124;
+    font-size: 0.95rem;
+}
+
+.employee-list-header i {
+    font-size: 1.2rem;
+    color: #4285f4;
+}
+
+.employee-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    background: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.05);
+    border: 1px solid #e8eaed;
+}
+
+.employee-card:hover {
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.15), 0 4px 8px 3px rgba(60,64,67,0.1);
+    transform: translateX(4px);
+    border-color: #4285f4;
+    text-decoration: none;
+    color: inherit;
+}
+
+.employee-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.employee-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.employee-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #202124;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.employee-position {
+    font-size: 0.75rem;
+    color: #5f6368;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.employee-workload {
+    flex-shrink: 0;
+    background: #f1f3f4;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #5f6368;
+}
+
+/* Контейнер для дочерних подразделений */
+.child-departments {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 /* Дочерние узлы */
 .children-container {
     display: flex;
-    gap: 40px;
+    flex-direction: row;
+    gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 30px;
-    padding: 20px 0;
     position: relative;
+    padding-top: 40px;
+    margin-top: 10px;
+    align-items: flex-start;
 }
 
+/* Вертикальная линия от родителя к детям - Google Style */
 .children-container::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     width: 2px;
-    height: 20px;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    height: 40px;
+    background: #dadce0;
     transform: translateX(-50%);
-}
-
-/* Линии между дочерними узлами */
-.children-container .tree-node:not(:first-child)::after {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -50%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
 }
 
 /* Руководство */
@@ -587,5 +814,29 @@
     
     .leadership-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Employee list responsive */
+    .employee-list {
+        max-width: 100%;
+        padding: 12px;
+    }
+    
+    .employee-card {
+        padding: 8px;
+    }
+    
+    .employee-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 1.25rem;
+    }
+    
+    .employee-name {
+        font-size: 0.8rem;
+    }
+    
+    .employee-position {
+        font-size: 0.7rem;
     }
 }

@@ -12356,3 +12356,1157 @@ DEBUG 2026-04-14 15:05:32,986 middleware 10424 9848 📨 GET / - Пользов�
 INFO 2026-04-14 15:05:33,018 middleware 10424 9848 📤 GET / - 200 - Время: 0.036 сек
 DEBUG 2026-04-14 15:05:35,072 middleware 10424 9848 📨 GET /org-chart/ - Пользователь: pavel2
 INFO 2026-04-14 15:05:35,191 middleware 10424 9848 📤 GET /org-chart/ - 200 - Время: 0.121 сек
+DEBUG 2026-04-14 15:26:36,160 middleware 21480 20324 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:26:36,303 middleware 21480 20324 📤 GET /org-chart/ - 200 - Время: 0.168 сек
+DEBUG 2026-04-14 15:34:43,896 middleware 21480 19272 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:34:43,934 middleware 21480 19272 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:34:44,352 middleware 21480 19272 📤 GET /org-chart/ - 500 - Время: 0.460 сек
+ERROR 2026-04-14 15:34:44,352 middleware 21480 19272 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:34:46,108 middleware 21480 19272 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:34:46,144 middleware 21480 19272 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:34:46,250 middleware 21480 19272 📤 GET /org-chart/ - 500 - Время: 0.145 сек
+ERROR 2026-04-14 15:34:46,250 middleware 21480 19272 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:34:48,277 middleware 21480 19272 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:34:48,310 middleware 21480 19272 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:34:48,410 middleware 21480 19272 📤 GET /org-chart/ - 500 - Время: 0.135 сек
+ERROR 2026-04-14 15:34:48,410 middleware 21480 19272 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:34:52,929 middleware 21480 19272 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:34:52,958 middleware 21480 19272 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:34:53,053 middleware 21480 19272 📤 GET /org-chart/ - 500 - Время: 0.127 сек
+ERROR 2026-04-14 15:34:53,053 middleware 21480 19272 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:34:58,999 middleware 21480 19272 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:34:59,041 middleware 21480 19272 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:34:59,150 middleware 21480 19272 📤 GET /org-chart/ - 500 - Время: 0.154 сек
+ERROR 2026-04-14 15:34:59,150 middleware 21480 19272 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:37:13,168 middleware 21480 20324 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:37:13,205 middleware 21480 20324 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:37:13,310 middleware 21480 20324 📤 GET /org-chart/ - 500 - Время: 0.146 сек
+ERROR 2026-04-14 15:37:13,310 middleware 21480 20324 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:37:14,028 middleware 21480 20324 📨 GET /org-chart/ - Пользователь: pavel2
+ERROR 2026-04-14 15:37:14,059 middleware 21480 20324 💥 Исключение в GET /org-chart/: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1067, in find_library
+    return parser.libraries[name]
+           ~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'department_extras'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "E:\code\task_manager\tasks\views\dashboard_views.py", line 112, in organization_chart
+    return render(request, 'tasks/organization_chart.html', context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 174, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 160, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 166, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 66, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1091, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 249, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 1052, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loader_tags.py", line 200, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 228, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 186, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 157, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 585, in parse
+    raise self.error(token, e)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\base.py", line 583, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1129, in load
+    lib = find_library(parser, name)
+  File "C:\Users\pasha\AppData\Local\Programs\Python\Python314\Lib\site-packages\django\template\defaulttags.py", line 1069, in find_library
+    raise TemplateSyntaxError(
+    ...<5 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Template: E:\code\task_manager\tasks\templates\tasks\partials\org_tree_node.html, 'department_extras' is not a registered tag library. Must be one of:
+admin_list
+admin_modify
+admin_urls
+auth
+cache
+i18n
+l10n
+log
+static
+task_extras
+tz
+INFO 2026-04-14 15:37:14,156 middleware 21480 20324 📤 GET /org-chart/ - 500 - Время: 0.130 сек
+ERROR 2026-04-14 15:37:14,156 middleware 21480 20324 ❌ Ошибка 500: GET /org-chart/ - Пользователь: pavel2
+DEBUG 2026-04-14 15:38:45,114 middleware 15832 4396 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:38:45,216 middleware 15832 4396 📤 GET /org-chart/ - 200 - Время: 0.108 сек
+DEBUG 2026-04-14 15:38:53,291 middleware 15832 4396 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:38:53,341 middleware 15832 4396 📤 GET /org-chart/ - 200 - Время: 0.052 сек
+DEBUG 2026-04-14 15:38:54,114 middleware 15832 4968 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:38:54,135 middleware 15832 4968 📤 GET /favicon.ico - 404 - Время: 0.028 сек
+ERROR 2026-04-14 15:38:54,135 middleware 15832 4968 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:39:14,738 middleware 2536 15908 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:39:14,826 middleware 2536 15908 📤 GET /org-chart/ - 200 - Время: 0.092 сек
+DEBUG 2026-04-14 15:39:15,161 middleware 2536 19996 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:39:15,172 middleware 2536 19996 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-04-14 15:39:15,173 middleware 2536 19996 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:42:05,059 middleware 2536 19996 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:42:05,117 middleware 2536 19996 📤 GET /org-chart/ - 200 - Время: 0.061 сек
+DEBUG 2026-04-14 15:42:06,791 middleware 2536 8136 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:42:06,840 middleware 2536 8136 📤 GET /org-chart/ - 200 - Время: 0.052 сек
+DEBUG 2026-04-14 15:42:07,099 middleware 2536 19996 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:42:07,116 middleware 2536 19996 📤 GET /favicon.ico - 404 - Время: 0.022 сек
+ERROR 2026-04-14 15:42:07,116 middleware 2536 19996 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:43:13,933 middleware 2536 19996 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:43:13,984 middleware 2536 19996 📤 GET /org-chart/ - 200 - Время: 0.056 сек
+DEBUG 2026-04-14 15:43:14,306 middleware 2536 15908 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:43:14,316 middleware 2536 15908 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 15:43:14,316 middleware 2536 15908 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:43:37,498 middleware 2536 15908 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:43:37,552 middleware 2536 15908 📤 GET /org-chart/ - 200 - Время: 0.056 сек
+DEBUG 2026-04-14 15:43:37,844 middleware 2536 20052 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:43:37,857 middleware 2536 20052 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-04-14 15:43:37,857 middleware 2536 20052 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:46:32,467 middleware 2536 20052 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:46:32,526 middleware 2536 20052 📤 GET /org-chart/ - 200 - Время: 0.062 сек
+DEBUG 2026-04-14 15:46:32,923 middleware 2536 8136 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:46:32,935 middleware 2536 8136 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-14 15:46:32,936 middleware 2536 8136 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:46:35,376 middleware 2536 8136 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:46:35,437 middleware 2536 8136 📤 GET /org-chart/ - 200 - Время: 0.064 сек
+DEBUG 2026-04-14 15:46:37,818 middleware 2536 8136 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:46:37,876 middleware 2536 8136 📤 GET /org-chart/ - 200 - Время: 0.060 сек
+DEBUG 2026-04-14 15:46:38,297 middleware 2536 8136 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:46:38,365 middleware 2536 8136 📤 GET /org-chart/ - 200 - Время: 0.072 сек
+DEBUG 2026-04-14 15:46:38,698 middleware 2536 20052 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:46:38,707 middleware 2536 20052 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-14 15:46:38,707 middleware 2536 20052 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:46:39,344 middleware 2536 20052 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 15:46:39,392 middleware 2536 20052 📤 GET /org-chart/ - 200 - Время: 0.051 сек
+DEBUG 2026-04-14 15:46:39,673 middleware 2536 8136 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 15:46:39,685 middleware 2536 8136 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-04-14 15:46:39,685 middleware 2536 8136 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 15:46:44,858 middleware 2536 8136 📨 GET /employee/265/ - Пользователь: pavel2
+INFO 2026-04-14 15:46:44,982 middleware 2536 8136 📤 GET /employee/265/ - 200 - Время: 0.127 сек
+DEBUG 2026-04-14 16:05:29,535 middleware 2536 15740 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:05:29,625 middleware 2536 15740 📤 GET /org-chart/ - 200 - Время: 0.094 сек
+DEBUG 2026-04-14 16:05:32,509 middleware 2536 15740 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:05:32,564 middleware 2536 15740 📤 GET /org-chart/ - 200 - Время: 0.058 сек
+DEBUG 2026-04-14 16:05:32,929 middleware 2536 19684 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:05:32,944 middleware 2536 19684 📤 GET /favicon.ico - 404 - Время: 0.019 сек
+ERROR 2026-04-14 16:05:32,944 middleware 2536 19684 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:05:33,458 middleware 2536 19684 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:05:33,509 middleware 2536 19684 📤 GET /org-chart/ - 200 - Время: 0.054 сек
+DEBUG 2026-04-14 16:05:33,777 middleware 2536 15740 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:05:33,787 middleware 2536 15740 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-14 16:05:33,787 middleware 2536 15740 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:06:04,785 middleware 8732 20424 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:06:04,903 middleware 8732 20424 📤 GET /org-chart/ - 200 - Время: 0.122 сек
+DEBUG 2026-04-14 16:06:07,573 middleware 8732 20424 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:06:07,623 middleware 8732 20424 📤 GET /org-chart/ - 200 - Время: 0.053 сек
+DEBUG 2026-04-14 16:06:07,974 middleware 8732 20424 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:06:07,984 middleware 8732 20424 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 16:06:07,985 middleware 8732 20424 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:06:09,076 middleware 8732 20424 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:06:09,128 middleware 8732 20424 📤 GET /org-chart/ - 200 - Время: 0.055 сек
+DEBUG 2026-04-14 16:06:09,397 middleware 8732 6396 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:06:09,407 middleware 8732 6396 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 16:06:09,408 middleware 8732 6396 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:06:48,160 middleware 8732 6396 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:06:48,223 middleware 8732 6396 📤 GET /org-chart/ - 200 - Время: 0.065 сек
+DEBUG 2026-04-14 16:08:20,909 middleware 8732 6396 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:08:20,970 middleware 8732 6396 📤 GET /org-chart/ - 200 - Время: 0.064 сек
+DEBUG 2026-04-14 16:08:22,510 middleware 8732 6396 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:08:22,575 middleware 8732 6396 📤 GET /org-chart/ - 200 - Время: 0.068 сек
+DEBUG 2026-04-14 16:12:05,766 middleware 8732 6396 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:12:05,862 middleware 8732 6396 📤 GET /org-chart/ - 200 - Время: 0.098 сек
+DEBUG 2026-04-14 16:12:07,722 middleware 8732 13964 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:12:07,769 middleware 8732 13964 📤 GET /org-chart/ - 200 - Время: 0.050 сек
+DEBUG 2026-04-14 16:12:08,016 middleware 8732 15272 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:12:08,025 middleware 8732 15272 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-14 16:12:08,025 middleware 8732 15272 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:13:40,508 middleware 8732 15272 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:13:40,565 middleware 8732 15272 📤 GET /org-chart/ - 200 - Время: 0.059 сек
+DEBUG 2026-04-14 16:13:52,435 middleware 17668 20048 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:13:52,558 middleware 17668 20048 📤 GET /org-chart/ - 200 - Время: 0.125 сек
+DEBUG 2026-04-14 16:13:55,157 middleware 17668 20048 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:13:55,206 middleware 17668 20048 📤 GET /org-chart/ - 200 - Время: 0.051 сек
+DEBUG 2026-04-14 16:13:55,473 middleware 17668 18444 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:13:55,483 middleware 17668 18444 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 16:13:55,483 middleware 17668 18444 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:16:12,876 middleware 17668 18444 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:16:12,940 middleware 17668 18444 📤 GET /org-chart/ - 200 - Время: 0.068 сек
+DEBUG 2026-04-14 16:16:13,260 middleware 17668 20048 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:16:13,277 middleware 17668 20048 📤 GET /favicon.ico - 404 - Время: 0.021 сек
+ERROR 2026-04-14 16:16:13,278 middleware 17668 20048 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:16:40,176 middleware 17668 20048 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 16:16:40,193 middleware 17668 20048 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-04-14 16:16:40,194 middleware 17668 20048 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 16:16:44,321 middleware 17668 20048 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:16:44,374 middleware 17668 20048 📤 GET /org-chart/ - 200 - Время: 0.057 сек
+DEBUG 2026-04-14 16:16:44,412 middleware 17668 20048 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 16:16:44,430 middleware 17668 20048 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-04-14 16:16:44,432 middleware 17668 20048 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 16:16:44,719 middleware 17668 12256 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:16:44,738 middleware 17668 12256 📤 GET /favicon.ico - 404 - Время: 0.023 сек
+ERROR 2026-04-14 16:16:44,740 middleware 17668 12256 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:23:25,103 middleware 17668 560 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:23:25,158 middleware 17668 560 📤 GET /org-chart/ - 200 - Время: 0.059 сек
+DEBUG 2026-04-14 16:23:25,590 middleware 17668 12640 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:23:25,602 middleware 17668 12640 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-04-14 16:23:25,602 middleware 17668 12640 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:23:45,564 middleware 4984 16208 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:23:45,683 middleware 4984 16208 📤 GET /org-chart/ - 200 - Время: 0.125 сек
+DEBUG 2026-04-14 16:23:46,065 middleware 4984 16412 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:23:46,077 middleware 4984 16412 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-14 16:23:46,077 middleware 4984 16412 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:23:48,065 middleware 4984 16412 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:23:48,124 middleware 4984 16412 📤 GET /org-chart/ - 200 - Время: 0.064 сек
+DEBUG 2026-04-14 16:23:48,393 middleware 4984 18916 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:23:48,406 middleware 4984 18916 📤 GET /favicon.ico - 404 - Время: 0.015 сек
+ERROR 2026-04-14 16:23:48,406 middleware 4984 18916 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:24:00,878 middleware 4984 18916 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 16:24:00,890 middleware 4984 18916 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.015 сек
+ERROR 2026-04-14 16:24:00,891 middleware 4984 18916 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 16:24:03,314 middleware 4984 18916 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:24:03,372 middleware 4984 18916 📤 GET /org-chart/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-14 16:24:03,413 middleware 4984 18916 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 16:24:03,432 middleware 4984 18916 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-04-14 16:24:03,434 middleware 4984 18916 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 16:24:03,683 middleware 4984 19388 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:24:03,698 middleware 4984 19388 📤 GET /favicon.ico - 404 - Время: 0.021 сек
+ERROR 2026-04-14 16:24:03,699 middleware 4984 19388 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:24:07,308 middleware 4984 19388 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:24:07,368 middleware 4984 19388 📤 GET /org-chart/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-14 16:24:07,406 middleware 4984 19388 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 16:24:07,426 middleware 4984 19388 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-04-14 16:24:07,430 middleware 4984 19388 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 16:24:07,713 middleware 4984 2928 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:24:07,731 middleware 4984 2928 📤 GET /favicon.ico - 404 - Время: 0.023 сек
+ERROR 2026-04-14 16:24:07,732 middleware 4984 2928 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:24:28,505 middleware 4984 2928 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:24:28,556 middleware 4984 2928 📤 GET /org-chart/ - 200 - Время: 0.057 сек
+DEBUG 2026-04-14 16:24:28,892 middleware 4984 19388 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:24:28,902 middleware 4984 19388 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 16:24:28,902 middleware 4984 19388 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:25:25,216 middleware 4984 19388 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:25:25,288 middleware 4984 19388 📤 GET /org-chart/ - 200 - Время: 0.076 сек
+DEBUG 2026-04-14 16:25:27,559 middleware 4984 19388 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:25:27,616 middleware 4984 19388 📤 GET /org-chart/ - 200 - Время: 0.060 сек
+DEBUG 2026-04-14 16:25:28,207 middleware 4984 19388 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 16:25:28,254 middleware 4984 19388 📤 GET /org-chart/ - 200 - Время: 0.050 сек
+DEBUG 2026-04-14 16:25:28,495 middleware 4984 16208 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 16:25:28,505 middleware 4984 16208 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-14 16:25:28,506 middleware 4984 16208 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 16:27:15,169 middleware 4984 16208 📨 GET /department-stats/ - Пользователь: pavel2
+INFO 2026-04-14 16:27:15,743 middleware 4984 16208 📤 GET /department-stats/ - 200 - Время: 0.577 сек
+DEBUG 2026-04-14 16:27:30,927 middleware 4984 16208 📨 GET /department-stats/121/ - Пользователь: pavel2
+INFO 2026-04-14 16:27:31,400 middleware 4984 16208 📤 GET /department-stats/121/ - 200 - Время: 0.476 сек
+DEBUG 2026-04-14 16:27:35,081 middleware 4984 16208 📨 GET /department-stats/121/ - Пользователь: pavel2
+INFO 2026-04-14 16:27:35,595 middleware 4984 16208 📤 GET /department-stats/121/ - 200 - Время: 0.518 сек
+DEBUG 2026-04-14 16:27:38,112 middleware 4984 16208 📨 GET /department-stats/113/ - Пользователь: pavel2
+INFO 2026-04-14 16:27:38,731 middleware 4984 16208 📤 GET /department-stats/113/ - 200 - Время: 0.623 сек
+DEBUG 2026-04-14 16:28:27,260 middleware 4984 16208 📨 GET /employee/307/ - Пользователь: pavel2
+INFO 2026-04-14 16:28:27,649 middleware 4984 16208 📤 GET /employee/307/ - 200 - Время: 0.392 сек
+DEBUG 2026-04-14 16:29:00,144 middleware 4984 16208 📨 GET / - Пользователь: pavel2
+INFO 2026-04-14 16:29:00,224 middleware 4984 16208 📤 GET / - 200 - Время: 0.083 сек
+DEBUG 2026-04-14 17:05:30,226 middleware 4984 18564 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:05:30,350 middleware 4984 18564 📤 GET /org-chart/ - 200 - Время: 0.191 сек
+DEBUG 2026-04-14 17:06:15,593 middleware 4984 12960 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:06:15,656 middleware 4984 12960 📤 GET /org-chart/ - 200 - Время: 0.066 сек
+DEBUG 2026-04-14 17:06:16,203 middleware 4984 2652 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:06:16,220 middleware 4984 2652 📤 GET /favicon.ico - 404 - Время: 0.021 сек
+ERROR 2026-04-14 17:06:16,220 middleware 4984 2652 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:09:26,587 middleware 4984 2652 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:09:26,676 middleware 4984 2652 📤 GET /org-chart/ - 200 - Время: 0.093 сек
+DEBUG 2026-04-14 17:09:26,930 middleware 4984 12960 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:09:26,939 middleware 4984 12960 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-14 17:09:26,940 middleware 4984 12960 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:10:35,168 middleware 17716 6648 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:10:35,307 middleware 17716 6648 📤 GET /org-chart/ - 200 - Время: 0.142 сек
+DEBUG 2026-04-14 17:10:35,611 middleware 17716 2412 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:10:35,626 middleware 17716 2412 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-14 17:10:35,626 middleware 17716 2412 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:11:29,343 middleware 17716 2412 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:11:29,399 middleware 17716 2412 📤 GET /org-chart/ - 200 - Время: 0.059 сек
+DEBUG 2026-04-14 17:11:30,758 middleware 17716 2412 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:11:30,806 middleware 17716 2412 📤 GET /org-chart/ - 200 - Время: 0.050 сек
+DEBUG 2026-04-14 17:11:31,268 middleware 17716 6648 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:11:31,280 middleware 17716 6648 📤 GET /favicon.ico - 404 - Время: 0.017 сек
+ERROR 2026-04-14 17:11:31,280 middleware 17716 6648 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:32,426 middleware 17716 6648 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:12:32,478 middleware 17716 6648 📤 GET /org-chart/ - 200 - Время: 0.055 сек
+DEBUG 2026-04-14 17:12:32,724 middleware 17716 18124 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:12:32,734 middleware 17716 18124 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 17:12:32,735 middleware 17716 18124 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:33,456 middleware 17716 18124 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:12:33,505 middleware 17716 18124 📤 GET /org-chart/ - 200 - Время: 0.055 сек
+DEBUG 2026-04-14 17:12:33,722 middleware 17716 6648 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:12:33,773 middleware 17716 6648 📤 GET /org-chart/ - 200 - Время: 0.054 сек
+DEBUG 2026-04-14 17:12:33,947 middleware 17716 18124 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:12:34,028 middleware 17716 18124 📤 GET /org-chart/ - 200 - Время: 0.085 сек
+DEBUG 2026-04-14 17:12:34,708 middleware 17716 6648 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:12:34,722 middleware 17716 6648 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-14 17:12:34,723 middleware 17716 6648 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:38,918 middleware 17716 6648 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:12:38,930 middleware 17716 6648 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.016 сек
+ERROR 2026-04-14 17:12:38,930 middleware 17716 6648 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:45,377 middleware 17716 6648 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:12:45,460 middleware 17716 6648 📤 GET /org-chart/ - 200 - Время: 0.088 сек
+DEBUG 2026-04-14 17:12:45,515 middleware 17716 2412 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:12:45,532 middleware 17716 2412 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.027 сек
+ERROR 2026-04-14 17:12:45,533 middleware 17716 2412 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:46,035 middleware 17716 2412 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:12:46,049 middleware 17716 2412 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-14 17:12:46,050 middleware 17716 2412 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:54,653 middleware 17716 2412 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:12:54,713 middleware 17716 2412 📤 GET /org-chart/ - 200 - Время: 0.063 сек
+DEBUG 2026-04-14 17:12:54,767 middleware 17716 2412 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:12:54,784 middleware 17716 2412 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.028 сек
+ERROR 2026-04-14 17:12:54,785 middleware 17716 2412 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:12:55,374 middleware 17716 2412 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:12:55,388 middleware 17716 2412 📤 GET /favicon.ico - 404 - Время: 0.018 сек
+ERROR 2026-04-14 17:12:55,389 middleware 17716 2412 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:13:24,738 middleware 17716 2412 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:13:24,789 middleware 17716 2412 📤 GET /org-chart/ - 200 - Время: 0.056 сек
+DEBUG 2026-04-14 17:13:24,839 middleware 17716 2412 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:13:24,853 middleware 17716 2412 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.023 сек
+ERROR 2026-04-14 17:13:24,854 middleware 17716 2412 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:13:25,339 middleware 17716 2412 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:13:25,355 middleware 17716 2412 📤 GET /favicon.ico - 404 - Время: 0.021 сек
+ERROR 2026-04-14 17:13:25,355 middleware 17716 2412 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:13:54,714 middleware 6168 10496 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:13:54,830 middleware 6168 10496 📤 GET /org-chart/ - 200 - Время: 0.119 сек
+DEBUG 2026-04-14 17:13:55,147 middleware 6168 13248 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:13:55,158 middleware 6168 13248 📤 GET /favicon.ico - 404 - Время: 0.014 сек
+ERROR 2026-04-14 17:13:55,158 middleware 6168 13248 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:15:26,937 middleware 6168 13248 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:15:26,948 middleware 6168 13248 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.014 сек
+ERROR 2026-04-14 17:15:26,949 middleware 6168 13248 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:20:46,694 middleware 6168 16340 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:20:46,743 middleware 6168 16340 📤 GET /org-chart/ - 200 - Время: 0.053 сек
+DEBUG 2026-04-14 17:20:46,801 middleware 6168 10336 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:20:46,818 middleware 6168 10336 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.026 сек
+ERROR 2026-04-14 17:20:46,819 middleware 6168 10336 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:20:48,152 middleware 6168 10336 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:20:48,164 middleware 6168 10336 📤 GET /favicon.ico - 404 - Время: 0.016 сек
+ERROR 2026-04-14 17:20:48,164 middleware 6168 10336 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:25:18,906 middleware 20052 21164 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:25:19,008 middleware 20052 21164 📤 GET /org-chart/ - 200 - Время: 0.108 сек
+DEBUG 2026-04-14 17:25:19,601 middleware 20052 18712 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:25:19,616 middleware 20052 18712 📤 GET /favicon.ico - 404 - Время: 0.019 сек
+ERROR 2026-04-14 17:25:19,616 middleware 20052 18712 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:29:51,497 middleware 20052 18712 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:29:51,555 middleware 20052 18712 📤 GET /org-chart/ - 200 - Время: 0.064 сек
+DEBUG 2026-04-14 17:29:51,874 middleware 20052 21164 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:29:51,899 middleware 20052 21164 📤 GET /favicon.ico - 404 - Время: 0.029 сек
+ERROR 2026-04-14 17:29:51,899 middleware 20052 21164 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:31:44,779 middleware 20052 21164 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:31:44,826 middleware 20052 21164 📤 GET /org-chart/ - 200 - Время: 0.050 сек
+DEBUG 2026-04-14 17:31:45,114 middleware 20052 19572 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:31:45,130 middleware 20052 19572 📤 GET /favicon.ico - 404 - Время: 0.020 сек
+ERROR 2026-04-14 17:31:45,131 middleware 20052 19572 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:32:08,807 middleware 20052 19572 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:32:08,875 middleware 20052 19572 📤 GET /org-chart/ - 200 - Время: 0.074 сек
+DEBUG 2026-04-14 17:32:09,188 middleware 20052 21164 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:32:09,197 middleware 20052 21164 📤 GET /favicon.ico - 404 - Время: 0.012 сек
+ERROR 2026-04-14 17:32:09,197 middleware 20052 21164 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:42:56,807 middleware 20052 14492 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:42:56,823 middleware 20052 14492 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.029 сек
+ERROR 2026-04-14 17:42:56,824 middleware 20052 14492 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:44:01,735 middleware 20052 14492 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:44:01,885 middleware 20052 14492 📤 GET /org-chart/ - 200 - Время: 0.153 сек
+DEBUG 2026-04-14 17:44:01,965 middleware 20052 14492 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:44:01,979 middleware 20052 14492 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.021 сек
+ERROR 2026-04-14 17:44:01,980 middleware 20052 14492 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:44:04,073 middleware 20052 15508 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:44:04,119 middleware 20052 15508 📤 GET /org-chart/ - 200 - Время: 0.049 сек
+DEBUG 2026-04-14 17:44:04,158 middleware 20052 15508 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:44:04,176 middleware 20052 15508 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.022 сек
+ERROR 2026-04-14 17:44:04,177 middleware 20052 15508 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:44:04,435 middleware 20052 15480 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:44:04,450 middleware 20052 15480 📤 GET /favicon.ico - 404 - Время: 0.020 сек
+ERROR 2026-04-14 17:44:04,451 middleware 20052 15480 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:44:05,884 middleware 20052 15480 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:44:05,946 middleware 20052 15480 📤 GET /org-chart/ - 200 - Время: 0.070 сек
+DEBUG 2026-04-14 17:44:05,987 middleware 20052 15480 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:44:06,001 middleware 20052 15480 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.019 сек
+ERROR 2026-04-14 17:44:06,003 middleware 20052 15480 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:44:06,271 middleware 20052 9872 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:44:06,289 middleware 20052 9872 📤 GET /favicon.ico - 404 - Время: 0.024 сек
+ERROR 2026-04-14 17:44:06,290 middleware 20052 9872 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2
+DEBUG 2026-04-14 17:48:45,064 middleware 20052 9872 📨 GET /org-chart/ - Пользователь: pavel2
+INFO 2026-04-14 17:48:45,118 middleware 20052 9872 📤 GET /org-chart/ - 200 - Время: 0.061 сек
+DEBUG 2026-04-14 17:48:45,158 middleware 20052 9872 📨 GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+INFO 2026-04-14 17:48:45,176 middleware 20052 9872 📤 GET /.well-known/appspecific/com.chrome.devtools.json - 404 - Время: 0.024 сек
+ERROR 2026-04-14 17:48:45,180 middleware 20052 9872 ❌ Ошибка 404: GET /.well-known/appspecific/com.chrome.devtools.json - Пользователь: pavel2
+DEBUG 2026-04-14 17:48:45,572 middleware 20052 14492 📨 GET /favicon.ico - Пользователь: pavel2
+INFO 2026-04-14 17:48:45,582 middleware 20052 14492 📤 GET /favicon.ico - 404 - Время: 0.013 сек
+ERROR 2026-04-14 17:48:45,583 middleware 20052 14492 ❌ Ошибка 404: GET /favicon.ico - Пользователь: pavel2

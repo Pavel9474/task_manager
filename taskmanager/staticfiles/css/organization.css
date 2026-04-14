@@ -1,7 +1,681 @@
-.org-chart-container {
+/* =========================================
+   СТИЛИ ДЛЯ СТРАНИЦЫ ОРГАНИЗАЦИОННОЙ СТРУКТУРЫ
+   ========================================= */
+
+/* Дерево организации */
+.org-tree {
+    position: relative;
+    padding: 40px 20px;
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+}
+
+/* Корневой контейнер дерева - Google Style */
+.tree-root {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 20px 0;
+}
+
+.tree-root::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #dadce0, transparent);
+}
+
+/* Контейнер для дочерних узлов */
+.children-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 40px;
+    margin-top: 10px;
+}
+
+/* Вертикальная линия от родителя к детям - Google Style */
+.children-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #dadce0;
+    transform: translateX(-50%);
+}
+
+/* Узел дерева */
+.tree-node {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 180px;
+    max-width: 240px;
+    transition: all 0.3s;
+}
+
+/* Дочерний контейнер должен быть шире родителя */
+.tree-node > .children-container {
+    width: 100%;
+    min-width: 800px;
     max-width: 1400px;
     margin: 0 auto;
+    overflow-x: visible;
+}
+
+.tree-node:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Вертикальная линия к родителю (для всех кроме корневых) - Google Style */
+.tree-node[data-level="0"]::before {
+    display: none;
+}
+
+.tree-node:not([data-level="0"])::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #dadce0;
+    transform: translateX(-50%);
+}
+
+/* Горизонтальная линия соединения между sibling узлами - Google Style */
+.children-container > .tree-node:not(:first-child):not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -50%;
+    width: 100%;
+    height: 2px;
+    background: #dadce0;
+}
+
+.children-container > .tree-node:first-child::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 50%;
+    height: 2px;
+    background: #dadce0;
+}
+
+.children-container > .tree-node:last-child::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: 50%;
+    width: 50%;
+    height: 2px;
+    background: #dadce0;
+}
+
+/* Карточка узла - Google Material Design Style */
+.node-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.node-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(66, 133, 244, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.node-card:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.node-card:hover {
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+    transform: translateY(-2px);
+}
+
+.node-card:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+}
+
+/* Стили для разных уровней - Google Colors */
+.node-card.level-0 {
+    background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+    color: white;
+}
+
+.node-card.level-1 {
+    background: #ffffff;
+    border-left: 4px solid #34a853;
+}
+
+.node-card.level-2 {
+    background: #ffffff;
+    border-left: 4px solid #fbbc04;
+}
+
+.node-card.level-3 {
+    background: #ffffff;
+    border-left: 4px solid #4285f4;
+}
+
+.node-card.level-4 {
+    background: #ffffff;
+    border-left: 4px solid #ea4335;
+}
+
+.node-icon {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.node-card.level-0 .node-icon {
+    opacity: 1;
+}
+
+.node-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 6px;
+    word-break: break-word;
+    line-height: 1.3;
+    color: #202124;
+    letter-spacing: 0.01em;
+}
+
+.node-card.level-0 .node-name {
+    color: white;
+    font-weight: 600;
+}
+
+.node-type {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-bottom: 8px;
+    color: #5f6368;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.node-card.level-0 .node-type {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.node-staff {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f1f3f4;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #5f6368;
+}
+
+.node-card.level-0 .node-staff {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.node-toggle {
+    margin-top: 8px;
+    font-size: 1rem;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #5f6368;
+}
+
+.node-card.level-0 .node-toggle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.node-toggle.open {
+    transform: rotate(180deg);
+}
+
+.node-card.level-0 .node-toggle:hover {
+    color: white;
+}
+
+/* Контейнер списка сотрудников */
+.employee-list-container {
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+/* Список сотрудников - Google Material Design */
+.employee-list {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 0 auto 20px;
+    max-width: 800px;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.1);
+    width: 100%;
+}
+
+.employee-list-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #dadce0;
+    font-weight: 600;
+    color: #202124;
+    font-size: 0.95rem;
+}
+
+.employee-list-header i {
+    font-size: 1.2rem;
+    color: #4285f4;
+}
+
+.employee-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    background: white;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.05);
+    border: 1px solid #e8eaed;
+}
+
+.employee-card:hover {
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.15), 0 4px 8px 3px rgba(60,64,67,0.1);
+    transform: translateX(4px);
+    border-color: #4285f4;
+    text-decoration: none;
+    color: inherit;
+}
+
+.employee-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.employee-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.employee-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #202124;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.employee-position {
+    font-size: 0.75rem;
+    color: #5f6368;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.employee-workload {
+    flex-shrink: 0;
+    background: #f1f3f4;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #5f6368;
+}
+
+/* Контейнер для дочерних подразделений */
+.child-departments {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Дочерние узлы */
+.children-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding-top: 40px;
+    margin-top: 10px;
+    align-items: flex-start;
+}
+
+/* Вертикальная линия от родителя к детям - Google Style */
+.children-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #dadce0;
+    transform: translateX(-50%);
+}
+
+/* Руководство */
+.leadership-section {
+    margin-bottom: 60px;
+}
+
+.leadership-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.leadership-title::before,
+.leadership-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color));
+}
+
+.leadership-title::before {
+    left: 0;
+}
+
+.leadership-title::after {
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.leadership-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s;
+}
+
+.leadership-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.leadership-card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.leadership-card h3 {
+    margin-bottom: 10px;
+}
+
+.leadership-card p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* Два основных блока */
+.main-blocks {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.main-block {
+    flex: 1;
+    max-width: 300px;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-lg);
+}
+
+.main-block.science {
+    border-bottom: 4px solid var(--success-color);
+}
+
+.main-block.organization {
+    border-bottom: 4px solid var(--warning-color);
+}
+
+.main-block:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.main-block i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.main-block.science i {
+    color: var(--success-color);
+}
+
+.main-block.organization i {
+    color: var(--warning-color);
+}
+
+.main-block h2 {
+    margin-bottom: 10px;
+}
+
+/* Институты */
+.institutes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.institute-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
     padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--primary-color);
+}
+
+.institute-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Отделы */
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 20px 0 20px 40px;
+    position: relative;
+}
+
+.departments-grid::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 2px;
+    height: 20px;
+    background: var(--success-color);
+}
+
+.department-card {
+    background: white;
+    border-radius: var(--border-radius-md);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--success-color);
+}
+
+.department-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Лаборатории */
+.laboratories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 15px 0 15px 60px;
+    position: relative;
+}
+
+.laboratories-grid::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 2px;
+    height: 15px;
+    background: var(--warning-color);
+}
+
+.laboratory-card {
+    background: white;
+    border-radius: var(--border-radius-sm);
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--warning-color);
+    font-size: 0.9rem;
+}
+
+.laboratory-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+/* Сотрудники */
+.staff-list {
+    margin: 10px 0 10px 80px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: var(--border-radius-md);
+    position: relative;
+}
+
+.staff-list::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 2px;
+    height: 10px;
+    background: var(--info-color);
+}
+
+.staff-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 5px 0;
+    background: white;
+    border-radius: var(--border-radius-sm);
+    border-left: 3px solid var(--info-color);
+    transition: all 0.2s;
+}
+
+.staff-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.staff-item i {
+    font-size: 1.2rem;
+    color: var(--info-color);
+    margin-right: 10px;
+}
+
+.staff-info {
+    flex: 1;
+}
+
+.staff-name {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.staff-position {
+    font-size: 0.8rem;
+    color: var(--gray-color);
+    margin-left: 10px;
 }
 
 /* Статистика */
@@ -14,80 +688,44 @@
 
 .stat-card {
     background: white;
-    border-radius: 12px;
+    border-radius: var(--border-radius-lg);
     padding: 20px;
     display: flex;
     align-items: center;
     gap: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
 .stat-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 12px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--border-radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .stat-info h3 {
     margin: 0;
     font-size: 0.9rem;
-    color: #6c757d;
+    color: var(--gray-color);
     font-weight: normal;
 }
 
 .stat-info p {
     margin: 5px 0 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #2d3748;
-}
-
-/* Руководство */
-.leadership-section {
-    margin-bottom: 40px;
-}
-
-.leadership-title {
-    text-align: center;
-    font-size: 1.3rem;
-    color: #667eea;
-    margin-bottom: 25px;
-}
-
-.leadership-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.leadership-card {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-}
-
-.leadership-card i {
     font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.leadership-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
-
-.leadership-card p {
-    font-size: 0.9rem;
-    opacity: 0.9;
+    font-weight: 600;
+    color: var(--dark-color);
 }
 
 /* Кнопки управления */
@@ -100,209 +738,55 @@
 }
 
 .control-btn {
-    padding: 8px 16px;
-    border: 1px solid #dee2e6;
+    padding: 10px 20px;
+    border: 1px solid var(--gray-color);
     background: white;
-    border-radius: 8px;
+    border-radius: var(--border-radius-md);
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 0.9rem;
 }
 
 .control-btn.active {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     border-color: transparent;
 }
 
-/* Основные блоки */
-.main-blocks {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin: 30px 0;
+.control-btn:hover {
+    background: var(--light-color);
 }
 
-.main-block {
-    background: white;
-    border-radius: 12px;
-    padding: 30px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    flex: 1;
-    max-width: 300px;
+/* Анимации */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.main-block.science {
-    border-bottom: 4px solid #48bb78;
+.slide-down {
+    animation: slideDown 0.3s ease-out;
 }
 
-.main-block.organization {
-    border-bottom: 4px solid #ecc94b;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.main-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.main-block i {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.main-block.science i {
-    color: #48bb78;
-}
-
-.main-block.organization i {
-    color: #ecc94b;
-}
-
-.main-block h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.toggle-icon {
-    margin-top: 10px;
-    font-size: 1.2rem;
-}
-
-/* Поиск */
-.search-box {
-    margin: 20px 0;
-}
-
-/* Дерево */
-.org-tree {
-    margin-top: 30px;
-}
-
-.tree-level {
-    margin: 20px 0;
-}
-
-.nodes-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-.tree-node {
-    min-width: 200px;
-}
-
-.node-card {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    border: 1px solid #e2e8f0;
-}
-
-.node-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    border-color: #667eea;
-}
-
-.node-card.level-2 {
-    border-top: 3px solid #667eea;
-}
-
-.node-card.level-3 {
-    border-top: 3px solid #48bb78;
-}
-
-.node-card.level-4 {
-    border-top: 3px solid #ecc94b;
-}
-
-.node-icon {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-}
-
-.node-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-.node-type {
-    font-size: 0.75rem;
-    color: #718096;
-    margin-bottom: 8px;
-}
-
-.node-staff {
-    font-size: 0.7rem;
-    color: #a0aec0;
-}
-
-.children-container {
-    margin-top: 15px;
-    padding-left: 20px;
-    border-left: 2px dashed #cbd5e0;
-}
-
-/* Сотрудники */
-.staff-list {
-    margin-top: 10px;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
-}
-
-.staff-item {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    background: white;
-    border-radius: 6px;
-    margin: 5px 0;
-    border-left: 3px solid #667eea;
-    text-decoration: none;
-    color: #2d3748;
-    transition: all 0.2s;
-}
-
-.staff-item:hover {
-    background: #e9ecef;
-    transform: translateX(5px);
-}
-
-.staff-item i {
-    margin-right: 10px;
-    color: #667eea;
-}
-
-.staff-name {
-    font-weight: 600;
-}
-
-.staff-position {
-    font-size: 0.8rem;
-    color: #718096;
-    margin-left: 8px;
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .main-blocks {
+    .tree-level {
         flex-direction: column;
         align-items: center;
-    }
-    
-    .main-block {
-        max-width: 100%;
-        width: 100%;
     }
     
     .nodes-container {
@@ -310,12 +794,49 @@
         align-items: center;
     }
     
-    .tree-node {
-        width: 100%;
+    .tree-node::before {
+        display: none;
     }
     
     .children-container {
-        margin-left: 15px;
-        padding-left: 10px;
+        margin-left: 20px;
+    }
+    
+    .laboratories-grid,
+    .staff-list {
+        margin-left: 30px;
+    }
+    
+    .main-blocks {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Employee list responsive */
+    .employee-list {
+        max-width: 100%;
+        padding: 12px;
+    }
+    
+    .employee-card {
+        padding: 8px;
+    }
+    
+    .employee-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 1.25rem;
+    }
+    
+    .employee-name {
+        font-size: 0.8rem;
+    }
+    
+    .employee-position {
+        font-size: 0.7rem;
     }
 }
